@@ -2,13 +2,13 @@ name: Build, Test, and Deploy PH Core FHIR IG
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
 
 permissions:
   contents: write
 
 concurrency:
-  group: ig-main
+  group: ig-dev
   cancel-in-progress: true
 
 jobs:
@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      JAVA_VERSION: "17"
-      NODE_VERSION: "18"
-      RUBY_VERSION: "3.1"
+      JAVA_VERSION: "21"
+      NODE_VERSION: "20"
+      RUBY_VERSION: "3.2"
       IG_PUBLISHER_VERSION: "latest"
 
     steps:
@@ -146,9 +146,9 @@ jobs:
           </body>
           </html>
           EOF
-          
-      - name: Disable Jekyll on published site
-        run: touch .publish/.nojekyll
+
+      # - name: Disable Jekyll on published site
+      #   run: touch .publish/.nojekyll
 
       - name: Publish to gh-pages:/dev/
         uses: peaceiris/actions-gh-pages@v4
