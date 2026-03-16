@@ -431,6 +431,8 @@ Generic: line 0, col 0, Error - The link 'version-management.html' for "Version 
 Generic: line 0, col 0, Error - The link 'version-management.html' for "Version Management" cannot be resolved (NOTFOUND)
 Generic: line 0, col 0, Error - The link 'version-management.html' for "Version Management" cannot be resolved (NOTFOUND)
 Generic: line 0, col 0, Error - The link 'version-management.html' for "Version Management" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'version-management.html' for "Version Management" cannot be resolved (NOTFOUND)
+Generic: line 0, col 0, Error - The link 'version-management.html' for "Version Management" cannot be resolved (NOTFOUND)
 /home/runner/work/ph-core/ph-core/fsh-generated/resources/Bundle-transaction-example.json: line 33, col 18, Info - Reference to draft CodeSystem urn:iso:std:iso:3166|20210120 (BUSINESSRULE)
 /home/runner/work/ph-core/ph-core/fsh-generated/resources/Bundle-transaction-example.json: line 33, col 18, Error - Wrong Display Name 'Philippines' for urn:iso:std:iso:3166#PH. Valid display is 'Philippines (the)' (for the language(s) 'en') (INVALID)
 /home/runner/work/ph-core/ph-core/fsh-generated/resources/Bundle-transaction-example.json: line 79, col 12, Info - This element does not match any known slice defined in the profile http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-patient|0.1.0 (this may not be a problem, but you should check that it's not intended to match a slice) (INFORMATIONAL)

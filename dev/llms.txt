@@ -3,8 +3,10 @@
 ## Pages
 
 * [Home](index.md)
+* [Approach](approach.md)
 * [Artifacts Summary](artifacts.md)
 * [Other Ids](otherIds.md)
+* [Version Mangement](version-mangement.md)
 
 ## Resources
 

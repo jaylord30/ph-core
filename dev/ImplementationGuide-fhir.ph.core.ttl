@@ -22,7 +22,7 @@
   fhir:name [ fhir:v "PHCoreImplementationGuide"] ; # 
   fhir:title [ fhir:v "Draft PH Core Implementation Guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-03-16T07:24:26+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-03-16T20:48:05+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "UP Manila National TeleHealth Center"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "UP Manila National TeleHealth Center" ] ;
@@ -2678,6 +2678,25 @@
            ] ;
            fhir:value [
              a fhir:Url ;
+             fhir:v "approach.html"^^xsd:anyURI ;
+             fhir:l fhir:approach.html
+           ]
+         ] ) ;
+         fhir:name [
+           a fhir:Url ;
+           fhir:v "approach.html"^^xsd:anyURI ;
+           fhir:l fhir:approach.html
+         ] ;
+         fhir:title [ fhir:v "Approach" ] ;
+         fhir:generation [ fhir:v "markdown" ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-page-name>
+           ] ;
+           fhir:value [
+             a fhir:Url ;
              fhir:v "otherIds.html"^^xsd:anyURI ;
              fhir:l fhir:otherIds.html
            ]
@@ -2688,6 +2707,25 @@
            fhir:l fhir:otherIds.html
          ] ;
          fhir:title [ fhir:v "Other Ids" ] ;
+         fhir:generation [ fhir:v "markdown" ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/ig-page-name>
+           ] ;
+           fhir:value [
+             a fhir:Url ;
+             fhir:v "version-mangement.html"^^xsd:anyURI ;
+             fhir:l fhir:version-mangement.html
+           ]
+         ] ) ;
+         fhir:name [
+           a fhir:Url ;
+           fhir:v "version-mangement.html"^^xsd:anyURI ;
+           fhir:l fhir:version-mangement.html
+         ] ;
+         fhir:title [ fhir:v "Version Mangement" ] ;
          fhir:generation [ fhir:v "markdown" ]
        ] )
      ] ;

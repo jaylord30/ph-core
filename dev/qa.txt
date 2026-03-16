@@ -3,8 +3,8 @@ PHCoreImplementationGuide : Validation Results
 
 err = 49, warn = 18, info = 60
 IG Publisher Version: 2.1.2
-Generated Mon Mar 16 07:25:52 UTC 2026. FHIR version 4.0.1 for fhir.ph.core#0.1.0 (canonical = http://doh.gov.ph/fhir/ph-core)
- Build Errors : 430 / 0 / 0
+Generated Mon Mar 16 20:49:37 UTC 2026. FHIR version 4.0.1 for fhir.ph.core#0.1.0 (canonical = http://doh.gov.ph/fhir/ph-core)
+ Build Errors : 432 / 0 / 0
  /home/runner/work/ph-core/ph-core/fsh-generated/resources/AllergyIntolerance-allergy-single-example : 0 / 0 / 1
  /home/runner/work/ph-core/ph-core/fsh-generated/resources/AllergyIntolerance-example-allergy : 0 / 0 / 1
  /home/runner/work/ph-core/ph-core/fsh-generated/resources/Bundle-transaction-example : 3 / 1 / 34
@@ -497,10 +497,12 @@ ERROR: ValueSet-regions.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Lin
 ERROR: ValueSet-regions.json.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 97, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
 ERROR: ValueSet-regions.ttl.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 97, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
 ERROR: ValueSet-regions.xml.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 97, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
+ERROR: approach.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 95, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
 ERROR: artifacts.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 95, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
 ERROR: index.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 95, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
 ERROR: otherIds.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 95, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
 ERROR: toc.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 95, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
+ERROR: version-mangement.html#/html/body/div/div/nav/div/div/ul/li/ul/li/a at Line 95, column 10: The link 'version-management.html' for "Version Management" cannot be resolved
 == fsh-generated/resources/AllergyIntolerance-allergy-single-example.json ==
 == fsh-generated/resources/AllergyIntolerance-example-allergy.json ==
 == fsh-generated/resources/Bundle-transaction-example.json ==
