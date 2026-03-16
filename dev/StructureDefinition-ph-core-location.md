@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-location.csv
   "name" : "PHCoreLocation",
   "title" : "PH Core Location",
   "status" : "draft",
-  "date" : "2026-03-16T20:48:05+00:00",
+  "date" : "2026-03-16T20:59:47+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
