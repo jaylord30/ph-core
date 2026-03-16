@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ig-dev
+  group: ig-main
   cancel-in-progress: true
 
 jobs:
@@ -116,6 +116,14 @@ jobs:
         with:
           name: core-ig-output
           path: output
+
+      - name: Prepare publish directory
+        run: |
+          set -euo pipefail
+          rm -rf .publish
+          mkdir -p .publish/dev
+          rsync -a output/ .publish/dev/  
+                  
       - name: Create root index.html
         run: |
           cat > .publish/index.html <<'EOF'
@@ -141,7 +149,7 @@ jobs:
           publish_dir: .publish
           keep_files: true
           commit_message: "ci: publish PH Core IG from ${{ github.sha }}"
-          
+
   # deploy_dev:
   #   name: CD - Deploy Dev (Core IG)
   #   needs: [ci]
