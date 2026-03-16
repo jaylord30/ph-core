@@ -20,13 +20,13 @@ jobs:
       JAVA_VERSION: "17"
       NODE_VERSION: "18"
       RUBY_VERSION: "3.1"
-
-    
       IG_PUBLISHER_VERSION: "latest"
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -121,8 +121,8 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf .publish
-          mkdir -p .publish/dev
-          rsync -a output/ .publish/dev/  
+          mkdir -p .publish/main
+          rsync -a output/ .publish/main/  
                   
       - name: Create root index.html
         run: |
