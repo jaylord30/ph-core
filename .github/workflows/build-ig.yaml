@@ -51,8 +51,11 @@ jobs:
         run: npm install -g fsh-sushi
 
       - name: Install Graphviz (for PlantUML dot renderer)
-        run: sudo apt-get install -y graphviz
-
+        run: |
+          sudo apt-get install -y graphviz
+          which dot
+          dot -v
+          
       - name: Cache publisher + packages
         uses: actions/cache@v4
         with:
