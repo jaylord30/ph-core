@@ -1,4 +1,4 @@
-### Version Management & Publication
+<!-- ### Version Management & Publication
 
 This page describes how the IG is versioned, published, and released. For the broader project methodology, see the [Approach](approach.html) page.
 
@@ -59,4 +59,4 @@ The following items are known gaps or deferred scope. Each is tied back to a spe
 3. **Return referral slip** (REF-18) — excluded from MVP; requires DocumentReference modelling.
 4. **Lab results** (REF-39) — currently modelled as ServiceRequest (orders); DiagnosticReport will be added when results are available.
 5. **Receiving encounter** (REF-44) — belongs to the receiving facility's workflow, not the sending scenario.
-6. **Pregnancy-specific elements** — the DD notes a placeholder row for gravidity, parity, fundal height, and immunisation history; these should be added as structured Observations in a future iteration.
+6. **Pregnancy-specific elements** — the DD notes a placeholder row for gravidity, parity, fundal height, and immunisation history; these should be added as structured Observations in a future iteration. -->

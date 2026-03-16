@@ -1,4 +1,4 @@
-### Approach: From WHO SMART Guidelines to FHIR Examples
+<!-- ### Approach: From WHO SMART Guidelines to FHIR Examples
 
 This page documents the methodology used to produce the FHIR example resources in this Implementation Guide, tracing the path from the WHO SMART Guidelines framework through the Philippine eReferral data dictionary to validated, machine-readable FHIR Shorthand (FSH) instances.
 
@@ -51,11 +51,11 @@ Plus logistics (REF-41), referral decision (REF-42), encounter context (REF-43 �
 
 #### Agile Iteration through the SMART Layers
 
-Rather than treating the five WHO SMART layers as a strict waterfall sequence, this project works through them in **short, incremental cycles**. Each iteration takes a small slice of scope — a handful of new data elements, a scenario extension, or a set of stakeholder corrections — and pushes it through all five layers from narrative (L1) to validated outputs (L5) before circling back.
+Rather than treating the five WHO SMART layers as a strict waterfall sequence, this project works through them in **short, incremental cycles**. Each iteration takes a small slice of scope — a handful of new data elements, a scenario extension, or a set of stakeholder corrections — and pushes it through all five layers from narrative (L1) to validated outputs (L5) before circling back. -->
 
 <!-- {% include agile-smart-cycle.svg %} -->
 
-**Key principles:**
+<!-- **Key principles:**
 
 * **Artefacts at every layer are accepted as imperfect.** A first-pass data dictionary will have gaps; initial FSH instances will carry placeholder codes; validation will surface issues. This is expected and welcomed — each cycle tightens the artefacts rather than attempting perfection up front.
 * **Every iteration closes with a stakeholder review of L5 outputs.** The published development IG (`/dev/`) is walked through with domain experts, clinicians, and implementers. Concrete examples — not abstract specifications — form the basis of discussion, making it easier to spot misunderstandings and missing elements.
@@ -87,11 +87,11 @@ gpg --decrypt \
 
 The following pages provide in-depth coverage of each aspect of the project:
 
-<!-- * **[Technical Pipeline](technical-pipeline.html)** — the end-to-end data flow from source artefacts to a published IG, including the step-by-step script pipeline and data-dictionary coverage tracking.
+* **[Technical Pipeline](technical-pipeline.html)** — the end-to-end data flow from source artefacts to a published IG, including the step-by-step script pipeline and data-dictionary coverage tracking.
 * **[Resource Architecture](resource-architecture.html)** — the FHIR resource types, transaction bundles, FHIR design patterns, scenario activity flow, and data-dictionary-to-FHIR mapping diagram.
-* **[AI-Assisted Reasoning](ai-reasoning.html)** — how an AI coding assistant was used to accelerate resource identification, terminology selection, and pipeline automation. -->
+* **[AI-Assisted Reasoning](ai-reasoning.html)** — how an AI coding assistant was used to accelerate resource identification, terminology selection, and pipeline automation.
 * **[Version Management & Publication](version-management.html)** — the two-lane CI/release publication model, how to cut a release, and known limitations.
-<!-- * **[DD Mapping](dd-mapping.html)** — the element-by-element mapping between the data dictionary and the FHIR example resources.
+* **[DD Mapping](dd-mapping.html)** — the element-by-element mapping between the data dictionary and the FHIR example resources.
 * **[IG Evolution](ig-evolution.html)** — how the IG graduates from rapid agile drafting to the HL7 formal process, and what signals indicate readiness to transition.
 * **[HL7 Standards Lifecycle](hl7-lifecycle.html)** — the HL7 ballot and publication stages, the FHIR Maturity Model (FMM 0–5), Connectathon requirements, and the evidence needed to move from STU to Normative.
 * **[Interoperability Matrix Testing](interop-testing.html)** — CI-based automated testing of registered implementation endpoints against each other, the distinction between quality assurance and quality management, and how to subscribe an endpoint.
