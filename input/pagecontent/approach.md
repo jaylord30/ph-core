@@ -47,13 +47,14 @@ The 46 elements are organised into seven clinical information groups:
 
 Plus logistics (REF-41), referral decision (REF-42), encounter context (REF-43 … REF-44), and navigator roles (REF-45 … REF-46).
 
----
+--- 
 
 #### Agile Iteration through the SMART Layers
 
 Rather than treating the five WHO SMART layers as a strict waterfall sequence, this project works through them in **short, incremental cycles**. Each iteration takes a small slice of scope — a handful of new data elements, a scenario extension, or a set of stakeholder corrections — and pushes it through all five layers from narrative (L1) to validated outputs (L5) before circling back. -->
 
-<!-- {% include agile-smart-cycle.svg %} -->
+  
+  
 
 <!-- **Key principles:**
 
