@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-relatedperso
   "name" : "PHCoreRelatedPerson",
   "title" : "PH Core RelatedPerson",
   "status" : "draft",
-  "date" : "2026-03-16T22:06:54+00:00",
+  "date" : "2026-03-16T22:26:22+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
