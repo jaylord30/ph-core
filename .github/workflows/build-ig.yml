@@ -155,7 +155,7 @@ jobs:
       #   run: touch .publish/.nojekyll
 
       - name: Publish to gh-pages:/dev/
-        if github.event_name == 'push'
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
