@@ -1,56 +1,52 @@
-<!-- get modelType -->
-
-
-
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<!-- get modelType --><?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE HTML>
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <title>PH Core Encounter - Draft PH Core Implementation Guide v0.1.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
 
-    <link href="fhir.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="fhir.css"/>
 
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-fhir.css"/>
 
-    <!-- Project extras -->
-    <link href="assets/css/project.css" rel="stylesheet"/>
-    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
-    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
-  	<link href="assets/css/prism.css" rel="stylesheet" />
-  	<link href="assets/css/cqf.css" rel="stylesheet" />
-    <!-- Placeholder for child template CSS declarations -->
+      <!-- Project extras -->
+    <link rel="stylesheet" href="assets/css/project.css"/>
+    <link rel="stylesheet" href="assets/css/pygments-manni.css"/>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+  	<link rel="stylesheet" href="assets/css/prism.css"/>
+  	<link rel="stylesheet" href="assets/css/cqf.css"/>
+      <!-- Placeholder for child template CSS declarations -->
 
-    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+    <script src="fhir-table-scripts.js" type="text/javascript"> </script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- [if lt IE 9]>
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
+    <![endif] -->
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+      <!-- Favicons -->
+    <link sizes="144x144" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-144.png"/>
+    <link sizes="114x114" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-114.png"/>
+    <link sizes="72x72" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-72.png"/>
     <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
     <link rel="shortcut icon" href="assets/ico/favicon.png"/>
   </head>
   <body onload="document.body.style.opacity='1'">
 
 	  <script src="assets/js/prism.js"></script>
-    <script type="text/javascript" src="assets/js/mermaid.js"></script>
-    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <script src="assets/js/mermaid.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid-init.js" type="text/javascript"></script>
     <style type="text/css">h2{--heading-prefix:"3.1"}
     h3,h4,h5,h6{--heading-prefix:"3.1"}</style>
-    <div id="segment-header" class="segment">  <!-- segment-header -->
-      <div class="container">  <!-- container -->
+    <div id="segment-header" class="segment">    <!-- segment-header -->
+      <div class="container">    <!-- container -->
 
-        <!-- Placeholder for child template header declarations -->
+          <!-- Placeholder for child template header declarations -->
 
 
         <div id="ig-status">
@@ -66,59 +62,69 @@
             </span>
           </p>
         </div>
-      </div> <!-- /container -->
-    </div>  <!-- /segment-header -->
+      </div>   <!-- /container -->
+    </div>    <!-- /segment-header -->
 
-    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+    <div id="segment-navbar" class="segment">    <!-- segment-navbar -->
       <div id="stripe"> </div>
-      <div class="container">  <!-- container -->
-        <!-- HEADER CONTENT -->
+      <div class="container">    <!-- container -->
+          <!-- HEADER CONTENT -->
 
         <nav class="navbar navbar-inverse">
-          <!--status-bar-->
+            <!-- status-bar -->
           <div class="container">
-            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
               <span class="icon-bar"> </span>
               <span class="icon-bar"> </span>
               <span class="icon-bar"> </span>
             </button>
-            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <a href="http://hl7.org/fhir/R4/index.html" class="navbar-brand hidden">FHIR</a>
             <div class="nav-collapse collapse navbar-inverse-collapse">
-              <!-- menu.xml  -->
+                <!-- menu.xml -->
 
-<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+<ul class="nav navbar-nav">
   <li>
     <a href="index.html">Home</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Approach
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a name="l153">​</a>
+        <a href="version-management.html">Version Management</a>
+      </li>
+    </ul>
   </li>
   <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
 </ul>
-            </div>  <!-- /.nav-collapse -->
-          </div>  <!-- /.container -->
-        </nav>  <!-- /.navbar -->
-      <!-- /HEADER CONTENT -->
-      </div>  <!-- /container -->
-    </div>  <!-- /segment-navbar -->
-    <!--status-bar-->
+            </div>    <!-- /.nav-collapse -->
+          </div>    <!-- /.container -->
+        </nav>    <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-navbar -->
+      <!-- status-bar -->
 
-    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
-      <div class="container">  <!-- container -->
+    <div id="segment-breadcrumb" class="segment">    <!-- segment-breadcrumb -->
+      <div class="container">    <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>PH Core Encounter</b></li>
+          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><a href="artifacts.html"><b>Artifacts Summary</b></a></li><li><b>PH Core Encounter</b></li>
 
         </ul>
-      </div>  <!-- /container -->
-    </div>  <!-- /segment-breadcrumb -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-breadcrumb -->
 
     <a name="top"> </a>
-    <div id="segment-content" class="segment">  <!-- segment-content -->
-      <div class="container">  <!-- container -->
+    <div id="segment-content" class="segment">    <!-- segment-content -->
+      <div class="container">    <!-- container -->
         <div class="row">
           <div class="inner-wrapper">
 
 <div class="col-12">
-  <!--ReleaseHeader--><p id="publish-box">Draft PH Core Implementation Guide - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href='http://doh.gov.ph/fhir/ph-core/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+    <!-- ReleaseHeader --><p id="publish-box">Draft PH Core Implementation Guide - Local Development build (v0.1.0) built by the FHIR (HL7&reg; FHIR&reg; Standard) Build Tools. See the <a href="http://doh.gov.ph/fhir/ph-core/history.html">Directory of published versions</a></p>  <!-- EndReleaseHeader -->
   
 
 
@@ -205,10 +211,10 @@
   <table class="colsd">
 
     <tr>
-      <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter<button title="Click to copy URL" class="btn-copy" data-clipboard-text="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter"/></span>
+      <td colspan="4"><i>Official URL</i>: <span class="copy-text">http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter<button data-clipboard-text="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter" title="Click to copy URL" class="btn-copy"></button></span>
       </td>
       <td><i>Version</i>:
-      <span class="copy-text">0.1.0<button title="Click to copy versioned URL" class="btn-copy" data-clipboard-text="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter|0.1.0"/></span>
+      <span class="copy-text">0.1.0<button data-clipboard-text="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter|0.1.0" title="Click to copy versioned URL" class="btn-copy"></button></span>
       </td>
     </tr>
 
@@ -246,7 +252,7 @@
 
 
 
-<!-- insert intro if present -->
+  <!-- insert intro if present -->
 
 
 
@@ -258,7 +264,7 @@
 </ul>
 <p>You can also check for <a href="https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/ph-core-encounter">usages in the FHIR IG Statistics</a></p>
 
-  <!-- no uri -->
+    <!-- no uri -->
   <a name="profile"> </a>
   <h3 id="profile">Formal Views of Profile Content</h3>
   <p>
@@ -276,19 +282,19 @@
         <a href="#tabs-snap">Snapshot Table</a>
       </li>
 
-<!--      <li>
+  <!-- <li>
         <a href="#tabs-xml">Pseudo-XML</a>
-      </li>-->
+      </li> -->
 
 
-<!--      <li>
+  <!-- <li>
         <a href="#tabs-json">Pseudo-JSON</a>
-      </li>-->
+      </li> -->
 
 
-      <!--<li>
+        <!-- <li>
         <a href="#tabs-ttl">Pseudo-TTL</a>
-      </li>-->
+      </li> -->
 
       <li>
         <a href="#tabs-summ">Statistics/References</a>
@@ -334,7 +340,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-ph-core-patient.html">PH Core Patient</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">The patient or group present at the encounter</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 7dcf4dee-5612-48e9-b904-ac7753411237
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // a0ab5eae-99d8-49dd-a1de-da6df991f01b
 document.getElementById('cbph-core-encounterK-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('ph-core-encounterK'), 'binding', document.getElementById('cbph-core-encounterK-binding').checked, document.getElementById('ppph-core-encounterK'));
 document.getElementById('cbph-core-encounterK-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -342,7 +348,7 @@ filterDesc(document.getElementById('ph-core-encounterK'), 'constraint', document
 document.getElementById('cbph-core-encounterK-obligation').checked = 'false' != localStorage.getItem('ht-table-states-obligation');
 filterDesc(document.getElementById('ph-core-encounterK'), 'obligation', document.getElementById('cbph-core-encounterK-obligation').checked, document.getElementById('ppph-core-encounterK'));
 </script></table>
-          <!--Terminology Bindings heading in the fragment -->
+            <!-- Terminology Bindings heading in the fragment -->
           <h4>Terminology Bindings</h4>
 <table class="list" data-fhir="generated-heirarchy">
   <tr>
@@ -399,10 +405,10 @@ filterDesc(document.getElementById('ph-core-encounterK'), 'obligation', document
 
         
           
-          <!-- 218 is size of empty table -->
+            <!-- 218 is size of empty table -->
           
             <a name="inv-key"> </a>
-            <!--Constraints  heading in the fragment -->
+              <!-- Constraints  heading in the fragment -->
             <h4>Constraints</h4>
 <table class="list presentation" data-fhir="generated-heirarchy">
   <tr>
@@ -522,7 +528,7 @@ filterDesc(document.getElementById('ph-core-encounterK'), 'obligation', document
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-ph-core-practitioner.html">PH Core Practitioner</a> | <a href="http://hl7.org/fhir/R4/practitionerrole.html">PractitionerRole</a> | <a href="StructureDefinition-ph-core-relatedperson.html">PH Core RelatedPerson</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">Persons involved in the encounter other than the patient</span></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 7dcf4dee-5612-48e9-b904-ac7753411237
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // a0ab5eae-99d8-49dd-a1de-da6df991f01b
 document.getElementById('cbph-core-encounterD-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('ph-core-encounterD'), 'binding', document.getElementById('cbph-core-encounterD-binding').checked, document.getElementById('ppph-core-encounterD'));
 document.getElementById('cbph-core-encounterD-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -531,11 +537,11 @@ document.getElementById('cbph-core-encounterD-obligation').checked = 'false' != 
 filterDesc(document.getElementById('ph-core-encounterD'), 'obligation', document.getElementById('cbph-core-encounterD-obligation').checked, document.getElementById('ppph-core-encounterD'));
 </script></table>
           <a name="tx"> </a>
-          <!--Terminology Bindings heading in the fragment -->
+            <!-- Terminology Bindings heading in the fragment -->
           
         
           
-          <!-- 218 is size of empty table -->
+            <!-- 218 is size of empty table -->
           
         </div>
       </div>
@@ -927,7 +933,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/encounter.html">Encounter</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Another Encounter this encounter is part of</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 7dcf4dee-5612-48e9-b904-ac7753411237
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // a0ab5eae-99d8-49dd-a1de-da6df991f01b
 document.getElementById('cbph-core-encounterS-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('ph-core-encounterS'), 'binding', document.getElementById('cbph-core-encounterS-binding').checked, document.getElementById('ppph-core-encounterS'));
 document.getElementById('cbph-core-encounterS-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -935,7 +941,7 @@ filterDesc(document.getElementById('ph-core-encounterS'), 'constraint', document
 document.getElementById('cbph-core-encounterS-obligation').checked = 'false' != localStorage.getItem('ht-table-states-obligation');
 filterDesc(document.getElementById('ph-core-encounterS'), 'obligation', document.getElementById('cbph-core-encounterS-obligation').checked, document.getElementById('ppph-core-encounterS'));
 </script></table>
-          <!--Terminology Bindings heading in the fragment -->
+            <!-- Terminology Bindings heading in the fragment -->
           <h4>Terminology Bindings</h4>
 <table class="list" data-fhir="generated-heirarchy">
   <tr>
@@ -1247,10 +1253,10 @@ filterDesc(document.getElementById('ph-core-encounterS'), 'obligation', document
 
         
           
-          <!-- 218 is size of empty table -->
+            <!-- 218 is size of empty table -->
           
             <a name="inv-snap"> </a>
-            <!--Constraints  heading in the fragment -->
+              <!-- Constraints  heading in the fragment -->
             <h4>Constraints</h4>
 <table class="list presentation" data-fhir="generated-heirarchy">
   <tr>
@@ -1344,7 +1350,7 @@ filterDesc(document.getElementById('ph-core-encounterS'), 'obligation', document
       </div>
     </div>
 
-<!--    <a name="tabs-xml"> </a>
+  <!-- <a name="tabs-xml"> </a>
     <div id="tabs-xml">
       <div id="xml">
         <div id="xml-inner">
@@ -1352,10 +1358,10 @@ filterDesc(document.getElementById('ph-core-encounterS'), 'obligation', document
 
         </div>
       </div>
-    </div>-->
+    </div> -->
 
 
-<!--    <a name="tabs-json"> </a>
+  <!-- <a name="tabs-json"> </a>
     <div id="tabs-json">
       <div id="json">
         <div id="json-inner">
@@ -1438,10 +1444,10 @@ filterDesc(document.getElementById('ph-core-encounterS'), 'obligation', document
 
         </div>
       </div>
-    </div>-->
+    </div> -->
 
 
-    <!--<a name="tabs-ttl"> </a>
+      <!-- <a name="tabs-ttl"> </a>
     <div id="tabs-ttl">
       <div id="ttl">
         <div id="ttl-inner">
@@ -1449,7 +1455,7 @@ filterDesc(document.getElementById('ph-core-encounterS'), 'obligation', document
 
         </div>
       </div>
-    </div>-->
+    </div> -->
 
     <a name="tabs-summ"> </a>
     <div id="tabs-summ">
@@ -1515,7 +1521,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-ph-core-patient.html">PH Core Patient</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">The patient or group present at the encounter</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 7dcf4dee-5612-48e9-b904-ac7753411237
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // a0ab5eae-99d8-49dd-a1de-da6df991f01b
 document.getElementById('cbph-core-encounterKA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('ph-core-encounterKA'), 'binding', document.getElementById('cbph-core-encounterKA-binding').checked, document.getElementById('ppph-core-encounterKA'));
 document.getElementById('cbph-core-encounterKA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1523,7 +1529,7 @@ filterDesc(document.getElementById('ph-core-encounterKA'), 'constraint', documen
 document.getElementById('cbph-core-encounterKA-obligation').checked = 'false' != localStorage.getItem('ht-table-states-obligation');
 filterDesc(document.getElementById('ph-core-encounterKA'), 'obligation', document.getElementById('cbph-core-encounterKA-obligation').checked, document.getElementById('ppph-core-encounterKA'));
 </script></table>
-          <!--Terminology Bindings heading in the fragment -->
+            <!-- Terminology Bindings heading in the fragment -->
           <h4>Terminology Bindings</h4>
 <table class="list" data-fhir="generated-heirarchy">
   <tr>
@@ -1580,10 +1586,10 @@ filterDesc(document.getElementById('ph-core-encounterKA'), 'obligation', documen
 
         
           
-          <!-- 218 is size of empty table -->
+            <!-- 218 is size of empty table -->
           
             <a name="inv-all-key"> </a>
-            <!--Constraints  heading in the fragment -->
+              <!-- Constraints  heading in the fragment -->
             <h4>Constraints</h4>
 <table class="list presentation" data-fhir="generated-heirarchy">
   <tr>
@@ -1703,7 +1709,7 @@ filterDesc(document.getElementById('ph-core-encounterKA'), 'obligation', documen
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">0</span><span style="opacity: 0.5">..</span><span style="opacity: 0.5">1</span></td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="StructureDefinition-ph-core-practitioner.html">PH Core Practitioner</a> | <a href="http://hl7.org/fhir/R4/practitionerrole.html">PractitionerRole</a> | <a href="StructureDefinition-ph-core-relatedperson.html">PH Core RelatedPerson</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><span style="opacity: 0.5">Persons involved in the encounter other than the patient</span></td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 7dcf4dee-5612-48e9-b904-ac7753411237
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // a0ab5eae-99d8-49dd-a1de-da6df991f01b
 document.getElementById('cbph-core-encounterDA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('ph-core-encounterDA'), 'binding', document.getElementById('cbph-core-encounterDA-binding').checked, document.getElementById('ppph-core-encounterDA'));
 document.getElementById('cbph-core-encounterDA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -1711,11 +1717,11 @@ filterDesc(document.getElementById('ph-core-encounterDA'), 'constraint', documen
 document.getElementById('cbph-core-encounterDA-obligation').checked = 'false' != localStorage.getItem('ht-table-states-obligation');
 filterDesc(document.getElementById('ph-core-encounterDA'), 'obligation', document.getElementById('cbph-core-encounterDA-obligation').checked, document.getElementById('ppph-core-encounterDA'));
 </script></table>
-          <!--Terminology Bindings heading in the fragment -->
+            <!-- Terminology Bindings heading in the fragment -->
           
         
           
-          <!-- 218 is size of empty table -->
+            <!-- 218 is size of empty table -->
           
         </div>
       </div>
@@ -2107,7 +2113,7 @@ Modifier extensions SHALL NOT change the meaning of any elements on Resource or 
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">0..1</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy"><a href="http://hl7.org/fhir/R4/references.html">Reference</a>(<a href="http://hl7.org/fhir/R4/encounter.html">Encounter</a>)</td>
 <td style="vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px" class="hierarchy">Another Encounter this encounter is part of</td></tr>
-<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // 7dcf4dee-5612-48e9-b904-ac7753411237
+<tr fhir="generated-heirarchy" data-fhir="generated-heirarchy"><td colspan="5" class="hierarchy"><br/><a href="https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views" title="Legend for this format"><img src="https://hl7.org/fhir/R4/help16.png" alt="doco" style="background-color: inherit"/> Documentation for this format</a></td></tr><script type="text/javascript">  // a0ab5eae-99d8-49dd-a1de-da6df991f01b
 document.getElementById('cbph-core-encounterSA-binding').checked = 'false' != localStorage.getItem('ht-table-states-binding');
 filterDesc(document.getElementById('ph-core-encounterSA'), 'binding', document.getElementById('cbph-core-encounterSA-binding').checked, document.getElementById('ppph-core-encounterSA'));
 document.getElementById('cbph-core-encounterSA-constraint').checked = 'false' != localStorage.getItem('ht-table-states-constraint');
@@ -2115,7 +2121,7 @@ filterDesc(document.getElementById('ph-core-encounterSA'), 'constraint', documen
 document.getElementById('cbph-core-encounterSA-obligation').checked = 'false' != localStorage.getItem('ht-table-states-obligation');
 filterDesc(document.getElementById('ph-core-encounterSA'), 'obligation', document.getElementById('cbph-core-encounterSA-obligation').checked, document.getElementById('ppph-core-encounterSA'));
 </script></table>
-          <!--Terminology Bindings heading in the fragment -->
+            <!-- Terminology Bindings heading in the fragment -->
           <h4>Terminology Bindings</h4>
 <table class="list" data-fhir="generated-heirarchy">
   <tr>
@@ -2427,10 +2433,10 @@ filterDesc(document.getElementById('ph-core-encounterSA'), 'obligation', documen
 
         
           
-          <!-- 218 is size of empty table -->
+            <!-- 218 is size of empty table -->
           
             <a name="inv-all-snap"> </a>
-            <!--Constraints  heading in the fragment -->
+              <!-- Constraints  heading in the fragment -->
             <h4>Constraints</h4>
 <table class="list presentation" data-fhir="generated-heirarchy">
   <tr>
@@ -2523,7 +2529,7 @@ filterDesc(document.getElementById('ph-core-encounterSA'), 'obligation', documen
         </div>
       </div>
 
-      <!--<div id="all-xml">
+        <!-- <div id="all-xml">
         <p>
           <b>XML Template</b>
         </p>
@@ -2531,10 +2537,10 @@ filterDesc(document.getElementById('ph-core-encounterSA'), 'obligation', documen
           <p><span style="color: maroon; font-weight: bold">yet to be done: Xml template</span></p>
 
         </div>
-      </div>-->
+      </div> -->
 
 
-      <!--<div id="all-json">
+        <!-- <div id="all-json">
         <p>
           <b>JSON Template</b>
         </p>
@@ -2617,10 +2623,10 @@ filterDesc(document.getElementById('ph-core-encounterSA'), 'obligation', documen
   }
 
         </div>
-      </div>-->
+      </div> -->
 
 
-      <!--<div id="all-ttl">
+        <!-- <div id="all-ttl">
         <p>
           <b>TTL Template</b>
         </p>
@@ -2628,7 +2634,7 @@ filterDesc(document.getElementById('ph-core-encounterSA'), 'obligation', documen
           <p><span style="color: maroon; font-weight: bold">yet to be done: Turtle template</span></p>
 
         </div>
-      </div>-->
+      </div> -->
 
       <div id="all-summ">
         <p>This structure is derived from <a href="http://hl7.org/fhir/R4/encounter.html">Encounter</a>
@@ -2652,38 +2658,38 @@ Summary
       </div>
     </div>
   </div>
-  <p>&#160;</p>
+  <p>&nbsp;</p>
   <p>Other representations of profile: <a href="StructureDefinition-ph-core-encounter.csv">CSV</a>, <a href="StructureDefinition-ph-core-encounter.xlsx">Excel</a>, <a href="StructureDefinition-ph-core-encounter.sch">Schematron</a>
  
   </p>
 
   
 
-<!-- insert notes if present -->
+  <!-- insert notes if present -->
 
 
 
 
 </div>
 
-        </div>  <!-- /inner-wrapper -->
-      </div>  <!-- /row -->
-    </div>  <!-- /container -->
-  </div>  <!-- /segment-content -->
+        </div>    <!-- /inner-wrapper -->
+      </div>    <!-- /row -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-content -->
 
-  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
-  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+  <script src="assets/js/jquery.js" type="text/javascript"> </script>       <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js" type="text/javascript"> </script>
 
-  <script type="text/javascript" src="assets/js/tabs.js"> </script>
+  <script src="assets/js/tabs.js" type="text/javascript"> </script>
 
-  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <script src="assets/js/window-hash.js" type="text/javascript"> </script>
   <a name="bottom"> </a>
-  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
-    <div class="container">  <!-- container -->
+  <div igtool="footer" id="segment-footer" class="segment">    <!-- segment-footer -->
+    <div class="container">    <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://github.com/UP-NTHC">UP Manila National TeleHealth Center</a>.  Package fhir.ph.core#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Mar 16, 2026 05:11+0000">2026-03-16</span>
+          IG &copy; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://github.com/UP-NTHC">UP Manila National TeleHealth Center</a>.  Package fhir.ph.core#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Mar 16, 2026 07:24+0000">2026-03-16</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -2692,27 +2698,26 @@ Summary
                 
           </span>
         </p>
-      </div>  <!-- /inner-wrapper -->
-    </div>  <!-- /container -->
-  </div>  <!-- /segment-footer -->
+      </div>    <!-- /inner-wrapper -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-footer -->
   
-  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
-    <div class="container">  <!-- container -->
-    </div>  <!-- /container -->
-  </div>  <!-- /segment-post-footer -->
+  <div id="segment-post-footer" class="segment hidden">    <!-- segment-post-footer -->
+    <div class="container">    <!-- container -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-post-footer -->
 
-  <!-- JS and analytics only. -->
-  <!-- Bootstrap core JavaScript
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
   ================================================== -->
-  <!-- Placed at the end of the document so the pages load faster -->
-  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
-  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
-  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
-  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
-  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
-  <!-- Analytics Below
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"> </script>
+  <script src="assets/js/respond.min.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard-btn.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor-hover.js" type="text/javascript"> </script>
+    <!-- Analytics Below
   ================================================== -->
   </body>
 </html>
-
