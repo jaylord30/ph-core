@@ -145,7 +145,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
+          publish_branch: main
           publish_dir: .publish
           keep_files: true
           commit_message: "ci: publish PH Core IG from ${{ github.sha }}"
