@@ -146,6 +146,9 @@ jobs:
           </body>
           </html>
           EOF
+          
+      - name: Disable Jekyll on published site
+        run: touch .publish/.nojekyll
 
       - name: Publish to gh-pages:/dev/
         uses: peaceiris/actions-gh-pages@v4
