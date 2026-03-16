@@ -42,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-organization
   "name" : "PHCoreOrganization",
   "title" : "PH Core Organization",
   "status" : "draft",
-  "date" : "2026-03-16T21:58:37+00:00",
+  "date" : "2026-03-16T22:06:54+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
