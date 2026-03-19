@@ -102,18 +102,37 @@ jobs:
           set -euo pipefail
 
           if [ -f output/qa.json ]; then
-            ERRORS=$(node -e "const q=require('./output/qa.json'); console.log((q.errCount ?? q.errors ?? q.errorCount ?? 0))" || echo "0")
+            ERRORS=$(node -e "const q=require('./output/qa.json'); console.log((q.errCount ?? q.errors ?? q.errorCount ?? 0))")
+            WARNINGS=$(node -e "const q=require('./output/qa.json'); console.log(q.warningCount ?? q.warnings ?? q.warnCount ?? 0)")
+
+            echo "QA summary from qa.json:"
+            echo "Errors: $ERRORS"
+            echo "Warnings: $WARNINGS"
+
+            if [ "$WARNINGS" != "0" ]; then
+              echo "Warnings were found, but the build will continue."
+            fi
+
             if [ "$ERRORS" != "0" ]; then
               echo "QA errors found in qa.json (count=$ERRORS)"
               exit 1
             fi
-            echo "QA passed via qa.json (errors=$ERRORS)"
+            echo "QA passed via qa.json (errors=$ERRORS, warnings=$WARNINGS)"
+
           elif [ -f output/qa.html ]; then
+            echo "qa.json not found, checking qa.html..."
+
             if grep -qE "(Errors:\\s*[1-9]|ERROR)" output/qa.html; then
               echo "QA errors found in qa.html"
+              echo "Showing QA summary lines:"
+              grep -iE "error|warning" output/qa.html | head -50 || true
               exit 1
             fi
-            echo "QA passed via qa.html"
+
+            echo "No blocking errors founf in qa.html"
+            echo "Warnings summary (if any):"
+            grep -i "warning" output/qa.html | head -50 || true
+
           else
             echo "No qa.json or qa.html found in output/. Failing for safety."
             exit 1
