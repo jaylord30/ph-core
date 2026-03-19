@@ -20,7 +20,7 @@ jobs:
 
     env:
       JAVA_VERSION: "21"
-      NODE_VERSION: "20"
+      NODE_VERSION: "22"
       RUBY_VERSION: "3.2"
       IG_PUBLISHER_VERSION: "latest"
 
@@ -102,47 +102,104 @@ jobs:
           set -euo pipefail
 
           if [ -f output/qa.json ]; then
-            ERRORS=$(node -e "const q=require('./output/qa.json'); console.log((q.errCount ?? q.errors ?? q.errorCount ?? 0))")
-            WARNINGS=$(node -e "const q=require('./output/qa.json'); console.log(q.warningCount ?? q.warnings ?? q.warnCount ?? 0)")
+            node - <<'NODE'
+            const fs = require('fs');
 
-            echo "QA summary from qa.json:"
-            echo "Errors: $ERRORS"
-            echo "Warnings: $WARNINGS"
+            const q = JSON.parse(fs.readFileSync('output/qa.json', 'utf8'));
 
-            if [ "$WARNINGS" != "0" ]; then
-              echo "Warnings were found, but the build will continue."
-            fi
+            const errCount = q.errCount ?? q.errors ?? q.errorCount ?? 0;
+            const warnCount = q.warningCount ?? q.warnings ?? q.warnCount ?? 0;
 
-            if [ "$ERRORS" != "0" ]; then
-              echo "QA errors found in qa.json (count=$ERRORS)"
-              exit 1
-            fi
-            echo "QA passed via qa.json (errors=$ERRORS, warnings=$WARNINGS)"
+            console.log(`QA summary:`);
+            console.log(`Errors:   ${errCount}`);
+            console.log(`Warnings: ${warnCount}`);
+
+            function normalizeMessages(value) {
+              if (!value) return [];
+              if (Array.isArray(value)) return value.flatMap(normalizeMessages);
+              if (typeof value === 'string') return [value];
+              if (typeof value === 'object') return [JSON.stringify(value)];
+              return [];
+            }
+
+            const warningMessages = [
+              ...normalizeMessages(q.warningMessages),
+              ...normalizeMessages(q.warnMessages),
+              ...normalizeMessages(q.warningList),
+              ...(Array.isArray(q.warnings) ? normalizeMessages(q.warnings) : [])
+            ];
+
+            const errorMessages = [
+              ...normalizeMessages(q.errorMessages),
+              ...normalizeMessages(q.errMessages),
+              ...normalizeMessages(q.errorList),
+              ...(Array.isArray(q.errors) ? normalizeMessages(q.errors) : [])
+            ];
+
+            if (warningMessages.length) {
+              console.log('\nWarning details:');
+              [...new Set(warningMessages)].forEach((msg, i) => {
+                console.log(`${i + 1}. ${msg}`);
+              });
+            } else {
+              console.log('\nNo detailed warning messages found.');
+            }
+
+            if (errorMessages.length) {
+              console.log('\nError details:');
+              [...new Set(errorMessages)].forEach((msg, i) => {
+                console.log(`${i + 1}. ${msg}`);
+              });
+            } else {
+              console.log('\nNo detailed error messages found.');
+            }
+
+            if (warnCount > 0) {
+              console.log(`::warning::IG QA reported ${warnCount} warning(s). Build will continue unless there are errors.`);
+            }
+
+            if (errCount > 0) {
+              console.log(`::error::IG QA reported ${errCount} error(s). Build will fail.`);
+              process.exit(1);
+            }
+
+            console.log('\nQA passed. No blocking errors.');
+            NODE
 
           elif [ -f output/qa.html ]; then
-            echo "qa.json not found, checking qa.html..."
+            echo "qa.json not found. Falling back to qa.html..."
 
-            if grep -qE "(Errors:\\s*[1-9]|ERROR)" output/qa.html; then
-              echo "QA errors found in qa.html"
-              echo "Showing QA summary lines:"
-              grep -iE "error|warning" output/qa.html | head -50 || true
+            echo ""
+            echo "Possible warning lines:"
+            grep -i "warning" output/qa.html | sed 's/<[^>]*>//g' | head -100 || true
+
+            echo ""
+            echo "Possible error lines:"
+            grep -i "error" output/qa.html | sed 's/<[^>]*>//g' | head -100 || true
+
+            if grep -qE "(Errors:\s*[1-9]|ERROR)" output/qa.html; then
+              echo "::error::QA errors found in qa.html"
               exit 1
             fi
 
-            echo "No blocking errors founf in qa.html"
-            echo "Warnings summary (if any):"
-            grep -i "warning" output/qa.html | head -50 || true
+            if grep -qi "warning" output/qa.html; then
+              echo "::warning::Warnings found in qa.html. Build will continue unless there are errors."
+            fi
+
+            echo "QA passed. No blocking errors found."
 
           else
-            echo "No qa.json or qa.html found in output/. Failing for safety."
+            echo "::error::No qa.json or qa.html found in output/. Failing for safety."
             exit 1
           fi
 
       - name: Upload IG artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: core-ig-output
           path: output
+          if-no-files-found: warn
 
       - name: Prepare publish directory (dev) (added push event to main only)
         if: github.event_name == 'push'
