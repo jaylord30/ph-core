@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/CodeSystem/drugs | *Version*:0.1.0 |
-| Draft as of 2026-03-16 | *Computable Name*:Drugs |
+| Draft as of 2026-03-19 | *Computable Name*:Drugs |
 
  
 Partial Establishments and Health Products to be published by the [PH FDA](https://verification.fda.gov.ph). 
@@ -32,7 +32,7 @@ Partial Establishments and Health Products to be published by the [PH FDA](https
   "title" : "Drugs",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-03-16T22:26:22+00:00",
+  "date" : "2026-03-19T20:53:49+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

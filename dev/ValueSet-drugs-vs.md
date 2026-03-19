@@ -9,13 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/drugs-vs | *Version*:0.1.0 |
-| Draft as of 2026-03-16 | *Computable Name*:DrugsVS |
+| Draft as of 2026-03-19 | *Computable Name*:DrugsVS |
 
  
 This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from FDA. 
 
  **References** 
 
+* [PH Core Medication](StructureDefinition-ph-core-medication.md)
 * [PH Core Medication](StructureDefinition-ph-core-medication.md)
 
 ### Logical Definition (CLD)
@@ -53,7 +54,7 @@ No formal definition provided for this value set
   "title" : "Drugs",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-03-16T22:26:22+00:00",
+  "date" : "2026-03-19T20:53:49+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

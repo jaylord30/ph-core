@@ -562,4 +562,4 @@ Generic: line 0, col 0, Error - The link 'version-management.html' for "Version 
 /home/runner/work/ph-core/ph-core/fsh-generated/resources/ValueSet-regions.json: line 1, col 1601, Error - Wrong Display Name 'Philippines' for urn:iso:std:iso:3166#PH. Valid display is 'Philippines (the)' (for the language(s) 'en') (INVALID)
 
 err = 49, warn = 18, info = 60
-IG Publisher Version: 2.1.2
+IG Publisher Version: 2.2.0

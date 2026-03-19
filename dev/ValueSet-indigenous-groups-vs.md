@@ -9,13 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/indigenous-groups-vs | *Version*:0.1.0 |
-| Draft as of 2026-03-16 | *Computable Name*:IndigenousGroupsVS |
+| Draft as of 2026-03-19 | *Computable Name*:IndigenousGroupsVS |
 
  
 A value set representing the recognized Indigenous groups to which a person may belong. 
 
  **References** 
 
+* [Indigenous Group](StructureDefinition-indigenous-group.md)
 * [Indigenous Group](StructureDefinition-indigenous-group.md)
 
 ### Logical Definition (CLD)
@@ -51,7 +52,7 @@ A value set representing the recognized Indigenous groups to which a person may 
   "title" : "Indigenous Groups",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-03-16T22:26:22+00:00",
+  "date" : "2026-03-19T20:53:49+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

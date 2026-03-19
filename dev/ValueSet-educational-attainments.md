@@ -9,13 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/educational-attainments | *Version*:0.1.0 |
-| Draft as of 2026-03-16 | *Computable Name*:EducationalAttainments |
+| Draft as of 2026-03-19 | *Computable Name*:EducationalAttainments |
 
  
 All categories of educational programs, courses, and attainment levels in the Philippines, based on the Philippine Standard Classification of Education (PSCED) published by the Philippine Statistics Authority (PSA) 
 
  **References** 
 
+* [Educational Attainment](StructureDefinition-educational-attainment.md)
 * [Educational Attainment](StructureDefinition-educational-attainment.md)
 
 ### Logical Definition (CLD)
@@ -53,7 +54,7 @@ No formal definition provided for this value set
   "title" : "Educational Attainments",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-03-16T22:26:22+00:00",
+  "date" : "2026-03-19T20:53:49+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

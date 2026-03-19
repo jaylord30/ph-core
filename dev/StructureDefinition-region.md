@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/region | *Version*:0.1.0 |
-| Draft as of 2026-03-16 | *Computable Name*:Region |
+| Draft as of 2026-03-19 | *Computable Name*:Region |
 
 Region from the standard geographic code.
 
@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-region.csv), [Excel]
   "title" : "Region",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-03-16T22:26:22+00:00",
+  "date" : "2026-03-19T20:53:49+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

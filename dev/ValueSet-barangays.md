@@ -9,13 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/barangays | *Version*:0.1.0 |
-| Draft as of 2026-03-16 | *Computable Name*:Barangays |
+| Draft as of 2026-03-19 | *Computable Name*:Barangays |
 
  
 The Barangay codes valueset includes all barangay values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA). 
 
  **References** 
 
+* [Barangay](StructureDefinition-barangay.md)
 * [Barangay](StructureDefinition-barangay.md)
 
 ### Logical Definition (CLD)
@@ -51,7 +52,7 @@ The Barangay codes valueset includes all barangay values from the Philippine Sta
   "title" : "Barangays",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-03-16T22:26:22+00:00",
+  "date" : "2026-03-19T20:53:49+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/middle-name | *Version*:0.1.0 |
-| Draft as of 2026-03-16 | *Computable Name*:MiddleName |
+| Draft as of 2026-03-19 | *Computable Name*:MiddleName |
 
 Extension to capture middle name information for a person
 
@@ -46,7 +46,7 @@ Other representations of profile: [CSV](StructureDefinition-middle-name.csv), [E
   "name" : "MiddleName",
   "title" : "Middle Name",
   "status" : "draft",
-  "date" : "2026-03-16T22:26:22+00:00",
+  "date" : "2026-03-19T20:53:49+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
