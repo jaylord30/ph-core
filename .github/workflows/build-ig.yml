@@ -102,81 +102,96 @@ jobs:
           set -euo pipefail
 
           if [ -f output/qa.json ]; then
-            cat > qa-check.js <<'EOF'
-            const fs = require('fs');
+            echo "Reading QA results from output/qa.json ..."
 
+            ERRORS=$(node - <<'NODE'
+            const fs = require('fs');
+            const q = JSON.parse(fs.readFileSync('output/qa.json', 'utf8'));
+            console.log(q.errCount ?? q.errors ?? q.errorCount ?? 0);
+            NODE
+            )
+
+            WARNINGS=$(node - <<'NODE'
+            const fs = require('fs');
+            const q = JSON.parse(fs.readFileSync('output/qa.json', 'utf8'));
+            console.log(q.warningCount ?? q.warnings ?? q.warnCount ?? 0);
+            NODE
+            )
+
+            echo "QA summary:"
+            echo "Errors:   $ERRORS"
+            echo "Warnings: $WARNINGS"
+
+            echo ""
+            echo "Detailed QA messages:"
+            node - <<'NODE'
+            const fs = require('fs');
             const q = JSON.parse(fs.readFileSync('output/qa.json', 'utf8'));
 
-            const errCount = q.errCount ?? q.errors ?? q.errorCount ?? 0;
-            const warnCount = q.warningCount ?? q.warnings ?? q.warnCount ?? 0;
-
-            console.log('QA summary:');
-            console.log(`Errors:   ${errCount}`);
-            console.log(`Warnings: ${warnCount}`);
-
-            function normalizeMessages(value) {
-              if (!value) return [];
-              if (Array.isArray(value)) return value.flatMap(normalizeMessages);
-              if (typeof value === 'string') return [value];
-              if (typeof value === 'object') return [JSON.stringify(value)];
+            function toArray(v) {
+              if (Array.isArray(v)) return v;
+              if (v && typeof v === 'object') return Object.values(v);
               return [];
             }
 
-            const warningMessages = [
-              ...normalizeMessages(q.warningMessages),
-              ...normalizeMessages(q.warnMessages),
-              ...normalizeMessages(q.warningList),
-              ...(Array.isArray(q.warnings) ? normalizeMessages(q.warnings) : [])
+            const warningLists = [
+              ...toArray(q.warnings),
+              ...toArray(q.warningMessages),
+              ...toArray(q.warnMessages),
+              ...toArray(q.warningList),
             ];
 
-            const errorMessages = [
-              ...normalizeMessages(q.errorMessages),
-              ...normalizeMessages(q.errMessages),
-              ...normalizeMessages(q.errorList),
-              ...(Array.isArray(q.errors) ? normalizeMessages(q.errors) : [])
+            const errorLists = [
+              ...toArray(q.errors),
+              ...toArray(q.errorMessages),
+              ...toArray(q.errMessages),
+              ...toArray(q.errorList),
             ];
 
-            if (warningMessages.length) {
-              console.log('\nWarning details:');
-              [...new Set(warningMessages)].forEach((msg, i) => {
-                console.log(`${i + 1}. ${msg}`);
+            const warnings = warningLists.flatMap(x => Array.isArray(x) ? x : [x]).filter(Boolean);
+            const errors = errorLists.flatMap(x => Array.isArray(x) ? x : [x]).filter(Boolean);
+
+            if (warnings.length > 0) {
+              console.log('\nWarnings found:');
+              warnings.forEach((w, i) => {
+                const msg = typeof w === 'string' ? w : JSON.stringify(w);
+                console.log(`  ${i + 1}. ${msg}`);
               });
             } else {
-              console.log('\nNo detailed warning messages found.');
+              console.log('\nNo detailed warning messages found in qa.json.');
             }
 
-            if (errorMessages.length) {
-              console.log('\nError details:');
-              [...new Set(errorMessages)].forEach((msg, i) => {
-                console.log(`${i + 1}. ${msg}`);
+            if (errors.length > 0) {
+              console.log('\nErrors found:');
+              errors.forEach((e, i) => {
+                const msg = typeof e === 'string' ? e : JSON.stringify(e);
+                console.log(`  ${i + 1}. ${msg}`);
               });
             } else {
-              console.log('\nNo detailed error messages found.');
+              console.log('\nNo detailed error messages found in qa.json.');
             }
+            NODE
 
-            if (warnCount > 0) {
-              console.log(`::warning::IG QA reported ${warnCount} warning(s). Build will continue unless there are errors.`);
-            }
+            if [ "$WARNINGS" != "0" ]; then
+              echo "::warning::IG QA reported $WARNINGS warning(s). Build will continue."
+            fi
 
-            if (errCount > 0) {
-              console.log(`::error::IG QA reported ${errCount} error(s). Build will fail.`);
-              process.exit(1);
-            }
+            if [ "$ERRORS" != "0" ]; then
+              echo "::error::IG QA reported $ERRORS error(s). Build will fail."
+              exit 1
+            fi
 
-            console.log('\nQA passed. No blocking errors.');
-            EOF
-
-            node qa-check.js
+            echo "QA passed. No blocking errors."
 
           elif [ -f output/qa.html ]; then
-            echo "qa.json not found. Falling back to qa.html..."
+            echo "qa.json not found. Falling back to output/qa.html ..."
 
             echo ""
-            echo "Possible warning lines:"
+            echo "Warnings in qa.html:"
             grep -i "warning" output/qa.html | sed 's/<[^>]*>//g' | head -100 || true
 
             echo ""
-            echo "Possible error lines:"
+            echo "Errors in qa.html:"
             grep -i "error" output/qa.html | sed 's/<[^>]*>//g' | head -100 || true
 
             if grep -qE "(Errors:\s*[1-9]|ERROR)" output/qa.html; then
@@ -185,10 +200,10 @@ jobs:
             fi
 
             if grep -qi "warning" output/qa.html; then
-              echo "::warning::Warnings found in qa.html. Build will continue unless there are errors."
+              echo "::warning::Warnings found in qa.html. Build will continue."
             fi
 
-            echo "QA passed. No blocking errors found."
+            echo "QA passed. No blocking errors found in qa.html."
 
           else
             echo "::error::No qa.json or qa.html found in output/. Failing for safety."
