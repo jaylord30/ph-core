@@ -102,111 +102,40 @@ jobs:
           set -euo pipefail
 
           if [ -f output/qa.json ]; then
-            echo "Reading QA results from output/qa.json ..."
+            ERRORS=$(node -e "const q=require('./output/qa.json'); console.log(q.errCount ?? q.errors ?? q.errorCount ?? 0)")
+            WARNINGS=$(node -e "const q=require('./output/qa.json'); console.log(q.warningCount ?? q.warnings ?? q.warnCount ?? 0)")
 
-            ERRORS=$(node - <<'NODE'
-            const fs = require('fs');
-            const q = JSON.parse(fs.readFileSync('output/qa.json', 'utf8'));
-            console.log(q.errCount ?? q.errors ?? q.errorCount ?? 0);
-            NODE
-            )
-
-            WARNINGS=$(node - <<'NODE'
-            const fs = require('fs');
-            const q = JSON.parse(fs.readFileSync('output/qa.json', 'utf8'));
-            console.log(q.warningCount ?? q.warnings ?? q.warnCount ?? 0);
-            NODE
-            )
-
-            echo "QA summary:"
+            echo "QA summary from qa.json:"
             echo "Errors:   $ERRORS"
             echo "Warnings: $WARNINGS"
 
-            echo ""
-            echo "Detailed QA messages:"
-            node - <<'NODE'
-            const fs = require('fs');
-            const q = JSON.parse(fs.readFileSync('output/qa.json', 'utf8'));
-
-            function toArray(v) {
-              if (Array.isArray(v)) return v;
-              if (v && typeof v === 'object') return Object.values(v);
-              return [];
-            }
-
-            const warningLists = [
-              ...toArray(q.warnings),
-              ...toArray(q.warningMessages),
-              ...toArray(q.warnMessages),
-              ...toArray(q.warningList),
-            ];
-
-            const errorLists = [
-              ...toArray(q.errors),
-              ...toArray(q.errorMessages),
-              ...toArray(q.errMessages),
-              ...toArray(q.errorList),
-            ];
-
-            const warnings = warningLists.flatMap(x => Array.isArray(x) ? x : [x]).filter(Boolean);
-            const errors = errorLists.flatMap(x => Array.isArray(x) ? x : [x]).filter(Boolean);
-
-            if (warnings.length > 0) {
-              console.log('\nWarnings found:');
-              warnings.forEach((w, i) => {
-                const msg = typeof w === 'string' ? w : JSON.stringify(w);
-                console.log(`  ${i + 1}. ${msg}`);
-              });
-            } else {
-              console.log('\nNo detailed warning messages found in qa.json.');
-            }
-
-            if (errors.length > 0) {
-              console.log('\nErrors found:');
-              errors.forEach((e, i) => {
-                const msg = typeof e === 'string' ? e : JSON.stringify(e);
-                console.log(`  ${i + 1}. ${msg}`);
-              });
-            } else {
-              console.log('\nNo detailed error messages found in qa.json.');
-            }
-            NODE
-
             if [ "$WARNINGS" != "0" ]; then
-              echo "::warning::IG QA reported $WARNINGS warning(s). Build will continue."
+              echo "Warnings were found, but the build will continue."
             fi
 
             if [ "$ERRORS" != "0" ]; then
-              echo "::error::IG QA reported $ERRORS error(s). Build will fail."
+              echo "QA errors found in qa.json (count=$ERRORS)"
               exit 1
             fi
 
-            echo "QA passed. No blocking errors."
+            echo "QA passed (errors=$ERRORS, warnings=$WARNINGS)"
 
           elif [ -f output/qa.html ]; then
-            echo "qa.json not found. Falling back to output/qa.html ..."
-
-            echo ""
-            echo "Warnings in qa.html:"
-            grep -i "warning" output/qa.html | sed 's/<[^>]*>//g' | head -100 || true
-
-            echo ""
-            echo "Errors in qa.html:"
-            grep -i "error" output/qa.html | sed 's/<[^>]*>//g' | head -100 || true
+            echo "qa.json not found, checking qa.html..."
 
             if grep -qE "(Errors:\s*[1-9]|ERROR)" output/qa.html; then
-              echo "::error::QA errors found in qa.html"
+              echo "QA errors found in qa.html"
+              echo "Showing QA summary lines:"
+              grep -iE "error|warning" output/qa.html | head -50 || true
               exit 1
             fi
 
-            if grep -qi "warning" output/qa.html; then
-              echo "::warning::Warnings found in qa.html. Build will continue."
-            fi
-
-            echo "QA passed. No blocking errors found in qa.html."
+            echo "No blocking errors found in qa.html"
+            echo "Warnings summary (if any):"
+            grep -i "warning" output/qa.html | head -50 || true
 
           else
-            echo "::error::No qa.json or qa.html found in output/. Failing for safety."
+            echo "No qa.json or qa.html found in output/. Failing for safety."
             exit 1
           fi
 
