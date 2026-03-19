@@ -102,7 +102,7 @@ jobs:
           set -euo pipefail
 
           if [ -f output/qa.json ]; then
-            node - <<'NODE'
+            cat > qa-check.js <<'EOF'
             const fs = require('fs');
 
             const q = JSON.parse(fs.readFileSync('output/qa.json', 'utf8'));
@@ -110,7 +110,7 @@ jobs:
             const errCount = q.errCount ?? q.errors ?? q.errorCount ?? 0;
             const warnCount = q.warningCount ?? q.warnings ?? q.warnCount ?? 0;
 
-            console.log(`QA summary:`);
+            console.log('QA summary:');
             console.log(`Errors:   ${errCount}`);
             console.log(`Warnings: ${warnCount}`);
 
@@ -164,7 +164,9 @@ jobs:
             }
 
             console.log('\nQA passed. No blocking errors.');
-            NODE
+            EOF
+
+            node qa-check.js
 
           elif [ -f output/qa.html ]; then
             echo "qa.json not found. Falling back to qa.html..."
