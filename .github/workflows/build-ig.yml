@@ -1,9 +1,9 @@
 name: Build, Test, and Deploy PH Core FHIR IG
 
 on:
-#  pull_request:
-#    branches: ["main"]
   push:
+    branches: ["main"]
+  pull_request:
     branches: ["main"]
 
 permissions:
@@ -15,18 +15,14 @@ concurrency:
 
 jobs:
   ci:
-    name: CI - Build & QA (Gold Standard-like)
+    name: CI - Build & QA (Core IG)
     runs-on: ubuntu-latest
 
     env:
       JAVA_VERSION: "21"
       NODE_VERSION: "20"
       RUBY_VERSION: "3.2"
-      IG_PUBLISHER_VERSION: "1.8.5" # pinned for reproducibility
-      FHIR_PACKAGES: |
-        hl7.fhir.r4.core#5.0.0
-        hl7.fhir.us.core#5.0.0
-        hl7.fhir.uv.shorthand#1.0.0
+      IG_PUBLISHER_VERSION: "1.8.5"  # pin stable version
 
     steps:
       - name: Validate branch name
@@ -42,6 +38,7 @@ jobs:
             echo "::error::Branch name contains invalid special characters."
             exit 1
           fi
+          echo "Branch name validation passed!"
 
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -70,7 +67,7 @@ jobs:
       - name: Install SUSHI
         run: npm install -g fsh-sushi
 
-      - name: Install Graphviz
+      - name: Install Graphviz (for UML diagrams)
         run: sudo apt-get install -y graphviz
 
       - name: Cache publisher + FHIR packages
@@ -90,29 +87,30 @@ jobs:
           curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar" -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
-      - name: Download required FHIR packages
+      - name: Install FHIR dependencies (packages)
         run: |
           mkdir -p ~/.fhir/packages
-          for pkg in $FHIR_PACKAGES; do
-            fhir-pkg install $pkg || echo "Warning: failed to install $pkg"
-          done
+          # Add your IG dependencies here:
+          fhir-pkg install hl7.fhir.r4.core#5.0.0
+          fhir-pkg install hl7.fhir.us.core#5.0.0
+          # Add other packages your IG depends on
 
-      - name: Clean output and temp includes
+      - name: Clean temp/output
         run: |
-          rm -rf temp/pages/_includes output
+          rm -rf temp/pages/_includes
+          rm -rf output
 
-      - name: Run SUSHI to generate FHIR resources
+      - name: Run SUSHI to generate all resources & fragments
         run: sushi . --log-level debug
 
-      - name: Build IG (strict, Gold Standard-like)
+      - name: Build IG with publisher
         run: |
           set -euo pipefail
           java -jar input-cache/publisher.jar \
             publisher -ig . \
             -tx https://tx.fhir.org \
             -generateXHTML \
-            -strict \
-            -no-sushi
+            -strict
           test -d output || (echo "IG Publisher did not create output/" && exit 1)
 
       - name: Fail if output is empty
@@ -122,17 +120,20 @@ jobs:
             exit 1
           fi
 
-      - name: QA Gate (fail on errors)
+      - name: QA gate
         run: |
-          set -euo pipefail
           if [ -f output/qa.json ]; then
             ERRORS=$(jq '.errs' output/qa.json)
             WARNINGS=$(jq '.warnings' output/qa.json)
+          elif [ -f output/qa.html ]; then
+            ERRORS=$(grep -oP 'Errors:\s*\K\d+' output/qa.html || echo 0)
+            WARNINGS=$(grep -oP 'Warnings:\s*\K\d+' output/qa.html || echo 0)
           else
-            ERRORS=0
-            WARNINGS=0
+            echo "::error::No QA report found."
+            exit 1
           fi
-          echo "QA - Errors: $ERRORS, Warnings: $WARNINGS"
+
+          echo "QA Report - Errors: $ERRORS, Warnings: $WARNINGS"
           if [ "$ERRORS" -ne 0 ]; then
             echo "::error::QA errors detected. Failing build."
             exit 1
@@ -158,16 +159,24 @@ jobs:
             output/qa.min.html
           if-no-files-found: warn
 
-      - name: Publish dev build to GH Pages
+      - name: Prepare publish directory
         if: github.event_name == 'push'
         run: |
           rm -rf .publish
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
+
+      - name: Create root index.html
+        if: github.event_name == 'push'
+        run: |
           cat > .publish/index.html <<'EOF'
           <!DOCTYPE html>
           <html lang="en">
-          <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PH Core FHIR IG</title></head>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>PH Core FHIR IG</title>
+          </head>
           <body>
             <h1>PH Core FHIR IG</h1>
             <p><a href="./dev/">Open latest dev build</a></p>
@@ -175,7 +184,7 @@ jobs:
           </html>
           EOF
 
-      - name: Deploy to GH Pages
+      - name: Deploy to gh-pages
         if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
