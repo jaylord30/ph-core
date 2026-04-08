@@ -9,21 +9,21 @@ permissions:
 
 concurrency:
   group: fhir-ig-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
+
+env:
+  JAVA_VERSION: "21"
+  NODE_VERSION: "24"
+  RUBY_VERSION: "3.2"
+  IG_PUBLISHER_VERSION: "1.8.6"
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   ci:
     name: CI - Build & QA (Core IG)
     runs-on: ubuntu-latest
 
-    env:
-      JAVA_VERSION: "21"
-      NODE_VERSION: "20"
-      RUBY_VERSION: "3.2"
-      IG_PUBLISHER_VERSION: "1.8.6"
-
     steps:
-      # --- 1. Validate branch name ---
       - name: Validate branch name
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
@@ -39,13 +39,11 @@ jobs:
           fi
           echo "Branch name validation passed!"
 
-      # --- 2. Checkout repository ---
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      # --- 3. Setup Java, Node, Ruby ---
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -74,7 +72,6 @@ jobs:
           sudo apt-get install -y graphviz
           dot -v
 
-      # --- 4. Cache publisher and FHIR packages ---
       - name: Cache publisher + packages
         uses: actions/cache@v4
         with:
@@ -86,38 +83,32 @@ jobs:
             ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
             ${{ runner.os }}-fhir-core-
 
-      # --- 5. Download IG Publisher ---
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
           curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar" -o "input-cache/publisher.jar"
           java -jar input-cache/publisher.jar -v || true
 
-      # --- 6. Preload terminology packages ---
       - name: Preload terminology packages
         run: |
           mkdir -p ~/.fhir/packages
           java -jar input-cache/publisher.jar -cachedir ~/.fhir/packages -ig .
 
-      # --- 7. Run SUSHI ---
       - name: Run SUSHI
         run: sushi . --log-level debug
 
-      # --- 8. Build IG ---
       - name: Build IG
         run: |
           java -jar input-cache/publisher.jar -ig .
-          test -d output || (echo "IG Publisher did not create output/" && exit 1)
+          test -d output || (echo "::error::IG Publisher did not create output/" && exit 1)
 
-      # --- 9. Fail if output is empty ---
       - name: Fail if output is empty
         run: |
           if [ -z "$(ls -A output 2>/dev/null)" ]; then
-            echo "IG Publisher did not generate output files."
+            echo "::error::IG Publisher did not generate output files."
             exit 1
           fi
 
-      # --- 10. QA Gate ---
       - name: QA gate
         run: |
           set -euo pipefail
@@ -128,7 +119,7 @@ jobs:
               echo "::error::QA errors found in qa.json (count=$ERRORS)"
               exit 1
             fi
-          elif [ -f output/qa.html ]; then 
+          elif [ -f output/qa.html ]; then
             QA_LINE=$(grep -oP 'Errors:\s*\d+,\s*Warnings:\s*\d+,\s*Info:\s*\d+' output/qa.html | head -1 || echo "")
             ERRORS=$(echo "$QA_LINE" | grep -oP 'Errors:\s*\K[0-9]+' || echo 0)
             if [ "$ERRORS" != "0" ]; then
@@ -141,7 +132,6 @@ jobs:
           fi
           echo "QA passed (errors=0)"
 
-      # --- 11. Upload artifacts ---
       - name: Upload IG artifact
         uses: actions/upload-artifact@v4
         with:
@@ -159,7 +149,6 @@ jobs:
             output/qa.min.html
           if-no-files-found: warn
 
-      # --- 12. Prepare publish directory ---
       - name: Prepare publish directory (dev)
         if: github.event_name == 'push'
         run: |
@@ -185,7 +174,6 @@ jobs:
           </html>
           EOF
 
-      # --- 13. Publish to gh-pages ---
       - name: Publish to gh-pages:/dev/
         if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4

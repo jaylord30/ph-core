@@ -1,7 +1,22 @@
-{
-  "dependencies": [
-    { "packageId": "hl7.fhir.r4.core", "version": "5.0.0-ballot" },
-    { "packageId": "hl7.terminology.snomedct", "version": "20240131" },
-    { "packageId": "hl7.terminology.loinc", "version": "2.78.0" }
-  ]
-}
+[
+  {
+    "name": "hl7.fhir.r4.core",
+    "version": "5.0.0"
+  },
+  {
+    "name": "hl7.terminology.r4",
+    "version": "0.1.0"
+  },
+  {
+    "name": "hl7.uv.core-terminology",
+    "version": "1.0.0"
+  },
+  {
+    "name": "hl7.fhir.us.core",
+    "version": "5.0.0"
+  },
+  {
+    "name": "ph-core-ig-dependencies",
+    "version": "1.0.0"
+  }
+]
