@@ -1,11 +1,12 @@
 name: Build, Test, and Deploy PH Core FHIR IG
 
 on:
+
 #  pull_request:
 #    branches: ["main"]
   push:
     branches: ["main"]
-
+    
 permissions:
   contents: write
 
@@ -22,7 +23,7 @@ jobs:
       JAVA_VERSION: "21"
       NODE_VERSION: "20"
       RUBY_VERSION: "3.2"
-      IG_PUBLISHER_VERSION: "1.8.5"  # pin stable version
+      IG_PUBLISHER_VERSION: "latest"
 
     steps:
       - name: Validate branch name
@@ -31,7 +32,7 @@ jobs:
         run: |
           echo "Checking branch name: $BRANCH_NAME"
           if echo "$BRANCH_NAME" | grep -q '/'; then
-            echo "::error::Branch name contains '/'. Use '-' instead."
+            echo "::error::Branch name contains invalid character '/'. Use hyphens instead."
             exit 1
           fi
           if echo "$BRANCH_NAME" | grep -qE '[\\~^:\[\] ]'; then
@@ -67,7 +68,7 @@ jobs:
       - name: Install SUSHI
         run: npm install -g fsh-sushi
 
-      - name: Install Graphviz (for UML diagrams)
+      - name: Install Graphviz
         run: sudo apt-get install -y graphviz
 
       - name: Cache publisher + FHIR packages
@@ -84,24 +85,39 @@ jobs:
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
-          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar" -o input-cache/publisher.jar
+          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar" -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
-      - name: Clean temp/output
-        run: |
-          rm -rf temp/pages/_includes
-          rm -rf output
-
-      - name: Run SUSHI to generate all resources & fragments
+      - name: Run SUSHI to generate resources/fragments
         run: sushi . --log-level debug
 
-      - name: Build IG with publisher
+      - name: Pre-check required _includes files
+        run: |
+          REQUIRED_FILES=(
+            "StructureDefinition-barangay-sd-use-context.xhtml"
+            "StructureDefinition-city-municipality-sd-use-context.xhtml"
+            # Add other required fragments here
+          )
+          MISSING=0
+          for f in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f temp/pages/_includes/$f ]; then
+              echo "::error::Missing include file: $f"
+              MISSING=1
+            fi
+          done
+          if [ $MISSING -eq 1 ]; then
+            echo "::error::One or more required fragments are missing. Failing build."
+            exit 1
+          fi
+
+      - name: Build IG with Publisher
         run: |
           set -euo pipefail
           java -jar input-cache/publisher.jar \
             publisher -ig . \
             -tx https://tx.fhir.org \
             -generateXHTML \
+            -no-sushi \
             -strict
           test -d output || (echo "IG Publisher did not create output/" && exit 1)
 
@@ -112,19 +128,18 @@ jobs:
             exit 1
           fi
 
-      - name: QA gate
+      - name: QA gate (fail on errors)
         run: |
           if [ -f output/qa.json ]; then
             ERRORS=$(jq '.errs' output/qa.json)
             WARNINGS=$(jq '.warnings' output/qa.json)
           elif [ -f output/qa.html ]; then
-            ERRORS=$(grep -oP 'Errors:\s*\K\d+' output/qa.html || echo 0)
-            WARNINGS=$(grep -oP 'Warnings:\s*\K\d+' output/qa.html || echo 0)
+            ERRORS=$(grep -oP 'Errors:\s*\K\d+' output/qa.html | head -1 || echo 0)
+            WARNINGS=$(grep -oP 'Warnings:\s*\K\d+' output/qa.html | head -1 || echo 0)
           else
-            echo "::error::No QA report found."
+            echo "::error::No QA report found (qa.json or qa.html)."
             exit 1
           fi
-
           echo "QA Report - Errors: $ERRORS, Warnings: $WARNINGS"
           if [ "$ERRORS" -ne 0 ]; then
             echo "::error::QA errors detected. Failing build."
@@ -151,7 +166,7 @@ jobs:
             output/qa.min.html
           if-no-files-found: warn
 
-      - name: Prepare publish directory
+      - name: Prepare dev publish folder
         if: github.event_name == 'push'
         run: |
           rm -rf .publish
