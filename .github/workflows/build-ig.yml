@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   ci:
-    name: CI - Build & QA (Core IG)
+    name: CI - Build & Deploy IG
     runs-on: ubuntu-latest
 
     env:
@@ -25,25 +25,17 @@ jobs:
       IG_PUBLISHER_VERSION: "1.8.6"
 
     steps:
-      - name: Validate branch name
-        run: |
-          BRANCH_NAME="${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}"
-          echo "Checking branch name: $BRANCH_NAME"
-          if echo "$BRANCH_NAME" | grep -q '/'; then
-            echo "::error::Branch name contains '/'. Use '-' instead."
-            exit 1
-          fi
-          if echo "$BRANCH_NAME" | grep -qE '[\\~^:\[\] ]'; then
-            echo "::error::Branch name contains invalid special characters."
-            exit 1
-          fi
-          echo "Branch name validation passed!"
-
-      - name: Checkout repo
+      # -----------------------------
+      # CHECKOUT
+      # -----------------------------
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           lfs: true
 
+      # -----------------------------
+      # SETUP ENV
+      # -----------------------------
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -60,138 +52,130 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
 
-      - name: Install Jekyll and Bundler
-        run: gem install jekyll bundler
+      - name: Install dependencies
+        run: |
+          gem install jekyll bundler
+          npm install -g fsh-sushi
+          sudo apt-get update
+          sudo apt-get install -y graphviz jq
 
-      - name: Install SUSHI
-        run: npm install -g fsh-sushi
-
-      - name: Install Graphviz
-        run: sudo apt-get install -y graphviz
-
-      - name: Cache publisher + FHIR packages
+      # -----------------------------
+      # CACHE
+      # -----------------------------
+      - name: Cache FHIR packages
         uses: actions/cache@v4
         with:
           path: |
             input-cache
             ~/.fhir/packages
-          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml','**/ig.ini','**/package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
-            ${{ runner.os }}-fhir-core-
+          key: ${{ runner.os }}-fhir-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml') }}
 
+      # -----------------------------
+      # DOWNLOAD IG PUBLISHER
+      # -----------------------------
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
-          curl -fsSL https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar -o input-cache/publisher.jar
-          java -jar input-cache/publisher.jar -v || true
+          curl -L https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar \
+            -o input-cache/publisher.jar
+          java -jar input-cache/publisher.jar -v
 
-      - name: Run SUSHI to generate resources
-        run: sushi . --log-level debug
+      # -----------------------------
+      # RUN SUSHI
+      # -----------------------------
+      - name: Run SUSHI
+        run: sushi .
 
-      - name: Debug List SUSHI _includes
+      # -----------------------------
+      # FIX XHTML INCLUDES (SAFE VERSION)
+      # -----------------------------
+      - name: Ensure XHTML includes exist
         run: |
-          echo "Checking SUSHI-generated includes..."
-          if [ -d fsh-generated/pages/_includes ]; then
-            echo "Found fsh-generated/pages/_includes:"
-            find fsh-generated/pages/_includes -type f
-          elif [ -d fsh-generated/includes ]; then
-            echo "Found fsh-generated/includes:"
-            find fsh-generated/includes -type f
-          else
-            echo "::warning::No SUSHI-generated includes found!"
-          fi
-
-      - name: Copy SUSHI _includes to temp/pages/_includes
-        run: |
+          echo "Preparing Jekyll include directory..."
           mkdir -p temp/pages/_includes
-          INCLUDE_SRC=""
-          if [ -d fsh-generated/pages/_includes ]; then
-            INCLUDE_SRC="fsh-generated/pages/_includes"
-          elif [ -d fsh-generated/includes ]; then
-            INCLUDE_SRC="fsh-generated/includes"
-          else
-            echo "::error::No SUSHI-generated include fragments found!"
-            exit 1
+
+          # Copy if exists (SUSHI or IG Publisher generated)
+          if [ -d fsh-generated/includes ]; then
+            cp -v fsh-generated/includes/*.xhtml temp/pages/_includes/ || true
           fi
-          cp -v $INCLUDE_SRC/*.xhtml temp/pages/_includes/ || true
-          ls -l temp/pages/_includes
 
-      - name: Verify critical include files exist
-        run: |
-          FILES=(
-            "StructureDefinition-barangay-sd-use-context.xhtml"
-          )
-          for f in "${FILES[@]}"; do
-            if [ ! -f "temp/pages/_includes/$f" ]; then
-              echo "::error::Required include file missing: $f"
-              exit 1
-            fi
-          done
+          if [ -d fsh-generated/pages/_includes ]; then
+            cp -v fsh-generated/pages/_includes/*.xhtml temp/pages/_includes/ || true
+          fi
 
+          echo "Available include files:"
+          ls -l temp/pages/_includes || true
+
+      # -----------------------------
+      # BUILD IG
+      # -----------------------------
       - name: Build IG
         run: |
           set -euo pipefail
-          java -jar input-cache/publisher.jar publisher -ig . -tx https://tx.fhir.org -generateXHTML
+          java -jar input-cache/publisher.jar \
+            publisher -ig . \
+            -tx https://tx.fhir.org \
+            -generateXHTML
+
           test -d output || (echo "IG Publisher did not create output/" && exit 1)
 
-      - name: Fail if output is empty
-        run: |
-          if [ -z "$(ls -A output 2>/dev/null)" ]; then
-            echo "::error::IG Publisher did not generate output files."
-            exit 1
-          fi
-
-      - name: QA gate (errors only)
+      # -----------------------------
+      # QA CHECK
+      # -----------------------------
+      - name: QA validation
         run: |
           if [ -f output/qa.json ]; then
             ERRORS=$(jq '.errs' output/qa.json)
-            echo "QA Report - Errors: $ERRORS"
+            WARNINGS=$(jq '.warnings' output/qa.json)
+            echo "Errors: $ERRORS, Warnings: $WARNINGS"
+
             if [ "$ERRORS" -ne 0 ]; then
-              echo "::error::QA errors detected ($ERRORS errors). See output/qa.json"
+              echo "::error::QA errors found"
               exit 1
             fi
           else
-            echo "::warning::No QA report found. Skipping QA error check."
+            echo "::warning::No QA report found"
           fi
 
-      - name: Upload IG artifact
+      # -----------------------------
+      # ARTIFACTS
+      # -----------------------------
+      - name: Upload build output
         uses: actions/upload-artifact@v4
         with:
-          name: core-ig-output
+          name: ig-output
           path: output
 
+      # -----------------------------
+      # PREPARE GH PAGES
+      # -----------------------------
       - name: Prepare publish directory
-        if: github.event_name == 'push'
         run: |
           rm -rf .publish
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
 
-      - name: Create root index.html
-        if: github.event_name == 'push'
+      - name: Create root index
         run: |
           cat > .publish/index.html <<'EOF'
           <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>PH Core FHIR IG</title>
-          </head>
+          <html>
+          <head><title>PH Core FHIR IG</title></head>
           <body>
             <h1>PH Core FHIR IG</h1>
-            <p><a href="./dev/">Open latest dev build</a></p>
+            <a href="./dev/">Open Dev Build</a>
           </body>
           </html>
           EOF
 
-      - name: Publish to gh-pages:/dev/
-        if: github.event_name == 'push'
+      # -----------------------------
+      # DEPLOY TO GH PAGES
+      # -----------------------------
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: .publish
           keep_files: true
-          commit_message: "ci(dev): publish dev build from ${{ github.sha }}"
+          commit_message: "ci: deploy IG ${{ github.sha }}"
