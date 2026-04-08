@@ -79,10 +79,13 @@ jobs:
             ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
             ${{ runner.os }}-fhir-core-
 
-      - name: Clear FHIR cache (avoid conflicts)
+      - name: Clean temp/output and regenerate fragments
         run: |
-          rm -rf ~/.fhir/packages
-          rm -rf input-cache/txcache
+          echo "Cleaning old temp/pages/_includes and output folder..."
+          rm -rf temp/pages/_includes
+          rm -rf output
+          echo "Running SUSHI to regenerate FHIR resources and fragments..."
+          sushi . --log-level debug
 
       - name: Download IG Publisher
         run: |
