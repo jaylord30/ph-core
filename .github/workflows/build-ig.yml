@@ -96,8 +96,8 @@ jobs:
           set -euo pipefail
           mkdir -p input-cache
           curl -fsSL \
-            "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar" \
-            -o "input-cache/publisher.jar"
+            https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar  \
+            -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
       - name: Run SUSHI
