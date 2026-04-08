@@ -22,7 +22,7 @@ jobs:
       JAVA_VERSION: "21"
       NODE_VERSION: "20"
       RUBY_VERSION: "3.2"
-      IG_PUBLISHER_VERSION: "1.8.6"  
+      IG_PUBLISHER_VERSION: "1.8.6"
 
     steps:
       - name: Validate branch name
@@ -89,23 +89,45 @@ jobs:
       - name: Run SUSHI to generate resources
         run: sushi . --log-level debug
 
-      - name: Ensure SUSHI XHTML fragments exist for Jekyll
+      - name: Debug: List SUSHI _includes
         run: |
-          echo "Copying SUSHI-generated include fragments to temp/pages/_includes"
-          mkdir -p temp/pages/_includes
+          echo "Checking SUSHI-generated includes..."
+          if [ -d fsh-generated/pages/_includes ]; then
+            echo "Found fsh-generated/pages/_includes:"
+            find fsh-generated/pages/_includes -type f
+          elif [ -d fsh-generated/includes ]; then
+            echo "Found fsh-generated/includes:"
+            find fsh-generated/includes -type f
+          else
+            echo "::warning::No SUSHI-generated includes found!"
+          fi
 
+      - name: Copy SUSHI _includes to temp/pages/_includes
+        run: |
+          mkdir -p temp/pages/_includes
           INCLUDE_SRC=""
           if [ -d fsh-generated/pages/_includes ]; then
             INCLUDE_SRC="fsh-generated/pages/_includes"
           elif [ -d fsh-generated/includes ]; then
             INCLUDE_SRC="fsh-generated/includes"
           else
-            echo "::error::No SUSHI-generated include fragments found! Check your sushi-config.yaml and FSH page files."
+            echo "::error::No SUSHI-generated include fragments found!"
             exit 1
           fi
-
           cp -v $INCLUDE_SRC/*.xhtml temp/pages/_includes/ || true
           ls -l temp/pages/_includes
+
+      - name: Verify critical include files exist
+        run: |
+          FILES=(
+            "StructureDefinition-barangay-sd-use-context.xhtml"
+          )
+          for f in "${FILES[@]}"; do
+            if [ ! -f "temp/pages/_includes/$f" ]; then
+              echo "::error::Required include file missing: $f"
+              exit 1
+            fi
+          done
 
       - name: Build IG
         run: |
@@ -124,11 +146,9 @@ jobs:
         run: |
           if [ -f output/qa.json ]; then
             ERRORS=$(jq '.errs' output/qa.json)
-            WARNINGS=$(jq '.warnings' output/qa.json)
-            HINTS=$(jq '.hints' output/qa.json)
-            echo "QA Report - Errors: $ERRORS, Warnings: $WARNINGS, Hints: $HINTS"
+            echo "QA Report - Errors: $ERRORS"
             if [ "$ERRORS" -ne 0 ]; then
-              echo "::error::QA errors detected ($ERRORS errors). See full log in output/qa.json"
+              echo "::error::QA errors detected ($ERRORS errors). See output/qa.json"
               exit 1
             fi
           else
@@ -140,17 +160,6 @@ jobs:
         with:
           name: core-ig-output
           path: output
-
-      - name: Upload QA report artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: qa-reports
-          path: |
-            output/qa.json
-            output/qa.html
-            output/qa.min.html
-          if-no-files-found: warn
 
       - name: Prepare publish directory
         if: github.event_name == 'push'
