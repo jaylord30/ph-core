@@ -22,7 +22,7 @@ jobs:
       JAVA_VERSION: "21"
       NODE_VERSION: "20"
       RUBY_VERSION: "3.2"
-      IG_PUBLISHER_VERSION: "1.8.6"  
+      IG_PUBLISHER_VERSION: "1.8.6"
 
     steps:
       - name: Validate branch name
@@ -86,24 +86,24 @@ jobs:
           curl -fsSL https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
-      - name: Regenerate missing include fragments
+      # --- New step: Run SUSHI ---
+      - name: Run SUSHI to generate IG resources
         run: |
-          REQUIRED_FILES=(
-            "StructureDefinition-barangay-sd-use-context.xhtml"
-            "StructureDefinition-city-municipality-sd-use-context.xhtml"
-            # Add any other required fragments
-          )
-          MISSING=0
-          for f in "${REQUIRED_FILES[@]}"; do
-            if [ ! -f temp/pages/_includes/$f ]; then
-              echo "⚠️ Missing include file: $f — regenerating via SUSHI"
-              MISSING=1
-            fi
-          done
+          echo "Running SUSHI to generate IG resources..."
+          sushi . --log-level debug
 
-          if [ $MISSING -eq 1 ]; then
-            echo "Running SUSHI to regenerate missing fragments..."
-            sushi . --log-level debug
+      # --- New step: Copy include fragments for Jekyll ---
+      - name: Copy SUSHI-generated include fragments for Jekyll
+        run: |
+          echo "Copying SUSHI-generated .xhtml include files to temp/pages/_includes/"
+          mkdir -p temp/pages/_includes
+          if [ -d fsh-generated/pages/_includes ]; then
+            cp -v fsh-generated/pages/_includes/*.xhtml temp/pages/_includes/ || true
+          elif [ -d temp/pages/_includes ]; then
+            echo "Fragments already exist in temp/pages/_includes"
+          else
+            echo "::error::No generated include fragments found! SUSHI may have failed."
+            exit 1
           fi
 
       - name: Build IG
@@ -157,7 +157,7 @@ jobs:
           rm -rf .publish
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
-
+ 
       - name: Create root index.html
         if: github.event_name == 'push'
         run: |
