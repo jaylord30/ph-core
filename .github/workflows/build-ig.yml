@@ -85,7 +85,10 @@ jobs:
       # -----------------------------
       - name: Run SUSHI
         run: sushi .
-
+      - name: Debug barangay files
+        run: |
+          echo "=== BARANGAY FILES ==="
+          find . -name "*barangay*.xhtml"
       # -----------------------------
       # FIX XHTML INCLUDES (SAFE VERSION)
       # -----------------------------
