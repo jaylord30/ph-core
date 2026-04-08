@@ -96,7 +96,7 @@ jobs:
           java -jar input-cache/publisher.jar \
             -ig . \
             -tx ${TX_SERVER} \
-            -cachedir ~/.fhir/packages
+            -cachedir ~/.fhir/packages \
             -update
 
       - name: Run SUSHI
