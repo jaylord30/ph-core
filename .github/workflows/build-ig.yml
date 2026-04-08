@@ -105,7 +105,7 @@ jobs:
         run: |
           java -jar input-cache/publisher.jar \
             -ig . \
-            -tx ${TX_SERVER}
+            -tx ${TX_SERVER} -no-jekyll
           test -d output || (echo "::error::No output folder generated" && exit 1)
 
       - name: Print QA Debug Info
