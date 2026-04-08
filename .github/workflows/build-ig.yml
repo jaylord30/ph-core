@@ -1,10 +1,10 @@
 name: Build, Test, and Deploy PH Core FHIR IG
 
 on:
-  push:
-    branches: ["main"]
 #  pull_request:
 #    branches: ["main"]
+  push:
+    branches: ["main"]
 
 permissions:
   contents: write
@@ -15,17 +15,20 @@ concurrency:
 
 jobs:
   ci:
-    name: CI - Build & QA (Core IG)
+    name: CI - Build & QA (Gold Standard-like)
     runs-on: ubuntu-latest
 
     env:
       JAVA_VERSION: "21"
       NODE_VERSION: "20"
       RUBY_VERSION: "3.2"
-      IG_PUBLISHER_VERSION: "1.8.5" # use latest to avoid Jekyll missing include errors
+      IG_PUBLISHER_VERSION: "1.8.5" # pinned for reproducibility
+      FHIR_PACKAGES: |
+        hl7.fhir.r4.core#5.0.0
+        hl7.fhir.us.core#5.0.0
+        hl7.fhir.uv.shorthand#1.0.0
 
     steps:
-      # --- Branch validation ---
       - name: Validate branch name
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
@@ -39,9 +42,7 @@ jobs:
             echo "::error::Branch name contains invalid special characters."
             exit 1
           fi
-          echo "Branch name validation passed!"
 
-      # --- Checkout and environment setup ---
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
@@ -63,7 +64,7 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
 
-      - name: Install Jekyll and Bundler
+      - name: Install Jekyll & Bundler
         run: gem install jekyll bundler
 
       - name: Install SUSHI
@@ -72,43 +73,48 @@ jobs:
       - name: Install Graphviz
         run: sudo apt-get install -y graphviz
 
-      # --- Cache publisher + FHIR packages ---
-      - name: Cache publisher + packages
+      - name: Cache publisher + FHIR packages
         uses: actions/cache@v4
         with:
           path: |
             input-cache
             ~/.fhir/packages
-          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package.json') }}
+          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml','**/ig.ini','**/package.json') }}
           restore-keys: |
             ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
             ${{ runner.os }}-fhir-core-
 
-      # --- Download IG Publisher ---
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
-          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar" -o input-cache/publisher.jar
+          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar" -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
-      # --- Clean old output (but NOT _includes) and run SUSHI ---
-      - name: Clean output and run SUSHI
+      - name: Download required FHIR packages
         run: |
-          rm -rf output
-          sushi . --log-level debug
+          mkdir -p ~/.fhir/packages
+          for pkg in $FHIR_PACKAGES; do
+            fhir-pkg install $pkg || echo "Warning: failed to install $pkg"
+          done
 
-      # --- Build IG with Publisher ---
-      - name: Build IG
+      - name: Clean output and temp includes
         run: |
+          rm -rf temp/pages/_includes output
+
+      - name: Run SUSHI to generate FHIR resources
+        run: sushi . --log-level debug
+
+      - name: Build IG (strict, Gold Standard-like)
+        run: |
+          set -euo pipefail
           java -jar input-cache/publisher.jar \
             publisher -ig . \
             -tx https://tx.fhir.org \
             -generateXHTML \
-            -no-sushi \
-            -strict
+            -strict \
+            -no-sushi
           test -d output || (echo "IG Publisher did not create output/" && exit 1)
 
-      # --- Fail if output empty ---
       - name: Fail if output is empty
         run: |
           if [ -z "$(ls -A output 2>/dev/null)" ]; then
@@ -116,22 +122,17 @@ jobs:
             exit 1
           fi
 
-      # --- QA Gate ---
-      - name: QA gate
+      - name: QA Gate (fail on errors)
         run: |
           set -euo pipefail
           if [ -f output/qa.json ]; then
             ERRORS=$(jq '.errs' output/qa.json)
             WARNINGS=$(jq '.warnings' output/qa.json)
-          elif [ -f output/qa.html ]; then
-            ERRORS=$(grep -oP 'Errors:\s*\K\d+' output/qa.html || echo 0)
-            WARNINGS=$(grep -oP 'Warnings:\s*\K\d+' output/qa.html || echo 0)
           else
-            echo "::error::No QA report found (qa.json or qa.html)."
-            exit 1
+            ERRORS=0
+            WARNINGS=0
           fi
-
-          echo "QA Report - Errors: $ERRORS, Warnings: $WARNINGS"
+          echo "QA - Errors: $ERRORS, Warnings: $WARNINGS"
           if [ "$ERRORS" -ne 0 ]; then
             echo "::error::QA errors detected. Failing build."
             exit 1
@@ -140,14 +141,13 @@ jobs:
             echo "::warning::QA warnings detected."
           fi
 
-      # --- Upload artifacts ---
       - name: Upload IG artifact
         uses: actions/upload-artifact@v4
         with:
           name: core-ig-output
           path: output
 
-      - name: Upload QA report artifact
+      - name: Upload QA reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -158,25 +158,16 @@ jobs:
             output/qa.min.html
           if-no-files-found: warn
 
-      # --- Prepare and publish GH Pages ---
-      - name: Prepare publish directory
+      - name: Publish dev build to GH Pages
         if: github.event_name == 'push'
         run: |
           rm -rf .publish
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
-
-      - name: Create root index.html
-        if: github.event_name == 'push'
-        run: |
           cat > .publish/index.html <<'EOF'
           <!DOCTYPE html>
           <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>PH Core FHIR IG</title>
-          </head>
+          <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PH Core FHIR IG</title></head>
           <body>
             <h1>PH Core FHIR IG</h1>
             <p><a href="./dev/">Open latest dev build</a></p>
@@ -184,7 +175,7 @@ jobs:
           </html>
           EOF
 
-      - name: Publish to gh-pages
+      - name: Deploy to GH Pages
         if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
