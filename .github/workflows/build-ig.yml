@@ -54,9 +54,13 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Setup Ruby & Install Jekyll
-        run: |
-          gem install jekyll bundler
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+
+      - name: Install Jekyll
+        run: gem install jekyll bundler
 
       - name: Install SUSHI
         run: npm install -g fsh-sushi
