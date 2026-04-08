@@ -3,8 +3,6 @@ name: Build, Test, and Deploy PH Core FHIR IG
 on:
   push:
     branches: ["main"]
-#  pull_request:
-#    branches: ["main"]
 
 permissions:
   contents: write
@@ -86,27 +84,22 @@ jobs:
           curl -fsSL https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
-      # --- New step: Run SUSHI ---
-      - name: Run SUSHI to generate IG resources
-        run: |
-          echo "Running SUSHI to generate IG resources..."
-          sushi . --log-level debug
+      - name: Run SUSHI to generate FHIR resources
+        run: sushi . --log-level debug
 
-      # --- New step: Copy include fragments for Jekyll ---
-      - name: Copy SUSHI-generated include fragments for Jekyll
+      - name: Copy SUSHI-generated _includes for Jekyll
         run: |
-          echo "Copying SUSHI-generated .xhtml include files to temp/pages/_includes/"
+          echo "Ensuring SUSHI XHTML fragments exist for Jekyll"
           mkdir -p temp/pages/_includes
           if [ -d fsh-generated/pages/_includes ]; then
             cp -v fsh-generated/pages/_includes/*.xhtml temp/pages/_includes/ || true
-          elif [ -d temp/pages/_includes ]; then
-            echo "Fragments already exist in temp/pages/_includes"
           else
-            echo "::error::No generated include fragments found! SUSHI may have failed."
+            echo "::error::No SUSHI-generated include fragments found! Check fsh-generated/pages/_includes/"
             exit 1
           fi
+          ls -l temp/pages/_includes
 
-      - name: Build IG
+      - name: Build IG with Publisher
         run: |
           set -euo pipefail
           java -jar input-cache/publisher.jar publisher -ig . -tx https://tx.fhir.org -generateXHTML
@@ -157,7 +150,7 @@ jobs:
           rm -rf .publish
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
- 
+
       - name: Create root index.html
         if: github.event_name == 'push'
         run: |
