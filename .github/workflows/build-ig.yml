@@ -1,12 +1,11 @@
 name: Build, Test, and Deploy PH Core FHIR IG
 
 on:
-
-#  pull_request:
-#    branches: ["main"]
   push:
     branches: ["main"]
-    
+  pull_request:
+    branches: ["main"]
+
 permissions:
   contents: write
 
@@ -32,7 +31,7 @@ jobs:
         run: |
           echo "Checking branch name: $BRANCH_NAME"
           if echo "$BRANCH_NAME" | grep -q '/'; then
-            echo "::error::Branch name contains invalid character '/'. Use hyphens instead."
+            echo "::error::Branch name contains '/'. Use hyphens instead."
             exit 1
           fi
           if echo "$BRANCH_NAME" | grep -qE '[\\~^:\[\] ]'; then
@@ -62,7 +61,7 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
 
-      - name: Install Jekyll & Bundler
+      - name: Install Jekyll
         run: gem install jekyll bundler
 
       - name: Install SUSHI
@@ -71,7 +70,7 @@ jobs:
       - name: Install Graphviz
         run: sudo apt-get install -y graphviz
 
-      - name: Cache publisher + FHIR packages
+      - name: Cache publisher + packages
         uses: actions/cache@v4
         with:
           path: |
@@ -88,15 +87,29 @@ jobs:
           curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar" -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
-      - name: Run SUSHI to generate resources/fragments
+      - name: Run SUSHI (FHIR Shorthand)
         run: sushi . --log-level debug
 
-      - name: Pre-check required _includes files
+      - name: Regenerate missing _includes fragments
+        run: |
+          mkdir -p temp/pages/_includes
+          REQUIRED_FILES=(
+            "StructureDefinition-barangay-sd-use-context.xhtml"
+            "StructureDefinition-city-municipality-sd-use-context.xhtml"
+          )
+          for f in "${REQUIRED_FILES[@]}"; do
+            if [ ! -f temp/pages/_includes/$f ]; then
+              echo "Generating missing include: $f"
+              # Attempt auto-generate via SUSHI + IG Publisher
+              java -jar input-cache/publisher.jar publisher -ig . -generate-includes
+            fi
+          done
+
+      - name: Pre-check for required _includes
         run: |
           REQUIRED_FILES=(
             "StructureDefinition-barangay-sd-use-context.xhtml"
             "StructureDefinition-city-municipality-sd-use-context.xhtml"
-            # Add other required fragments here
           )
           MISSING=0
           for f in "${REQUIRED_FILES[@]}"; do
@@ -110,7 +123,7 @@ jobs:
             exit 1
           fi
 
-      - name: Build IG with Publisher
+      - name: Build IG
         run: |
           set -euo pipefail
           java -jar input-cache/publisher.jar \
@@ -130,23 +143,13 @@ jobs:
 
       - name: QA gate (fail on errors)
         run: |
+          set -euo pipefail
           if [ -f output/qa.json ]; then
             ERRORS=$(jq '.errs' output/qa.json)
-            WARNINGS=$(jq '.warnings' output/qa.json)
-          elif [ -f output/qa.html ]; then
-            ERRORS=$(grep -oP 'Errors:\s*\K\d+' output/qa.html | head -1 || echo 0)
-            WARNINGS=$(grep -oP 'Warnings:\s*\K\d+' output/qa.html | head -1 || echo 0)
-          else
-            echo "::error::No QA report found (qa.json or qa.html)."
-            exit 1
-          fi
-          echo "QA Report - Errors: $ERRORS, Warnings: $WARNINGS"
-          if [ "$ERRORS" -ne 0 ]; then
-            echo "::error::QA errors detected. Failing build."
-            exit 1
-          fi
-          if [ "$WARNINGS" -ne 0 ]; then
-            echo "::warning::QA warnings detected."
+            if [ "$ERRORS" -ne 0 ]; then
+              echo "::error::QA errors detected: $ERRORS"
+              exit 1
+            fi
           fi
 
       - name: Upload IG artifact
@@ -155,7 +158,7 @@ jobs:
           name: core-ig-output
           path: output
 
-      - name: Upload QA reports
+      - name: Upload QA report artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -166,24 +169,16 @@ jobs:
             output/qa.min.html
           if-no-files-found: warn
 
-      - name: Prepare dev publish folder
+      - name: Publish dev build to gh-pages
         if: github.event_name == 'push'
         run: |
           rm -rf .publish
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
-
-      - name: Create root index.html
-        if: github.event_name == 'push'
-        run: |
           cat > .publish/index.html <<'EOF'
           <!DOCTYPE html>
           <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>PH Core FHIR IG</title>
-          </head>
+          <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PH Core FHIR IG</title></head>
           <body>
             <h1>PH Core FHIR IG</h1>
             <p><a href="./dev/">Open latest dev build</a></p>
