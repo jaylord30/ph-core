@@ -8,7 +8,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ImplementationGuide/fhir.ph.core | *Version*:0.1.0 |
-| Draft as of 2026-03-19 | *Computable Name*:PHCoreImplementationGuide |
+| Draft as of 2026-04-08 | *Computable Name*:PHCoreImplementationGuide |
 
 # Draft Philippine Core FHIR Implementation Guide (PH Core IG)
 
@@ -130,7 +130,7 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
   "name" : "PHCoreImplementationGuide",
   "title" : "Draft PH Core Implementation Guide",
   "status" : "draft",
-  "date" : "2026-03-19T21:27:42+00:00",
+  "date" : "2026-04-08T04:20:57+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -448,7 +448,7 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
     },
     {
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-      "valueCode" : "hl7.fhir.uv.tools.r4#1.1.0"
+      "valueCode" : "hl7.fhir.uv.tools.r4#1.1.2"
     },
     {
       "extension" : [{
