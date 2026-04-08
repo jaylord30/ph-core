@@ -1,9 +1,9 @@
 name: Build, Test, and Deploy PH Core FHIR IG
 
 on:
+#  pull_request:
+#    branches: ["main"]
   push:
-    branches: ["main"]
-  pull_request:
     branches: ["main"]
 
 permissions:
@@ -86,14 +86,6 @@ jobs:
           mkdir -p input-cache
           curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar" -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
-
-      - name: Install FHIR dependencies (packages)
-        run: |
-          mkdir -p ~/.fhir/packages
-          # Add your IG dependencies here:
-          fhir-pkg install hl7.fhir.r4.core#5.0.0
-          fhir-pkg install hl7.fhir.us.core#5.0.0
-          # Add other packages your IG depends on
 
       - name: Clean temp/output
         run: |
