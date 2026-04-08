@@ -114,7 +114,7 @@ jobs:
           set -euo pipefail
           java -jar input-cache/publisher.jar \
             publisher -ig . \
-            -tx https://tx.fhir.org
+            -tx https://tx.fhir.org -generateXHTML
           test -d output || (echo "IG Publisher did not create output/" && exit 1)
 
       - name: Fail if output is empty
