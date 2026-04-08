@@ -22,7 +22,7 @@ jobs:
       JAVA_VERSION: "21"
       NODE_VERSION: "20"
       RUBY_VERSION: "3.2"
-      IG_PUBLISHER_VERSION: "latest" # use latest to avoid Jekyll missing include errors
+      IG_PUBLISHER_VERSION: "1.8.5" # use latest to avoid Jekyll missing include errors
 
     steps:
       # --- Branch validation ---
