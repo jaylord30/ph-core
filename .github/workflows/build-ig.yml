@@ -89,7 +89,7 @@ jobs:
       - name: Run SUSHI to generate resources
         run: sushi . --log-level debug
 
-      - name: Debug: List SUSHI _includes
+      - name: Debug List SUSHI _includes
         run: |
           echo "Checking SUSHI-generated includes..."
           if [ -d fsh-generated/pages/_includes ]; then
