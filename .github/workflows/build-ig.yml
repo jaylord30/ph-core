@@ -87,16 +87,25 @@ jobs:
           echo "Running SUSHI to regenerate FHIR resources and fragments..."
           sushi . --log-level debug
 
+      - name: Check missing Jekyll includes
+        run: |
+          set -e
+          for file in temp/pages/**/*.xhtml; do
+            grep -oP '{% include \K[^ %]+' "$file" | while read inc; do
+              if [ ! -f "temp/pages/_includes/$inc" ]; then
+                echo "::error::Missing include: $inc"
+                exit 1
+              fi
+            done
+          done
+
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
           curl -fsSL https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
-      - name: Run SUSHI (FHIR Shorthand)
-        run: sushi . --log-level debug
-
-      - name: Build IG 
+      - name: Build IG
         run: |
           set -euo pipefail
           java -jar input-cache/publisher.jar \
@@ -105,7 +114,7 @@ jobs:
             -generateXHTML \
             -no-sushi \
             -strict
-          test -d output || (echo "IG Publisher did not create output/" && exit 1)
+          test -d output || (echo "::error::IG Publisher did not create output/" && exit 1)
 
       - name: Fail if output is empty
         run: |
@@ -114,12 +123,11 @@ jobs:
             exit 1
           fi
 
-      - name: QA gate (fail on any errors/warnings)
+      - name: QA gate (fail on any errors)
         run: |
           set -euo pipefail
           QA_JSON="output/qa.json"
           QA_HTML="output/qa.html"
-
           if [ -f "$QA_JSON" ]; then
             ERRORS=$(jq '.errs' "$QA_JSON")
             WARNINGS=$(jq '.warnings' "$QA_JSON")
@@ -157,8 +165,7 @@ jobs:
             output/qa.min.html
           if-no-files-found: warn
 
-      - name: Publish dev build to gh-pages
-        if: github.event_name == 'push'
+      - name: Deploy build to gh-pages 
         run: |
           set -euo pipefail
           rm -rf .publish
@@ -175,7 +182,6 @@ jobs:
           </html>
           EOF
       - name: Deploy to gh-pages
-        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
