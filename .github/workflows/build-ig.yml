@@ -81,7 +81,7 @@ jobs:
           path: |
             input-cache
             ~/.fhir/packages
-          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package.json') }}
+          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
           restore-keys: |
             ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
             ${{ runner.os }}-fhir-core-
@@ -93,10 +93,11 @@ jobs:
           curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar" -o "input-cache/publisher.jar"
           java -jar input-cache/publisher.jar -v || true
 
-      # --- 6. Preload FHIR terminology packages ---
-      - name: Fetch FHIR terminology packages
+      # --- 6. Preload terminology packages ---
+      - name: Preload terminology packages
         run: |
-          sushi . --update-packages
+          mkdir -p ~/.fhir/packages
+          java -jar input-cache/publisher.jar -cachedir ~/.fhir/packages -ig .
 
       # --- 7. Run SUSHI ---
       - name: Run SUSHI
