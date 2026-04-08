@@ -105,8 +105,39 @@ jobs:
         run: |
           java -jar input-cache/publisher.jar \
             -ig . \
-            -tx ${TX_SERVER} -no-jekyll
+            -tx ${TX_SERVER} 
           test -d output || (echo "::error::No output folder generated" && exit 1)
+
+      - name: Check for missing Jekyll includes/layouts
+        if: always()
+        run: |
+          echo "===== Checking for missing Jekyll files ====="
+
+          SOURCE_DIR="output"
+          MISSING_COUNT=0
+
+          # Check _includes
+          for file in $(grep -rho '{% include' $SOURCE_DIR | awk '{print $3}' | tr -d "'\""); do
+            if [ ! -f "$SOURCE_DIR/_includes/$file" ]; then
+              echo "::warning::Missing include: $file"
+              MISSING_COUNT=$((MISSING_COUNT + 1))
+            fi
+          done
+
+          # Check _layouts from front matter
+          for layout in $(grep -rho '^layout: ' $SOURCE_DIR | awk '{print $2}'); do
+            if [ ! -f "$SOURCE_DIR/_layouts/$layout.html" ]; then
+              echo "::warning::Missing layout: $layout.html"
+              MISSING_COUNT=$((MISSING_COUNT + 1))
+            fi
+          done
+
+          if [ "$MISSING_COUNT" -gt 0 ]; then
+            echo "::error::Detected $MISSING_COUNT missing Jekyll includes/layouts"
+            exit 1
+          else
+            echo "All Jekyll includes and layouts are present"
+          fi
 
       - name: Print QA Debug Info
         if: always()
