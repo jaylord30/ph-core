@@ -93,7 +93,7 @@ jobs:
       - name: Run SUSHI (FHIR Shorthand)
         run: sushi . --log-level debug
 
-      - name: Build IG (FHIR Gold Standard)
+      - name: Build IG 
         run: |
           set -euo pipefail
           java -jar input-cache/publisher.jar \
