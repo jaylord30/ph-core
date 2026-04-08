@@ -9,13 +9,14 @@ permissions:
 
 concurrency:
   group: fhir-ig-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: True
 
 env:
   JAVA_VERSION: "21"
   NODE_VERSION: "24"
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "1.8.6"
+  TX_SERVER: "https://tx.fhir.org"
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -86,28 +87,35 @@ jobs:
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
-          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar" -o "input-cache/publisher.jar"
+          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar" -o "input-cache/publisher.jar"
           java -jar input-cache/publisher.jar -v || true
 
       - name: Preload terminology packages
         run: |
           mkdir -p ~/.fhir/packages
-          java -jar input-cache/publisher.jar -cachedir ~/.fhir/packages -ig .
+          java -jar input-cache/publisher.jar \
+            -ig . \
+            -tx ${TX_SERVER} \
+            -cachedir ~/.fhir/packages
 
       - name: Run SUSHI
         run: sushi . --log-level debug
 
       - name: Build IG
         run: |
-          java -jar input-cache/publisher.jar -ig .
-          test -d output || (echo "::error::IG Publisher did not create output/" && exit 1)
+          java -jar input-cache/publisher.jar \
+            -ig . \
+            -tx ${TX_SERVER}
+          test -d output || (echo "::error::No output folder generated" && exit 1)
 
-      - name: Fail if output is empty
+      - name: Print QA Debug Info
+        if: always()
         run: |
-          if [ -z "$(ls -A output 2>/dev/null)" ]; then
-            echo "::error::IG Publisher did not generate output files."
-            exit 1
-          fi
+          echo "===== QA.JSON ====="
+          cat output/qa.json || echo "qa.json not found"
+
+          echo "===== QA SUMMARY ====="
+          grep -A 5 "Errors:" output/qa.html || true
 
       - name: QA gate
         run: |
@@ -116,21 +124,14 @@ jobs:
             ERRORS=$(jq '.errs' output/qa.json || echo 0)
             echo "QA Errors: $ERRORS"
             if [ "$ERRORS" != "0" ]; then
-              echo "::error::QA errors found in qa.json (count=$ERRORS)"
-              exit 1
-            fi
-          elif [ -f output/qa.html ]; then
-            QA_LINE=$(grep -oP 'Errors:\s*\d+,\s*Warnings:\s*\d+,\s*Info:\s*\d+' output/qa.html | head -1 || echo "")
-            ERRORS=$(echo "$QA_LINE" | grep -oP 'Errors:\s*\K[0-9]+' || echo 0)
-            if [ "$ERRORS" != "0" ]; then
-              echo "::error::QA errors found in qa.html (count=$ERRORS)"
+              echo "::error::QA errors found (count=$ERRORS)"
               exit 1
             fi
           else
-            echo "::error::No qa.json or qa.html found in output/. Failing for safety."
+            echo "::error::qa.json not found"
             exit 1
           fi
-          echo "QA passed (errors=0)"
+          echo "QA passed (0 errors)"
 
       - name: Upload IG artifact
         uses: actions/upload-artifact@v4
@@ -149,7 +150,7 @@ jobs:
             output/qa.min.html
           if-no-files-found: warn
 
-      - name: Prepare publish directory (dev)
+      - name: Prepare publish directory 
         if: github.event_name == 'push'
         run: |
           rm -rf .publish
