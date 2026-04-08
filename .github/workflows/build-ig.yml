@@ -128,7 +128,7 @@ jobs:
               echo "::error::QA errors found in qa.json (count=$ERRORS)"
               exit 1
             fi
-          elif [ -f output/qa.html ]; then
+          elif [ -f output/qa.html ]; then 
             QA_LINE=$(grep -oP 'Errors:\s*\d+,\s*Warnings:\s*\d+,\s*Info:\s*\d+' output/qa.html | head -1 || echo "")
             ERRORS=$(echo "$QA_LINE" | grep -oP 'Errors:\s*\K[0-9]+' || echo 0)
             if [ "$ERRORS" != "0" ]; then
