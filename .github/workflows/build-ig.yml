@@ -97,6 +97,7 @@ jobs:
             -ig . \
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages
+            -update
 
       - name: Run SUSHI
         run: sushi . --log-level info
