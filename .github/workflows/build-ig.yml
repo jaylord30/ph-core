@@ -3,6 +3,8 @@ name: Build, Test, and Deploy PH Core FHIR IG
 on:
   push:
     branches: ["main"]
+#  pull_request:
+#    branches: ["main"]
 
 permissions:
   contents: write
@@ -20,7 +22,7 @@ jobs:
       JAVA_VERSION: "21"
       NODE_VERSION: "20"
       RUBY_VERSION: "3.2"
-      IG_PUBLISHER_VERSION: "1.8.6"
+      IG_PUBLISHER_VERSION: "1.8.6"  
 
     steps:
       - name: Validate branch name
@@ -84,22 +86,28 @@ jobs:
           curl -fsSL https://github.com/HL7/fhir-ig-publisher/releases/download/${{ env.IG_PUBLISHER_VERSION }}/publisher.jar -o input-cache/publisher.jar
           java -jar input-cache/publisher.jar -v || true
 
-      - name: Run SUSHI to generate FHIR resources
+      - name: Run SUSHI to generate resources
         run: sushi . --log-level debug
 
-      - name: Copy SUSHI-generated _includes for Jekyll
+      - name: Ensure SUSHI XHTML fragments exist for Jekyll
         run: |
-          echo "Ensuring SUSHI XHTML fragments exist for Jekyll"
+          echo "Copying SUSHI-generated include fragments to temp/pages/_includes"
           mkdir -p temp/pages/_includes
+
+          INCLUDE_SRC=""
           if [ -d fsh-generated/pages/_includes ]; then
-            cp -v fsh-generated/pages/_includes/*.xhtml temp/pages/_includes/ || true
+            INCLUDE_SRC="fsh-generated/pages/_includes"
+          elif [ -d fsh-generated/includes ]; then
+            INCLUDE_SRC="fsh-generated/includes"
           else
-            echo "::error::No SUSHI-generated include fragments found! Check fsh-generated/pages/_includes/"
+            echo "::error::No SUSHI-generated include fragments found! Check your sushi-config.yaml and FSH page files."
             exit 1
           fi
+
+          cp -v $INCLUDE_SRC/*.xhtml temp/pages/_includes/ || true
           ls -l temp/pages/_includes
 
-      - name: Build IG with Publisher
+      - name: Build IG
         run: |
           set -euo pipefail
           java -jar input-cache/publisher.jar publisher -ig . -tx https://tx.fhir.org -generateXHTML
