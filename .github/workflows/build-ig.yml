@@ -60,8 +60,8 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
 
-      - name: Install Jekyll
-        run: gem install jekyll bundler
+      # - name: Install Jekyll
+      #   run: gem install jekyll bundler
 
       - name: Install SUSHI
         run: npm install -g fsh-sushi
@@ -78,11 +78,10 @@ jobs:
           path: |
             input-cache
             ~/.fhir/packages
-          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ github.run_id }}
-          # key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
-          # restore-keys: |
-          #   ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
-          #   ${{ runner.os }}-fhir-core-
+          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
+          restore-keys: |
+             ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
+             ${{ runner.os }}-fhir-core-
         
       - name: Clean temp pages
         run: rm -rf temp/pages output
