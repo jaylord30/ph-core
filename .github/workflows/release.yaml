@@ -1,0 +1,105 @@
+# name: PH Core FHIR IG Release
+
+# on:
+#   push:
+#     tags:
+#       - "v*.*.*"
+
+# permissions:
+#   contents: write
+
+# env:
+#   JAVA_VERSION: "17"
+#   NODE_VERSION: "18"
+#   RUBY_VERSION: "3.2"
+#   IG_PUBLISHER_VERSION: "1.8.6"
+#   TX_SERVER: "https://tx.fhir.org"
+
+# jobs:
+#   release-build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#         with: { lfs: true }
+
+#       - name: Setup Java
+#         uses: actions/setup-java@v4
+#         with:
+#           distribution: temurin
+#           java-version: ${{ env.JAVA_VERSION }}
+
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: ${{ env.NODE_VERSION }}
+
+#       - name: Setup Ruby
+#         uses: ruby/setup-ruby@v1
+#         with:
+#           ruby-version: ${{ env.RUBY_VERSION }}
+
+#       - name: Install dependencies
+#         run: |
+#           gem install jekyll bundler
+#           npm install -g fsh-sushi
+#           sudo apt-get update
+#           sudo apt-get install -y graphviz
+
+#       - name: Cache FHIR packages
+#         uses: actions/cache@v4
+#         with:
+#           path: |
+#             input-cache
+#             ~/.fhir/packages
+#           key: ${{ runner.os }}-fhir-release-${{ hashFiles('**/sushi-config.yaml','**/ig.ini','**/package-list.json') }}
+
+#       - name: Download IG Publisher
+#         run: |
+#           mkdir -p input-cache
+#           curl -fsSL https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar -o input-cache/publisher.jar
+
+#       - name: Run SUSHI
+#         run: sushi .
+
+#       - name: Build IG (Gold Standard)
+#         run: |
+#           mkdir -p ~/.fhir/packages
+#           java -jar input-cache/publisher.jar \
+#             -ig . -tx ${TX_SERVER} -cachedir ~/.fhir/packages -reset -publish
+#           test -d output || (echo "::error::No output folder" && exit 1)
+
+#       - name: QA Gate
+#         run: |
+#           set -euo pipefail
+#           ERRORS=$(jq '.errs' output/qa.json)
+#           WARNINGS=$(jq '.warnings' output/qa.json)
+#           echo "Errors: $ERRORS, Warnings: $WARNINGS"
+#           if [ "$ERRORS" != "0" ]; then
+#             echo "::error::Gold-standard QA failed"
+#             exit 1
+#           fi
+
+#       - name: Extract version
+#         id: version
+#         run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+#       - name: Copy Release Build
+#         run: |
+#           VERSION=${{ steps.version.outputs.VERSION }}
+#           mkdir -p .publish/$VERSION
+#           rsync -a output/ .publish/$VERSION/
+
+#       - name: Create index.html
+#         run: |
+#           cat > .publish/index.html <<EOF
+#           <h1>PH Core FHIR IG</h1>
+#           <p><a href="./$VERSION/">Latest Release Build</a></p>
+#           EOF
+
+#       - name: Deploy to GitHub Pages (/version/)
+#         uses: peaceiris/actions-gh-pages@v4
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_branch: gh-pages
+#           publish_dir: .publish
+#           keep_files: true
