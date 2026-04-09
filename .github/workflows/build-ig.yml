@@ -79,7 +79,7 @@ jobs:
           path: |
             input-cache
             ~/.fhir/packages
-          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ github.run_id
+          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ github.run_id }}
           # key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
           # restore-keys: |
           #   ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
