@@ -85,9 +85,6 @@ jobs:
           restore-keys: |
              ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
              ${{ runner.os }}-fhir-core-
-        
-      - name: Clean temp pages
-        run: rm -rf temp/pages output
 
       - name: Run SUSHI
         run: sushi . --log-level info
@@ -106,12 +103,6 @@ jobs:
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
             -update 
-
-      - name: Clean FHIR cache
-        run: |
-          rm -rf ~/.fhir/packages
-          rm -rf input-cache
-          rm -rf template
 
       - name: Build IG
         run: |
