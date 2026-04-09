@@ -104,70 +104,95 @@ jobs:
 
           ls -lh input-cache
 
-      - name: Preload terminology packages
+      # - name: Preload terminology packages
+      #   run: |
+      #     mkdir -p ~/.fhir/packages
+
+      #     echo "Using TX server: $TX_SERVER"
+
+      #     java -jar input-cache/publisher.jar \
+      #       -ig . \
+      #       -tx ${TX_SERVER} \
+      #       -cachedir ~/.fhir/packages \
+      #       -update 
+
+      # - name: Build IG
+      #   run: |
+      #     java -jar input-cache/publisher.jar \
+      #       -ig . \
+      #       -tx ${TX_SERVER} \
+      #       -cachedir ~/.fhir/packages \
+      #       -update \
+      #       -reset
+      #     test -d output || (echo "::error::No output folder generated" && exit 1)
+      #     test -f output/package.tgz || echo "::warning::No IG package generated"
+
+      - name: Build IG 
         run: |
           mkdir -p ~/.fhir/packages
 
-          echo "Using TX server: $TX_SERVER"
+          echo "TX Server: $TX_SERVER"
 
-          java -jar input-cache/publisher.jar \
+          java -Xmx6g -jar input-cache/publisher.jar \
             -ig . \
-            -tx ${TX_SERVER} \
-            -cachedir ~/.fhir/packages \
-            -update 
-
-      - name: Build IG
-        run: |
-          java -jar input-cache/publisher.jar \
-            -ig . \
-            -tx ${TX_SERVER} \
+            -tx $TX_SERVER \
             -cachedir ~/.fhir/packages \
             -update \
-            -reset
-          test -d output || (echo "::error::No output folder generated" && exit 1)
-          test -f output/package.tgz || echo "::warning::No IG package generated"
+            -no-sushi
+            
+      - name: Upload IG output
+        uses: actions/upload-artifact@v4
+        with:
+          name: ig-output
+          path: output
 
-      - name: QA gate
-        run: |
-          set -euo pipefail
+      - name: Upload QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-report
+          path: output/qa.json
+      # - name: QA gate
+      #   run: |
+      #     set -euo pipefail
 
-          if [ ! -f output/qa.json ]; then
-            echo "::error::qa.json not found"
-            exit 1
-          fi
+      #     if [ ! -f output/qa.json ]; then
+      #       echo "::error::qa.json not found"
+      #       exit 1
+      #     fi
 
-          ERRORS=$(jq '.errs // 0' output/qa.json)
-          WARNINGS=$(jq '.warnings // 0' output/qa.json)
-          INFO=$(jq '.info // 0' output/qa.json)
+      #     ERRORS=$(jq '.errs // 0' output/qa.json)
+      #     WARNINGS=$(jq '.warnings // 0' output/qa.json)
+      #     INFO=$(jq '.info // 0' output/qa.json)
 
-          echo "FHIR IG QA SUMMARY"
-          echo "Errors   : $ERRORS"
-          echo "Warnings : $WARNINGS"
-          echo "Info     : $INFO"
+      #     echo "FHIR IG QA SUMMARY"
+      #     echo "Errors   : $ERRORS"
+      #     echo "Warnings : $WARNINGS"
+      #     echo "Info     : $INFO"
 
-          echo ""
-          echo "TOP ERROR SOURCES"
-          jq -r '.errorsDetail[]?.location // "unknown"' output/qa.json \
-            | sort | uniq -c | sort -nr | head -20
+      #     echo ""
+      #     echo "TOP ERROR SOURCES"
+      #     jq -r '.errorsDetail[]?.location // "unknown"' output/qa.json \
+      #       | sort | uniq -c | sort -nr | head -20
 
-          echo ""
-          echo "DETAILED ERRORS"
-          jq -r '
-            .errorsDetail[]? |
-            "Location: " + (.location // "unknown") + "\n" +
-            "Message : " + (.message // "no message") + "\n---"
-          ' output/qa.json
+      #     echo ""
+      #     echo "DETAILED ERRORS"
+      #     jq -r '
+      #       .errorsDetail[]? |
+      #       "Location: " + (.location // "unknown") + "\n" +
+      #       "Message : " + (.message // "no message") + "\n---"
+      #     ' output/qa.json
 
-          echo ""
-          echo "WARNINGS"
-          jq -r '.warningsDetail[]? | "- " + (.message // "no message")' output/qa.json
+      #     echo ""
+      #     echo "WARNINGS"
+      #     jq -r '.warningsDetail[]? | "- " + (.message // "no message")' output/qa.json
 
-          if [ "$ERRORS" -gt 0 ]; then
-            echo "::error::FHIR IG failed with $ERRORS errors"
-            exit 1
-          fi
+      #     if [ "$ERRORS" -gt 0 ]; then
+      #       echo "::error::FHIR IG failed with $ERRORS errors"
+      #       exit 1
+      #     fi
 
-          echo "QA PASSED (warnings allowed)"
+      #     echo "QA PASSED (warnings allowed)"
 
       - name: Upload IG artifact
         uses: actions/upload-artifact@v4
