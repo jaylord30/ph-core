@@ -106,6 +106,12 @@ jobs:
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
             -update 
+            
+      - name: Clean FHIR cache
+        run: |
+          rm -rf ~/.fhir/packages
+          rm -rf input-cache
+          rm -rf template
 
       - name: Build IG
         run: |
