@@ -140,6 +140,26 @@ jobs:
             -update \
             -no-sushi
             
+      - name: QA Gate
+        run: |
+          set -euo pipefail
+
+          if [ ! -f output/qa.json ]; then
+            echo "::error::qa.json not found"
+            exit 1
+          fi
+
+          ERRORS=$(jq '.errs // 0' output/qa.json)
+
+          echo "Errors: $ERRORS"
+
+          jq -r '.errorsDetail[]? | (.location // "unknown") + " => " + (.message // "")' output/qa.json
+
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "::error::FHIR IG FAILED (strict mode)"
+            exit 1
+          fi
+
       - name: Upload IG output
         uses: actions/upload-artifact@v4
         with:
