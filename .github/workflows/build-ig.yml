@@ -108,6 +108,7 @@ jobs:
             -ig . \
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
+            -no-jekyll \
             -update 
 
       - name: Build IG
@@ -116,6 +117,7 @@ jobs:
             -ig . \
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
+            -no-jekyll \
             -update \
             -reset
           test -d output || (echo "::error::No output folder generated" && exit 1)
