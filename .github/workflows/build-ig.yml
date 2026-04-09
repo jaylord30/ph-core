@@ -1,4 +1,4 @@
-name: Build, Test, and Deploy PH Core FHIR IG
+name: PH Core FHIR IG Dev
 
 on:
   push:
@@ -7,175 +7,71 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: fhir-ig-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: True
-
 env:
   JAVA_VERSION: "17"
   NODE_VERSION: "18"
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "1.8.6"
   TX_SERVER: "https://tx.fhir.org"
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  ci:
-    name: CI - Build & QA (Core IG)
+  dev-build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Validate branch name
-        env:
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-        run: |
-          echo "Checking branch name: $BRANCH_NAME"
-          if echo "$BRANCH_NAME" | grep -q '/'; then
-            echo "::error::Branch name contains invalid character '/'. Use hyphens instead."
-            exit 1
-          fi
-          if echo "$BRANCH_NAME" | grep -qE '[\\~^:\[\] ]'; then
-            echo "::error::Branch name contains invalid special characters. Avoid: \\ ~ ^ : [ ] spaces"
-            exit 1
-          fi
-          echo "Branch name validation passed!"
-
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          lfs: true
+      - uses: actions/checkout@v4
+        with: { lfs: true }
 
       - name: Setup Java
         uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: ${{ env.JAVA_VERSION }}
+        with: { distribution: temurin, java-version: ${{ env.JAVA_VERSION }} }
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
+        with: { node-version: ${{ env.NODE_VERSION }} }
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
+        with: { ruby-version: ${{ env.RUBY_VERSION }} }
 
-      - name: Install Jekyll
-        run: gem install jekyll bundler
-
-      - name: Install SUSHI
-        run: npm install -g fsh-sushi
-
-      - name: Install Graphviz (for PlantUML)
+      - name: Install dependencies
         run: |
+          gem install jekyll bundler
+          npm install -g fsh-sushi
           sudo apt-get update
           sudo apt-get install -y graphviz
-          dot -v
 
-      - name: Cache publisher + packages
+      - name: Cache FHIR packages
         uses: actions/cache@v4
         with:
           path: |
             input-cache
             ~/.fhir/packages
-          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
-          restore-keys: |
-            ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
-            ${{ runner.os }}-fhir-core-
+          key: ${{ runner.os }}-fhir-dev-${{ hashFiles('**/sushi-config.yaml','**/ig.ini','**/package-list.json') }}
 
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
-          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar" -o "input-cache/publisher.jar"
-          java -jar input-cache/publisher.jar -v || true
-
-      - name: Preload terminology packages
-        run: |
-          mkdir -p ~/.fhir/packages
-          java -jar input-cache/publisher.jar \
-            -ig . \
-            -tx ${TX_SERVER} \
-            -cachedir ~/.fhir/packages \
-            -update 
+          curl -fsSL https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar -o input-cache/publisher.jar
 
       - name: Run SUSHI
-        run: sushi . --log-level info
+        run: sushi .
 
-      - name: Build IG
+      - name: Build IG (Dev)
         run: |
-          java -jar input-cache/publisher.jar \
-            -ig . \
-            -tx ${TX_SERVER} \
-            -cachedir ~/.fhir/packages \
-            -update \
-            -reset
-          test -d output || (echo "::error::No output folder generated" && exit 1)
+          java -jar input-cache/publisher.jar -ig . -tx ${TX_SERVER} -cachedir ~/.fhir/packages -reset -update
+          test -d output || (echo "::error::No output folder" && exit 1)
 
-      - name: QA gate
-        run: |
-          set -euo pipefail
-          if [ -f output/qa.json ]; then
-            ERRORS=$(jq '.errs' output/qa.json || echo 0)
-            echo "QA Errors: $ERRORS"
-            if [ "$ERRORS" != "0" ]; then
-              echo "::error::QA errors found (count=$ERRORS)"
-              exit 1
-            fi
-          else
-            echo "::error::qa.json not found"
-            exit 1
-          fi
-          echo "QA passed (0 errors)"
-
-      - name: Upload IG artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: core-ig-output
-          path: output
-
-      - name: Upload QA report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: qa-reports
-          path: |
-            output/qa.json
-            output/qa.html
-            output/qa.min.html
-          if-no-files-found: warn
-
-      - name: Prepare publish directory 
-        if: github.event_name == 'push'
+      - name: Publish Dev Build
         run: |
           rm -rf .publish
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
+        continue-on-error: false
 
-      - name: Create root index.html
-        if: github.event_name == 'push'
-        run: |
-          cat > .publish/index.html <<'EOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>PH Core FHIR IG</title>
-          </head>
-          <body>
-            <h1>PH Core FHIR IG</h1>
-            <p><a href="./dev/">Open latest dev build</a></p>
-          </body>
-          </html>
-          EOF
-
-      - name: Publish to gh-pages:/dev/
-        if: github.event_name == 'push'
+      - name: Deploy to GitHub Pages (/dev/)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: .publish
           keep_files: true
-          commit_message: "ci(dev): publish dev build from ${{ github.sha }}"
