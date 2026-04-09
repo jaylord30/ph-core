@@ -62,7 +62,7 @@ jobs:
           bundler-cache: true
 
       - name: Install Jekyll
-        run: 
+        run: |
           gem install jekyll bundler
           jekyll -v
 
