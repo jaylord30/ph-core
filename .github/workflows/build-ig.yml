@@ -77,20 +77,20 @@ jobs:
           sudo apt-get install -y graphviz
           dot -v
 
+      - name: Cache publisher + packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            input-cache
+            ~/.fhir/packages
+          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
+          restore-keys: |
+             ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
+             ${{ runner.os }}-fhir-core-
+      
       - name: Clean build folders
         run: |
           rm -rf output temp input-cache ~/.fhir/packages
-
-      # - name: Cache publisher + packages
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       input-cache
-      #       ~/.fhir/packages
-      #     key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
-      #     restore-keys: |
-      #        ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
-      #        ${{ runner.os }}-fhir-core-
 
       - name: Run SUSHI
         run: sushi . --log-level info
@@ -132,83 +132,38 @@ jobs:
             exit 1
           fi
 
-          echo "================ FHIR IG QA SUMMARY ================"
-
           ERRORS=$(jq '.errs // 0' output/qa.json)
           WARNINGS=$(jq '.warnings // 0' output/qa.json)
           INFO=$(jq '.info // 0' output/qa.json)
 
+          echo "FHIR IG QA SUMMARY"
           echo "Errors   : $ERRORS"
           echo "Warnings : $WARNINGS"
           echo "Info     : $INFO"
 
-          echo "===================================================="
           echo ""
+          echo "TOP ERROR SOURCES"
+          jq -r '.errorsDetail[]?.location // "unknown"' output/qa.json \
+            | sort | uniq -c | sort -nr | head -20
 
-          # -----------------------------
-          # GROUPED ERROR SUMMARY 
-          # -----------------------------
-          echo " TOP ERROR SOURCES "
+          echo ""
+          echo "DETAILED ERRORS"
           jq -r '
             .errorsDetail[]? |
-            .location // "unknown"
-          ' output/qa.json \
-          | sort | uniq -c | sort -nr | head -20 \
-          | sed 's/^/- /'
-
-          echo ""
-          echo "===================================================="
-          echo ""
-
-          # -----------------------------
-          # FULL ERROR DETAILS
-          # -----------------------------
-          echo " DETAILED ERRORS"
-          jq -r '
-            .errorsDetail[]? |
-            "--------------------------------------------------\n" +
-            "Location : " + (.location // "unknown") + "\n" +
-            "Message  : " + (.message // "no message") + "\n"
+            "Location: " + (.location // "unknown") + "\n" +
+            "Message : " + (.message // "no message") + "\n---"
           ' output/qa.json
 
           echo ""
-          echo "===================================================="
-          echo ""
+          echo "WARNINGS"
+          jq -r '.warningsDetail[]? | "- " + (.message // "no message")' output/qa.json
 
-          # -----------------------------
-          # WARNINGS (non-blocking but visible)
-          # -----------------------------
-          echo " WARNINGS"
-          jq -r '
-            .warningsDetail[]? |
-            "- " + (.message // "no message")
-          ' output/qa.json
-
-          echo ""
-          echo "===================================================="
-          echo ""
-
-          # -----------------------------
-          # INFO (optional debug)
-          # -----------------------------
-          echo " INFO"
-          jq -r '
-            .infoDetail[]? |
-            "- " + (.message // "no message")
-          ' output/qa.json
-
-          echo ""
-          echo "===================================================="
-
-          # -----------------------------
-          # FAIL ONLY ON REAL ERRORS
-          # -----------------------------
           if [ "$ERRORS" -gt 0 ]; then
-            echo "::error::FHIR IG validation errors found ($ERRORS)"
+            echo "::error::FHIR IG failed with $ERRORS errors"
             exit 1
           fi
 
-          echo "QA PASSED (warnings allowed, errors = 0)"
+          echo "QA PASSED (warnings allowed)"
 
       - name: Upload IG artifact
         uses: actions/upload-artifact@v4
