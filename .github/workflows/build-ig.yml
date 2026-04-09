@@ -17,7 +17,6 @@ env:
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "1.8.6"
   TX_SERVER: "https://tx.fhir.org"
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   ci:
