@@ -1,6 +1,8 @@
 name: Build, Test, and Deploy PH Core FHIR IG
 
 on:
+#  pull_request:
+#    branches: ["main"]
   push:
     branches: ["main"]
 
@@ -130,31 +132,83 @@ jobs:
             exit 1
           fi
 
+          echo "================ FHIR IG QA SUMMARY ================"
+
           ERRORS=$(jq '.errs // 0' output/qa.json)
           WARNINGS=$(jq '.warnings // 0' output/qa.json)
           INFO=$(jq '.info // 0' output/qa.json)
 
-          echo "================ FHIR IG QA SUMMARY ================"
           echo "Errors   : $ERRORS"
           echo "Warnings : $WARNINGS"
           echo "Info     : $INFO"
+
+          echo "===================================================="
+          echo ""
+
+          # -----------------------------
+          # GROUPED ERROR SUMMARY 
+          # -----------------------------
+          echo " TOP ERROR SOURCES "
+          jq -r '
+            .errorsDetail[]? |
+            .location // "unknown"
+          ' output/qa.json \
+          | sort | uniq -c | sort -nr | head -20 \
+          | sed 's/^/- /'
+
+          echo ""
+          echo "===================================================="
+          echo ""
+
+          # -----------------------------
+          # FULL ERROR DETAILS
+          # -----------------------------
+          echo " DETAILED ERRORS"
+          jq -r '
+            .errorsDetail[]? |
+            "--------------------------------------------------\n" +
+            "Location : " + (.location // "unknown") + "\n" +
+            "Message  : " + (.message // "no message") + "\n"
+          ' output/qa.json
+
+          echo ""
+          echo "===================================================="
+          echo ""
+
+          # -----------------------------
+          # WARNINGS (non-blocking but visible)
+          # -----------------------------
+          echo " WARNINGS"
+          jq -r '
+            .warningsDetail[]? |
+            "- " + (.message // "no message")
+          ' output/qa.json
+
+          echo ""
+          echo "===================================================="
+          echo ""
+
+          # -----------------------------
+          # INFO (optional debug)
+          # -----------------------------
+          echo " INFO"
+          jq -r '
+            .infoDetail[]? |
+            "- " + (.message // "no message")
+          ' output/qa.json
+
+          echo ""
           echo "===================================================="
 
-          echo ""
-          echo "📌 WARNINGS"
-          jq -r '.warningsDetail[]? | "- \(.message)"' output/qa.json
-
-          echo ""
-          echo "📌 ERRORS"
-          jq -r '.errorsDetail[]? | "- \(.message)"' output/qa.json
-
-          echo ""
+          # -----------------------------
+          # FAIL ONLY ON REAL ERRORS
+          # -----------------------------
           if [ "$ERRORS" -gt 0 ]; then
             echo "::error::FHIR IG validation errors found ($ERRORS)"
             exit 1
           fi
 
-          echo "QA PASSED (warnings allowed)"
+          echo "QA PASSED (warnings allowed, errors = 0)"
 
       - name: Upload IG artifact
         uses: actions/upload-artifact@v4
