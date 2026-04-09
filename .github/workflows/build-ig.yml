@@ -90,6 +90,11 @@ jobs:
       - name: Run SUSHI
         run: sushi . --log-level info
 
+      - name: Copy FSH XHTML narratives to _includes
+        run: |
+          mkdir -p temp/pages/_includes
+          cp fsh-generated/output/narratives/*.xhtml temp/pages/_includes/ || echo "No XHTML narratives found"
+
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
