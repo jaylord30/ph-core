@@ -43,6 +43,11 @@ jobs:
       with:
         ruby-version: ${{ env.RUBY_VERSION }}
         bundler-cache: true
+        
+    - name: Install Jekyll
+        run: |
+          gem install jekyll bundler
+          jekyll -v
 
     - name: Install SUSHI
       run: npm install -g fsh-sushi
