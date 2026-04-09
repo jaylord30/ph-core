@@ -139,7 +139,7 @@ jobs:
             -cachedir ~/.fhir/packages \
             -update \
             -no-sushi
-            
+
       - name: QA Gate
         run: |
           set -euo pipefail
@@ -214,18 +214,18 @@ jobs:
 
       #     echo "QA PASSED (warnings allowed)"
 
-      - name: Upload IG artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: core-ig-output
-          path: output
+      # - name: Upload IG artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: core-ig-output
+      #     path: output
 
-      - name: Upload QA report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: qa-report
-          path: output/qa.json
+      # - name: Upload QA report
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: qa-report
+      #     path: output/qa.json
 
       - name: Prepare publish directory 
         if: github.event_name == 'push'
