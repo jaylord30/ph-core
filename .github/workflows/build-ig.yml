@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: True
 
 env:
-  JAVA_VERSION: "17"
+  JAVA_VERSION: "21"
   NODE_VERSION: "24"
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "1.8.6"
@@ -57,7 +57,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@v2
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
 
