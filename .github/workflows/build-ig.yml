@@ -19,21 +19,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { lfs: true }
+        with: 
+         lfs: true 
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with: 
          distribution: temurin 
-         java-version: ${{ env.JAVA_VERSION }} }
+         java-version: ${{ env.JAVA_VERSION }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
-        with: { node-version: ${{ env.NODE_VERSION }} }
+        with: 
+          node-version: ${{ env.NODE_VERSION }} 
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
-        with: { ruby-version: ${{ env.RUBY_VERSION }} }
+        with: 
+         ruby-version: ${{ env.RUBY_VERSION }} 
 
       - name: Install dependencies
         run: |
