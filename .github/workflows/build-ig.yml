@@ -43,9 +43,9 @@ jobs:
       with:
         ruby-version: ${{ env.RUBY_VERSION }}
         bundler-cache: true
-        
+
     - name: Install Jekyll
-        run: |
+      run: |
           gem install jekyll bundler
           jekyll -v
 
