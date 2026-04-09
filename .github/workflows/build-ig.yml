@@ -16,8 +16,8 @@ env:
   TX_SERVER: "https://tx.fhir.org"
 
 jobs:
-  gold-build:
-    name: Gold Mode IG Build (Non-blocking validation)
+  build:
+    name: IG Build 
     runs-on: ubuntu-latest
 
     steps:
@@ -53,7 +53,7 @@ jobs:
           https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar \
           -o input-cache/publisher.jar
 
-    - name: Light cleanup (KEEP cache for "gold behavior")
+    - name: Light cleanup 
       run: |
         rm -rf output temp input-cache
         mkdir -p ~/.fhir/packages
@@ -69,7 +69,7 @@ jobs:
           -cachedir ~/.fhir/packages \
           -update || true
 
-    - name: Build IG (Gold mode - non-fatal validation)
+    - name: Build IG 
       run: |
         java -jar input-cache/publisher.jar \
           -ig . \
@@ -80,7 +80,7 @@ jobs:
     - name: Generate QA report (informational only)
       run: |
         if [ -f output/qa.json ]; then
-          echo "=== IG QA SUMMARY (GOLD MODE) ==="
+          echo "=== IG QA SUMMARY  ==="
 
           ERRORS=$(jq '.errs // 0' output/qa.json)
           WARNINGS=$(jq '.warnings // 0' output/qa.json)
@@ -91,7 +91,7 @@ jobs:
           echo "Info     : $INFO"
 
           echo ""
-          echo "Top Issues (non-blocking report):"
+          echo "Top Issues :"
           jq -r '
             .errorsDetail[]? |
             (.location // "unknown") + " -> " + (.message // "")
@@ -101,21 +101,26 @@ jobs:
           echo "Warnings:"
           jq -r '.warningsDetail[]? | "- " + (.message // "")' output/qa.json | head -50
         else
-          echo "No QA file generated (still continuing in gold mode)"
+          echo "No QA file generated "
         fi
-
-    - name: Upload IG output (Gold build)
+    - name: Check output exists
+      run: |
+        if [ ! -d output ]; then
+          echo "::error::IG build failed - no output folder"
+          exit 1
+        fi
+    - name: Upload IG output 
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: ig-gold-output
+        name: ig-output
         path: output
 
-    - name: Upload QA report (Gold mode)
+    - name: Upload QA report 
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: qa-gold-report
+        name: qa--report
         path: output/qa.json
 
     - name: Prepare preview publish
@@ -133,4 +138,4 @@ jobs:
         publish_branch: gh-pages
         publish_dir: .publish
         keep_files: true
-        commit_message: "gold-mode build: ${{ github.sha }}"
+        commit_message: "ci(dev): publish dev build from ${{ github.sha }}"
