@@ -90,9 +90,12 @@ jobs:
           curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar" -o "input-cache/publisher.jar"
           java -jar input-cache/publisher.jar -v || true
 
-      - name: Clean temp pages
-        run: rm -rf temp/pages output
+      - name: Run SUSHI
+        run: sushi . --log-level info
         
+      # - name: Clean temp pages
+      #   run: rm -rf temp/pages output
+
       - name: Preload terminology packages
         run: |
           mkdir -p ~/.fhir/packages
@@ -101,9 +104,6 @@ jobs:
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
             -update 
-
-      - name: Run SUSHI
-        run: sushi . --log-level info
 
       - name: Build IG
         run: |
