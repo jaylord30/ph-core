@@ -75,16 +75,20 @@ jobs:
           sudo apt-get install -y graphviz
           dot -v
 
-      - name: Cache publisher + packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            input-cache
-            ~/.fhir/packages
-          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
-          restore-keys: |
-             ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
-             ${{ runner.os }}-fhir-core-
+      - name: Clean build folders
+        run: |
+          rm -rf output temp input-cache ~/.fhir/packages
+
+      # - name: Cache publisher + packages
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       input-cache
+      #       ~/.fhir/packages
+      #     key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
+      #     restore-keys: |
+      #        ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
+      #        ${{ runner.os }}-fhir-core-
 
       - name: Run SUSHI
         run: sushi . --log-level info
@@ -94,6 +98,8 @@ jobs:
           mkdir -p input-cache
           curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar" -o "input-cache/publisher.jar"
           java -jar input-cache/publisher.jar -v || true
+
+          ls -lh input-cache
 
       - name: Preload terminology packages
         run: |
@@ -113,28 +119,42 @@ jobs:
             -update \
             -reset
           test -d output || (echo "::error::No output folder generated" && exit 1)
+          test -f output/package.tgz || echo "::warning::No IG package generated"
 
       - name: QA gate
         run: |
           set -euo pipefail
 
-          if [ -f output/qa.json ]; then
-            ERRORS=$(jq '.errs' output/qa.json || echo 0)
-            WARNINGS=$(jq '.warnings' output/qa.json || echo 0)
-
-            echo "Errors: $ERRORS"
-            echo "Warnings: $WARNINGS"
-
-            if [ "$ERRORS" -gt 0 ]; then
-              echo "::error::FHIR validation errors found ($ERRORS)"
-              exit 1
-            fi
-
-            echo "QA passed (errors = 0, warnings allowed)"
-          else
+          if [ ! -f output/qa.json ]; then
             echo "::error::qa.json not found"
             exit 1
           fi
+
+          ERRORS=$(jq '.errs // 0' output/qa.json)
+          WARNINGS=$(jq '.warnings // 0' output/qa.json)
+          INFO=$(jq '.info // 0' output/qa.json)
+
+          echo "================ FHIR IG QA SUMMARY ================"
+          echo "Errors   : $ERRORS"
+          echo "Warnings : $WARNINGS"
+          echo "Info     : $INFO"
+          echo "===================================================="
+
+          echo ""
+          echo "📌 WARNINGS"
+          jq -r '.warningsDetail[]? | "- \(.message)"' output/qa.json
+
+          echo ""
+          echo "📌 ERRORS"
+          jq -r '.errorsDetail[]? | "- \(.message)"' output/qa.json
+
+          echo ""
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "::error::FHIR IG validation errors found ($ERRORS)"
+            exit 1
+          fi
+
+          echo "QA PASSED (warnings allowed)"
 
       - name: Upload IG artifact
         uses: actions/upload-artifact@v4
@@ -146,19 +166,15 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: qa-reports
-          path: |
-            output/qa.json
-            output/qa.html
-            output/qa.min.html
-          if-no-files-found: warn
+          name: qa-report
+          path: output/qa.json
 
       - name: Prepare publish directory 
         if: github.event_name == 'push'
         run: |
           rm -rf .publish
-          mkdir -p .publish/dev
-          rsync -a output/ .publish/dev/
+          mkdir -p .publish/dev/${{ github.sha }}
+          rsync -a output/ .publish/dev/${{ github.sha }}/
 
       - name: Create root index.html
         if: github.event_name == 'push'
