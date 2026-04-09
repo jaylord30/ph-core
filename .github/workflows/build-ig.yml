@@ -19,8 +19,6 @@ env:
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "2.2.5"
   TX_SERVER: "https://tx.fhir.org"
-  TX_SERVER_PRIMARY: "https://tx.fhir.org"
-  TX_SERVER_FALLBACK: "https://r4.ontoserver.csiro.au/fhir"
 
 
 jobs:
@@ -93,7 +91,7 @@ jobs:
       
       - name: Clean build folders
         run: |
-          rm -rf output temp input-cache ~/.fhir/packages
+          rm -rf output temp input-cache
 
       - name: Run SUSHI
         run: sushi . --log-level info
@@ -109,6 +107,9 @@ jobs:
       - name: Preload terminology packages
         run: |
           mkdir -p ~/.fhir/packages
+
+          echo "Using TX server: $TX_SERVER"
+
           java -jar input-cache/publisher.jar \
             -ig . \
             -tx ${TX_SERVER} \
