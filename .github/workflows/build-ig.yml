@@ -117,18 +117,24 @@ jobs:
       - name: QA gate
         run: |
           set -euo pipefail
+
           if [ -f output/qa.json ]; then
             ERRORS=$(jq '.errs' output/qa.json || echo 0)
-            echo "QA Errors: $ERRORS"
-            if [ "$ERRORS" != "0" ]; then
-              echo "::error::QA errors found (count=$ERRORS)"
+            WARNINGS=$(jq '.warnings' output/qa.json || echo 0)
+
+            echo "Errors: $ERRORS"
+            echo "Warnings: $WARNINGS"
+
+            if [ "$ERRORS" -gt 0 ]; then
+              echo "::error::FHIR validation errors found ($ERRORS)"
               exit 1
             fi
+
+            echo "QA passed (errors = 0, warnings allowed)"
           else
             echo "::error::qa.json not found"
             exit 1
           fi
-          echo "QA passed (0 errors)"
 
       - name: Upload IG artifact
         uses: actions/upload-artifact@v4
