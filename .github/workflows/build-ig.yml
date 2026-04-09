@@ -3,7 +3,6 @@ name: Build, Test, and Deploy PH Core FHIR IG
 on:
   push:
     branches: ["main"]
-#  pull_request:
 
 permissions:
   contents: write
@@ -21,10 +20,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         lfs: true
+
 
     - name: Setup Java
       uses: actions/setup-java@v4
@@ -53,84 +54,83 @@ jobs:
           https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar \
           -o input-cache/publisher.jar
 
-    - name: Light cleanup 
+
+    - name: Clean build folders
       run: |
-        rm -rf output temp input-cache
+        rm -rf output temp
         mkdir -p ~/.fhir/packages
 
-    - name: Run SUSHI (non-blocking)
-      run: sushi . --log-level info || true
 
-    - name: Preload IG dependencies (soft mode)
+    - name: Run SUSHI
+      run: sushi . --log-level info
+
+
+    - name: Build IG
       run: |
         java -jar input-cache/publisher.jar \
           -ig . \
           -tx $TX_SERVER \
           -cachedir ~/.fhir/packages \
-          -update || true
+          -update
 
-    - name: Build IG 
-      run: |
-        java -jar input-cache/publisher.jar \
-          -ig . \
-          -tx $TX_SERVER \
-          -cachedir ~/.fhir/packages \
-          -update || true
-
-    - name: Generate QA report (informational only)
-      run: |
-        if [ -f output/qa.json ]; then
-          echo "=== IG QA SUMMARY  ==="
-
-          ERRORS=$(jq '.errs // 0' output/qa.json)
-          WARNINGS=$(jq '.warnings // 0' output/qa.json)
-          INFO=$(jq '.info // 0' output/qa.json)
-
-          echo "Errors   : $ERRORS"
-          echo "Warnings : $WARNINGS"
-          echo "Info     : $INFO"
-
-          echo ""
-          echo "Top Issues :"
-          jq -r '
-            .errorsDetail[]? |
-            (.location // "unknown") + " -> " + (.message // "")
-          ' output/qa.json | head -50
-
-          echo ""
-          echo "Warnings:"
-          jq -r '.warningsDetail[]? | "- " + (.message // "")' output/qa.json | head -50
-        else
-          echo "No QA file generated "
-        fi
     - name: Check output exists
       run: |
         if [ ! -d output ]; then
           echo "::error::IG build failed - no output folder"
           exit 1
         fi
-    - name: Upload IG output 
-      if: always()
+
+
+    - name: Generate QA report
+      run: |
+        if [ ! -f output/qa.json ]; then
+          echo "::error::qa.json not found"
+          exit 1
+        fi
+
+        ERRORS=$(jq '.errs // 0' output/qa.json)
+        WARNINGS=$(jq '.warnings // 0' output/qa.json)
+        INFO=$(jq '.info // 0' output/qa.json)
+
+        echo "=== IG QA SUMMARY ==="
+        echo "Errors   : $ERRORS"
+        echo "Warnings : $WARNINGS"
+        echo "Info     : $INFO"
+
+        echo ""
+        echo "Top Errors:"
+        jq -r '
+          .errorsDetail[]? |
+          (.location // "unknown") + " -> " + (.message // "")
+        ' output/qa.json | head -50
+
+    - name: Upload IG output
       uses: actions/upload-artifact@v4
       with:
         name: ig-output
         path: output
 
-    - name: Upload QA report 
-      if: always()
+    - name: Upload QA JSON
       uses: actions/upload-artifact@v4
       with:
-        name: qa--report
+        name: qa-report
         path: output/qa.json
+
+    - name: Upload QA HTML
+      uses: actions/upload-artifact@v4
+      with:
+        name: qa-html
+        path: output/qa.html
+
 
     - name: Prepare preview publish
       if: github.event_name == 'push'
       run: |
         rm -rf .publish
         mkdir -p .publish/dev/${{ github.sha }}
-        rsync -a output/ .publish/dev/${{ github.sha }}/ || true
+        rsync -a output/ .publish/dev/${{ github.sha }}/
 
-    - name: Deploy to GitHub Pages (preview)
+    - name: Deploy to GitHub Pages
       if: github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v4
       with:
