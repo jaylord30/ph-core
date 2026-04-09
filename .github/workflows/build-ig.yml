@@ -19,6 +19,9 @@ env:
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "2.2.5"
   TX_SERVER: "https://tx.fhir.org"
+  TX_SERVER_PRIMARY: "https://tx.fhir.org"
+  TX_SERVER_FALLBACK: "https://r4.ontoserver.csiro.au/fhir"
+
 
 jobs:
   ci:
