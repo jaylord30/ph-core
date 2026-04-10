@@ -124,8 +124,7 @@ jobs:
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
             -update \
-            -reset
-            -debug
+            -reset 
 
           echo "================ BUILD DONE ================"
           ls -R output || true
