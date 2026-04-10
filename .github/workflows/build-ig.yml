@@ -117,47 +117,42 @@ jobs:
 
       - name: Build IG
         run: |
+          set -e
+
           java -Xmx6g -jar input-cache/publisher.jar \
             -ig . \
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
             -update \
             -reset
+            -debug
 
-          test -d output || (echo "::error::No output generated" && exit 1)
+          echo "================ BUILD DONE ================"
+          ls -R output || true
 
-          test -f output/package.tgz || echo "::warning::No package.tgz generated"
-
-      - name: QA Report (non-blocking)
+      - name: Show QA summary
+        if: always()
         run: |
-          set +e
+          if [ -f output/qa.json ]; then
+            echo "==== QA SUMMARY ===="
+            cat output/qa.json | jq .
 
-          if [ ! -f output/qa.json ]; then
+            echo ""
+            echo "==== ERROR COUNT ===="
+            jq '.errs' output/qa.json
+          else
             echo "::warning::qa.json not found"
-            exit 0
+
+      - name: Print REAL errors 
+        if: always()
+        run: |
+          echo "================ REAL IG ERRORS ================"
+
+          if [ -f output/qa.json ]; then
+            jq -r '.errorsDetail[]? | "LOCATION: " + (.location // "unknown") + "\nMESSAGE: " + (.message // "") + "\n---"' output/qa.json
+          else
+            echo "No qa.json found"
           fi
-
-          ERRORS=$(jq '.errs // 0' output/qa.json)
-          WARNINGS=$(jq '.warnings // 0' output/qa.json)
-          INFO=$(jq '.info // 0' output/qa.json)
-
-          echo "========================"
-          echo "FHIR IG QA SUMMARY"
-          echo "Errors   : $ERRORS"
-          echo "Warnings : $WARNINGS"
-          echo "Info     : $INFO"
-          echo "========================"
-
-          echo ""
-          echo "ERROR DETAILS"
-          jq -r '.errorsDetail[]? | (.location // "unknown") + " => " + (.message // "")' output/qa.json
-
-          echo ""
-          echo "WARNINGS"
-          jq -r '.warningsDetail[]? | "- " + (.message // "")' output/qa.json
-
-          echo ""
-          echo "QA REPORT COMPLETE (BUILD NOT FAILED)"
 
       - name: Upload IG output
         uses: actions/upload-artifact@v4
@@ -172,6 +167,23 @@ jobs:
           name: qa-report
           path: output/qa.json
 
+      - name: Upload QA HTML (MOST IMPORTANT)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-html
+          path: output/qa.html
+
+      - name: Fail build if IG has errors
+        run: |
+          if [ -f output/qa.json ]; then
+            ERRORS=$(jq '.errs // 0' output/qa.json)
+
+            if [ "$ERRORS" -gt 0 ]; then
+              echo "::error::FHIR IG failed with $ERRORS errors"
+              exit 1
+            fi
+          fi
       - name: Prepare publish directory
         if: github.event_name == 'push'
         run: |
