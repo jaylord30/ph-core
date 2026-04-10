@@ -113,7 +113,7 @@ jobs:
             -ig . \
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
-            -update
+            -update || true
 
       - name: Build IG
         run: |
