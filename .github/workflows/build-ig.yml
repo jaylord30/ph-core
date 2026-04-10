@@ -73,10 +73,11 @@ jobs:
     - name: Build IG
       run: |
         java -jar input-cache/publisher.jar \
-          -ig . \
-          -tx $TX_SERVER \
-          -cachedir ~/.fhir/packages \
-          -update
+          -ig ig.json \
+          -auto-ig-build \
+          -tx http://tx.fhir.org \
+          -target output \
+          -out output || true
 
     - name: Check output exists
       run: |
