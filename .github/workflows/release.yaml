@@ -1,105 +1,157 @@
-# name: PH Core FHIR IG Release
+name: Release PH Core FHIR IG
 
-# on:
-#   push:
-#     tags:
-#       - "v*.*.*"
+on:
+  push:
+    tags:
+      - "v*.*.*"   # e.g. v1.0.0
 
-# permissions:
-#   contents: write
+permissions:
+  contents: write
 
-# env:
-#   JAVA_VERSION: "17"
-#   NODE_VERSION: "18"
-#   RUBY_VERSION: "3.2"
-#   IG_PUBLISHER_VERSION: "1.8.6"
-#   TX_SERVER: "https://tx.fhir.org"
+concurrency:
+  group: fhir-ig-release-${{ github.ref }}
+  cancel-in-progress: false
 
-# jobs:
-#   release-build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-#         with: { lfs: true }
+jobs:
+  release:
+    name: Release - Build & Publish Versioned IG
+    runs-on: ubuntu-latest
 
-#       - name: Setup Java
-#         uses: actions/setup-java@v4
-#         with:
-#           distribution: temurin
-#           java-version: ${{ env.JAVA_VERSION }}
+    env:
+      JAVA_VERSION: "21"
+      NODE_VERSION: "24"
+      RUBY_VERSION: "3.2"
+      IG_PUBLISHER_VERSION: "2.2.5"
+      TX_SERVER: "https://tx.fhir.org/r4"
 
-#       - name: Setup Node
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: ${{ env.NODE_VERSION }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          lfs: true
 
-#       - name: Setup Ruby
-#         uses: ruby/setup-ruby@v1
-#         with:
-#           ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Extract version from tag
+        id: vars
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "TAG=$GITHUB_REF_NAME"
 
-#       - name: Install dependencies
-#         run: |
-#           gem install jekyll bundler
-#           npm install -g fsh-sushi
-#           sudo apt-get update
-#           sudo apt-get install -y graphviz
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
 
-#       - name: Cache FHIR packages
-#         uses: actions/cache@v4
-#         with:
-#           path: |
-#             input-cache
-#             ~/.fhir/packages
-#           key: ${{ runner.os }}-fhir-release-${{ hashFiles('**/sushi-config.yaml','**/ig.ini','**/package-list.json') }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
 
-#       - name: Download IG Publisher
-#         run: |
-#           mkdir -p input-cache
-#           curl -fsSL https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar -o input-cache/publisher.jar
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
 
-#       - name: Run SUSHI
-#         run: sushi .
+      - name: Install dependencies
+        run: |
+          gem install jekyll bundler
+          npm install -g fsh-sushi
+          sudo apt-get update
+          sudo apt-get install -y graphviz
 
-#       - name: Build IG (Gold Standard)
-#         run: |
-#           mkdir -p ~/.fhir/packages
-#           java -jar input-cache/publisher.jar \
-#             -ig . -tx ${TX_SERVER} -cachedir ~/.fhir/packages -reset -publish
-#           test -d output || (echo "::error::No output folder" && exit 1)
+      - name: Cache publisher + packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            input-cache
+            ~/.fhir/packages
+          key: ${{ runner.os }}-fhir-release-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini') }}
 
-#       - name: QA Gate
-#         run: |
-#           set -euo pipefail
-#           ERRORS=$(jq '.errs' output/qa.json)
-#           WARNINGS=$(jq '.warnings' output/qa.json)
-#           echo "Errors: $ERRORS, Warnings: $WARNINGS"
-#           if [ "$ERRORS" != "0" ]; then
-#             echo "::error::Gold-standard QA failed"
-#             exit 1
-#           fi
+      - name: Download IG Publisher
+        run: |
+          mkdir -p input-cache
+          curl -fsSL \
+            "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar" \
+            -o "input-cache/publisher.jar"
 
-#       - name: Extract version
-#         id: version
-#         run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+      - name: Run SUSHI
+        run: sushi . --log-level debug
 
-#       - name: Copy Release Build
-#         run: |
-#           VERSION=${{ steps.version.outputs.VERSION }}
-#           mkdir -p .publish/$VERSION
-#           rsync -a output/ .publish/$VERSION/
+      - name: Build IG
+        run: |
+          java -Xmx6g -jar input-cache/publisher.jar \
+            -ig . \
+            -tx ${TX_SERVER} \
+            -cachedir ~/.fhir/packages \
+            -reset
 
-#       - name: Create index.html
-#         run: |
-#           cat > .publish/index.html <<EOF
-#           <h1>PH Core FHIR IG</h1>
-#           <p><a href="./$VERSION/">Latest Release Build</a></p>
-#           EOF
+      - name: Validate output exists
+        run: |
+          if [ -z "$(ls -A output 2>/dev/null)" ]; then
+            echo "::error::No output generated"
+            exit 1
+          fi
 
-#       - name: Deploy to GitHub Pages (/version/)
-#         uses: peaceiris/actions-gh-pages@v4
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           publish_branch: gh-pages
-#           publish_dir: .publish
-#           keep_files: true
+      - name: QA Gate (fail on errors)
+        run: |
+          ERRORS=$(node -e "const q=require('./output/qa.json'); console.log(q.errs ?? 0)" || echo "1")
+          if [ "$ERRORS" != "0" ]; then
+            echo "::error::QA errors found ($ERRORS)"
+            exit 1
+          fi
+
+      - name: Prepare publish directory
+        run: |
+          VERSION=${{ steps.vars.outputs.version }}
+
+          rm -rf .publish
+          mkdir -p .publish/$VERSION
+          mkdir -p .publish/latest
+
+          rsync -a output/ .publish/$VERSION/
+          rsync -a output/ .publish/latest/
+
+      - name: Create index.html
+        run: |
+          VERSION=${{ steps.vars.outputs.version }}
+
+          cat > .publish/index.html <<EOF
+          <!DOCTYPE html>
+          <html>
+          <head><title>PH Core FHIR IG</title></head>
+          <body>
+            <h1>PH Core FHIR IG</h1>
+            <p><a href="./latest/">Latest Release</a></p>
+            <p><a href="./$VERSION/">Version $VERSION</a></p>
+          </body>
+          </html>
+          EOF
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .publish
+          keep_files: true
+          commit_message: "release: publish v${{ steps.vars.outputs.version }}"
+
+      - name: Upload IG artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ig-${{ steps.vars.outputs.version }}
+          path: output
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: "PH Core FHIR IG v${{ steps.vars.outputs.version }}"
+          body: |
+            Release of PH Core FHIR IG version ${{ steps.vars.outputs.version }}
+
+            - Built via CI
+            - QA passed (0 errors)
+          files: |
+            output/**
