@@ -18,7 +18,7 @@ env:
   NODE_VERSION: "24"
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "2.2.5"
-  TX_SERVER: "https://tx.fhir.org"
+  TX_SERVER: "https://tx.fhir.org/r4"
 
 jobs:
   ci:
