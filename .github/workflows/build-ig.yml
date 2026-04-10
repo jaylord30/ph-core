@@ -141,7 +141,8 @@ jobs:
             jq '.errs' output/qa.json
           else
             echo "::warning::qa.json not found"
-
+          fi
+          
       - name: Print REAL errors 
         if: always()
         run: |
