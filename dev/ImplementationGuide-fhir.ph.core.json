@@ -7,11 +7,11 @@
     "div" : "<div xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\"><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide fhir.ph.core</b></p><a name=\"fhir.ph.core\"> </a><a name=\"hcfhir.ph.core\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Language: en</p></div><h2>PHCoreImplementationGuide</h2><p>The official URL for this implementation guide is: </p><pre>http://doh.gov.ph/fhir/ph-core/ImplementationGuide/fhir.ph.core</pre><div><p>This implementation guide is provided to support the use of FHIR®© in an Philippines context, and defines the minimum set of constraints on the FHIR resources to create the PH Core profiles. This implementation guide forms the foundation to build future PH Realm FHIR implementation guides and its content will continue to grow to meet the needs of PH implementers.</p>\n</div></div>"
   },
   "url" : "http://doh.gov.ph/fhir/ph-core/ImplementationGuide/fhir.ph.core",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "PHCoreImplementationGuide",
   "title" : "Draft PH Core Implementation Guide",
   "status" : "draft",
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -24,32 +24,23 @@
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "packageId" : "fhir.ph.core",
   "license" : "CC-BY-1.0",
   "fhirVersion" : ["4.0.1"],
   "dependsOn" : [{
-    "id" : "hl7tx",
-    "extension" : [{
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
-    }],
-    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-    "packageId" : "hl7.terminology.r4",
-    "version" : "7.1.0"
-  },
-  {
-    "id" : "hl7ext",
-    "extension" : [{
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
-    }],
+    "id" : "hl7_fhir_uv_extensions_r4",
     "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
     "packageId" : "hl7.fhir.uv.extensions.r4",
     "version" : "5.2.0"
+  },
+  {
+    "id" : "hl7_terminology_r4",
+    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+    "packageId" : "hl7.terminology.r4",
+    "version" : "7.0.0"
   }],
   "definition" : {
     "extension" : [{
@@ -71,6 +62,61 @@
       {
         "url" : "value",
         "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://verification.fda.gov.ph"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://my-hospital.org/internal-id"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psced/level"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psgc"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psoc/unit"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -350,6 +396,61 @@
       {
         "url" : "value",
         "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://verification.fda.gov.ph"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://my-hospital.org/internal-id"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psced/level"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psgc"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psoc/unit"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -688,7 +789,7 @@
       },
       "name" : "condition-single-example",
       "description" : "Juan Dela Cruz has an active diagnosis of Type 2 Diabetes Mellitus.",
-      "exampleBoolean" : true
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-condition"
     },
     {
       "extension" : [{
@@ -696,9 +797,9 @@
         "valueString" : "NamingSystem"
       }],
       "reference" : {
-        "reference" : "NamingSystem/doh-nhfr-code-ns"
+        "reference" : "NamingSystem/DOHNHFRCodeNS"
       },
-      "name" : "DOH National Health Faciities Registry Code",
+      "name" : "DOH National Health Facility Registry Code",
       "description" : "Health Facility Code (HFC) from the National Health Facility Registry.",
       "exampleBoolean" : false
     },
@@ -717,6 +818,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/DOHProcedureIDNS"
+      },
+      "name" : "DOH Procedure Identifier",
+      "description" : "Identifier system for procedures assigned by the Department of Health (DOH) health facilities.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
       }],
       "reference" : {
@@ -724,18 +837,6 @@
       },
       "name" : "Drugs",
       "description" : "This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from FDA.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/drugs"
-      },
-      "name" : "Drugs",
-      "description" : "Partial Establishments and Health Products to be published by the [PH FDA](https://verification.fda.gov.ph).",
       "exampleBoolean" : false
     },
     {
@@ -771,7 +872,7 @@
         "reference" : "Encounter/encounter-single-example"
       },
       "name" : "encounter-single-example",
-      "description" : "An ambulatory encounter for Juan Dela Cruz that has been completed.",
+      "description" : "An ambulatory visit for Juan Dela Cruz that has been completed.",
       "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter"
     },
     {
@@ -783,7 +884,7 @@
         "reference" : "Organization/organization-single-example"
       },
       "name" : "Example PH Core Organization",
-      "description" : "An example instance of a PH Core Organization conforming to the Philippine localization profile.",
+      "description" : "An example instance of a PH Core Organization conforming to the Philippine localization profile. Demonstrates all identifier types (NHFR, PAN, PEN) and Must Support fields.",
       "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-organization"
     },
     {
@@ -939,32 +1040,56 @@
         "reference" : "Medication/medication-single-example"
       },
       "name" : "medication-single-example",
-      "description" : "A medication resource with no specific details provided.",
+      "description" : "Twinact (Telmisartan + Amlodipine) from PH FDA CPR.",
       "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medication"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "MedicationAdministration"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/middle-name"
+        "reference" : "MedicationAdministration/medicationadministration-single-example"
       },
-      "name" : "Middle Name",
-      "description" : "Extension to capture middle name information for a person",
-      "exampleBoolean" : false
+      "name" : "medicationadministration-single-example",
+      "description" : "Juan Dela Cruz takes Twinact (Telmisartan + Amlodipine) tablet as prescribed.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationadministration"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
+        "valueString" : "MedicationDispense"
       }],
       "reference" : {
-        "reference" : "Patient/MiddleNameExample"
+        "reference" : "MedicationDispense/medicationdispense-single-example"
       },
-      "name" : "MiddleNameExample",
-      "description" : "Juan Jane Macalalad Buenaventura (born 1980).",
-      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-patient"
+      "name" : "medicationdispense-single-example",
+      "description" : "Pharmacy dispenses Twinact (Telmisartan + Amlodipine) to Juan Dela Cruz based on Dr. Santos prescription.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationRequest"
+      }],
+      "reference" : {
+        "reference" : "MedicationRequest/medicationrequest-single-example"
+      },
+      "name" : "medicationrequest-single-example",
+      "description" : "Dr. Maria Clara Santos prescribes Twinact (Telmisartan + Amlodipine) for Juan Dela Cruz to treat hypertension.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationrequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/medicationstatement-single-example"
+      },
+      "name" : "medicationstatement-single-example",
+      "description" : "Patient Juan Dela Cruz reports taking Twinact (Telmisartan + Amlodipine) for hypertension.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationstatement"
     },
     {
       "extension" : [{
@@ -1041,6 +1166,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/PhilHealthPANNS"
+      },
+      "name" : "PAN - PhilHealth Accreditation Number",
+      "description" : "The unique number issued by PhilHealth to accredited institutions.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Patient"
       }],
       "reference" : {
@@ -1053,6 +1190,18 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/PhilHealthPENNS"
+      },
+      "name" : "PEN - PhilHealth Employer Number",
+      "description" : "The unique number issued by PhilHealth to employers.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
@@ -1060,6 +1209,42 @@
       },
       "name" : "PH Core Address",
       "description" : "An address for the individual.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-condition"
+      },
+      "name" : "PH Core Condition",
+      "description" : "Captures Condition.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActorDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActorDefinition/Consumer"
+      },
+      "name" : "PH Core Consumer",
+      "description" : "A PH Core Consumer is a system that receives and uses PH Core resources.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActorDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActorDefinition/Creator"
+      },
+      "name" : "PH Core Creator",
+      "description" : "A PH Core Creator is a system which produces/assembles/creates PH Core resources.",
       "exampleBoolean" : false
     },
     {
@@ -1113,6 +1298,54 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-medicationadministration"
+      },
+      "name" : "PH Core Medication Administration",
+      "description" : "Captures key FHIR Medication Administration data for the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-medicationdispense"
+      },
+      "name" : "PH Core Medication Dispense",
+      "description" : "Captures key FHIR Medication Dispense data for the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-medicationrequest"
+      },
+      "name" : "PH Core Medication Request",
+      "description" : "Captures key FHIR Medication Request data for the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-medicationstatement"
+      },
+      "name" : "PH Core Medication Statement",
+      "description" : "Captures key FHIR Medication Statement data for the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
@@ -1161,18 +1394,6 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "NamingSystem"
-      }],
-      "reference" : {
-        "reference" : "NamingSystem/pdd-registration-ns"
-      },
-      "name" : "PH Core PhilHealth Dialysis Database Registration Number",
-      "description" : "PH Core PhilHealth Dialysis Database Registration Number",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
@@ -1212,10 +1433,106 @@
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
+        "reference" : "StructureDefinition/ph-core-provenance"
+      },
+      "name" : "PH Core Provenance",
+      "description" : "This profile localizes the FHIR R4 Provenance resource to the Philippine context, capturing key information about who, what, when, and where for a set of resources. It is used to track the authorship and history of healthcare data in Philippine health information systems.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
         "reference" : "StructureDefinition/ph-core-relatedperson"
       },
       "name" : "PH Core RelatedPerson",
       "description" : "This profile localizes the FHIR R4 RelatedPerson resource to the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActorDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActorDefinition/Server"
+      },
+      "name" : "PH Core Server",
+      "description" : "A PH Core Server is a FHIR server that stores and provides access to PH Core resources.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-serviceRequest"
+      },
+      "name" : "PH Core ServiceRequest",
+      "description" : "The PH Core ServiceRequest Profile is a Philippine-specific FHIR profile that represents a record of a request for services such as diagnostic investigations, treatments, or operations to be performed within the Philippine health system. It constrains the base FHIR ServiceRequest resource by defining minimum expectations on core elements, extensions, vocabularies, and value sets relevant to local clinical and administrative workflows. It serves as a nationally consistent baseline for recording, searching, and fetching service request information to support interoperable health information exchange across Philippine health facilities and programs.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-task"
+      },
+      "name" : "PH Core Task",
+      "description" : "This profile localizes the FHIR R4 Task resource to the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/PHFDACPRCS"
+      },
+      "name" : "PH FDA Certificate of Product Registration (CPR) CodeSystem",
+      "description" : "Registered drug products from the Philippine Food and Drug Administration (FDA)",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-philhealth-pan"
+      },
+      "name" : "PhilHealth Accreditation Number",
+      "description" : "The unique number issued by PhilHealth to accredited institutions.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-philhealth-pen"
+      },
+      "name" : "PhilHealth Employer Number",
+      "description" : "The unique number issued by PhilHealth to employers.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/PhilHealthProcedureIDNS"
+      },
+      "name" : "PhilHealth Procedure Identifier",
+      "description" : "Identifier system for procedures assigned by PhilHealth for claims and reimbursement purposes.",
       "exampleBoolean" : false
     },
     {
@@ -1236,10 +1553,10 @@
         "valueString" : "NamingSystem"
       }],
       "reference" : {
-        "reference" : "NamingSystem/philsys-id-ns"
+        "reference" : "NamingSystem/PhilSysIDNS"
       },
       "name" : "PhilSys Identification Number (PhilSys ID)",
-      "description" : "The National ID Number is a unique and randomly-generated 12-digit permanent identification number that is assigned to every citizen or resident alien upon successful registration to National ID system.",
+      "description" : "The National ID Number issued to all Filipino citizens and resident aliens in the Philippines, as part of the Philippine Identification System (PhilSys) program.",
       "exampleBoolean" : false
     },
     {
@@ -1260,7 +1577,7 @@
         "valueString" : "NamingSystem"
       }],
       "reference" : {
-        "reference" : "NamingSystem/philhealth-id-ns"
+        "reference" : "NamingSystem/PhilHealthIDNS"
       },
       "name" : "PIN - PhilHealth Identification Number",
       "description" : "The permanent and unique number issued by PhilHealth to individual members and to each and every dependent.",
@@ -1277,6 +1594,30 @@
       "name" : "practitioner-single-example",
       "description" : "Dr. Maria Clara Santos, a female practitioner born on 1985-05-15, resides at 1234 Mabini Street, Manila, NCR, 1000, Philippines. She can be contacted via mobile at +63-912-345-6789 or by email at maria.santos@example.ph.",
       "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Procedure"
+      }],
+      "reference" : {
+        "reference" : "Procedure/procedure-single-example"
+      },
+      "name" : "procedure-single-example",
+      "description" : "A comprehensive example of an appendectomy procedure performed on Juan Dela Cruz, demonstrating extensive use of Procedure resource elements including identifiers, status history, multiple performers, body site, complications, and follow-up care.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-procedure"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Provenance"
+      }],
+      "reference" : {
+        "reference" : "Provenance/provenance-single-example"
+      },
+      "name" : "provenance-single-example",
+      "description" : "Provenance record documenting that Dr. Maria Clara Santos created the blood pressure observation for Juan Dela Cruz on September 17, 2012, on behalf of the Department of Health - Central Office.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-provenance"
     },
     {
       "extension" : [{
@@ -1353,6 +1694,30 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ServiceRequest"
+      }],
+      "reference" : {
+        "reference" : "ServiceRequest/servicerequest-single-example"
+      },
+      "name" : "servicerequest-single-example",
+      "description" : "A laboratory service request for fasting blood glucose test ordered by Dr. Maria Clara Santos for patient Juan Dela Cruz during an ambulatory encounter.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-serviceRequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Task"
+      }],
+      "reference" : {
+        "reference" : "Task/task-single-example"
+      },
+      "name" : "task-single-example",
+      "description" : "A laboratory task for Juan Dela Cruz requested by Dr. Maria Clara Santos. The task is to collect a blood sample for a routine CBC test.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-task"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
       }],
       "reference" : {
@@ -1382,15 +1747,6 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "approach.html"
-        }],
-        "nameUrl" : "approach.html",
-        "title" : "Approach",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
           "valueUrl" : "otherIds.html"
         }],
         "nameUrl" : "otherIds.html",
@@ -1400,10 +1756,10 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "version-mangement.html"
+          "valueUrl" : "terminology.html"
         }],
-        "nameUrl" : "version-mangement.html",
-        "title" : "Version Mangement",
+        "nameUrl" : "terminology.html",
+        "title" : "Terminology",
         "generation" : "markdown"
       }]
     },

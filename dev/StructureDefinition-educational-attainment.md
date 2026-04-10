@@ -1,4 +1,4 @@
-# Educational Attainment - Draft PH Core Implementation Guide v0.1.0
+# Educational Attainment - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/educational-attainment | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:EducationalAttainment |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/educational-attainment | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:EducationalAttainment |
 
 Highest educational attainment of the patient.
 
@@ -20,6 +20,7 @@ Highest educational attainment of the patient.
 **Usages:**
 
 * Use this Extension: [PH Core Patient](StructureDefinition-ph-core-patient.md)
+* Examples for this Extension: [Patient/patient-single-example](Patient-patient-single-example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/educational-attainment)
 
@@ -44,12 +45,12 @@ Other representations of profile: [CSV](StructureDefinition-educational-attainme
   "resourceType" : "StructureDefinition",
   "id" : "educational-attainment",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/educational-attainment",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "EducationalAttainment",
   "title" : "Educational Attainment",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -62,8 +63,7 @@ Other representations of profile: [CSV](StructureDefinition-educational-attainme
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "fhirVersion" : "4.0.1",

@@ -1,4 +1,4 @@
-# Drugs - Draft PH Core Implementation Guide v0.1.0
+# Drugs - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/drugs-vs | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:DrugsVS |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/drugs-vs | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:DrugsVS |
 
  
 This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from FDA. 
@@ -17,10 +17,12 @@ This value set includes all drug or medicament substance codes and all pharmaceu
  **References** 
 
 * [PH Core Medication](StructureDefinition-ph-core-medication.md)
+* [PH Core Medication Administration](StructureDefinition-ph-core-medicationadministration.md)
+* [PH Core Medication Dispense](StructureDefinition-ph-core-medicationdispense.md)
+* [PH Core Medication Request](StructureDefinition-ph-core-medicationrequest.md)
+* [PH Core Medication Statement](StructureDefinition-ph-core-medicationstatement.md)
 
 ### Logical Definition (CLD)
-
-No formal definition provided for this value set
 
  
 
@@ -48,12 +50,12 @@ No formal definition provided for this value set
   "resourceType" : "ValueSet",
   "id" : "drugs-vs",
   "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/drugs-vs",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "DrugsVS",
   "title" : "Drugs",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -66,10 +68,14 @@ No formal definition provided for this value set
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
-  }]
+  }],
+  "compose" : {
+    "include" : [{
+      "system" : "https://verification.fda.gov.ph"
+    }]
+  }
 }
 
 ```

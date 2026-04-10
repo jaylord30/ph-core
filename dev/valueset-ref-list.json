@@ -1,53 +1,59 @@
 {
   "codeSystems" : [{
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/barangays",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "status" : "draft",
     "name" : "Barangays",
     "title" : "Barangays",
     "description" : "The Barangay codes valueset includes all barangay values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA).",
-    "systems" : ["http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC"],
+    "systems" : ["https://psa.gov.ph/classification/psgc"],
     "uses" : {
     },
     "StructureDefinition-barangay.html" : "Barangay"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/cities",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "status" : "draft",
     "name" : "Cities",
     "title" : "Cities",
     "description" : "All city values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA).",
-    "systems" : ["http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC"],
+    "systems" : ["https://psa.gov.ph/classification/psgc"],
     "uses" : {
     },
     "StructureDefinition-city-municipality.html" : "City/Municipality"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/drugs-vs",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "status" : "draft",
     "name" : "DrugsVS",
     "title" : "Drugs",
     "description" : "This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from FDA.",
+    "systems" : ["https://verification.fda.gov.ph"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-medication.html" : "PH Core Medication"
+    "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
+    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
+    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement",
+    "StructureDefinition-ph-core-medication.html" : "PH Core Medication",
+    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/educational-attainments",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "status" : "draft",
     "name" : "EducationalAttainments",
     "title" : "Educational Attainments",
     "description" : "All categories of educational programs, courses, and attainment levels in the Philippines, based on the Philippine Standard Classification of Education (PSCED) published by the Philippine Statistics Authority (PSA)",
+    "systems" : ["https://psa.gov.ph/classification/psced/level"],
     "uses" : {
     },
     "StructureDefinition-educational-attainment.html" : "Educational Attainment"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/indigenous-groups-vs",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "status" : "draft",
     "name" : "IndigenousGroupsVS",
     "title" : "Indigenous Groups",
@@ -59,35 +65,36 @@
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/occupational-classifications",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "status" : "draft",
     "name" : "OccupationClassifications",
     "title" : "Occupation Classifications",
     "description" : "The Occupation codes valueset includes Occupational Classification values from the Philippine Standard Occupational Classification (PSOC) published by the Philippine Statistic Authority (PSA).",
+    "systems" : ["https://psa.gov.ph/classification/psoc/unit"],
     "uses" : {
     },
     "StructureDefinition-occupation.html" : "Occupation"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/provinces",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "status" : "draft",
     "name" : "Provinces",
     "title" : "Provinces",
     "description" : "All province values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA).",
-    "systems" : ["http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC"],
+    "systems" : ["https://psa.gov.ph/classification/psgc"],
     "uses" : {
     },
     "StructureDefinition-province.html" : "Province"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/regions",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "status" : "draft",
     "name" : "Regions",
     "title" : "Regions",
     "description" : "The Region codes valueset includes all region values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA).",
-    "systems" : ["http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC"],
+    "systems" : ["https://psa.gov.ph/classification/psgc"],
     "uses" : {
     },
     "StructureDefinition-region.html" : "Region"
@@ -106,6 +113,20 @@
     "uses" : {
     },
     "StructureDefinition-ph-core-patient.html" : "PH Core Patient"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/provenance-agent-type",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ProvenanceParticipantType",
+    "title" : "Provenance participant type",
+    "description" : "The type of participation a provenance participant.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/provenance-participant-type"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1003"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1003"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-provenance.html" : "PH Core Provenance"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",

@@ -1,4 +1,4 @@
-# PhilSys Identification Number (PhilSys ID) - Draft PH Core Implementation Guide v0.1.0
+# PhilSys Identification Number (PhilSys ID) - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-philsys-id | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:PHCorePhilSysID |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-philsys-id | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:PHCorePhilSysID |
 
  
 The National ID Number PSA issued to all Filipino citizens and resident aliens in the Philippines, as part of the Philippine Identification System (PhilSys) program. 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-philsys-id.c
   "resourceType" : "StructureDefinition",
   "id" : "ph-core-philsys-id",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-philsys-id",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "PHCorePhilSysID",
   "title" : "PhilSys Identification Number (PhilSys ID)",
   "status" : "draft",
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -54,8 +54,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-philsys-id.c
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "fhirVersion" : "4.0.1",
@@ -94,7 +93,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-philsys-id.c
       "id" : "Identifier.system",
       "path" : "Identifier.system",
       "min" : 1,
-      "fixedUri" : "https://philsys.gov.ph/the-national-id/"
+      "fixedUri" : "http://philsys.gov.ph/fhir/Identifier/philsys-id"
     },
     {
       "id" : "Identifier.value",

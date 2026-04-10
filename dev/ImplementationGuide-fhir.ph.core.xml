@@ -8,11 +8,11 @@
 </div></div>
   </text>
   <url value="http://doh.gov.ph/fhir/ph-core/ImplementationGuide/fhir.ph.core"/>
-  <version value="0.1.0"/>
+  <version value="0.2.0"/>
   <name value="PHCoreImplementationGuide"/>
   <title value="Draft PH Core Implementation Guide"/>
   <status value="draft"/>
-  <date value="2026-04-08T04:20:57+00:00"/>
+  <date value="2026-04-10T05:32:03+00:00"/>
   <publisher value="UP Manila National TeleHealth Center"/>
   <contact>
     <name value="UP Manila National TeleHealth Center"/>
@@ -26,27 +26,20 @@
     <coding>
       <system value="urn:iso:std:iso:3166"/>
       <code value="PH"/>
-      <display value="Philippines"/>
     </coding>
   </jurisdiction>
   <packageId value="fhir.ph.core"/>
   <license value="CC-BY-1.0"/>
   <fhirVersion value="4.0.1"/>
-  <dependsOn id="hl7tx">
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
-      <valueMarkdown value="Automatically added as a dependency - all IGs depend on HL7 Terminology"/>
-    </extension>
-    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
-    <packageId value="hl7.terminology.r4"/>
-    <version value="7.1.0"/>
-  </dependsOn>
-  <dependsOn id="hl7ext">
-    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
-      <valueMarkdown value="Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"/>
-    </extension>
+  <dependsOn id="hl7_fhir_uv_extensions_r4">
     <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
     <packageId value="hl7.fhir.uv.extensions.r4"/>
     <version value="5.2.0"/>
+  </dependsOn>
+  <dependsOn id="hl7_terminology_r4">
+    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
+    <packageId value="hl7.terminology.r4"/>
+    <version value="7.0.0"/>
   </dependsOn>
   <definition>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -63,6 +56,46 @@
       </extension>
       <extension url="value">
         <valueString value="ci-build"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://verification.fda.gov.ph"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://my-hospital.org/internal-id"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://psa.gov.ph/classification/psced/level"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://psa.gov.ph/classification/psgc"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueString value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://psa.gov.ph/classification/psoc/unit"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -266,6 +299,46 @@
       </extension>
       <extension url="value">
         <valueString value="ci-build"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://verification.fda.gov.ph"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="http://my-hospital.org/internal-id"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://psa.gov.ph/classification/psced/level"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://psa.gov.ph/classification/psgc"/>
+      </extension>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+      <extension url="code">
+        <valueCode value="special-url"/>
+      </extension>
+      <extension url="value">
+        <valueString value="https://psa.gov.ph/classification/psoc/unit"/>
       </extension>
     </extension>
     <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -527,16 +600,16 @@
       </reference>
       <name value="condition-single-example"/>
       <description value="Juan Dela Cruz has an active diagnosis of Type 2 Diabetes Mellitus."/>
-      <exampleBoolean value="true"/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-condition"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="NamingSystem"/>
       </extension>
       <reference>
-        <reference value="NamingSystem/doh-nhfr-code-ns"/>
+        <reference value="NamingSystem/DOHNHFRCodeNS"/>
       </reference>
-      <name value="DOH National Health Faciities Registry Code"/>
+      <name value="DOH National Health Facility Registry Code"/>
       <description value="Health Facility Code (HFC) from the National Health Facility Registry."/>
       <exampleBoolean value="false"/>
     </resource>
@@ -553,6 +626,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/DOHProcedureIDNS"/>
+      </reference>
+      <name value="DOH Procedure Identifier"/>
+      <description value="Identifier system for procedures assigned by the Department of Health (DOH) health facilities."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="ValueSet"/>
       </extension>
       <reference>
@@ -560,17 +644,6 @@
       </reference>
       <name value="Drugs"/>
       <description value="This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from FDA."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="CodeSystem"/>
-      </extension>
-      <reference>
-        <reference value="CodeSystem/drugs"/>
-      </reference>
-      <name value="Drugs"/>
-      <description value="Partial Establishments and Health Products to be published by the [PH FDA](https://verification.fda.gov.ph)."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -603,7 +676,7 @@
         <reference value="Encounter/encounter-single-example"/>
       </reference>
       <name value="encounter-single-example"/>
-      <description value="An ambulatory encounter for Juan Dela Cruz that has been completed."/>
+      <description value="An ambulatory visit for Juan Dela Cruz that has been completed."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter"/>
     </resource>
     <resource>
@@ -614,7 +687,7 @@
         <reference value="Organization/organization-single-example"/>
       </reference>
       <name value="Example PH Core Organization"/>
-      <description value="An example instance of a PH Core Organization conforming to the Philippine localization profile."/>
+      <description value="An example instance of a PH Core Organization conforming to the Philippine localization profile. Demonstrates all identifier types (NHFR, PAN, PEN) and Must Support fields."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-organization"/>
     </resource>
     <resource>
@@ -757,30 +830,52 @@
         <reference value="Medication/medication-single-example"/>
       </reference>
       <name value="medication-single-example"/>
-      <description value="A medication resource with no specific details provided."/>
+      <description value="Twinact (Telmisartan + Amlodipine) from PH FDA CPR."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medication"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="StructureDefinition:extension"/>
+        <valueString value="MedicationAdministration"/>
       </extension>
       <reference>
-        <reference value="StructureDefinition/middle-name"/>
+        <reference value="MedicationAdministration/medicationadministration-single-example"/>
       </reference>
-      <name value="Middle Name"/>
-      <description value="Extension to capture middle name information for a person"/>
-      <exampleBoolean value="false"/>
+      <name value="medicationadministration-single-example"/>
+      <description value="Juan Dela Cruz takes Twinact (Telmisartan + Amlodipine) tablet as prescribed."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationadministration"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Patient"/>
+        <valueString value="MedicationDispense"/>
       </extension>
       <reference>
-        <reference value="Patient/MiddleNameExample"/>
+        <reference value="MedicationDispense/medicationdispense-single-example"/>
       </reference>
-      <name value="MiddleNameExample"/>
-      <description value="Juan Jane Macalalad Buenaventura (born 1980)."/>
-      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-patient"/>
+      <name value="medicationdispense-single-example"/>
+      <description value="Pharmacy dispenses Twinact (Telmisartan + Amlodipine) to Juan Dela Cruz based on Dr. Santos prescription."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationdispense"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationRequest"/>
+      </extension>
+      <reference>
+        <reference value="MedicationRequest/medicationrequest-single-example"/>
+      </reference>
+      <name value="medicationrequest-single-example"/>
+      <description value="Dr. Maria Clara Santos prescribes Twinact (Telmisartan + Amlodipine) for Juan Dela Cruz to treat hypertension."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationrequest"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="MedicationStatement"/>
+      </extension>
+      <reference>
+        <reference value="MedicationStatement/medicationstatement-single-example"/>
+      </reference>
+      <name value="medicationstatement-single-example"/>
+      <description value="Patient Juan Dela Cruz reports taking Twinact (Telmisartan + Amlodipine) for hypertension."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationstatement"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -850,6 +945,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/PhilHealthPANNS"/>
+      </reference>
+      <name value="PAN - PhilHealth Accreditation Number"/>
+      <description value="The unique number issued by PhilHealth to accredited institutions."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Patient"/>
       </extension>
       <reference>
@@ -861,6 +967,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/PhilHealthPENNS"/>
+      </reference>
+      <name value="PEN - PhilHealth Employer Number"/>
+      <description value="The unique number issued by PhilHealth to employers."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
@@ -868,6 +985,39 @@
       </reference>
       <name value="PH Core Address"/>
       <description value="An address for the individual."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-condition"/>
+      </reference>
+      <name value="PH Core Condition"/>
+      <description value="Captures Condition."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/Consumer"/>
+      </reference>
+      <name value="PH Core Consumer"/>
+      <description value="A PH Core Consumer is a system that receives and uses PH Core resources."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/Creator"/>
+      </reference>
+      <name value="PH Core Creator"/>
+      <description value="A PH Core Creator is a system which produces/assembles/creates PH Core resources."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -916,6 +1066,50 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-medicationadministration"/>
+      </reference>
+      <name value="PH Core Medication Administration"/>
+      <description value="Captures key FHIR Medication Administration data for the Philippine context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-medicationdispense"/>
+      </reference>
+      <name value="PH Core Medication Dispense"/>
+      <description value="Captures key FHIR Medication Dispense data for the Philippine context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-medicationrequest"/>
+      </reference>
+      <name value="PH Core Medication Request"/>
+      <description value="Captures key FHIR Medication Request data for the Philippine context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-medicationstatement"/>
+      </reference>
+      <name value="PH Core Medication Statement"/>
+      <description value="Captures key FHIR Medication Statement data for the Philippine context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
@@ -960,17 +1154,6 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="NamingSystem"/>
-      </extension>
-      <reference>
-        <reference value="NamingSystem/pdd-registration-ns"/>
-      </reference>
-      <name value="PH Core PhilHealth Dialysis Database Registration Number"/>
-      <description value="PH Core PhilHealth Dialysis Database Registration Number"/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -1007,10 +1190,98 @@
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
+        <reference value="StructureDefinition/ph-core-provenance"/>
+      </reference>
+      <name value="PH Core Provenance"/>
+      <description value="This profile localizes the FHIR R4 Provenance resource to the Philippine context, capturing key information about who, what, when, and where for a set of resources. It is used to track the authorship and history of healthcare data in Philippine health information systems."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
         <reference value="StructureDefinition/ph-core-relatedperson"/>
       </reference>
       <name value="PH Core RelatedPerson"/>
       <description value="This profile localizes the FHIR R4 RelatedPerson resource to the Philippine context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ActorDefinition"/>
+      </extension>
+      <reference>
+        <reference value="ActorDefinition/Server"/>
+      </reference>
+      <name value="PH Core Server"/>
+      <description value="A PH Core Server is a FHIR server that stores and provides access to PH Core resources."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-serviceRequest"/>
+      </reference>
+      <name value="PH Core ServiceRequest"/>
+      <description value="The PH Core ServiceRequest Profile is a Philippine-specific FHIR profile that represents a record of a request for services such as diagnostic investigations, treatments, or operations to be performed within the Philippine health system. It constrains the base FHIR ServiceRequest resource by defining minimum expectations on core elements, extensions, vocabularies, and value sets relevant to local clinical and administrative workflows. It serves as a nationally consistent baseline for recording, searching, and fetching service request information to support interoperable health information exchange across Philippine health facilities and programs."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-task"/>
+      </reference>
+      <name value="PH Core Task"/>
+      <description value="This profile localizes the FHIR R4 Task resource to the Philippine context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/PHFDACPRCS"/>
+      </reference>
+      <name value="PH FDA Certificate of Product Registration (CPR) CodeSystem"/>
+      <description value="Registered drug products from the Philippine Food and Drug Administration (FDA)"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-philhealth-pan"/>
+      </reference>
+      <name value="PhilHealth Accreditation Number"/>
+      <description value="The unique number issued by PhilHealth to accredited institutions."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:complex-type"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-philhealth-pen"/>
+      </reference>
+      <name value="PhilHealth Employer Number"/>
+      <description value="The unique number issued by PhilHealth to employers."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/PhilHealthProcedureIDNS"/>
+      </reference>
+      <name value="PhilHealth Procedure Identifier"/>
+      <description value="Identifier system for procedures assigned by PhilHealth for claims and reimbursement purposes."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1029,10 +1300,10 @@
         <valueString value="NamingSystem"/>
       </extension>
       <reference>
-        <reference value="NamingSystem/philsys-id-ns"/>
+        <reference value="NamingSystem/PhilSysIDNS"/>
       </reference>
       <name value="PhilSys Identification Number (PhilSys ID)"/>
-      <description value="The National ID Number is a unique and randomly-generated 12-digit permanent identification number that is assigned to every citizen or resident alien upon successful registration to National ID system."/>
+      <description value="The National ID Number issued to all Filipino citizens and resident aliens in the Philippines, as part of the Philippine Identification System (PhilSys) program."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1051,7 +1322,7 @@
         <valueString value="NamingSystem"/>
       </extension>
       <reference>
-        <reference value="NamingSystem/philhealth-id-ns"/>
+        <reference value="NamingSystem/PhilHealthIDNS"/>
       </reference>
       <name value="PIN - PhilHealth Identification Number"/>
       <description value="The permanent and unique number issued by PhilHealth to individual members and to each and every dependent."/>
@@ -1067,6 +1338,28 @@
       <name value="practitioner-single-example"/>
       <description value="Dr. Maria Clara Santos, a female practitioner born on 1985-05-15, resides at 1234 Mabini Street, Manila, NCR, 1000, Philippines. She can be contacted via mobile at +63-912-345-6789 or by email at maria.santos@example.ph."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Procedure"/>
+      </extension>
+      <reference>
+        <reference value="Procedure/procedure-single-example"/>
+      </reference>
+      <name value="procedure-single-example"/>
+      <description value="A comprehensive example of an appendectomy procedure performed on Juan Dela Cruz, demonstrating extensive use of Procedure resource elements including identifiers, status history, multiple performers, body site, complications, and follow-up care."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-procedure"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Provenance"/>
+      </extension>
+      <reference>
+        <reference value="Provenance/provenance-single-example"/>
+      </reference>
+      <name value="provenance-single-example"/>
+      <description value="Provenance record documenting that Dr. Maria Clara Santos created the blood pressure observation for Juan Dela Cruz on September 17, 2012, on behalf of the Department of Health - Central Office."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-provenance"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1136,6 +1429,28 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ServiceRequest"/>
+      </extension>
+      <reference>
+        <reference value="ServiceRequest/servicerequest-single-example"/>
+      </reference>
+      <name value="servicerequest-single-example"/>
+      <description value="A laboratory service request for fasting blood glucose test ordered by Dr. Maria Clara Santos for patient Juan Dela Cruz during an ambulatory encounter."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-serviceRequest"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Task"/>
+      </extension>
+      <reference>
+        <reference value="Task/task-single-example"/>
+      </reference>
+      <name value="task-single-example"/>
+      <description value="A laboratory task for Juan Dela Cruz requested by Dr. Maria Clara Santos. The task is to collect a blood sample for a routine CBC test."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-task"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Bundle"/>
       </extension>
       <reference>
@@ -1162,14 +1477,6 @@
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="approach.html"/>
-        </extension>
-        <nameUrl value="approach.html"/>
-        <title value="Approach"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
           <valueUrl value="otherIds.html"/>
         </extension>
         <nameUrl value="otherIds.html"/>
@@ -1178,10 +1485,10 @@
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="version-mangement.html"/>
+          <valueUrl value="terminology.html"/>
         </extension>
-        <nameUrl value="version-mangement.html"/>
-        <title value="Version Mangement"/>
+        <nameUrl value="terminology.html"/>
+        <title value="Terminology"/>
         <generation value="markdown"/>
       </page>
     </page>

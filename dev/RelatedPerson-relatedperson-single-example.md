@@ -1,4 +1,4 @@
-# relatedperson-single-example - Draft PH Core Implementation Guide v0.1.0
+# relatedperson-single-example - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -20,7 +20,7 @@ Maria Cruz Santos, born on January 1, 1955, is the mother of the patient. She re
     "profile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-relatedperson"]
   },
   "identifier" : [{
-    "system" : "http://doh.gov.ph/fhir/ph-core/NamingSystem/philsys-id-ns",
+    "system" : "http://philsys.gov.ph/fhir/Identifier/philsys-id",
     "value" : "1234-1234567-1"
   }],
   "patient" : {
@@ -42,7 +42,7 @@ Maria Cruz Santos, born on January 1, 1955, is the mother of the patient. She re
     "extension" : [{
       "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/region",
       "valueCoding" : {
-        "system" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC",
+        "system" : "https://psa.gov.ph/classification/psgc",
         "code" : "0102800000",
         "display" : "Ilocos Norte"
       }
@@ -50,7 +50,7 @@ Maria Cruz Santos, born on January 1, 1955, is the mother of the patient. She re
     {
       "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/province",
       "valueCoding" : {
-        "system" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC",
+        "system" : "https://psa.gov.ph/classification/psgc",
         "code" : "1705100000",
         "display" : "Occidental Mindoro"
       }

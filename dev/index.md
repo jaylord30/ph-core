@@ -1,4 +1,4 @@
-# Home - Draft PH Core Implementation Guide v0.1.0
+# Home - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * **Home**
@@ -7,8 +7,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/ImplementationGuide/fhir.ph.core | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:PHCoreImplementationGuide |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/ImplementationGuide/fhir.ph.core | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:PHCoreImplementationGuide |
 
 # Draft Philippine Core FHIR Implementation Guide (PH Core IG)
 
@@ -75,6 +75,11 @@ FHIR®© Connectathon events are key to the verification of the guide as being s
 
 This publication includes IP covered under the following statements.
 
+* These codes are excerpted from ASTM Standard, E1762-95(2013) - Standard Guide for Electronic Authentication of Health Care Information, Copyright by ASTM International, 100 Barr Harbor Drive, West Conshohocken, PA 19428. Copies of this standard are available through the ASTM Web Site at www.astm.org.
+
+* [Signature Type Codes](http://hl7.org/fhir/R4/codesystem-signature-type.html): [Provenance/provenance-single-example](Provenance-provenance-single-example.md)
+
+
 * This material contains content from [LOINC](http://loinc.org). LOINC is copyright © 1995-2020, Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee and is available at no cost under the [license](http://loinc.org/license). LOINC® is a registered United States trademark of Regenstrief Institute, Inc.
 
 * LOINC: [Bundle/transaction-example](Bundle-transaction-example.md), [Observation/blood-pressure](Observation-blood-pressure.md) and [Observation/observation-single-example](Observation-observation-single-example.md)
@@ -82,26 +87,33 @@ This publication includes IP covered under the following statements.
 
 * This material contains content that is copyright of SNOMED International. Implementers of these specifications must have the appropriate SNOMED CT Affiliate license - for more information contact [https://www.snomed.org/get-snomed](https://www.snomed.org/get-snomed) or [info@snomed.org](mailto:info@snomed.org).
 
-* [SNOMED Clinical Terms&reg; (SNOMED CT&reg;)](http://hl7.org/fhir/R4/codesystem-snomedct.html): [AllergyIntolerance/allergy-single-example](AllergyIntolerance-allergy-single-example.md), [AllergyIntolerance/example-allergy](AllergyIntolerance-example-allergy.md)... Show 5 more, [Bundle/transaction-example](Bundle-transaction-example.md), [Condition/condition-single-example](Condition-condition-single-example.md), [Condition/example-condition](Condition-example-condition.md), [Observation/blood-pressure](Observation-blood-pressure.md) and [Observation/observation-single-example](Observation-observation-single-example.md)
+* [SNOMED Clinical Terms&reg; (SNOMED CT&reg;)](http://hl7.org/fhir/R4/codesystem-snomedct.html): [AllergyIntolerance/allergy-single-example](AllergyIntolerance-allergy-single-example.md), [AllergyIntolerance/example-allergy](AllergyIntolerance-example-allergy.md)... Show 12 more, [Bundle/transaction-example](Bundle-transaction-example.md), [Condition/condition-single-example](Condition-condition-single-example.md), [Condition/example-condition](Condition-example-condition.md), [Medication/medication-single-example](Medication-medication-single-example.md), [MedicationDispense/medicationdispense-single-example](MedicationDispense-medicationdispense-single-example.md), [MedicationRequest/medicationrequest-single-example](MedicationRequest-medicationrequest-single-example.md), [MedicationStatement/medicationstatement-single-example](MedicationStatement-medicationstatement-single-example.md), [Observation/blood-pressure](Observation-blood-pressure.md), [Observation/observation-single-example](Observation-observation-single-example.md), [Procedure/procedure-single-example](Procedure-procedure-single-example.md), [ServiceRequest/servicerequest-single-example](ServiceRequest-servicerequest-single-example.md) and [Task/task-single-example](Task-task-single-example.md)
 
 
 * This material derives from the HL7 Terminology (THO). THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: [https://terminology.hl7.org/license.html](https://terminology.hl7.org/license.html)
 
-* [AllergyIntolerance Clinical Status Codes](http://terminology.hl7.org/7.1.0/CodeSystem-allergyintolerance-clinical.html): [AllergyIntolerance/allergy-single-example](AllergyIntolerance-allergy-single-example.md), [AllergyIntolerance/example-allergy](AllergyIntolerance-example-allergy.md) and [Bundle/transaction-example](Bundle-transaction-example.md)
-* [Condition Clinical Status Codes](http://terminology.hl7.org/7.1.0/CodeSystem-condition-clinical.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Condition/condition-single-example](Condition-condition-single-example.md) and [Condition/example-condition](Condition-example-condition.md)
-* [Immunization Funding Source](http://terminology.hl7.org/7.1.0/CodeSystem-immunization-funding-source.html): [Immunization/example-immunization](Immunization-example-immunization.md) and [Immunization/immunization-single-example](Immunization-immunization-single-example.md)
-* [Observation Category Codes](http://terminology.hl7.org/7.1.0/CodeSystem-observation-category.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Observation/blood-pressure](Observation-blood-pressure.md) and [Observation/observation-single-example](Observation-observation-single-example.md)
-* [contactRole2](http://terminology.hl7.org/7.1.0/CodeSystem-v2-0131.html): [PHCorePatient](StructureDefinition-ph-core-patient.md)
-* [providerRole](http://terminology.hl7.org/7.1.0/CodeSystem-v2-0443.html): [Immunization/example-immunization](Immunization-example-immunization.md) and [Immunization/immunization-single-example](Immunization-immunization-single-example.md)
-* [ActCode](http://terminology.hl7.org/7.1.0/CodeSystem-v3-ActCode.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Encounter/encounter-single-example](Encounter-encounter-single-example.md) and [Encounter/example-encounter](Encounter-example-encounter.md)
-* [ActSite](http://terminology.hl7.org/7.1.0/CodeSystem-v3-ActSite.html): [Immunization/example-immunization](Immunization-example-immunization.md) and [Immunization/immunization-single-example](Immunization-immunization-single-example.md)
-* [MaritalStatus](http://terminology.hl7.org/7.1.0/CodeSystem-v3-MaritalStatus.html): [PHCorePatient](StructureDefinition-ph-core-patient.md)
-* [NullFlavor](http://terminology.hl7.org/7.1.0/CodeSystem-v3-NullFlavor.html): [PHCorePatient](StructureDefinition-ph-core-patient.md)
-* [ObservationInterpretation](http://terminology.hl7.org/7.1.0/CodeSystem-v3-ObservationInterpretation.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Observation/blood-pressure](Observation-blood-pressure.md) and [Observation/observation-single-example](Observation-observation-single-example.md)
-* [Race](http://terminology.hl7.org/7.1.0/CodeSystem-v3-Race.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Patient/example-patient](Patient-example-patient.md), [Patient/patient-single-example](Patient-patient-single-example.md) and [Race](StructureDefinition-race.md)
-* [Religious Affiliation](http://terminology.hl7.org/7.1.0/CodeSystem-v3-ReligiousAffiliation.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Patient/example-patient](Patient-example-patient.md) and [Patient/patient-single-example](Patient-patient-single-example.md)
-* [RoleCode](http://terminology.hl7.org/7.1.0/CodeSystem-v3-RoleCode.html): [PHCorePatient](StructureDefinition-ph-core-patient.md) and [RelatedPerson/relatedperson-single-example](RelatedPerson-relatedperson-single-example.md)
-* [RouteOfAdministration](http://terminology.hl7.org/7.1.0/CodeSystem-v3-RouteOfAdministration.html): [Immunization/example-immunization](Immunization-example-immunization.md) and [Immunization/immunization-single-example](Immunization-immunization-single-example.md)
+* [AllergyIntolerance Clinical Status Codes](http://terminology.hl7.org/7.0.0/CodeSystem-allergyintolerance-clinical.html): [AllergyIntolerance/allergy-single-example](AllergyIntolerance-allergy-single-example.md), [AllergyIntolerance/example-allergy](AllergyIntolerance-example-allergy.md) and [Bundle/transaction-example](Bundle-transaction-example.md)
+* [Condition Category Codes](http://terminology.hl7.org/7.0.0/CodeSystem-condition-category.html): [Condition/condition-single-example](Condition-condition-single-example.md)
+* [Condition Clinical Status Codes](http://terminology.hl7.org/7.0.0/CodeSystem-condition-clinical.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Condition/condition-single-example](Condition-condition-single-example.md) and [Condition/example-condition](Condition-example-condition.md)
+* [ConditionVerificationStatus](http://terminology.hl7.org/7.0.0/CodeSystem-condition-ver-status.html): [Condition/condition-single-example](Condition-condition-single-example.md)
+* [Immunization Funding Source](http://terminology.hl7.org/7.0.0/CodeSystem-immunization-funding-source.html): [Immunization/example-immunization](Immunization-example-immunization.md) and [Immunization/immunization-single-example](Immunization-immunization-single-example.md)
+* [MedicationDispense Performer Function Codes](http://terminology.hl7.org/7.0.0/CodeSystem-medicationdispense-performer-function.html): [MedicationDispense/medicationdispense-single-example](MedicationDispense-medicationdispense-single-example.md)
+* [Observation Category Codes](http://terminology.hl7.org/7.0.0/CodeSystem-observation-category.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Observation/blood-pressure](Observation-blood-pressure.md) and [Observation/observation-single-example](Observation-observation-single-example.md)
+* [Provenance participant type](http://terminology.hl7.org/7.0.0/CodeSystem-provenance-participant-type.html): [PHCoreProvenance](StructureDefinition-ph-core-provenance.md) and [Provenance/provenance-single-example](Provenance-provenance-single-example.md)
+* [contactRole2](http://terminology.hl7.org/7.0.0/CodeSystem-v2-0131.html): [PHCorePatient](StructureDefinition-ph-core-patient.md)
+* [providerRole](http://terminology.hl7.org/7.0.0/CodeSystem-v2-0443.html): [Immunization/example-immunization](Immunization-example-immunization.md), [Immunization/immunization-single-example](Immunization-immunization-single-example.md) and [MedicationAdministration/medicationadministration-single-example](MedicationAdministration-medicationadministration-single-example.md)
+* [ActCode](http://terminology.hl7.org/7.0.0/CodeSystem-v3-ActCode.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Encounter/encounter-single-example](Encounter-encounter-single-example.md) and [Encounter/example-encounter](Encounter-example-encounter.md)
+* [ActReason](http://terminology.hl7.org/7.0.0/CodeSystem-v3-ActReason.html): [Provenance/provenance-single-example](Provenance-provenance-single-example.md)
+* [ActSite](http://terminology.hl7.org/7.0.0/CodeSystem-v3-ActSite.html): [Immunization/example-immunization](Immunization-example-immunization.md) and [Immunization/immunization-single-example](Immunization-immunization-single-example.md)
+* [DataOperation](http://terminology.hl7.org/7.0.0/CodeSystem-v3-DataOperation.html): [Provenance/provenance-single-example](Provenance-provenance-single-example.md)
+* [MaritalStatus](http://terminology.hl7.org/7.0.0/CodeSystem-v3-MaritalStatus.html): [PHCorePatient](StructureDefinition-ph-core-patient.md)
+* [NullFlavor](http://terminology.hl7.org/7.0.0/CodeSystem-v3-NullFlavor.html): [PHCorePatient](StructureDefinition-ph-core-patient.md)
+* [ObservationInterpretation](http://terminology.hl7.org/7.0.0/CodeSystem-v3-ObservationInterpretation.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Observation/blood-pressure](Observation-blood-pressure.md) and [Observation/observation-single-example](Observation-observation-single-example.md)
+* [ParticipationType](http://terminology.hl7.org/7.0.0/CodeSystem-v3-ParticipationType.html): [Encounter/encounter-single-example](Encounter-encounter-single-example.md)
+* [Race](http://terminology.hl7.org/7.0.0/CodeSystem-v3-Race.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Patient/example-patient](Patient-example-patient.md), [Patient/patient-single-example](Patient-patient-single-example.md) and [Race](StructureDefinition-race.md)
+* [Religious Affiliation](http://terminology.hl7.org/7.0.0/CodeSystem-v3-ReligiousAffiliation.html): [Bundle/transaction-example](Bundle-transaction-example.md), [Patient/example-patient](Patient-example-patient.md) and [Patient/patient-single-example](Patient-patient-single-example.md)
+* [RoleCode](http://terminology.hl7.org/7.0.0/CodeSystem-v3-RoleCode.html): [PHCorePatient](StructureDefinition-ph-core-patient.md) and [RelatedPerson/relatedperson-single-example](RelatedPerson-relatedperson-single-example.md)
+* [RouteOfAdministration](http://terminology.hl7.org/7.0.0/CodeSystem-v3-RouteOfAdministration.html): [Immunization/example-immunization](Immunization-example-immunization.md), [Immunization/immunization-single-example](Immunization-immunization-single-example.md), [MedicationAdministration/medicationadministration-single-example](MedicationAdministration-medicationadministration-single-example.md), [MedicationRequest/medicationrequest-single-example](MedicationRequest-medicationrequest-single-example.md) and [MedicationStatement/medicationstatement-single-example](MedicationStatement-medicationstatement-single-example.md)
 
 
 This is an R4 IG. None of the features it uses are changed in R4B, so it can be used as is with R4B systems. Packages for both [R4 (fhir.ph.core.r4)](package.r4.tgz) and [R4B (fhir.ph.core.r4b)](package.r4b.tgz) are available.
@@ -110,9 +122,9 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
 
 | | | |
 | :--- | :--- | :--- |
-| [FHIR Extensions Pack](http://hl7.org/fhir/extensions/5.2.0) | [5.2.0](https://simplifier.net/packages/hl7.fhir.uv.extensions.r4/5.2.0) | Automatically added as a dependency - all IGs depend on the HL7 Extension Pack |
-| [FHIR R4 package : Core](http://hl7.org/fhir/R4) | [4.0.1](https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1) | Imported by HL7 Terminology (THO) (and potentially others) |
-| [HL7 Terminology (THO)](http://terminology.hl7.org/7.1.0) | [7.1.0](https://simplifier.net/packages/hl7.terminology.r4/7.1.0) | Automatically added as a dependency - all IGs depend on HL7 Terminology |
+| [FHIR Extensions Pack](http://hl7.org/fhir/extensions/5.2.0) | [5.2.0](https://simplifier.net/packages/hl7.fhir.uv.extensions.r4/5.2.0) |  |
+| [FHIR R4 package : Core](http://hl7.org/fhir/R4) | [4.0.1](https://simplifier.net/packages/hl7.fhir.r4.core/4.0.1) | Imported by FHIR Extensions Pack (and potentially others) |
+| [HL7 Terminology (THO)](http://terminology.hl7.org/7.0.0) | [7.0.0](https://simplifier.net/packages/hl7.terminology.r4/7.0.0) |  |
 
 *There are no Global profiles defined*
 
@@ -126,11 +138,11 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
   "id" : "fhir.ph.core",
   "language" : "en",
   "url" : "http://doh.gov.ph/fhir/ph-core/ImplementationGuide/fhir.ph.core",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "PHCoreImplementationGuide",
   "title" : "Draft PH Core Implementation Guide",
   "status" : "draft",
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -143,32 +155,23 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "packageId" : "fhir.ph.core",
   "license" : "CC-BY-1.0",
   "fhirVersion" : ["4.0.1"],
   "dependsOn" : [{
-    "id" : "hl7tx",
-    "extension" : [{
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
-    }],
-    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
-    "packageId" : "hl7.terminology.r4",
-    "version" : "7.1.0"
-  },
-  {
-    "id" : "hl7ext",
-    "extension" : [{
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
-    }],
+    "id" : "hl7_fhir_uv_extensions_r4",
     "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
     "packageId" : "hl7.fhir.uv.extensions.r4",
     "version" : "5.2.0"
+  },
+  {
+    "id" : "hl7_terminology_r4",
+    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+    "packageId" : "hl7.terminology.r4",
+    "version" : "7.0.0"
   }],
   "definition" : {
     "extension" : [{
@@ -190,6 +193,61 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
       {
         "url" : "value",
         "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://verification.fda.gov.ph"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://my-hospital.org/internal-id"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psced/level"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psgc"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psoc/unit"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -469,6 +527,61 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
       {
         "url" : "value",
         "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://verification.fda.gov.ph"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://my-hospital.org/internal-id"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psced/level"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psgc"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "special-url"
+      },
+      {
+        "url" : "value",
+        "valueString" : "https://psa.gov.ph/classification/psoc/unit"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -807,7 +920,7 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
       },
       "name" : "condition-single-example",
       "description" : "Juan Dela Cruz has an active diagnosis of Type 2 Diabetes Mellitus.",
-      "exampleBoolean" : true
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-condition"
     },
     {
       "extension" : [{
@@ -815,9 +928,9 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
         "valueString" : "NamingSystem"
       }],
       "reference" : {
-        "reference" : "NamingSystem/doh-nhfr-code-ns"
+        "reference" : "NamingSystem/DOHNHFRCodeNS"
       },
-      "name" : "DOH National Health Faciities Registry Code",
+      "name" : "DOH National Health Facility Registry Code",
       "description" : "Health Facility Code (HFC) from the National Health Facility Registry.",
       "exampleBoolean" : false
     },
@@ -836,6 +949,18 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/DOHProcedureIDNS"
+      },
+      "name" : "DOH Procedure Identifier",
+      "description" : "Identifier system for procedures assigned by the Department of Health (DOH) health facilities.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "ValueSet"
       }],
       "reference" : {
@@ -843,18 +968,6 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
       },
       "name" : "Drugs",
       "description" : "This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from FDA.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "CodeSystem"
-      }],
-      "reference" : {
-        "reference" : "CodeSystem/drugs"
-      },
-      "name" : "Drugs",
-      "description" : "Partial Establishments and Health Products to be published by the [PH FDA](https://verification.fda.gov.ph).",
       "exampleBoolean" : false
     },
     {
@@ -890,7 +1003,7 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
         "reference" : "Encounter/encounter-single-example"
       },
       "name" : "encounter-single-example",
-      "description" : "An ambulatory encounter for Juan Dela Cruz that has been completed.",
+      "description" : "An ambulatory visit for Juan Dela Cruz that has been completed.",
       "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter"
     },
     {
@@ -902,7 +1015,7 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
         "reference" : "Organization/organization-single-example"
       },
       "name" : "Example PH Core Organization",
-      "description" : "An example instance of a PH Core Organization conforming to the Philippine localization profile.",
+      "description" : "An example instance of a PH Core Organization conforming to the Philippine localization profile. Demonstrates all identifier types (NHFR, PAN, PEN) and Must Support fields.",
       "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-organization"
     },
     {
@@ -1058,32 +1171,56 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
         "reference" : "Medication/medication-single-example"
       },
       "name" : "medication-single-example",
-      "description" : "A medication resource with no specific details provided.",
+      "description" : "Twinact (Telmisartan + Amlodipine) from PH FDA CPR.",
       "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medication"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "StructureDefinition:extension"
+        "valueString" : "MedicationAdministration"
       }],
       "reference" : {
-        "reference" : "StructureDefinition/middle-name"
+        "reference" : "MedicationAdministration/medicationadministration-single-example"
       },
-      "name" : "Middle Name",
-      "description" : "Extension to capture middle name information for a person",
-      "exampleBoolean" : false
+      "name" : "medicationadministration-single-example",
+      "description" : "Juan Dela Cruz takes Twinact (Telmisartan + Amlodipine) tablet as prescribed.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationadministration"
     },
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
+        "valueString" : "MedicationDispense"
       }],
       "reference" : {
-        "reference" : "Patient/MiddleNameExample"
+        "reference" : "MedicationDispense/medicationdispense-single-example"
       },
-      "name" : "MiddleNameExample",
-      "description" : "Juan Jane Macalalad Buenaventura (born 1980).",
-      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-patient"
+      "name" : "medicationdispense-single-example",
+      "description" : "Pharmacy dispenses Twinact (Telmisartan + Amlodipine) to Juan Dela Cruz based on Dr. Santos prescription.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationdispense"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationRequest"
+      }],
+      "reference" : {
+        "reference" : "MedicationRequest/medicationrequest-single-example"
+      },
+      "name" : "medicationrequest-single-example",
+      "description" : "Dr. Maria Clara Santos prescribes Twinact (Telmisartan + Amlodipine) for Juan Dela Cruz to treat hypertension.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationrequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "MedicationStatement"
+      }],
+      "reference" : {
+        "reference" : "MedicationStatement/medicationstatement-single-example"
+      },
+      "name" : "medicationstatement-single-example",
+      "description" : "Patient Juan Dela Cruz reports taking Twinact (Telmisartan + Amlodipine) for hypertension.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationstatement"
     },
     {
       "extension" : [{
@@ -1160,6 +1297,18 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/PhilHealthPANNS"
+      },
+      "name" : "PAN - PhilHealth Accreditation Number",
+      "description" : "The unique number issued by PhilHealth to accredited institutions.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Patient"
       }],
       "reference" : {
@@ -1172,6 +1321,18 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/PhilHealthPENNS"
+      },
+      "name" : "PEN - PhilHealth Employer Number",
+      "description" : "The unique number issued by PhilHealth to employers.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
@@ -1179,6 +1340,42 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
       },
       "name" : "PH Core Address",
       "description" : "An address for the individual.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-condition"
+      },
+      "name" : "PH Core Condition",
+      "description" : "Captures Condition.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActorDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActorDefinition/Consumer"
+      },
+      "name" : "PH Core Consumer",
+      "description" : "A PH Core Consumer is a system that receives and uses PH Core resources.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActorDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActorDefinition/Creator"
+      },
+      "name" : "PH Core Creator",
+      "description" : "A PH Core Creator is a system which produces/assembles/creates PH Core resources.",
       "exampleBoolean" : false
     },
     {
@@ -1232,6 +1429,54 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-medicationadministration"
+      },
+      "name" : "PH Core Medication Administration",
+      "description" : "Captures key FHIR Medication Administration data for the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-medicationdispense"
+      },
+      "name" : "PH Core Medication Dispense",
+      "description" : "Captures key FHIR Medication Dispense data for the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-medicationrequest"
+      },
+      "name" : "PH Core Medication Request",
+      "description" : "Captures key FHIR Medication Request data for the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-medicationstatement"
+      },
+      "name" : "PH Core Medication Statement",
+      "description" : "Captures key FHIR Medication Statement data for the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:complex-type"
       }],
       "reference" : {
@@ -1280,18 +1525,6 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "NamingSystem"
-      }],
-      "reference" : {
-        "reference" : "NamingSystem/pdd-registration-ns"
-      },
-      "name" : "PH Core PhilHealth Dialysis Database Registration Number",
-      "description" : "PH Core PhilHealth Dialysis Database Registration Number",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
@@ -1331,10 +1564,106 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
+        "reference" : "StructureDefinition/ph-core-provenance"
+      },
+      "name" : "PH Core Provenance",
+      "description" : "This profile localizes the FHIR R4 Provenance resource to the Philippine context, capturing key information about who, what, when, and where for a set of resources. It is used to track the authorship and history of healthcare data in Philippine health information systems.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
         "reference" : "StructureDefinition/ph-core-relatedperson"
       },
       "name" : "PH Core RelatedPerson",
       "description" : "This profile localizes the FHIR R4 RelatedPerson resource to the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActorDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActorDefinition/Server"
+      },
+      "name" : "PH Core Server",
+      "description" : "A PH Core Server is a FHIR server that stores and provides access to PH Core resources.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-serviceRequest"
+      },
+      "name" : "PH Core ServiceRequest",
+      "description" : "The PH Core ServiceRequest Profile is a Philippine-specific FHIR profile that represents a record of a request for services such as diagnostic investigations, treatments, or operations to be performed within the Philippine health system. It constrains the base FHIR ServiceRequest resource by defining minimum expectations on core elements, extensions, vocabularies, and value sets relevant to local clinical and administrative workflows. It serves as a nationally consistent baseline for recording, searching, and fetching service request information to support interoperable health information exchange across Philippine health facilities and programs.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:resource"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-task"
+      },
+      "name" : "PH Core Task",
+      "description" : "This profile localizes the FHIR R4 Task resource to the Philippine context.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/PHFDACPRCS"
+      },
+      "name" : "PH FDA Certificate of Product Registration (CPR) CodeSystem",
+      "description" : "Registered drug products from the Philippine Food and Drug Administration (FDA)",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-philhealth-pan"
+      },
+      "name" : "PhilHealth Accreditation Number",
+      "description" : "The unique number issued by PhilHealth to accredited institutions.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "StructureDefinition:complex-type"
+      }],
+      "reference" : {
+        "reference" : "StructureDefinition/ph-core-philhealth-pen"
+      },
+      "name" : "PhilHealth Employer Number",
+      "description" : "The unique number issued by PhilHealth to employers.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "NamingSystem"
+      }],
+      "reference" : {
+        "reference" : "NamingSystem/PhilHealthProcedureIDNS"
+      },
+      "name" : "PhilHealth Procedure Identifier",
+      "description" : "Identifier system for procedures assigned by PhilHealth for claims and reimbursement purposes.",
       "exampleBoolean" : false
     },
     {
@@ -1355,10 +1684,10 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
         "valueString" : "NamingSystem"
       }],
       "reference" : {
-        "reference" : "NamingSystem/philsys-id-ns"
+        "reference" : "NamingSystem/PhilSysIDNS"
       },
       "name" : "PhilSys Identification Number (PhilSys ID)",
-      "description" : "The National ID Number is a unique and randomly-generated 12-digit permanent identification number that is assigned to every citizen or resident alien upon successful registration to National ID system.",
+      "description" : "The National ID Number issued to all Filipino citizens and resident aliens in the Philippines, as part of the Philippine Identification System (PhilSys) program.",
       "exampleBoolean" : false
     },
     {
@@ -1379,7 +1708,7 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
         "valueString" : "NamingSystem"
       }],
       "reference" : {
-        "reference" : "NamingSystem/philhealth-id-ns"
+        "reference" : "NamingSystem/PhilHealthIDNS"
       },
       "name" : "PIN - PhilHealth Identification Number",
       "description" : "The permanent and unique number issued by PhilHealth to individual members and to each and every dependent.",
@@ -1396,6 +1725,30 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
       "name" : "practitioner-single-example",
       "description" : "Dr. Maria Clara Santos, a female practitioner born on 1985-05-15, resides at 1234 Mabini Street, Manila, NCR, 1000, Philippines. She can be contacted via mobile at +63-912-345-6789 or by email at maria.santos@example.ph.",
       "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Procedure"
+      }],
+      "reference" : {
+        "reference" : "Procedure/procedure-single-example"
+      },
+      "name" : "procedure-single-example",
+      "description" : "A comprehensive example of an appendectomy procedure performed on Juan Dela Cruz, demonstrating extensive use of Procedure resource elements including identifiers, status history, multiple performers, body site, complications, and follow-up care.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-procedure"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Provenance"
+      }],
+      "reference" : {
+        "reference" : "Provenance/provenance-single-example"
+      },
+      "name" : "provenance-single-example",
+      "description" : "Provenance record documenting that Dr. Maria Clara Santos created the blood pressure observation for Juan Dela Cruz on September 17, 2012, on behalf of the Department of Health - Central Office.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-provenance"
     },
     {
       "extension" : [{
@@ -1472,6 +1825,30 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ServiceRequest"
+      }],
+      "reference" : {
+        "reference" : "ServiceRequest/servicerequest-single-example"
+      },
+      "name" : "servicerequest-single-example",
+      "description" : "A laboratory service request for fasting blood glucose test ordered by Dr. Maria Clara Santos for patient Juan Dela Cruz during an ambulatory encounter.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-serviceRequest"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Task"
+      }],
+      "reference" : {
+        "reference" : "Task/task-single-example"
+      },
+      "name" : "task-single-example",
+      "description" : "A laboratory task for Juan Dela Cruz requested by Dr. Maria Clara Santos. The task is to collect a blood sample for a routine CBC test.",
+      "exampleCanonical" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-task"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Bundle"
       }],
       "reference" : {
@@ -1501,15 +1878,6 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "approach.html"
-        }],
-        "nameUrl" : "approach.html",
-        "title" : "Approach",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
           "valueUrl" : "otherIds.html"
         }],
         "nameUrl" : "otherIds.html",
@@ -1519,10 +1887,10 @@ This is an R4 IG. None of the features it uses are changed in R4B, so it can be 
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "version-mangement.html"
+          "valueUrl" : "terminology.html"
         }],
-        "nameUrl" : "version-mangement.html",
-        "title" : "Version Mangement",
+        "nameUrl" : "terminology.html",
+        "title" : "Terminology",
         "generation" : "markdown"
       }]
     },

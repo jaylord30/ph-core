@@ -1,4 +1,4 @@
-# DOH NHFR Code - Draft PH Core Implementation Guide v0.1.0
+# DOH NHFR Code - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,15 +8,15 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-doh-nhfr-code | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:PHCoreDohNhfrCode |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-doh-nhfr-code | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:PHCoreDOHNHFRCode |
 
  
 Health Facility Code (HFC) from the National Health Facility Registry 
 
 **Usages:**
 
-* This DataType Profile is not used by any profiles in this Implementation Guide
+* Use this DataType Profile: [PH Core Organization](StructureDefinition-ph-core-organization.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/ph-core-doh-nhfr-code)
 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-doh-nhfr-cod
   "resourceType" : "StructureDefinition",
   "id" : "ph-core-doh-nhfr-code",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-doh-nhfr-code",
-  "version" : "0.1.0",
-  "name" : "PHCoreDohNhfrCode",
+  "version" : "0.2.0",
+  "name" : "PHCoreDOHNHFRCode",
   "title" : "DOH NHFR Code",
   "status" : "draft",
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -54,8 +54,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-doh-nhfr-cod
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "fhirVersion" : "4.0.1",
@@ -88,7 +87,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-doh-nhfr-cod
       "id" : "Identifier.system",
       "path" : "Identifier.system",
       "min" : 1,
-      "fixedUri" : "http://doh.gov.ph/fhir/ph-core/NamingSystem/doh-nhfr-code-ns"
+      "fixedUri" : "http://doh.gov.ph/fhir/Identifier/doh-nhfr-code"
     },
     {
       "id" : "Identifier.value",

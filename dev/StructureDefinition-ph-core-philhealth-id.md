@@ -1,4 +1,4 @@
-# PIN - PhilHealth Identification Number - Draft PH Core Implementation Guide v0.1.0
+# PIN - PhilHealth Identification Number - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-philhealth-id | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:PHCorePhilHealthID |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-philhealth-id | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:PHCorePhilHealthID |
 
  
 The permanent and unique number issued by PhilHealth to individual members and to each and every dependent. 
@@ -37,11 +37,11 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-philhealth-i
   "resourceType" : "StructureDefinition",
   "id" : "ph-core-philhealth-id",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-philhealth-id",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "PHCorePhilHealthID",
   "title" : "PIN - PhilHealth Identification Number",
   "status" : "draft",
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -54,8 +54,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-philhealth-i
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "fhirVersion" : "4.0.1",
@@ -94,7 +93,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-philhealth-i
       "id" : "Identifier.system",
       "path" : "Identifier.system",
       "min" : 1,
-      "fixedUri" : "https://philhealth.gov.ph/fhir/Identifier/philhealth-id"
+      "fixedUri" : "http://philhealth.gov.ph/fhir/Identifier/philhealth-id"
     },
     {
       "id" : "Identifier.value",

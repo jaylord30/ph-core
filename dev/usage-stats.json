@@ -1,6 +1,6 @@
 {
   "package": "fhir.ph.core",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "fhirVersion": "4.0.1",
   "jurisdiction": "PH",
   "extensions": [
@@ -37,13 +37,6 @@
       "title": "Indigenous People",
       "types": [
         "boolean"
-      ]
-    },
-    {
-      "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/middle-name",
-      "title": "Middle Name",
-      "types": [
-        "string"
       ]
     },
     {
@@ -128,6 +121,12 @@
     }
   ],
   "profiles": {
+    "Condition": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-condition",
+        "title": "PH Core Condition"
+      }
+    ],
     "Encounter": [
       {
         "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter",
@@ -150,6 +149,30 @@
       {
         "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medication",
         "title": "PH Core Medication"
+      }
+    ],
+    "MedicationAdministration": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationadministration",
+        "title": "PH Core Medication Administration"
+      }
+    ],
+    "MedicationDispense": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationdispense",
+        "title": "PH Core Medication Dispense"
+      }
+    ],
+    "MedicationRequest": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationrequest",
+        "title": "PH Core Medication Request"
+      }
+    ],
+    "MedicationStatement": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medicationstatement",
+        "title": "PH Core Medication Statement"
       }
     ],
     "Observation": [
@@ -188,20 +211,44 @@
         "title": "PH Core Procedure"
       }
     ],
+    "Provenance": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-provenance",
+        "title": "PH Core Provenance"
+      }
+    ],
     "RelatedPerson": [
       {
         "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-relatedperson",
         "title": "PH Core RelatedPerson"
       }
+    ],
+    "ServiceRequest": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-serviceRequest",
+        "title": "PH Core ServiceRequest"
+      }
+    ],
+    "Task": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-task",
+        "title": "PH Core Task"
+      }
     ]
   },
   "usage": {
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay": [
-      "Address"
+      "Address",
+      "Bundle.entry.resource.address",
+      "Organization.address",
+      "Organization.contact.address",
+      "Patient.address"
     ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality": [
       "Address",
       "Bundle.entry.resource.address",
+      "Organization.address",
+      "Organization.contact.address",
       "Patient.address"
     ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/educational-attainment": [
@@ -212,9 +259,6 @@
     ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/indigenous-people": [
       "Patient"
-    ],
-    "http://doh.gov.ph/fhir/ph-core/StructureDefinition/middle-name": [
-      "HumanName"
     ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/occupation": [
       "Patient"
@@ -232,7 +276,47 @@
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/region": [
       "Address",
       "Organization.address",
+      "Organization.contact.address",
       "RelatedPerson.address"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.date": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.description": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.documentation": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.experimental": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.jurisdiction": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.name": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.publisher": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.status": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.title": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.type": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.url": [
+      "Basic"
+    ],
+    "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.version": [
+      "Basic"
     ],
     "http://hl7.org/fhir/5.0/StructureDefinition/extension-NamingSystem.url": [
       "NamingSystem"
@@ -247,12 +331,14 @@
       "StructureDefinition.snapshot.element.constraint"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName": [
+      "StructureDefinition.differential.element.binding",
       "StructureDefinition.snapshot.element.binding"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet": [
       "StructureDefinition.snapshot.element.binding"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable": [
+      "StructureDefinition.differential.element",
       "StructureDefinition.snapshot.element"
     ],
     "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity|5.2.0": [
@@ -260,6 +346,10 @@
     ],
     "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender|5.2.0": [
       "Patient"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/obligation": [
+      "StructureDefinition.differential.element",
+      "StructureDefinition.snapshot.element"
     ],
     "http://hl7.org/fhir/StructureDefinition/patient-nationality": [
       "Bundle.entry.resource",
@@ -294,9 +384,6 @@
     ],
     "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter": [
       "ImplementationGuide.definition"
-    ],
-    "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment": [
-      "ImplementationGuide.dependsOn"
     ],
     "http://hl7.org/fhir/tools/StructureDefinition/resource-information": [
       "ImplementationGuide.definition.resource"

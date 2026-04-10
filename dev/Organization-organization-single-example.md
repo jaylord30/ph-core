@@ -1,4 +1,4 @@
-# Example PH Core Organization - Draft PH Core Implementation Guide v0.1.0
+# Example PH Core Organization - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -6,7 +6,7 @@
 
 ## Example Organization: Example PH Core Organization
 
-The Department of Health - Central Office is a PH Core Organization located at San Lazaro Compound, Rizal Avenue, Manila, NCR, 1003, Philippines. The organization can be contacted through its health facility contact at +63-2-8651-7800. The regional designation is Ilocos Norte.
+The Department of Health - Central Office (NHFR: 1234567890, PAN: PAN-2024-56789, PEN: PEN-987654321) is an active PH Core Organization located at 123, Barangay 1, City of Las Piñas, Benguet, 1740, Philippines. The organization can be contacted via phone at +63-2-8651-7800 or email at contact@doh.gov.ph.
 
 
 
@@ -22,22 +22,59 @@ The Department of Health - Central Office is a PH Core Organization located at S
   "identifier" : [{
     "system" : "http://doh.gov.ph/fhir/Identifier/doh-nhfr-code",
     "value" : "1234567890"
+  },
+  {
+    "system" : "http://nhdr.gov.ph/fhir/Identifier/philhealthaccreditationnumber",
+    "value" : "PAN-2024-56789"
+  },
+  {
+    "system" : "http://nhdr.gov.ph/fhir/Identifier/philhealthemployernumber",
+    "value" : "PEN-987654321"
+  },
+  {
+    "system" : "http://my-hospital.org/internal-id",
+    "value" : "HOSP-INT-12345"
   }],
-  "name" : "Department of Health - Central Office",
+  "active" : true,
+  "name" : "Department of Health - Sattelite Office",
+  "telecom" : [{
+    "system" : "phone",
+    "value" : "+63-2-8651-7800",
+    "use" : "work"
+  },
+  {
+    "system" : "email",
+    "value" : "contact@doh.gov.ph",
+    "use" : "work"
+  }],
   "address" : [{
     "extension" : [{
       "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/region",
       "valueCoding" : {
-        "system" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC",
-        "code" : "0102800000",
-        "display" : "Ilocos Norte"
+        "system" : "https://psa.gov.ph/classification/psgc",
+        "code" : "1401100000",
+        "display" : "Benguet"
+      }
+    },
+    {
+      "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality",
+      "valueCoding" : {
+        "system" : "https://psa.gov.ph/classification/psgc",
+        "code" : "1380200000",
+        "display" : "City of Las Piñas"
+      }
+    },
+    {
+      "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay",
+      "valueCoding" : {
+        "system" : "https://psa.gov.ph/classification/psgc",
+        "code" : "1380100001",
+        "display" : "Barangay 1"
       }
     }],
     "use" : "work",
-    "line" : ["San Lazaro Compound", "Rizal Avenue", "Rizal Avenue"],
-    "city" : "Manila",
-    "state" : "NCR",
-    "postalCode" : "1003",
+    "line" : ["123 Hospital Street"],
+    "postalCode" : "1740",
     "country" : "PH"
   }],
   "contact" : [{
@@ -49,10 +86,33 @@ The Department of Health - Central Office is a PH Core Organization located at S
       "value" : "+63-2-8651-7800"
     }],
     "address" : {
+      "extension" : [{
+        "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/region",
+        "valueCoding" : {
+          "system" : "https://psa.gov.ph/classification/psgc",
+          "code" : "1401100000",
+          "display" : "Benguet"
+        }
+      },
+      {
+        "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality",
+        "valueCoding" : {
+          "system" : "https://psa.gov.ph/classification/psgc",
+          "code" : "1380200000",
+          "display" : "City of Las Piñas"
+        }
+      },
+      {
+        "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay",
+        "valueCoding" : {
+          "system" : "https://psa.gov.ph/classification/psgc",
+          "code" : "1380100001",
+          "display" : "Barangay 1"
+        }
+      }],
       "use" : "work",
-      "city" : "Manila",
-      "state" : "NCR",
-      "postalCode" : "1003",
+      "line" : ["125 Central Office Street"],
+      "postalCode" : "1740",
       "country" : "PH"
     }
   }]

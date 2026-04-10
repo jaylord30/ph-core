@@ -1,4 +1,4 @@
-# Indigenous Groups - Draft PH Core Implementation Guide v0.1.0
+# Indigenous Groups - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/CodeSystem/indigenous-groups-cs | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:IndigenousGroupsCS |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/CodeSystem/indigenous-groups-cs | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:IndigenousGroupsCS |
 
  
 A list of codes representing the recognized indigenous groups in the Philippines to which a person may belong. 
@@ -27,12 +27,12 @@ A list of codes representing the recognized indigenous groups in the Philippines
   "resourceType" : "CodeSystem",
   "id" : "indigenous-groups-cs",
   "url" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/indigenous-groups-cs",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "IndigenousGroupsCS",
   "title" : "Indigenous Groups",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -45,8 +45,7 @@ A list of codes representing the recognized indigenous groups in the Philippines
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "caseSensitive" : true,

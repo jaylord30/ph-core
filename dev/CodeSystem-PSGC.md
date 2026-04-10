@@ -1,4 +1,4 @@
-# Mock PSGC - Draft PH Core Implementation Guide v0.1.0
+# Mock PSGC - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:PSGC |
+| *Official URL*:https://psa.gov.ph/classification/psgc | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:PSGC |
 
  
 Mock of the Philippine Standard Geographic Code. 
@@ -29,13 +29,13 @@ Mock of the Philippine Standard Geographic Code.
 {
   "resourceType" : "CodeSystem",
   "id" : "PSGC",
-  "url" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/PSGC",
-  "version" : "0.1.0",
+  "url" : "https://psa.gov.ph/classification/psgc",
+  "version" : "0.2.0",
   "name" : "PSGC",
   "title" : "Mock PSGC",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -48,8 +48,7 @@ Mock of the Philippine Standard Geographic Code.
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "caseSensitive" : true,

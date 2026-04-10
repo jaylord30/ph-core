@@ -1,4 +1,4 @@
-# Region - Draft PH Core Implementation Guide v0.1.0
+# Region - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/region | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:Region |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/region | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:Region |
 
 Region from the standard geographic code.
 
@@ -20,7 +20,7 @@ Region from the standard geographic code.
 **Usages:**
 
 * Use this Extension: [PH Core Address](StructureDefinition-ph-core-address.md)
-* Examples for this Extension: [Department of Health - Central Office](Organization-organization-single-example.md) and [RelatedPerson/relatedperson-single-example](RelatedPerson-relatedperson-single-example.md)
+* Examples for this Extension: [Department of Health - Sattelite Office](Organization-organization-single-example.md) and [RelatedPerson/relatedperson-single-example](RelatedPerson-relatedperson-single-example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/region)
 
@@ -45,12 +45,12 @@ Other representations of profile: [CSV](StructureDefinition-region.csv), [Excel]
   "resourceType" : "StructureDefinition",
   "id" : "region",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/region",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "Region",
   "title" : "Region",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -63,8 +63,7 @@ Other representations of profile: [CSV](StructureDefinition-region.csv), [Excel]
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "fhirVersion" : "4.0.1",

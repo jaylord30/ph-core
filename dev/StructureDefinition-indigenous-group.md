@@ -1,4 +1,4 @@
-# Indigenous Group - Draft PH Core Implementation Guide v0.1.0
+# Indigenous Group - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
@@ -8,8 +8,8 @@
 
 | | |
 | :--- | :--- |
-| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/indigenous-group | *Version*:0.1.0 |
-| Draft as of 2026-04-08 | *Computable Name*:IndigenousGroup |
+| *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/indigenous-group | *Version*:0.2.0 |
+| Draft as of 2026-04-10 | *Computable Name*:IndigenousGroup |
 
 Indigenous / ethnic group that the patient belongs to.
 
@@ -45,12 +45,12 @@ Other representations of profile: [CSV](StructureDefinition-indigenous-group.csv
   "resourceType" : "StructureDefinition",
   "id" : "indigenous-group",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/indigenous-group",
-  "version" : "0.1.0",
+  "version" : "0.2.0",
   "name" : "IndigenousGroup",
   "title" : "Indigenous Group",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-08T04:20:57+00:00",
+  "date" : "2026-04-10T05:32:03+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -63,8 +63,7 @@ Other representations of profile: [CSV](StructureDefinition-indigenous-group.csv
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
-      "code" : "PH",
-      "display" : "Philippines"
+      "code" : "PH"
     }]
   }],
   "fhirVersion" : "4.0.1",
