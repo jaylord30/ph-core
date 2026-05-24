@@ -3,6 +3,9 @@ name: Build, Test, and Deploy PH Core FHIR IG
 on:
   push:
     branches: ["main"]
+# pull_request:
+    #branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,32 +16,18 @@ concurrency:
 
 env:
   JAVA_VERSION: "17"
-  NODE_VERSION: "18"
+  NODE_VERSION: "20"
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "1.8.6"
   TX_SERVER: "https://tx.fhir.org"
+  JAVA_TOOL_OPTION: "-Xmx6g"
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   ci:
     name: CI - Build & QA (Core IG)
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Validate branch name
-        env:
-          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-        run: |
-          echo "Checking branch name: $BRANCH_NAME"
-          if echo "$BRANCH_NAME" | grep -q '/'; then
-            echo "::error::Branch name contains invalid character '/'. Use hyphens instead."
-            exit 1
-          fi
-          if echo "$BRANCH_NAME" | grep -qE '[\\~^:\[\] ]'; then
-            echo "::error::Branch name contains invalid special characters. Avoid: \\ ~ ^ : [ ] spaces"
-            exit 1
-          fi
-          echo "Branch name validation passed!"
+    timeout-minutes: 60
 
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -55,6 +44,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -73,31 +63,19 @@ jobs:
           sudo apt-get install -y graphviz
           dot -v
 
-      - name: Cache publisher + packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            input-cache
-            ~/.fhir/packages
-          key: ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini', '**/package-list.json') }}
-          restore-keys: |
-            ${{ runner.os }}-fhir-core-${{ env.IG_PUBLISHER_VERSION }}-
-            ${{ runner.os }}-fhir-core-
-
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
-          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar" -o "input-cache/publisher.jar"
-          java -jar input-cache/publisher.jar -v || true
+            "https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar" \
+            -o input-cache/publisher.jar
 
-      - name: Preload terminology packages
-        run: |
-          mkdir -p ~/.fhir/packages
-          java -jar input-cache/publisher.jar \
-            -ig . \
-            -tx ${TX_SERVER} \
-            -cachedir ~/.fhir/packages \
-            -update 
+      - name: Cache FHIR packages
+        uses: actions/cache@v4
+        with
+          path: |
+            input-cache
+            ~/.fhir/packages
+          key: ${{ runner.os }}-fhir-${{ hashFiles('**/sushi-config.yaml', '**/ig.ini') }}
 
       - name: Run SUSHI
         run: sushi . --log-level info
@@ -115,11 +93,13 @@ jobs:
       - name: QA gate
         run: |
           set -euo pipefail
+
           if [ -f output/qa.json ]; then
-            ERRORS=$(jq '.errs' output/qa.json || echo 0)
+            ERRORS=$(jq '.errs' output/qa.json)
             echo "QA Errors: $ERRORS"
+
             if [ "$ERRORS" != "0" ]; then
-              echo "::error::QA errors found (count=$ERRORS)"
+              echo "::error::QA failed with $ERRORS errors"
               exit 1
             fi
           else
@@ -138,12 +118,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: qa-reports
-          path: |
-            output/qa.json
-            output/qa.html
-            output/qa.min.html
-          if-no-files-found: warn
+          name: qa-report
+          path: output/qa.*
 
       - name: Prepare publish directory 
         if: github.event_name == 'push'
@@ -152,7 +128,7 @@ jobs:
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
 
-      - name: Create root index.html
+      - name: Create root index.html (dev + future versions ready)
         if: github.event_name == 'push'
         run: |
           cat > .publish/index.html <<'EOF'
@@ -160,17 +136,16 @@ jobs:
           <html lang="en">
           <head>
             <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>PH Core FHIR IG</title>
           </head>
           <body>
             <h1>PH Core FHIR IG</h1>
-            <p><a href="./dev/">Open latest dev build</a></p>
+            <p><a href="./dev/">Latest Dev Build</a></p>
           </body>
           </html>
           EOF
 
-      - name: Publish to gh-pages:/dev/
+      - name: Publish to GitHub Pages
         if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -178,4 +153,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: .publish
           keep_files: true
-          commit_message: "ci(dev): publish dev build from ${{ github.sha }}"
+          commit_message: "ci(dev): publish IG build ${{ github.sha }}"
