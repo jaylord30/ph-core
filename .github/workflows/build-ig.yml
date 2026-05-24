@@ -65,7 +65,7 @@ jobs:
       - name: Download IG Publisher
         run: |
           mkdir -p input-cache
-            "https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar" \
+          curl -fsSL "https://github.com/HL7/fhir-ig-publisher/releases/download/${IG_PUBLISHER_VERSION}/publisher.jar" \
             -o input-cache/publisher.jar
 
       - name: Cache FHIR packages
