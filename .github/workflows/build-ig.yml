@@ -71,7 +71,7 @@ jobs:
 
       - name: Cache FHIR packages
         uses: actions/cache@v4
-        with
+        with:
           path: |
             input-cache
             ~/.fhir/packages
