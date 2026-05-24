@@ -1,13 +1,13 @@
 Instance: PhilHealthIDNS
 InstanceOf: NamingSystem
 Usage: #definition
-Title: "PIN - PhilHealth Identification Number"
+Title: "PIN - PhilHealth Identification Number NamingSystem"
 Description: "The permanent and unique number issued by PhilHealth to individual members and to each and every dependent."
 * name = "PhilHealthID"
 * kind = #identifier
 * status = #draft
 * date = "2025-06-01"
-* jurisdiction.coding = urn:iso:std:iso:3166#PH "Philippines (the)"
+* jurisdiction.coding = urn:iso:std:iso:3166#PH "Philippines"
 * publisher = "PhilHealth"
 * uniqueId.type = #uri
 * uniqueId.value = "http://philhealth.gov.ph/fhir/Identifier/philhealth-id"
