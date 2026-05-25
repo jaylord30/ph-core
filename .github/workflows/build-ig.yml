@@ -19,7 +19,7 @@ env:
   NODE_VERSION: "20"
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "1.8.9"
-  TX_SERVER: "http://tx.fhir.org"
+  TX_SERVER: http://tx.fhir.org
   JAVA_TOOL_OPTION: "-Xmx6g"
 
 jobs:
@@ -130,7 +130,7 @@ jobs:
           mkdir -p .publish/dev
           rsync -a output/ .publish/dev/
 
-      - name: Create root index.html (dev + future versions ready)
+      - name: Create root index.html (dev versions ready)
         if: github.event_name == 'push'
         run: |
           cat > .publish/index.html <<'EOF'
