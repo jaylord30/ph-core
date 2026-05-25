@@ -54,7 +54,7 @@ jobs:
         
           java -jar input-cache/publisher.jar \
             -ig . \
-            -tx https://tx.fhirlab.net/fhir \
+            -tx https://tx.fhir.org \
             -cachedir ~/.fhir/packages \
             -txCache input-cache/txcache
 
