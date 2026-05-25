@@ -1,0 +1,44 @@
+name: Release PROD IG
+
+on:
+  workflow_call:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version from tag
+        run: |
+          VERSION=${GITHUB_REF_NAME}
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: ig-output
+          path: output
+
+      - name: Prepare versioned release
+        run: |
+          mkdir -p release/$VERSION
+          rsync -a output/ release/$VERSION/
+
+      - name: Commit release branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git checkout -b release-$VERSION
+          cp -r release/$VERSION/* .
+          git add .
+          git commit -m "Release $VERSION"
+          git push origin release-$VERSION
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: $VERSION
+          name: "FHIR IG $VERSION"
+          files: release/$VERSION/**/*

@@ -1,0 +1,35 @@
+name: Deploy Dev (GitHub Pages)
+
+on:
+  workflow_call:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ig-output
+          path: output
+
+      - name: Prepare dev site
+        run: |
+          rm -rf .publish
+          mkdir -p .publish/dev
+          rsync -a output/ .publish/dev/
+
+      - name: Create index
+        run: |
+          cat > .publish/index.html <<EOF
+          <h1>FHIR IG Dev Build</h1>
+          <p><a href="./dev/">Latest Dev</a></p>
+          EOF
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .publish
+          keep_files: true

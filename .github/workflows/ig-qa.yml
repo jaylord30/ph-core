@@ -1,0 +1,33 @@
+name: IG QA
+
+on:
+  workflow_call:
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ig-output
+          path: output
+
+      - name: QA Check
+        run: |
+          set -euo pipefail
+
+          if [ ! -f output/qa.json ]; then
+            echo "::error::qa.json missing"
+            exit 1
+          fi
+
+          ERRORS=$(jq '.errs' output/qa.json)
+
+          echo "QA Errors: $ERRORS"
+
+          if [ "$ERRORS" != "0" ]; then
+            echo "::error::QA failed"
+            jq '.issues[0:20]' output/qa.json || true
+            exit 1
+          fi
