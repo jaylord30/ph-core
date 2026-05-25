@@ -24,10 +24,18 @@ jobs:
 
           ERRORS=$(jq '.errs' output/qa.json)
 
+          WARNINGS=$(jq '.warnings' output/qa.json)
+
           echo "QA Errors: $ERRORS"
+          echo "QA Warnings: $WARNINGS"
 
           if [ "$ERRORS" != "0" ]; then
-            echo "::error::QA failed"
-            jq '.issues[0:20]' output/qa.json || true
+            echo "::error::QA failed with $ERRORS errors"
+
+            # safer debug output
+            jq '.' output/qa.json | head -n 50 || true
+
             exit 1
           fi
+
+          echo "QA passed"
