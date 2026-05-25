@@ -27,22 +27,25 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Safely extract values (default to 0 if missing/null)
+          # Safely extract core metrics
           ERRORS=$(jq -r '.errs // 0' output/qa.json)
           WARNINGS=$(jq -r '.warnings // 0' output/qa.json)
+          HINTS=$(jq -r '.hints // 0' output/qa.json)
 
           echo "===================="
           echo "IG QA SUMMARY"
           echo "===================="
           echo "QA Errors: $ERRORS"
           echo "QA Warnings: $WARNINGS"
+          echo "QA Hints: $HINTS"
           echo ""
 
-          # Optional: show first issues for visibility
           echo "===================="
           echo "SAMPLE ISSUES"
           echo "===================="
-          jq '.issues[0:10] // []' output/qa.json || true
+
+          # SAFE: always fallback to empty array
+          jq -c '.issues // [] | .[0:10] // []' output/qa.json || true
 
           echo ""
 
@@ -55,7 +58,8 @@ jobs:
             echo "FULL ERROR BREAKDOWN"
             echo "===================="
 
-            jq '.issues[] | select(.severity=="error")' output/qa.json || true
+            # SAFE ERROR FILTERING (no null crash possible)
+            jq -c '.issues // [] | map(select(.severity? == "error")) | .[]' output/qa.json || true
 
             exit 1
           fi
