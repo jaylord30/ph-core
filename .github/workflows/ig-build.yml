@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      JAVA_TOOL_OPTIONS: "-Xms2g -Xmx6g"
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -48,6 +51,7 @@ jobs:
 
       - name: Build IG
         run: |
+        
           java -jar input-cache/publisher.jar \
             -ig . \
             -tx https://tx.fhirlab.net/fhir \

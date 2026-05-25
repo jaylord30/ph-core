@@ -8,12 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download IG Build Artifact
+        uses: actions/download-artifact@v4
         with:
           name: ig-output
           path: output
 
-      - name: QA Check
+      - name: Validate QA File Exists
         run: |
           set -euo pipefail
 
@@ -22,20 +23,41 @@ jobs:
             exit 1
           fi
 
-          ERRORS=$(jq '.errs' output/qa.json)
+      - name: Parse QA Results
+        run: |
+          set -euo pipefail
 
-          WARNINGS=$(jq '.warnings' output/qa.json)
+          # Safely extract values (default to 0 if missing/null)
+          ERRORS=$(jq -r '.errs // 0' output/qa.json)
+          WARNINGS=$(jq -r '.warnings // 0' output/qa.json)
 
+          echo "===================="
+          echo "IG QA SUMMARY"
+          echo "===================="
           echo "QA Errors: $ERRORS"
           echo "QA Warnings: $WARNINGS"
+          echo ""
 
-          if [ "$ERRORS" != "0" ]; then
-            echo "::error::QA failed with $ERRORS errors"
+          # Optional: show first issues for visibility
+          echo "===================="
+          echo "SAMPLE ISSUES"
+          echo "===================="
+          jq '.issues[0:10] // []' output/qa.json || true
 
-            # safer debug output
-            jq '.' output/qa.json | head -n 50 || true
+          echo ""
+
+          # Fail pipeline if errors exist
+          if [ "$ERRORS" -gt 0 ]; then
+            echo "::error::IG QA failed with $ERRORS errors"
+
+            echo ""
+            echo "===================="
+            echo "FULL ERROR BREAKDOWN"
+            echo "===================="
+
+            jq '.issues[] | select(.severity=="error")' output/qa.json || true
 
             exit 1
           fi
 
-          echo "QA passed"
+          echo "QA passed successfully"
