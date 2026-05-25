@@ -19,7 +19,7 @@ env:
   NODE_VERSION: "20"
   RUBY_VERSION: "3.2"
   IG_PUBLISHER_VERSION: "1.8.9"
-  TX_SERVER: https://tx.fhir.org
+  TX_SERVER: https://tx.fhirlab.net/fhir
   JAVA_TOOL_OPTIONS: "-Xmx6g"
 
 jobs:
