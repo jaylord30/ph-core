@@ -71,6 +71,12 @@ jobs:
       - name: Setup terminology cache
         run: mkdir -p input-cache/txcache
 
+      - name: Cache terminology (txcache)
+        uses: actions/cache@v4
+        with:
+          path: input-cache/txcache
+          key: txcache-${{ runner.os }}
+
       - name: Cache FHIR packages
         uses: actions/cache@v4
         with:
@@ -88,8 +94,8 @@ jobs:
             -ig . \
             -tx ${TX_SERVER} \
             -cachedir ~/.fhir/packages \
-            -txCache input-cache/txcache \
-            -update 
+            -txCache input-cache/txcache 
+
           test -d output || (echo "::error::No output folder generated" && exit 1)
 
       - name: QA gate
