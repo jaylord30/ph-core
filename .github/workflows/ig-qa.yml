@@ -27,40 +27,67 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Safely extract core metrics
-          ERRORS=$(jq -r '.errs // 0' output/qa.json)
-          WARNINGS=$(jq -r '.warnings // 0' output/qa.json)
-          HINTS=$(jq -r '.hints // 0' output/qa.json)
+          QA_FILE="output/qa.json"
+
+          if [ ! -f "$QA_FILE" ]; then
+            echo "::error::qa.json not found at $QA_FILE"
+            exit 1
+          fi
 
           echo "===================="
           echo "IG QA SUMMARY"
           echo "===================="
+
+          ERRORS=$(jq -r '
+            (.errs // .errors // 0)
+          ' "$QA_FILE")
+
+          WARNINGS=$(jq -r '
+            (.warnings // 0)
+          ' "$QA_FILE")
+
+          HINTS=$(jq -r '
+            (.hints // 0)
+          ' "$QA_FILE")
+
           echo "QA Errors: $ERRORS"
           echo "QA Warnings: $WARNINGS"
           echo "QA Hints: $HINTS"
           echo ""
 
           echo "===================="
-          echo "SAMPLE ISSUES"
+          echo "SAMPLE ISSUES (first 10)"
           echo "===================="
 
-          # SAFE: always fallback to empty array
-          jq -c '.issues // [] | .[0:10] // []' output/qa.json || true
+          jq -c '
+            (.issues // .issue // .details.issues // [])
+            | .[0:10]
+          ' "$QA_FILE" || true
 
           echo ""
 
-          # Fail pipeline if errors exist
+          # ---- Extract all errors safely ----
+          ERROR_LIST=$(jq -c '
+            (.issues // .issue // .details.issues // [])
+            | map(select(.severity? == "error"))
+          ' "$QA_FILE")
+
+          echo "===================="
+          echo "ERROR COUNT CHECK"
+          echo "===================="
+          echo "$ERROR_LIST" | jq length || echo "0"
+
+          echo ""
+
+          echo "===================="
+          echo "FULL ERROR BREAKDOWN"
+          echo "===================="
+
+          echo "$ERROR_LIST" | jq -c '.[]' || true
+
+          # ---- Fail pipeline if errors exist ----
           if [ "$ERRORS" -gt 0 ]; then
             echo "::error::IG QA failed with $ERRORS errors"
-
-            echo ""
-            echo "===================="
-            echo "FULL ERROR BREAKDOWN"
-            echo "===================="
-
-            # SAFE ERROR FILTERING (no null crash possible)
-            jq -c '.issues // [] | map(select(.severity? == "error")) | .[]' output/qa.json || true
-
             exit 1
           fi
 
