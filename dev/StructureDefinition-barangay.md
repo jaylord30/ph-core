@@ -49,7 +49,7 @@ Other representations of profile: [CSV](StructureDefinition-barangay.csv), [Exce
   "name" : "Barangay",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-05-26T04:00:40+00:00",
+  "date" : "2026-05-26T04:36:13+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

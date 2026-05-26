@@ -41,7 +41,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-condition.cs
   "name" : "PHCoreCondition",
   "title" : "PH Core Condition",
   "status" : "draft",
-  "date" : "2026-05-26T04:00:40+00:00",
+  "date" : "2026-05-26T04:36:13+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

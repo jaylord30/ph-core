@@ -32,7 +32,7 @@ Code system for types of disability as defined by the Philippine government for 
   "title" : "PH Core Disability Type Code System",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-05-26T04:00:40+00:00",
+  "date" : "2026-05-26T04:36:13+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
