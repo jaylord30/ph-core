@@ -23,8 +23,8 @@
   fhir:identifier ( [
      fhir:use [ fhir:v "usual" ] ;
      fhir:system [
-       fhir:v "http://doh.gov.ph/fhir/ph-core/NamingSystem/procedure-id"^^xsd:anyURI ;
-       fhir:l <http://doh.gov.ph/fhir/ph-core/NamingSystem/procedure-id>
+       fhir:v "https://fhir.doh.gov.ph/phcore/NamingSystem/procedure-id"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/NamingSystem/procedure-id>
      ] ;
      fhir:value [ fhir:v "PROC-2024-000123" ]
   ] [

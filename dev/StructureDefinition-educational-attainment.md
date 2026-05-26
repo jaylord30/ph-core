@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/educational-attainment | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:EducationalAttainment |
+| Draft as of 2026-05-26 | *Computable Name*:EducationalAttainment |
 
 Highest educational attainment of the patient.
 
@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-educational-attainme
   "title" : "Educational Attainment",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -105,7 +105,7 @@ Other representations of profile: [CSV](StructureDefinition-educational-attainme
         "code" : "CodeableConcept"
       }],
       "binding" : {
-        "strength" : "required",
+        "strength" : "extensible",
         "valueSet" : "http://doh.gov.ph/fhir/ph-core/ValueSet/educational-attainments"
       }
     }]

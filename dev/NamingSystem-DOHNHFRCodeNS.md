@@ -51,7 +51,7 @@ Health Facility Code (HFC) from the National Health Facility Registry.
   }],
   "uniqueId" : [{
     "type" : "uri",
-    "value" : "http://doh.gov.ph/fhir/Identifier/doh-nhfr-code"
+    "value" : "https://fhir.doh.gov.ph/phcore/Identifier/doh-nhfr-code"
   }]
 }
 

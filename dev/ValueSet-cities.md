@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/cities | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:Cities |
+| Draft as of 2026-05-26 | *Computable Name*:Cities |
 
  
 All city values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA). 
@@ -51,7 +51,7 @@ All city values from the Philippine Standard Geographic Codes (PSGC) published b
   "title" : "Cities",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -77,6 +77,14 @@ All city values from the Philippine Standard Geographic Codes (PSGC) published b
       {
         "code" : "1380200000",
         "display" : "City of Las Piñas"
+      },
+      {
+        "code" : "1380600000",
+        "display" : "City of Manila"
+      },
+      {
+        "code" : "0133070000",
+        "display" : "Bauang"
       }]
     }]
   }

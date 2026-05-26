@@ -32,7 +32,7 @@ Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the le
     "text" : "influenza, H5N1-1203"
   },
   "patient" : {
-    "reference" : "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"
+    "reference" : "Patient/example-patient"
   },
   "encounter" : {
     "reference" : "Encounter/encounter-single-example"
@@ -68,7 +68,7 @@ Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the le
       }]
     },
     "actor" : {
-      "reference" : "urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4"
+      "reference" : "Practitioner/example-practitioner"
     }
   }],
   "note" : [{

@@ -5,10 +5,24 @@
   "jurisdiction": "PH",
   "extensions": [
     {
+      "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product",
+      "title": "Administered Product",
+      "types": [
+        "Reference"
+      ]
+    },
+    {
       "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay",
       "title": "Barangay",
       "types": [
         "Coding"
+      ]
+    },
+    {
+      "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number",
+      "title": "Batch Number",
+      "types": [
+        "string"
       ]
     },
     {
@@ -99,6 +113,66 @@
       ]
     },
     {
+      "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-pwd-disability",
+      "title": "PH Core PWD Disability Registration",
+      "types": [
+        "string",
+        "CodeableConcept",
+        "date",
+        "CodeableConcept",
+        "base64Binary",
+        "boolean",
+        "canonical",
+        "code",
+        "date",
+        "dateTime",
+        "decimal",
+        "id",
+        "instant",
+        "integer",
+        "markdown",
+        "oid",
+        "positiveInt",
+        "string",
+        "time",
+        "unsignedInt",
+        "uri",
+        "url",
+        "uuid",
+        "Address",
+        "Age",
+        "Annotation",
+        "Attachment",
+        "CodeableConcept",
+        "Coding",
+        "ContactPoint",
+        "Count",
+        "Distance",
+        "Duration",
+        "HumanName",
+        "Identifier",
+        "Money",
+        "Period",
+        "Quantity",
+        "Range",
+        "Ratio",
+        "Reference",
+        "SampledData",
+        "Signature",
+        "Timing",
+        "ContactDetail",
+        "Contributor",
+        "DataRequirement",
+        "Expression",
+        "ParameterDefinition",
+        "RelatedArtifact",
+        "TriggerDefinition",
+        "UsageContext",
+        "Dosage",
+        "Meta"
+      ]
+    },
+    {
       "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/province",
       "title": "Province",
       "types": [
@@ -121,6 +195,18 @@
     }
   ],
   "profiles": {
+    "AllergyIntolerance": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-allergyintolerance",
+        "title": "PH Core AllergyIntolerance"
+      }
+    ],
+    "Claim": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-claim",
+        "title": "PH Core Claim"
+      }
+    ],
     "Condition": [
       {
         "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-condition",
@@ -131,6 +217,12 @@
       {
         "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter",
         "title": "PH Core Encounter"
+      }
+    ],
+    "HealthcareService": [
+      {
+        "url": "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-healthcareservice",
+        "title": "PH Core HealthcareService"
       }
     ],
     "Immunization": [
@@ -237,19 +329,23 @@
     ]
   },
   "usage": {
+    "http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product": [
+      "Immunization"
+    ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay": [
       "Address",
-      "Bundle.entry.resource.address",
+      "Location.address",
       "Organization.address",
-      "Organization.contact.address",
-      "Patient.address"
+      "Organization.contact.address"
+    ],
+    "http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number": [
+      "Immunization"
     ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality": [
       "Address",
-      "Bundle.entry.resource.address",
+      "Location.address",
       "Organization.address",
-      "Organization.contact.address",
-      "Patient.address"
+      "Organization.contact.address"
     ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/educational-attainment": [
       "Patient"
@@ -263,11 +359,12 @@
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/occupation": [
       "Patient"
     ],
+    "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-pwd-disability": [
+      "Patient"
+    ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/province": [
       "Address",
-      "Bundle.entry.resource.address",
-      "Patient.address",
-      "RelatedPerson.address"
+      "Location.address"
     ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/race": [
       "Bundle.entry.resource",
@@ -275,9 +372,9 @@
     ],
     "http://doh.gov.ph/fhir/ph-core/StructureDefinition/region": [
       "Address",
+      "Location.address",
       "Organization.address",
-      "Organization.contact.address",
-      "RelatedPerson.address"
+      "Organization.contact.address"
     ],
     "http://hl7.org/fhir/5.0/StructureDefinition/extension-ActorDefinition.contact": [
       "Basic"
@@ -341,11 +438,16 @@
       "StructureDefinition.differential.element",
       "StructureDefinition.snapshot.element"
     ],
-    "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity|5.2.0": [
-      "Patient"
+    "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity": [
+      "Patient",
+      "Practitioner"
     ],
-    "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender|5.2.0": [
-      "Patient"
+    "http://hl7.org/fhir/StructureDefinition/individual-pronouns": [
+      "Practitioner"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender": [
+      "Patient",
+      "Practitioner"
     ],
     "http://hl7.org/fhir/StructureDefinition/obligation": [
       "StructureDefinition.differential.element",
@@ -355,14 +457,8 @@
       "Bundle.entry.resource",
       "Patient"
     ],
-    "http://hl7.org/fhir/StructureDefinition/patient-nationality|5.2.0": [
-      "Patient"
-    ],
     "http://hl7.org/fhir/StructureDefinition/patient-religion": [
       "Bundle.entry.resource",
-      "Patient"
-    ],
-    "http://hl7.org/fhir/StructureDefinition/patient-religion|5.2.0": [
       "Patient"
     ],
     "http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint": [
@@ -390,6 +486,27 @@
     ],
     "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version": [
       "StructureDefinition.snapshot"
+    ],
+    "https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay": [
+      "Bundle.entry.resource.address",
+      "Patient.address",
+      "Practitioner.address",
+      "RelatedPerson.address"
+    ],
+    "https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality": [
+      "Bundle.entry.resource.address",
+      "Patient.address",
+      "Practitioner.address",
+      "RelatedPerson.address"
+    ],
+    "https://fhir.doh.gov.ph/phcore/StructureDefinition/province": [
+      "Bundle.entry.resource.address",
+      "Patient.address",
+      "RelatedPerson.address"
+    ],
+    "https://fhir.doh.gov.ph/phcore/StructureDefinition/region": [
+      "Practitioner.address",
+      "RelatedPerson.address"
     ]
   }
 }

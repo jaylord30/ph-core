@@ -51,7 +51,7 @@ Identifier system for procedures assigned by the Department of Health (DOH) heal
   }],
   "uniqueId" : [{
     "type" : "uri",
-    "value" : "http://doh.gov.ph/fhir/ph-core/NamingSystem/procedure-id"
+    "value" : "https://fhir.doh.gov.ph/phcore/NamingSystem/procedure-id"
   }]
 }
 

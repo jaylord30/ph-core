@@ -8,10 +8,10 @@
   <url value="http://doh.gov.ph/fhir/ph-core/CodeSystem/indigenous-groups-cs"/>
   <version value="0.2.0"/>
   <name value="IndigenousGroupsCS"/>
-  <title value="Indigenous Groups"/>
+  <title value="Indigenous Groups CodeSystem"/>
   <status value="draft"/>
   <experimental value="true"/>
-  <date value="2026-04-10T05:44:36+00:00"/>
+  <date value="2026-05-26T03:51:01+00:00"/>
   <publisher value="UP Manila National TeleHealth Center"/>
   <contact>
     <name value="UP Manila National TeleHealth Center"/>

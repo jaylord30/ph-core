@@ -32,7 +32,8 @@
              fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
              fhir:l <urn:iso:std:iso:3166>
            ] ;
-           fhir:code [ fhir:v "PH" ]
+           fhir:code [ fhir:v "PH" ] ;
+           fhir:display [ fhir:v "Philippines" ]
          ] )
        ]
      ] [
@@ -168,12 +169,12 @@
      fhir:given ( [ fhir:v "Juan Jane" ] [ fhir:v "Dela Fuente" ] )
   ] ) ; # 
   fhir:gender [ fhir:v "male"] ; # 
-  fhir:birthDate [ fhir:v "1985-06-15"^^xsd:date] ; # 
+  fhir:birthDate [ fhir:v "1980-01-01"^^xsd:date] ; # 
   fhir:address ( [
      fhir:extension ( [
        fhir:url [
-         fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay"^^xsd:anyURI ;
-         fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay>
+         fhir:v "https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay"^^xsd:anyURI ;
+         fhir:l <https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay>
        ] ;
        fhir:value [
          a fhir:Coding ;
@@ -186,8 +187,8 @@
        ]
      ] [
        fhir:url [
-         fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality"^^xsd:anyURI ;
-         fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality>
+         fhir:v "https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality"^^xsd:anyURI ;
+         fhir:l <https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality>
        ] ;
        fhir:value [
          a fhir:Coding ;
@@ -200,8 +201,8 @@
        ]
      ] [
        fhir:url [
-         fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/province"^^xsd:anyURI ;
-         fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/province>
+         fhir:v "https://fhir.doh.gov.ph/phcore/StructureDefinition/province"^^xsd:anyURI ;
+         fhir:l <https://fhir.doh.gov.ph/phcore/StructureDefinition/province>
        ] ;
        fhir:value [
          a fhir:Coding ;

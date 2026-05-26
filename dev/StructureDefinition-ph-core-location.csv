@@ -33,13 +33,13 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Location.identifier","Location.identifier","","","",0,*,"","","Y","Identifier {[]} {[]}
 ","Unique code or number identifying the location to its users","Unique code or number identifying the location to its users.","","Organization label locations in registries, need to keep track of those.","","","","","","","",,,,,"",,,,"Location.identifier",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".id","FiveWs.identifier"
-"Location.status","Location.status","","","",0,1,"","Y","Y","code {[]} {[]}
+"Location.status","Location.status","","","",0,1,"Y","Y","Y","code {[]} {[]}
 ","active | suspended | inactive","The status property covers the general availability of the resource, not the current value which may be covered by the operationStatus, or by a schedule/slots if they are configured for the location.","","","","","","","","","",,"required","Indicates whether the location is still in use.","http://hl7.org/fhir/ValueSet/location-status|4.0.1","",,,,"Location.status",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".statusCode","FiveWs.status"
 "Location.operationalStatus","Location.operationalStatus","","","",0,1,"","","Y","Coding {[]} {[]}
 ","The operational status of the location (typically only for a bed/room)","The operational status covers operation values most relevant to beds (but can also apply to rooms/units/chairs/etc. such as an isolation unit/dialysis chair). This typically covers concepts such as contamination, housekeeping, and other activities like maintenance.","","","","","","","","","",,"preferred","The operational status if the location (where typically a bed/room).","http://terminology.hl7.org/ValueSet/v2-0116","",,,,"Location.operationalStatus",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","n/a","FiveWs.status"
-"Location.name","Location.name","","","",0,1,"","","Y","string {[]} {[]}
+"Location.name","Location.name","","","",0,1,"Y","","Y","string {[]} {[]}
 ","Name of the location as used by humans","Name of the location as used by humans. Does not need to be unique.","If the name of a location changes, consider putting the old name in the alias column so that it can still be located through searches.","","","","","","","","",,,,,"",,,,"Location.name",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".name"
 "Location.alias","Location.alias","","","",0,*,"","","","string {[]} {[]}
@@ -72,9 +72,65 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Location.telecom","Location.telecom","","","",0,*,"","","","ContactPoint {[]} {[]}
 ","Contact details of the location","The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites.","","","","","","","","","",,,,,"",,,,"Location.telecom",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".telecom"
-"Location.address","Location.address","","","",0,1,"","","","Address {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-address]]} {[]}
+"Location.address","Location.address","","","",0,1,"Y","","","Address {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-address]]} {[]}
 ","Physical location","Physical location.","Additional addresses should be recorded using another instance of the Location resource, or via the Organization.","If locations can be visited, we need to keep track of their address.","","","","","","","",,,,,"",,,,"Location.address",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".addr"
+"Location.address.id","Location.address.id","","","",0,1,"","","","string {[]} {[]}
+","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"Location.address.extension","Location.address.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"Location.address.extension:region","Location.address.extension","region","","",0,1,"","","","Extension {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/region]]} {[]}
+","Region","Region from the standard geographic code.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Location.address.extension:province","Location.address.extension","province","","",0,1,"","","","Extension {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/province]]} {[]}
+","Extension","Province from the standard geographic code.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Location.address.extension:cityMunicipality","Location.address.extension","cityMunicipality","","",0,1,"","","","Extension {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality]]} {[]}
+","City/Municipality","City/municipality from the standard geographic code.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Location.address.extension:barangay","Location.address.extension","barangay","","",0,1,"","","","Extension {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay]]} {[]}
+","Extension","Barangay from the standard geographic code.","","","","","","","","","",,,,,"",,,,"Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}"
+"Location.address.use","Location.address.use","","","",0,1,"","Y","Y","code {[]} {[]}
+","home | work | temp | old | billing - purpose of this address","The purpose of this address.","Applications can assume that an address is current unless it explicitly says that it is temporary or old.","Allows an appropriate address to be chosen from a list of many.","","","","","<valueCode xmlns=""http://hl7.org/fhir"" value=""home""/>","","",,"required","The use of an address.","http://hl7.org/fhir/ValueSet/address-use|4.0.1","",,,,"Address.use",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","unique(./use)"
+"Location.address.type","Location.address.type","","","",0,1,"","","Y","code {[]} {[]}
+","postal | physical | both","Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.","The definition of Address states that ""address is intended to describe postal addresses, not physical locations"". However, many applications track whether an address has a dual purpose of being a location that can be visited as well as being a valid delivery destination, and Postal addresses are often used as proxies for physical locations (also see the [Location](http://hl7.org/fhir/R4/location.html#) resource).","","","","","","<valueCode xmlns=""http://hl7.org/fhir"" value=""both""/>","","",,"required","The type of an address (physical / postal).","http://hl7.org/fhir/ValueSet/address-type|4.0.1","",,,,"Address.type",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","unique(./use)"
+"Location.address.text","Location.address.text","","","",0,1,"","","Y","string {[]} {[]}
+","Text representation of the address","Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.","Can provide both a text representation and parts. Applications updating an address SHALL ensure that  when both text and parts are present,  no content is included in the text that isn't found in a part.","A renderable, unencoded form.","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""137 Nowhere Street, Erewhon 9132""/>","","",,,,,"",,,,"Address.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","./formatted"
+"Location.address.line","Location.address.line","","","",0,*,"Y","","Y","string {[]} {[]}
+","Street name, number, direction & P.O. Box etc.","This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.","","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""137 Nowhere Street""/>","","",,,,,"",,,,"Address.line",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","AD.part[parttype = AL]"
+"Location.address.city","Location.address.city","","Municpality
+","",0,1,"","","Y","string {[]} {[]}
+","Name of city, town etc.","The name of the city, town, suburb, village or other community or delivery center.","","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""Erewhon""/>","","",,,,,"",,,,"Address.city",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","AD.part[parttype = CTY]"
+"Location.address.district","Location.address.district","","County
+","",0,1,"","","Y","string {[]} {[]}
+","District name (aka county)","The name of the administrative area (county).","District is sometimes known as county, but in some regions 'county' is used in place of city (municipality), so county name should be conveyed in city instead.","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""Madison""/>","","",,,,,"",,,,"Address.district",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","AD.part[parttype = CNT | CPA]"
+"Location.address.state","Location.address.state","","Province
+Territory","",0,1,"","","Y","string {[]} {[]}
+","Sub-unit of country (abbreviations ok)","Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (e.g. US 2 letter state codes).","","","","","","","","","",,,,,"",,,,"Address.state",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","AD.part[parttype = STA]"
+"Location.address.postalCode","Location.address.postalCode","","Zip
+","",0,1,"","","Y","string {[]} {[]}
+","Postal code for area","A postal code designating a region defined by the postal service.","","","","","","","<valueString xmlns=""http://hl7.org/fhir"" value=""9132""/>","","",,,,,"",,,,"Address.postalCode",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","AD.part[parttype = ZIP]"
+"Location.address.country","Location.address.country","","","",0,1,"","","Y","string {[]} {[]}
+","Country (e.g. can be ISO 3166 2 or 3 letter code)","Country - a nation as commonly understood or generally accepted.","ISO 3166 3 letter codes can be used in place of a human readable country name.","","","","","","","","",,,,,"",,,,"Address.country",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","AD.part[parttype = CNT]"
+"Location.address.period","Location.address.period","","","",0,1,"","","Y","Period {[]} {[]}
+","Time period when address was/is in use","Time period when address was/is in use.","","Allows addresses to be placed in historical context.","","","","","<valuePeriod xmlns=""http://hl7.org/fhir"">
+  <start value=""2010-03-23""/>
+  <end value=""2010-07-01""/>
+</valuePeriod>","","",,,,,"",,,,"Address.period",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","./usablePeriod[type=""IVL<TS>""]"
 "Location.physicalType","Location.physicalType","","","",0,1,"Y","","Y","CodeableConcept {[]} {[]}
 ","Physical form of the location","Physical form of the location, e.g. building, room, vehicle, road.","","For purposes of showing relevant locations in queries, we need to categorize locations.","","","","","","","",,"example","Physical form of the location.","http://hl7.org/fhir/ValueSet/location-physical-type|4.0.1","",,,,"Location.physicalType",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".playingEntity [classCode=PLC].code","FiveWs.class"
@@ -91,7 +147,7 @@ ext-1:Must have either extensions or value[x], not both {extension.exists() != v
 "Location.physicalType.text","Location.physicalType.text","","","",0,1,"Y","","Y","string {[]} {[]}
 ","Plain text representation of the concept","A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.","Very often the text is the same as a displayName of one of the codings.","The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.","","","","","","","",,,,,"",,,,"CodeableConcept.text",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","./originalText[mediaType/code=""text/plain""]/data"
-"Location.position","Location.position","","","",0,1,"","","","BackboneElement {[]} {[]}
+"Location.position","Location.position","","","",0,1,"Y","","","BackboneElement {[]} {[]}
 ","The absolute geographic location","The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).","","For mobile applications and automated route-finding knowing the exact location of the Location is required.","","","","","","","",,,,,"",,,,"Location.position",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".playingEntity [classCode=PLC determinerCode=INSTANCE].positionText"
 "Location.position.id","Location.position.id","","","",0,1,"","","","string {[]} {[]}
@@ -106,16 +162,16 @@ user contentmodifiers","",0,*,"","Y","Y","Extension {[]} {[]}
 
 Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","Modifier extensions allow for extensions that *cannot* be safely ignored to be clearly distinguished from the vast majority of extensions which can be safely ignored.  This promotes interoperability by eliminating the need for implementers to prohibit the presence of extensions. For further information, see the [definition of modifier extensions](http://hl7.org/fhir/R4/extensibility.html#modifierExtension).","","","","","","","",,,,,"",,,,"BackboneElement.modifierExtension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","N/A"
-"Location.position.longitude","Location.position.longitude","","","",1,1,"","","","decimal {[]} {[]}
+"Location.position.longitude","Location.position.longitude","","","",1,1,"Y","","","decimal {[]} {[]}
 ","Longitude with WGS84 datum","Longitude. The value domain and the interpretation are the same as for the text of the longitude element in KML (see notes below).","","","","","","","","","",,,,,"",,,,"Location.position.longitude",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
-"Location.position.latitude","Location.position.latitude","","","",1,1,"","","","decimal {[]} {[]}
+"Location.position.latitude","Location.position.latitude","","","",1,1,"Y","","","decimal {[]} {[]}
 ","Latitude with WGS84 datum","Latitude. The value domain and the interpretation are the same as for the text of the latitude element in KML (see notes below).","","","","","","","","","",,,,,"",,,,"Location.position.latitude",1,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
 "Location.position.altitude","Location.position.altitude","","","",0,1,"","","","decimal {[]} {[]}
 ","Altitude with WGS84 datum","Altitude. The value domain and the interpretation are the same as for the text of the altitude element in KML (see notes below).","","","","","","","","","",,,,,"",,,,"Location.position.altitude",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ","(RIM Opted not to map the sub-elements of GPS location, is now an OBS)"
-"Location.managingOrganization","Location.managingOrganization","","","",0,1,"","","Y","Reference {[]} {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-organization]]}
+"Location.managingOrganization","Location.managingOrganization","","","",0,1,"Y","","Y","Reference {[]} {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-organization]]}
 ","Organization responsible for provisioning and upkeep","The organization responsible for the provisioning and upkeep of the location.","This can also be used as the part of the organization hierarchy where this location provides services. These services can be defined through the HealthcareService resource.","Need to know who manages the location.","","","","","","","",,,,,"",,,,"Location.managingOrganization",0,1,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
 ",".scopingEntity[classCode=ORG determinerKind=INSTANCE]"
 "Location.partOf","Location.partOf","","","",0,1,"","","","Reference {[]} {[CanonicalType[http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-location]]}

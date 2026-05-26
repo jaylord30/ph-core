@@ -1,10 +1,10 @@
-# PhilSys Identification Number (PhilSys ID) - Draft PH Core Implementation Guide v0.2.0
+# PhilSys Identification Number (PhilSys ID) NamingSystem - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **PhilSys Identification Number (PhilSys ID)**
+* **PhilSys Identification Number (PhilSys ID) NamingSystem**
 
-## NamingSystem: PhilSys Identification Number (PhilSys ID) 
+## NamingSystem: PhilSys Identification Number (PhilSys ID) NamingSystem 
 
 | | |
 | :--- | :--- |

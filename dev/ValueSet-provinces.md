@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/provinces | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:Provinces |
+| Draft as of 2026-05-26 | *Computable Name*:Provinces |
 
  
 All province values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA). 
@@ -51,7 +51,7 @@ All province values from the Philippine Standard Geographic Codes (PSGC) publish
   "title" : "Provinces",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -93,6 +93,10 @@ All province values from the Philippine Standard Geographic Codes (PSGC) publish
       {
         "code" : "1705100000",
         "display" : "Occidental Mindoro"
+      },
+      {
+        "code" : "0133000000",
+        "display" : "La Union"
       }]
     }]
   }

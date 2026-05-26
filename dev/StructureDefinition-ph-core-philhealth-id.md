@@ -1,15 +1,15 @@
-# PIN - PhilHealth Identification Number - Draft PH Core Implementation Guide v0.2.0
+# PIN - PhilHealth Identification Number Identifier - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **PIN - PhilHealth Identification Number**
+* **PIN - PhilHealth Identification Number Identifier**
 
-## Data Type Profile: PIN - PhilHealth Identification Number 
+## Data Type Profile: PIN - PhilHealth Identification Number Identifier 
 
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-philhealth-id | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:PHCorePhilHealthID |
+| Draft as of 2026-05-26 | *Computable Name*:PHCorePhilHealthID |
 
  
 The permanent and unique number issued by PhilHealth to individual members and to each and every dependent. 
@@ -39,9 +39,9 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-philhealth-i
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-philhealth-id",
   "version" : "0.2.0",
   "name" : "PHCorePhilHealthID",
-  "title" : "PIN - PhilHealth Identification Number",
+  "title" : "PIN - PhilHealth Identification Number Identifier",
   "status" : "draft",
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

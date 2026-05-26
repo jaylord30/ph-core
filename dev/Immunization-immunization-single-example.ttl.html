@@ -43,8 +43,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"4.71"}
-    h3,h4,h5,h6{--heading-prefix:"4.71"}</style>
+    <style type="text/css">h2{--heading-prefix:"4.82"}
+    h3,h4,h5,h6{--heading-prefix:"4.82"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -58,7 +58,7 @@
 
 
 
-  <img alt="Philippines flag" src="assets/images/phl.svg" height="16" title="Philippines"/>
+  Philippines
 
 
             </span>
@@ -180,6 +180,7 @@
 @prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt; .
 @prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
 @prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix sct: &lt;http://snomed.info/id/&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 
 # - resource -------------------------------------------------------------------
@@ -194,8 +195,24 @@
   ] ; # 
   <a href="http://hl7.org/fhir/R4/domainresource.html#Immunization.text">fhir:text</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;generated&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">fhir:div</a> [ <a href="http://hl7.org/fhir/R4/narrative.html#xhtml">fhir:v</a> &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the left arm on January 10, 2013. The vaccine lot number was AAJN11K and it was privately funded.&lt;/div&gt;&quot;^^rdf:XMLLiteral ]
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">fhir:div</a> [ <a href="http://hl7.org/fhir/R4/narrative.html#xhtml">fhir:v</a> &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;Juan Dela Cruz received a completed intramuscular influenza (H5N1-1203) vaccine in the left arm on January 10, 2013, at Philippine General Hospital. The vaccine lot number was AAJN11K and was privately funded. Dose 1 was administered by Dr. Maria Clara Santos.&lt;/div&gt;&quot;^^rdf:XMLLiteral ]
   ] ; # 
+  <a href="http://hl7.org/fhir/R4/domainresource.html#Immunization.extension">fhir:extension</a> ( [
+<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number&gt;     ] ;
+<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">a</a> fhir:String ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;AAJN11K&quot;     ]
+  ] [
+<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">fhir:url</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product&gt;     ] ;
+<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">fhir:value</a> [
+<a href="http://hl7.org/fhir/R4/references.html#Reference">a</a> fhir:Reference ;
+<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> fhir:Medication/medication-single-example ;
+<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Medication/medication-single-example&quot; ]     ]
+  ] ) ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.identifier">fhir:identifier</a> ( [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">fhir:system</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;urn:ietf:rfc:3986&quot;^^xsd:anyURI ;
@@ -208,8 +225,9 @@
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://hl7.org/fhir/sid/cvx&quot;^^xsd:anyURI ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://hl7.org/fhir/sid/cvx&gt;       ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;123&quot; ]     ] ) ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;influenza, H5N1-1203&quot; ]
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;123&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;influenza, H5N1-1203&quot; ]     ] ) ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Influenza H5N1-1203 Vaccine&quot; ]
   ] ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.patient">fhir:patient</a> [
 <a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> fhir:Patient/patient-single-example ;
@@ -224,6 +242,10 @@
 <a href="http://hl7.org/fhir/R4/datatypes.html#dateTime">fhir:v</a> &quot;2013-01-10&quot;^^xsd:date
   ] ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.primarySource">fhir:primarySource</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> true] ; # 
+  <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.location">fhir:location</a> [
+<a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> fhir:Location/location-single-example ;
+<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Location/location-single-example&quot; ]
+  ] ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.lotNumber">fhir:lotNumber</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;AAJN11K&quot;] ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.expirationDate">fhir:expirationDate</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#date">fhir:v</a> &quot;2015-02-15&quot;^^xsd:date] ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.site">fhir:site</a> [
@@ -232,7 +254,8 @@
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/v3-ActSite&quot;^^xsd:anyURI ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/v3-ActSite&gt;       ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;LA&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;left arm&quot; ]     ] )
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;left arm&quot; ]     ] ) ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Left arm&quot; ]
   ] ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.route">fhir:route</a> [
     ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
@@ -240,7 +263,8 @@
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration&quot;^^xsd:anyURI ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration&gt;       ] ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;IM&quot; ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Injection, intramuscular&quot; ]     ] )
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Injection, intramuscular&quot; ]     ] ) ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Intramuscular injection&quot; ]
   ] ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.doseQuantity">fhir:doseQuantity</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#Quantity#Quantity.value">fhir:value</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#decimal">fhir:v</a> &quot;5&quot;^^xsd:decimal ] ;
@@ -255,13 +279,16 @@
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/v2-0443&quot;^^xsd:anyURI ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/v2-0443&gt;         ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;OP&quot; ]       ] )     ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;OP&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Ordering Provider&quot; ]       ] ) ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Ordering Provider&quot; ]     ] ;
 <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.performer.actor">fhir:actor</a> [
 <a href="http://hl7.org/fhir/R4/rdf.html#reference">fhir:l</a> fhir:Practitioner/practitioner-single-example ;
-<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Practitioner/practitioner-single-example&quot; ]     ]
+<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Practitioner/practitioner-single-example&quot; ] ;
+<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Dr. Maria Clara Santos&quot; ]     ]
   ] ) ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.note">fhir:note</a> ( [
-<a href="http://hl7.org/fhir/R4/datatypes.html#Annotation#Annotation.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">fhir:v</a> &quot;Notes on adminstration of vaccine&quot; ]
+<a href="http://hl7.org/fhir/R4/datatypes.html#Annotation#Annotation.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#markdown">fhir:v</a> &quot;Notes on administration of vaccine&quot; ]
   ] ) ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.isSubpotent">fhir:isSubpotent</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#boolean">fhir:v</a> true] ; # 
   <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.fundingSource">fhir:fundingSource</a> [
@@ -269,8 +296,24 @@
 <a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://terminology.hl7.org/CodeSystem/immunization-funding-source&quot;^^xsd:anyURI ;
 <a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://terminology.hl7.org/CodeSystem/immunization-funding-source&gt;       ] ;
-<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;private&quot; ]     ] )
-  ] . # 
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;private&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Private&quot; ]     ] ) ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Private&quot; ]
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.protocolApplied">fhir:protocolApplied</a> ( [
+    ( <a href="http://hl7.org/fhir/R4/immunization.html#Immunization.protocolApplied.targetDisease">fhir:targetDisease</a> [
+      ( <a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">fhir:coding</a> [
+a sct:772828001 ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">fhir:system</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:v</a> &quot;http://snomed.info/sct&quot;^^xsd:anyURI ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#uri">fhir:l</a> &lt;http://snomed.info/sct&gt;         ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">fhir:code</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> &quot;772828001&quot; ] ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">fhir:display</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Influenza caused by Influenza A virus subtype H5N1&quot; ]       ] ) ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.text">fhir:text</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> &quot;Influenza H5N1&quot; ]     ] ) ;
+<a href="http://hl7.org/fhir/R4/immunization.html#Immunization.protocolApplied.doseNumber_x_">fhir:doseNumber</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#positiveInt">a</a> fhir:PositiveInt ;
+<a href="http://hl7.org/fhir/R4/datatypes.html#positiveInt">fhir:v</a> &quot;1&quot;^^xsd:positiveInteger     ]
+  ] ) . # 
 
 </code></pre>
 
@@ -297,7 +340,7 @@
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://github.com/UP-NTHC">UP Manila National TeleHealth Center</a>.  Package fhir.ph.core#0.2.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Apr 10, 2026 05:44+0000">2026-04-10</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://github.com/UP-NTHC">UP Manila National TeleHealth Center</a>.  Package fhir.ph.core#0.2.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, May 26, 2026 03:51+0000">2026-05-26</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

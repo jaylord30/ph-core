@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:Consumer |
+| Draft as of 2026-05-26 | *Computable Name*:Consumer |
 
  
 A PH Core Consumer is a system that receives PH Core resources and uses the content of these resources. 

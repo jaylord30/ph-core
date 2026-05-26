@@ -10,7 +10,7 @@
   </text>
   <identifier>
     <use value="usual"/>
-    <system value="http://doh.gov.ph/fhir/ph-core/NamingSystem/procedure-id"/>
+    <system value="https://fhir.doh.gov.ph/phcore/NamingSystem/procedure-id"/>
     <value value="PROC-2024-000123"/>
   </identifier>
   <identifier>

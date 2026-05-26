@@ -48,11 +48,11 @@ On 17 September 2012, a blood pressure observation was recorded for Juan Dela Cr
     "text" : "Blood pressure systolic & diastolic"
   },
   "subject" : {
-    "reference" : "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"
+    "reference" : "Patient/example-patient"
   },
   "effectiveDateTime" : "2012-09-17",
   "performer" : [{
-    "reference" : "urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4"
+    "reference" : "Practitioner/example-practitioner"
   }],
   "interpretation" : [{
     "coding" : [{

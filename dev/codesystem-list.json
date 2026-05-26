@@ -4,8 +4,16 @@
     "version" : "0.2.0",
     "status" : "draft",
     "name" : "IndigenousGroupsCS",
-    "title" : "Indigenous Groups",
+    "title" : "Indigenous Groups CodeSystem",
     "description" : "A list of codes representing the recognized indigenous groups in the Philippines to which a person may belong."
+  },
+  {
+    "url" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/ph-core-disability-type-cs",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "PHCoreDisabilityTypeCS",
+    "title" : "PH Core Disability Type Code System",
+    "description" : "Code system for types of disability as defined by the Philippine government for PWD registration."
   },
   {
     "url" : "https://psa.gov.ph/classification/psced/level",

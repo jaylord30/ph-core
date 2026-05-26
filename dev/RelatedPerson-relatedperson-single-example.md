@@ -6,7 +6,7 @@
 
 ## Example RelatedPerson: relatedperson-single-example
 
-Maria Cruz Santos, born on January 1, 1955, is the mother of the patient. She resides at 123 Mabini Street, 1100, Philippines, with regional associations to Ilocos Norte and Occidental Mindoro. Her PhilSys ID is 1234-1234567-1.
+Maria Cruz Santos, born on January 1, 1955, is the mother of the patient. She resides at 123 Mabini Street, 1100, Philippines. Her PhilSys ID is 1234-1234567-1.
 
 
 
@@ -20,6 +20,13 @@ Maria Cruz Santos, born on January 1, 1955, is the mother of the patient. She re
     "profile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-relatedperson"]
   },
   "identifier" : [{
+    "use" : "official",
+    "type" : {
+      "coding" : [{
+        "system" : "http://terminology.hl7.org/CodeSystem/v2-0203",
+        "code" : "NI"
+      }]
+    },
     "system" : "http://philsys.gov.ph/fhir/Identifier/philsys-id",
     "value" : "1234-1234567-1"
   }],
@@ -29,30 +36,55 @@ Maria Cruz Santos, born on January 1, 1955, is the mother of the patient. She re
   "relationship" : [{
     "coding" : [{
       "system" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
-      "code" : "MTH"
-    }]
+      "code" : "MTH",
+      "display" : "mother"
+    }],
+    "text" : "Mother"
   }],
   "name" : [{
+    "use" : "official",
+    "text" : "Maria Cruz Santos",
     "family" : "Santos",
     "given" : ["Maria", "Cruz"]
+  }],
+  "telecom" : [{
+    "system" : "phone",
+    "value" : "+63-912-345-6789",
+    "use" : "mobile"
   }],
   "gender" : "female",
   "birthDate" : "1955-01-01",
   "address" : [{
     "extension" : [{
-      "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/region",
+      "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay",
       "valueCoding" : {
         "system" : "https://psa.gov.ph/classification/psgc",
-        "code" : "0102800000",
-        "display" : "Ilocos Norte"
+        "code" : "0133070250",
+        "display" : "Paringao"
       }
     },
     {
-      "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/province",
+      "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality",
       "valueCoding" : {
         "system" : "https://psa.gov.ph/classification/psgc",
-        "code" : "1705100000",
-        "display" : "Occidental Mindoro"
+        "code" : "0133070000",
+        "display" : "Bauang"
+      }
+    },
+    {
+      "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/province",
+      "valueCoding" : {
+        "system" : "https://psa.gov.ph/classification/psgc",
+        "code" : "0133000000",
+        "display" : "La Union"
+      }
+    },
+    {
+      "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/region",
+      "valueCoding" : {
+        "system" : "https://psa.gov.ph/classification/psgc",
+        "code" : "0100000000",
+        "display" : "Ilocos Region"
       }
     }],
     "line" : ["123 Mabini Street"],

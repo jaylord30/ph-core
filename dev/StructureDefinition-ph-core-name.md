@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-name | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:PHCoreName |
+| Draft as of 2026-05-26 | *Computable Name*:PHCoreName |
 
  
 A name of a person in the philippine context. 
@@ -37,7 +37,7 @@ A person named "Juan Lawrence Les Dalisay Reyes" would be represented as:
 
 **Usages:**
 
-* Use this DataType Profile: [PH Core Patient](StructureDefinition-ph-core-patient.md)
+* Use this DataType Profile: [PH Core Patient](StructureDefinition-ph-core-patient.md), [PH Core Practitioner](StructureDefinition-ph-core-practitioner.md) and [PH Core RelatedPerson](StructureDefinition-ph-core-relatedperson.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/ph-core-name)
 
@@ -62,7 +62,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-name.csv), [
   "name" : "PHCoreName",
   "title" : "PH Core Name",
   "status" : "draft",
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

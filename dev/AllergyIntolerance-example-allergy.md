@@ -32,7 +32,7 @@ Juan Dela Cruz has a high criticality, active allergy to Benethamine penicillin.
     }]
   },
   "patient" : {
-    "reference" : "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"
+    "reference" : "Patient/example-patient"
   }
 }
 

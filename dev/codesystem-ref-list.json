@@ -4,11 +4,22 @@
     "version" : "0.2.0",
     "status" : "draft",
     "name" : "IndigenousGroupsCS",
-    "title" : "Indigenous Groups",
+    "title" : "Indigenous Groups CodeSystem",
     "description" : "A list of codes representing the recognized indigenous groups in the Philippines to which a person may belong.",
     "uses" : {
     },
-    "ValueSet-indigenous-groups-vs.html" : "Indigenous Groups"
+    "ValueSet-indigenous-groups-vs.html" : "Indigenous Groups ValueSet"
+  },
+  {
+    "url" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/ph-core-disability-type-cs",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "PHCoreDisabilityTypeCS",
+    "title" : "PH Core Disability Type Code System",
+    "description" : "Code system for types of disability as defined by the Philippine government for PWD registration.",
+    "uses" : {
+    },
+    "ValueSet-ph-core-disability-type-vs.html" : "PH Core Disability Type Value Set"
   },
   {
     "url" : "http://terminology.hl7.org/CodeSystem/provenance-participant-type",
@@ -102,10 +113,10 @@
     "description" : "Mock of the Philippine Standard Geographic Code.",
     "uses" : {
     },
-    "ValueSet-barangays.html" : "Barangays",
-    "ValueSet-regions.html" : "Regions",
     "ValueSet-cities.html" : "Cities",
-    "ValueSet-provinces.html" : "Provinces"
+    "ValueSet-barangays.html" : "Barangays",
+    "ValueSet-provinces.html" : "Provinces",
+    "ValueSet-regions.html" : "Regions"
   },
   {
     "url" : "https://psa.gov.ph/classification/psoc/unit",

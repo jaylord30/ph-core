@@ -14,10 +14,10 @@
   fhir:type [ fhir:v "transaction"] ; # 
   fhir:entry ( [
      fhir:fullUrl [
-       fhir:v "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"^^xsd:anyURI ;
-       fhir:l <urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b>
+       fhir:v "https://fhir.doh.gov.ph/phcore/Patient/example-patient"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/Patient/example-patient>
      ] ;
-     fhir:resource ( <urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b> ) ;
+     fhir:resource ( <https://fhir.doh.gov.ph/phcore/Patient/example-patient> ) ;
      fhir:request [
        fhir:method [ fhir:v "POST" ] ;
        fhir:url [
@@ -27,10 +27,10 @@
      ]
   ] [
      fhir:fullUrl [
-       fhir:v "urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae"^^xsd:anyURI ;
-       fhir:l <urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae>
+       fhir:v "https://fhir.doh.gov.ph/phcore/Encounter/example-encounter"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/Encounter/example-encounter>
      ] ;
-     fhir:resource ( <urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae> ) ;
+     fhir:resource ( <https://fhir.doh.gov.ph/phcore/Encounter/example-encounter> ) ;
      fhir:request [
        fhir:method [ fhir:v "POST" ] ;
        fhir:url [
@@ -40,10 +40,10 @@
      ]
   ] [
      fhir:fullUrl [
-       fhir:v "urn:uuid:1a391d1e-a068-479a-88e3-e3d52c3a6f64"^^xsd:anyURI ;
-       fhir:l <urn:uuid:1a391d1e-a068-479a-88e3-e3d52c3a6f64>
+       fhir:v "https://fhir.doh.gov.ph/phcore/Condition/example-condition"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/Condition/example-condition>
      ] ;
-     fhir:resource ( <urn:uuid:1a391d1e-a068-479a-88e3-e3d52c3a6f64> ) ;
+     fhir:resource ( <https://fhir.doh.gov.ph/phcore/Condition/example-condition> ) ;
      fhir:request [
        fhir:method [ fhir:v "POST" ] ;
        fhir:url [
@@ -53,10 +53,10 @@
      ]
   ] [
      fhir:fullUrl [
-       fhir:v "urn:uuid:024dcb47-cc23-407a-839b-b4634e95abae"^^xsd:anyURI ;
-       fhir:l <urn:uuid:024dcb47-cc23-407a-839b-b4634e95abae>
+       fhir:v "https://fhir.doh.gov.ph/phcore/Medication/example-medication"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/Medication/example-medication>
      ] ;
-     fhir:resource ( <urn:uuid:024dcb47-cc23-407a-839b-b4634e95abae> ) ;
+     fhir:resource ( <https://fhir.doh.gov.ph/phcore/Medication/example-medication> ) ;
      fhir:request [
        fhir:method [ fhir:v "POST" ] ;
        fhir:url [
@@ -66,10 +66,10 @@
      ]
   ] [
      fhir:fullUrl [
-       fhir:v "urn:uuid:013f46df-f245-4a2f-beaf-9eb2c47fb1a3"^^xsd:anyURI ;
-       fhir:l <urn:uuid:013f46df-f245-4a2f-beaf-9eb2c47fb1a3>
+       fhir:v "https://fhir.doh.gov.ph/phcore/Observation/blood-pressure"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/Observation/blood-pressure>
      ] ;
-     fhir:resource ( <urn:uuid:013f46df-f245-4a2f-beaf-9eb2c47fb1a3> ) ;
+     fhir:resource ( <https://fhir.doh.gov.ph/phcore/Observation/blood-pressure> ) ;
      fhir:request [
        fhir:method [ fhir:v "POST" ] ;
        fhir:url [
@@ -79,10 +79,10 @@
      ]
   ] [
      fhir:fullUrl [
-       fhir:v "urn:uuid:b43c67e7-d9c4-48bb-a1b4-55769eeb9066"^^xsd:anyURI ;
-       fhir:l <urn:uuid:b43c67e7-d9c4-48bb-a1b4-55769eeb9066>
+       fhir:v "https://fhir.doh.gov.ph/phcore/AllergyIntolerance/example-allergy"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/AllergyIntolerance/example-allergy>
      ] ;
-     fhir:resource ( <urn:uuid:b43c67e7-d9c4-48bb-a1b4-55769eeb9066> ) ;
+     fhir:resource ( <https://fhir.doh.gov.ph/phcore/AllergyIntolerance/example-allergy> ) ;
      fhir:request [
        fhir:method [ fhir:v "POST" ] ;
        fhir:url [
@@ -92,10 +92,10 @@
      ]
   ] [
      fhir:fullUrl [
-       fhir:v "urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4"^^xsd:anyURI ;
-       fhir:l <urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4>
+       fhir:v "https://fhir.doh.gov.ph/phcore/Practitioner/example-practitioner"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/Practitioner/example-practitioner>
      ] ;
-     fhir:resource ( <urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4> ) ;
+     fhir:resource ( <https://fhir.doh.gov.ph/phcore/Practitioner/example-practitioner> ) ;
      fhir:request [
        fhir:method [ fhir:v "POST" ] ;
        fhir:url [
@@ -105,7 +105,7 @@
      ]
   ] ) . # 
 
-<urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b> a fhir:Patient ;
+<https://fhir.doh.gov.ph/phcore/Patient/example-patient> a fhir:Patient ;
   fhir:id [ fhir:v "example-patient"] ; # 
   fhir:meta [
      fhir:profile ( [
@@ -130,7 +130,8 @@
              fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ;
              fhir:l <urn:iso:std:iso:3166>
            ] ;
-           fhir:code [ fhir:v "PH" ]
+           fhir:code [ fhir:v "PH" ] ;
+           fhir:display [ fhir:v "Philippines" ]
          ] )
        ]
      ] [
@@ -194,12 +195,12 @@
      fhir:given ( [ fhir:v "Juan Jane" ] [ fhir:v "Dela Fuente" ] )
   ] ) ; # 
   fhir:gender [ fhir:v "male"] ; # 
-  fhir:birthDate [ fhir:v "1985-06-15"^^xsd:date] ; # 
+  fhir:birthDate [ fhir:v "1980-01-01"^^xsd:date] ; # 
   fhir:address ( [
      fhir:extension ( [
        fhir:url [
-         fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay"^^xsd:anyURI ;
-         fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay>
+         fhir:v "https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay"^^xsd:anyURI ;
+         fhir:l <https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay>
        ] ;
        fhir:value [
          a fhir:Coding ;
@@ -212,8 +213,8 @@
        ]
      ] [
        fhir:url [
-         fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality"^^xsd:anyURI ;
-         fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality>
+         fhir:v "https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality"^^xsd:anyURI ;
+         fhir:l <https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality>
        ] ;
        fhir:value [
          a fhir:Coding ;
@@ -226,8 +227,8 @@
        ]
      ] [
        fhir:url [
-         fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/province"^^xsd:anyURI ;
-         fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/province>
+         fhir:v "https://fhir.doh.gov.ph/phcore/StructureDefinition/province"^^xsd:anyURI ;
+         fhir:l <https://fhir.doh.gov.ph/phcore/StructureDefinition/province>
        ] ;
        fhir:value [
          a fhir:Coding ;
@@ -246,7 +247,7 @@
      fhir:country [ fhir:v "PH" ]
   ] ) . # 
 
-<urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae> a fhir:Encounter ;
+<https://fhir.doh.gov.ph/phcore/Encounter/example-encounter> a fhir:Encounter ;
   fhir:id [ fhir:v "example-encounter"] ; # 
   fhir:meta [
      fhir:profile ( [
@@ -268,11 +269,11 @@
      fhir:display [ fhir:v "ambulatory" ]
   ] ; # 
   fhir:subject [
-     fhir:l <urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b> ;
-     fhir:reference [ fhir:v "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b" ]
+     fhir:l <http://doh.gov.ph/fhir/ph-core/Patient/example-patient> ;
+     fhir:reference [ fhir:v "Patient/example-patient" ]
   ] . # 
 
-<urn:uuid:1a391d1e-a068-479a-88e3-e3d52c3a6f64> a fhir:Condition ;
+<https://fhir.doh.gov.ph/phcore/Condition/example-condition> a fhir:Condition ;
   fhir:id [ fhir:v "example-condition"] ; # 
   fhir:text [
      fhir:status [ fhir:v "generated" ] ;
@@ -300,15 +301,15 @@
      ] )
   ] ; # 
   fhir:subject [
-     fhir:l <urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b> ;
-     fhir:reference [ fhir:v "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b" ]
+     fhir:l <http://doh.gov.ph/fhir/ph-core/Patient/example-patient> ;
+     fhir:reference [ fhir:v "Patient/example-patient" ]
   ] ; # 
   fhir:encounter [
-     fhir:l <urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae> ;
-     fhir:reference [ fhir:v "urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae" ]
+     fhir:l <http://doh.gov.ph/fhir/ph-core/Encounter/example-encounter> ;
+     fhir:reference [ fhir:v "Encounter/example-encounter" ]
   ] . # 
 
-<urn:uuid:024dcb47-cc23-407a-839b-b4634e95abae> a fhir:Medication ;
+<https://fhir.doh.gov.ph/phcore/Medication/example-medication> a fhir:Medication ;
   fhir:id [ fhir:v "example-medication"] ; # 
   fhir:meta [
      fhir:profile ( [
@@ -321,7 +322,7 @@
      fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Medication_example-medication\"> </a>A medication resource has been created, but no specific details are provided.</div>"^^rdf:XMLLiteral ]
   ] . # 
 
-<urn:uuid:013f46df-f245-4a2f-beaf-9eb2c47fb1a3> a fhir:Observation ;
+<https://fhir.doh.gov.ph/phcore/Observation/blood-pressure> a fhir:Observation ;
   fhir:id [ fhir:v "blood-pressure"] ; # 
   fhir:meta [
      fhir:profile ( [
@@ -379,16 +380,16 @@
      fhir:text [ fhir:v "Blood pressure systolic & diastolic" ]
   ] ; # 
   fhir:subject [
-     fhir:l <urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b> ;
-     fhir:reference [ fhir:v "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b" ]
+     fhir:l <http://doh.gov.ph/fhir/ph-core/Patient/example-patient> ;
+     fhir:reference [ fhir:v "Patient/example-patient" ]
   ] ; # 
   fhir:effective [
      a fhir:DateTime ;
      fhir:v "2012-09-17"^^xsd:date
   ] ; # 
   fhir:performer ( [
-     fhir:l <urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4> ;
-     fhir:reference [ fhir:v "urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4" ]
+     fhir:l <http://doh.gov.ph/fhir/ph-core/Practitioner/example-practitioner> ;
+     fhir:reference [ fhir:v "Practitioner/example-practitioner" ]
   ] ) ; # 
   fhir:interpretation ( [
      fhir:coding ( [
@@ -480,7 +481,7 @@
      ] )
   ] ) . # 
 
-<urn:uuid:b43c67e7-d9c4-48bb-a1b4-55769eeb9066> a fhir:AllergyIntolerance ;
+<https://fhir.doh.gov.ph/phcore/AllergyIntolerance/example-allergy> a fhir:AllergyIntolerance ;
   fhir:id [ fhir:v "example-allergy"] ; # 
   fhir:text [
      fhir:status [ fhir:v "generated" ] ;
@@ -509,11 +510,11 @@
      ] )
   ] ; # 
   fhir:patient [
-     fhir:l <urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b> ;
-     fhir:reference [ fhir:v "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b" ]
+     fhir:l <http://doh.gov.ph/fhir/ph-core/Patient/example-patient> ;
+     fhir:reference [ fhir:v "Patient/example-patient" ]
   ] . # 
 
-<urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4> a fhir:Practitioner ;
+<https://fhir.doh.gov.ph/phcore/Practitioner/example-practitioner> a fhir:Practitioner ;
   fhir:id [ fhir:v "example-practitioner"] ; # 
   fhir:meta [
      fhir:profile ( [

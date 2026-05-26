@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/region | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:Region |
+| Draft as of 2026-05-26 | *Computable Name*:Region |
 
 Region from the standard geographic code.
 
@@ -20,7 +20,7 @@ Region from the standard geographic code.
 **Usages:**
 
 * Use this Extension: [PH Core Address](StructureDefinition-ph-core-address.md)
-* Examples for this Extension: [Department of Health - Sattelite Office](Organization-organization-single-example.md) and [RelatedPerson/relatedperson-single-example](RelatedPerson-relatedperson-single-example.md)
+* Examples for this Extension: [Philippine General Hospital](Location-location-single-example.md) and [Department of Health - Sattelite Office](Organization-organization-single-example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/region)
 
@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-region.csv), [Excel]
   "title" : "Region",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

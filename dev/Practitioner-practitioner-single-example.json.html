@@ -43,8 +43,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"4.79"}
-    h3,h4,h5,h6{--heading-prefix:"4.79"}</style>
+    <style type="text/css">h2{--heading-prefix:"4.103"}
+    h3,h4,h5,h6{--heading-prefix:"4.103"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -58,7 +58,7 @@
 
 
 
-  <img alt="Philippines flag" src="assets/images/phl.svg" height="16" title="Philippines"/>
+  Philippines
 
 
             </span>
@@ -185,14 +185,83 @@
   },
   "<a href="http://hl7.org/fhir/R4/domainresource.html#Practitioner.text">text</a>" : {
     "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a>" : "generated",
-    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;Dr. Maria Clara Santos is a female practitioner born on May 15, 1985. She resides at 1234 Mabini Street, Manila, NCR, 1000, Philippines. She can be contacted via mobile at +63-912-345-6789 or by email at maria.santos@example.ph.&lt;/div&gt;"
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;Dr. Maria Clara Santos, MD, is a licensed physician born on May 15, 1985, residing in Manila, NCR, Philippines. She can be reached via mobile at +63-912-345-6789 or by email at maria.santos@example.ph.&lt;/div&gt;"
   },
+  "<a href="http://hl7.org/fhir/R4/domainresource.html#Practitioner.extension">extension</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#Extension.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "value",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueCodeableConcept</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://snomed.info/sct",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "248152002",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Female (finding)"
+              }
+            ]
+          }
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "type",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueCodeableConcept</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://loinc.org",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "76689-9",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Sex Assigned at Birth"
+              }
+            ]
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender"
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#Extension.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "value",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueCodeableConcept</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://loinc.org",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "LA22879-3",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Identifies as female"
+              }
+            ]
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity"
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#Extension.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "value",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueCodeableConcept</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+              {
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://loinc.org",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "LA29519-8",
+                "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "she/her/her/hers/herself"
+              }
+            ]
+          }
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "http://hl7.org/fhir/StructureDefinition/individual-pronouns"
+    }
+  ],
   "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.name">name</a>" : [
     {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#HumanName#HumanName.use">use</a>" : "official",
       "<a href="http://hl7.org/fhir/R4/datatypes.html#HumanName#HumanName.family">family</a>" : "Santos",
       "<a href="http://hl7.org/fhir/R4/datatypes.html#HumanName#HumanName.given">given</a>" : [
         "Maria",
         "Clara"
+      ],
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#HumanName#HumanName.suffix">suffix</a>" : [
+        "MD"
       ]
     }
   ],
@@ -210,18 +279,87 @@
   ],
   "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.address">address</a>" : [
     {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#Element#Address.extension">extension</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueCoding</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "https://psa.gov.ph/classification/psgc",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "1339000003",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Ermita"
+          }
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueCoding</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "https://psa.gov.ph/classification/psgc",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "1380600000",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "City of Manila"
+          }
+        },
+        {
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.url">url</a>" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/region",
+          "<a href="http://hl7.org/fhir/R4/extensibility.html#Extension#Extension.value_x_">valueCoding</a>" : {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "https://psa.gov.ph/classification/psgc",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "1300000000",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "National Capital Region"
+          }
+        }
+      ],
       "<a href="http://hl7.org/fhir/R4/datatypes.html#Address#Address.use">use</a>" : "home",
       "<a href="http://hl7.org/fhir/R4/datatypes.html#Address#Address.line">line</a>" : [
         "1234 Mabini Street"
       ],
-      "<a href="http://hl7.org/fhir/R4/datatypes.html#Address#Address.city">city</a>" : "Manila",
-      "<a href="http://hl7.org/fhir/R4/datatypes.html#Address#Address.state">state</a>" : "NCR",
       "<a href="http://hl7.org/fhir/R4/datatypes.html#Address#Address.postalCode">postalCode</a>" : "1000",
       "<a href="http://hl7.org/fhir/R4/datatypes.html#Address#Address.country">country</a>" : "PH"
     }
   ],
   "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.gender">gender</a>" : "female",
-  "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.birthDate">birthDate</a>" : "1985-05-15"
+  "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.birthDate">birthDate</a>" : "1985-05-15",
+  "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.qualification">qualification</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.qualification.identifier">identifier</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.system">system</a>" : "http://prc.gov.ph/fhir/Identifier/prc-license",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Identifier#Identifier.value">value</a>" : "0123456"
+        }
+      ],
+      "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.qualification.code">code</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+          {
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "http://terminology.hl7.org/CodeSystem/v2-0360",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "MD",
+            "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Doctor of Medicine"
+          }
+        ]
+      },
+      "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.qualification.period">period</a>" : {
+        "<a href="http://hl7.org/fhir/R4/datatypes.html#Period#Period.start">start</a>" : "2010-07-15"
+      },
+      "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.qualification.issuer">issuer</a>" : {
+        <a href="Organization-organization-single-example.html" style="color: Maroon">&#x1F517;</a> "<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">reference</a>" : "Organization/organization-single-example"
+      }
+    }
+  ],
+  "<a href="http://hl7.org/fhir/R4/practitioner.html#Practitioner.communication">communication</a>" : [
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "urn:ietf:bcp:47",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "fil",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "Filipino"
+        }
+      ]
+    },
+    {
+      "<a href="http://hl7.org/fhir/R4/datatypes.html#CodeableConcept#CodeableConcept.coding">coding</a>" : [
+        {
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.system">system</a>" : "urn:ietf:bcp:47",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.code">code</a>" : "en",
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#Coding#Coding.display">display</a>" : "English"
+        }
+      ]
+    }
+  ]
 }</code></pre>
 
 
@@ -246,7 +384,7 @@
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://github.com/UP-NTHC">UP Manila National TeleHealth Center</a>.  Package fhir.ph.core#0.2.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Fri, Apr 10, 2026 05:44+0000">2026-04-10</span>
+          IG &#169; 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://github.com/UP-NTHC">UP Manila National TeleHealth Center</a>.  Package fhir.ph.core#0.2.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, May 26, 2026 03:51+0000">2026-05-26</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

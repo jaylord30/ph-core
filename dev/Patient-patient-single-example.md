@@ -25,7 +25,8 @@ Juan Dela Cruz is a male patient born on 1 January 1980, residing in Manila, NCR
       "valueCodeableConcept" : {
         "coding" : [{
           "system" : "urn:iso:std:iso:3166",
-          "code" : "PH"
+          "code" : "PH",
+          "display" : "Philippines"
         }]
       }
     },
@@ -111,10 +112,10 @@ Juan Dela Cruz is a male patient born on 1 January 1980, residing in Manila, NCR
     "given" : ["Juan Jane", "Dela Fuente"]
   }],
   "gender" : "male",
-  "birthDate" : "1985-06-15",
+  "birthDate" : "1980-01-01",
   "address" : [{
     "extension" : [{
-      "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay",
+      "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay",
       "valueCoding" : {
         "system" : "https://psa.gov.ph/classification/psgc",
         "code" : "1380100001",
@@ -122,7 +123,7 @@ Juan Dela Cruz is a male patient born on 1 January 1980, residing in Manila, NCR
       }
     },
     {
-      "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality",
+      "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality",
       "valueCoding" : {
         "system" : "https://psa.gov.ph/classification/psgc",
         "code" : "1380200000",
@@ -130,7 +131,7 @@ Juan Dela Cruz is a male patient born on 1 January 1980, residing in Manila, NCR
       }
     },
     {
-      "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/province",
+      "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/province",
       "valueCoding" : {
         "system" : "https://psa.gov.ph/classification/psgc",
         "code" : "0402100000",

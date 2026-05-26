@@ -4,7 +4,7 @@
   <id value="DOHNHFRCodeNS"/>
   <text>
     <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: NamingSystem DOHNHFRCodeNS</b></p><a name="DOHNHFRCodeNS"> </a><a name="hcDOHNHFRCodeNS"> </a><h3>Summary</h3><table class="grid"><tr><td>Defining URL</td><td>http://doh.gov.ph/fhir/ph-core/NamingSystem/DOHNHFRCodeNS</td></tr><tr><td>Version</td><td>0.2.0</td></tr><tr><td>Name</td><td>DOHNHFRCode</td></tr><tr><td>Status</td><td>draft</td></tr><tr><td>Definition</td><td><div><p>Health Facility Code (HFC) from the National Health Facility Registry.</p>
-</div></td></tr><tr><td>Publisher</td><td>UP Manila National TeleHealth Center</td></tr></table><h3>Identifiers</h3><table class="grid"><tr><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td>URI</td><td>http://doh.gov.ph/fhir/Identifier/doh-nhfr-code</td></tr></table></div>
+</div></td></tr><tr><td>Publisher</td><td>UP Manila National TeleHealth Center</td></tr></table><h3>Identifiers</h3><table class="grid"><tr><td><b>Type</b></td><td><b>Value</b></td></tr><tr><td>URI</td><td>https://fhir.doh.gov.ph/phcore/Identifier/doh-nhfr-code</td></tr></table></div>
   </text>
   <extension url="http://hl7.org/fhir/5.0/StructureDefinition/extension-NamingSystem.url">
     <valueUri value="http://doh.gov.ph/fhir/ph-core/NamingSystem/DOHNHFRCodeNS"/>
@@ -33,6 +33,6 @@
   </jurisdiction>
   <uniqueId>
     <type value="uri"/>
-    <value value="http://doh.gov.ph/fhir/Identifier/doh-nhfr-code"/>
+    <value value="https://fhir.doh.gov.ph/phcore/Identifier/doh-nhfr-code"/>
   </uniqueId>
 </NamingSystem>

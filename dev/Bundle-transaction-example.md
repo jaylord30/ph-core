@@ -16,7 +16,7 @@
   "id" : "transaction-example",
   "type" : "transaction",
   "entry" : [{
-    "fullUrl" : "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b",
+    "fullUrl" : "https://fhir.doh.gov.ph/phcore/Patient/example-patient",
     "resource" : {
       "resourceType" : "Patient",
       "id" : "example-patient",
@@ -33,7 +33,8 @@
           "valueCodeableConcept" : {
             "coding" : [{
               "system" : "urn:iso:std:iso:3166",
-              "code" : "PH"
+              "code" : "PH",
+              "display" : "Philippines"
             }]
           }
         },
@@ -76,10 +77,10 @@
         "given" : ["Juan Jane", "Dela Fuente"]
       }],
       "gender" : "male",
-      "birthDate" : "1985-06-15",
+      "birthDate" : "1980-01-01",
       "address" : [{
         "extension" : [{
-          "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay",
+          "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay",
           "valueCoding" : {
             "system" : "https://psa.gov.ph/classification/psgc",
             "code" : "1380100001",
@@ -87,7 +88,7 @@
           }
         },
         {
-          "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality",
+          "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality",
           "valueCoding" : {
             "system" : "https://psa.gov.ph/classification/psgc",
             "code" : "1380200000",
@@ -95,7 +96,7 @@
           }
         },
         {
-          "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/province",
+          "url" : "https://fhir.doh.gov.ph/phcore/StructureDefinition/province",
           "valueCoding" : {
             "system" : "https://psa.gov.ph/classification/psgc",
             "code" : "0402100000",
@@ -115,7 +116,7 @@
     }
   },
   {
-    "fullUrl" : "urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae",
+    "fullUrl" : "https://fhir.doh.gov.ph/phcore/Encounter/example-encounter",
     "resource" : {
       "resourceType" : "Encounter",
       "id" : "example-encounter",
@@ -133,7 +134,7 @@
         "display" : "ambulatory"
       },
       "subject" : {
-        "reference" : "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"
+        "reference" : "Patient/example-patient"
       }
     },
     "request" : {
@@ -142,7 +143,7 @@
     }
   },
   {
-    "fullUrl" : "urn:uuid:1a391d1e-a068-479a-88e3-e3d52c3a6f64",
+    "fullUrl" : "https://fhir.doh.gov.ph/phcore/Condition/example-condition",
     "resource" : {
       "resourceType" : "Condition",
       "id" : "example-condition",
@@ -165,10 +166,10 @@
         }]
       },
       "subject" : {
-        "reference" : "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"
+        "reference" : "Patient/example-patient"
       },
       "encounter" : {
-        "reference" : "urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae"
+        "reference" : "Encounter/example-encounter"
       }
     },
     "request" : {
@@ -177,7 +178,7 @@
     }
   },
   {
-    "fullUrl" : "urn:uuid:024dcb47-cc23-407a-839b-b4634e95abae",
+    "fullUrl" : "https://fhir.doh.gov.ph/phcore/Medication/example-medication",
     "resource" : {
       "resourceType" : "Medication",
       "id" : "example-medication",
@@ -195,7 +196,7 @@
     }
   },
   {
-    "fullUrl" : "urn:uuid:013f46df-f245-4a2f-beaf-9eb2c47fb1a3",
+    "fullUrl" : "https://fhir.doh.gov.ph/phcore/Observation/blood-pressure",
     "resource" : {
       "resourceType" : "Observation",
       "id" : "blood-pressure",
@@ -235,11 +236,11 @@
         "text" : "Blood pressure systolic & diastolic"
       },
       "subject" : {
-        "reference" : "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"
+        "reference" : "Patient/example-patient"
       },
       "effectiveDateTime" : "2012-09-17",
       "performer" : [{
-        "reference" : "urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4"
+        "reference" : "Practitioner/example-practitioner"
       }],
       "interpretation" : [{
         "coding" : [{
@@ -309,7 +310,7 @@
     }
   },
   {
-    "fullUrl" : "urn:uuid:b43c67e7-d9c4-48bb-a1b4-55769eeb9066",
+    "fullUrl" : "https://fhir.doh.gov.ph/phcore/AllergyIntolerance/example-allergy",
     "resource" : {
       "resourceType" : "AllergyIntolerance",
       "id" : "example-allergy",
@@ -333,7 +334,7 @@
         }]
       },
       "patient" : {
-        "reference" : "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"
+        "reference" : "Patient/example-patient"
       }
     },
     "request" : {
@@ -342,7 +343,7 @@
     }
   },
   {
-    "fullUrl" : "urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4",
+    "fullUrl" : "https://fhir.doh.gov.ph/phcore/Practitioner/example-practitioner",
     "resource" : {
       "resourceType" : "Practitioner",
       "id" : "example-practitioner",

@@ -9,14 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-medication | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:PHCoreMedication |
+| Draft as of 2026-05-26 | *Computable Name*:PHCoreMedication |
 
  
 This resource is primarily used for the identification and definition of a medication, including ingredients, for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use. 
 
 **Usages:**
 
-* Refer to this Profile: [PH Core Medication Administration](StructureDefinition-ph-core-medicationadministration.md), [PH Core Medication Dispense](StructureDefinition-ph-core-medicationdispense.md), [PH Core Medication Request](StructureDefinition-ph-core-medicationrequest.md), [PH Core Medication Statement](StructureDefinition-ph-core-medicationstatement.md) and [PH Core Procedure](StructureDefinition-ph-core-procedure.md)
+* Refer to this Profile: [Administered Product](StructureDefinition-administered-product.md), [PH Core Medication Administration](StructureDefinition-ph-core-medicationadministration.md), [PH Core Medication Dispense](StructureDefinition-ph-core-medicationdispense.md), [PH Core Medication Request](StructureDefinition-ph-core-medicationrequest.md)... Show 2 more, [PH Core Medication Statement](StructureDefinition-ph-core-medicationstatement.md) and [PH Core Procedure](StructureDefinition-ph-core-procedure.md)
 * Examples for this Profile: [Medication/example-medication](Medication-example-medication.md) and [Medication/medication-single-example](Medication-medication-single-example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/ph-core-medication)
@@ -43,7 +43,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
   "title" : "PH Core Medication",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -99,7 +99,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -110,7 +110,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -121,7 +121,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -141,7 +141,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -152,7 +152,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -163,7 +163,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -183,7 +183,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -194,7 +194,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -205,7 +205,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -221,7 +221,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -232,7 +232,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -243,7 +243,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -259,7 +259,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -270,7 +270,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -281,7 +281,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -301,7 +301,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -312,7 +312,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -323,7 +323,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -351,7 +351,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -362,7 +362,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -373,7 +373,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -395,7 +395,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -406,7 +406,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -417,7 +417,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -437,7 +437,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -448,7 +448,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -459,7 +459,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-medication.c
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],

@@ -6,7 +6,7 @@
 
 ## Example Immunization: immunization-single-example
 
-Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the left arm on January 10, 2013. The vaccine lot number was AAJN11K and it was privately funded.
+Juan Dela Cruz received a completed intramuscular influenza (H5N1-1203) vaccine in the left arm on January 10, 2013, at Philippine General Hospital. The vaccine lot number was AAJN11K and was privately funded. Dose 1 was administered by Dr. Maria Clara Santos.
 
 
 
@@ -19,6 +19,16 @@ Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the le
   "meta" : {
     "profile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-immunization"]
   },
+  "extension" : [{
+    "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number",
+    "valueString" : "AAJN11K"
+  },
+  {
+    "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product",
+    "valueReference" : {
+      "reference" : "Medication/medication-single-example"
+    }
+  }],
   "identifier" : [{
     "system" : "urn:ietf:rfc:3986",
     "value" : "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"
@@ -27,9 +37,10 @@ Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the le
   "vaccineCode" : {
     "coding" : [{
       "system" : "http://hl7.org/fhir/sid/cvx",
-      "code" : "123"
+      "code" : "123",
+      "display" : "influenza, H5N1-1203"
     }],
-    "text" : "influenza, H5N1-1203"
+    "text" : "Influenza H5N1-1203 Vaccine"
   },
   "patient" : {
     "reference" : "Patient/patient-single-example"
@@ -39,6 +50,9 @@ Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the le
   },
   "occurrenceDateTime" : "2013-01-10",
   "primarySource" : true,
+  "location" : {
+    "reference" : "Location/location-single-example"
+  },
   "lotNumber" : "AAJN11K",
   "expirationDate" : "2015-02-15",
   "site" : {
@@ -46,14 +60,16 @@ Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the le
       "system" : "http://terminology.hl7.org/CodeSystem/v3-ActSite",
       "code" : "LA",
       "display" : "left arm"
-    }]
+    }],
+    "text" : "Left arm"
   },
   "route" : {
     "coding" : [{
       "system" : "http://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration",
       "code" : "IM",
       "display" : "Injection, intramuscular"
-    }]
+    }],
+    "text" : "Intramuscular injection"
   },
   "doseQuantity" : {
     "value" : 5,
@@ -64,23 +80,39 @@ Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the le
     "function" : {
       "coding" : [{
         "system" : "http://terminology.hl7.org/CodeSystem/v2-0443",
-        "code" : "OP"
-      }]
+        "code" : "OP",
+        "display" : "Ordering Provider"
+      }],
+      "text" : "Ordering Provider"
     },
     "actor" : {
-      "reference" : "Practitioner/practitioner-single-example"
+      "reference" : "Practitioner/practitioner-single-example",
+      "display" : "Dr. Maria Clara Santos"
     }
   }],
   "note" : [{
-    "text" : "Notes on adminstration of vaccine"
+    "text" : "Notes on administration of vaccine"
   }],
   "isSubpotent" : true,
   "fundingSource" : {
     "coding" : [{
       "system" : "http://terminology.hl7.org/CodeSystem/immunization-funding-source",
-      "code" : "private"
-    }]
-  }
+      "code" : "private",
+      "display" : "Private"
+    }],
+    "text" : "Private"
+  },
+  "protocolApplied" : [{
+    "targetDisease" : [{
+      "coding" : [{
+        "system" : "http://snomed.info/sct",
+        "code" : "772828001",
+        "display" : "Influenza caused by Influenza A virus subtype H5N1"
+      }],
+      "text" : "Influenza H5N1"
+    }],
+    "doseNumberPositiveInt" : 1
+  }]
 }
 
 ```

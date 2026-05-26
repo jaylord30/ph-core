@@ -27,6 +27,13 @@
   "name" : "IndigenousGroupsCS"
 },
 {
+  "id" : "ph-core-disability-type-cs",
+  "type" : "CodeSystem",
+  "url" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/ph-core-disability-type-cs",
+  "version" : "0.2.0",
+  "name" : "PHCoreDisabilityTypeCS"
+},
+{
   "id" : "fhir.ph.core",
   "type" : "ImplementationGuide",
   "url" : "http://doh.gov.ph/fhir/ph-core/ImplementationGuide/fhir.ph.core",
@@ -83,11 +90,25 @@
   "name" : "PhilSysID"
 },
 {
+  "id" : "administered-product",
+  "type" : "StructureDefinition",
+  "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product",
+  "version" : "0.2.0",
+  "name" : "AdministeredProduct"
+},
+{
   "id" : "barangay",
   "type" : "StructureDefinition",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay",
   "version" : "0.2.0",
   "name" : "Barangay"
+},
+{
+  "id" : "batch-number",
+  "type" : "StructureDefinition",
+  "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number",
+  "version" : "0.2.0",
+  "name" : "BatchNumber"
 },
 {
   "id" : "city-municipality",
@@ -132,6 +153,20 @@
   "name" : "PHCoreAddress"
 },
 {
+  "id" : "ph-core-allergyintolerance",
+  "type" : "StructureDefinition",
+  "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-allergyintolerance",
+  "version" : "0.2.0",
+  "name" : "PHCoreAllergyIntolerance"
+},
+{
+  "id" : "ph-core-claim",
+  "type" : "StructureDefinition",
+  "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-claim",
+  "version" : "0.2.0",
+  "name" : "PHCoreClaim"
+},
+{
   "id" : "ph-core-condition",
   "type" : "StructureDefinition",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-condition",
@@ -151,6 +186,13 @@
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter",
   "version" : "0.2.0",
   "name" : "PHCoreEncounter"
+},
+{
+  "id" : "ph-core-healthcareservice",
+  "type" : "StructureDefinition",
+  "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-healthcareservice",
+  "version" : "0.2.0",
+  "name" : "PHCoreHealthcareService"
 },
 {
   "id" : "ph-core-immunization",
@@ -286,6 +328,13 @@
   "name" : "PHCoreProvenance"
 },
 {
+  "id" : "ph-core-pwd-disability",
+  "type" : "StructureDefinition",
+  "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-pwd-disability",
+  "version" : "0.2.0",
+  "name" : "PHCorePWDDisability"
+},
+{
   "id" : "ph-core-relatedperson",
   "type" : "StructureDefinition",
   "url" : "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-relatedperson",
@@ -368,6 +417,13 @@
   "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/occupational-classifications",
   "version" : "0.2.0",
   "name" : "OccupationClassifications"
+},
+{
+  "id" : "ph-core-disability-type-vs",
+  "type" : "ValueSet",
+  "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/ph-core-disability-type-vs",
+  "version" : "0.2.0",
+  "name" : "PHCoreDisabilityTypeVS"
 },
 {
   "id" : "provinces",

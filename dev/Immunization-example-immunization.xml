@@ -21,7 +21,7 @@
     <text value="influenza, H5N1-1203"/>
   </vaccineCode>
   <patient>
-    <reference value="urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"/>
+    <reference value="Patient/example-patient"/>
   </patient>
   <encounter>
     <reference value="Encounter/encounter-single-example"/>
@@ -57,7 +57,7 @@
       </coding>
     </function>
     <actor>
-      <reference value="urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4"/>
+      <reference value="Practitioner/example-practitioner"/>
     </actor>
   </performer>
   <note>

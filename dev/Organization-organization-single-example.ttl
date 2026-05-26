@@ -21,8 +21,8 @@
   ] ; # 
   fhir:identifier ( [
      fhir:system [
-       fhir:v "http://doh.gov.ph/fhir/Identifier/doh-nhfr-code"^^xsd:anyURI ;
-       fhir:l <http://doh.gov.ph/fhir/Identifier/doh-nhfr-code>
+       fhir:v "https://fhir.doh.gov.ph/phcore/Identifier/doh-nhfr-code"^^xsd:anyURI ;
+       fhir:l <https://fhir.doh.gov.ph/phcore/Identifier/doh-nhfr-code>
      ] ;
      fhir:value [ fhir:v "1234567890" ]
   ] [

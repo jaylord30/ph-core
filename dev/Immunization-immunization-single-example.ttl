@@ -2,6 +2,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # - resource -------------------------------------------------------------------
@@ -17,8 +18,28 @@
   ] ; # 
   fhir:text [
      fhir:status [ fhir:v "generated" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\">Juan Dela Cruz received a completed intramuscular flu shot (H5N1-1203) in the left arm on January 10, 2013. The vaccine lot number was AAJN11K and it was privately funded.</div>"^^rdf:XMLLiteral ]
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\">Juan Dela Cruz received a completed intramuscular influenza (H5N1-1203) vaccine in the left arm on January 10, 2013, at Philippine General Hospital. The vaccine lot number was AAJN11K and was privately funded. Dose 1 was administered by Dr. Maria Clara Santos.</div>"^^rdf:XMLLiteral ]
   ] ; # 
+  fhir:extension ( [
+     fhir:url [
+       fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number"^^xsd:anyURI ;
+       fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number>
+     ] ;
+     fhir:value [
+       a fhir:String ;
+       fhir:v "AAJN11K"
+     ]
+  ] [
+     fhir:url [
+       fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product"^^xsd:anyURI ;
+       fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product>
+     ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:l <http://doh.gov.ph/fhir/ph-core/Medication/medication-single-example> ;
+       fhir:reference [ fhir:v "Medication/medication-single-example" ]
+     ]
+  ] ) ; # 
   fhir:identifier ( [
      fhir:system [
        fhir:v "urn:ietf:rfc:3986"^^xsd:anyURI ;
@@ -33,9 +54,10 @@
          fhir:v "http://hl7.org/fhir/sid/cvx"^^xsd:anyURI ;
          fhir:l <http://hl7.org/fhir/sid/cvx>
        ] ;
-       fhir:code [ fhir:v "123" ]
+       fhir:code [ fhir:v "123" ] ;
+       fhir:display [ fhir:v "influenza, H5N1-1203" ]
      ] ) ;
-     fhir:text [ fhir:v "influenza, H5N1-1203" ]
+     fhir:text [ fhir:v "Influenza H5N1-1203 Vaccine" ]
   ] ; # 
   fhir:patient [
      fhir:l <http://doh.gov.ph/fhir/ph-core/Patient/patient-single-example> ;
@@ -50,6 +72,10 @@
      fhir:v "2013-01-10"^^xsd:date
   ] ; # 
   fhir:primarySource [ fhir:v true] ; # 
+  fhir:location [
+     fhir:l <http://doh.gov.ph/fhir/ph-core/Location/location-single-example> ;
+     fhir:reference [ fhir:v "Location/location-single-example" ]
+  ] ; # 
   fhir:lotNumber [ fhir:v "AAJN11K"] ; # 
   fhir:expirationDate [ fhir:v "2015-02-15"^^xsd:date] ; # 
   fhir:site [
@@ -60,7 +86,8 @@
        ] ;
        fhir:code [ fhir:v "LA" ] ;
        fhir:display [ fhir:v "left arm" ]
-     ] )
+     ] ) ;
+     fhir:text [ fhir:v "Left arm" ]
   ] ; # 
   fhir:route [
      fhir:coding ( [
@@ -70,7 +97,8 @@
        ] ;
        fhir:code [ fhir:v "IM" ] ;
        fhir:display [ fhir:v "Injection, intramuscular" ]
-     ] )
+     ] ) ;
+     fhir:text [ fhir:v "Intramuscular injection" ]
   ] ; # 
   fhir:doseQuantity [
      fhir:value [ fhir:v "5"^^xsd:decimal ] ;
@@ -87,16 +115,19 @@
            fhir:v "http://terminology.hl7.org/CodeSystem/v2-0443"^^xsd:anyURI ;
            fhir:l <http://terminology.hl7.org/CodeSystem/v2-0443>
          ] ;
-         fhir:code [ fhir:v "OP" ]
-       ] )
+         fhir:code [ fhir:v "OP" ] ;
+         fhir:display [ fhir:v "Ordering Provider" ]
+       ] ) ;
+       fhir:text [ fhir:v "Ordering Provider" ]
      ] ;
      fhir:actor [
        fhir:l <http://doh.gov.ph/fhir/ph-core/Practitioner/practitioner-single-example> ;
-       fhir:reference [ fhir:v "Practitioner/practitioner-single-example" ]
+       fhir:reference [ fhir:v "Practitioner/practitioner-single-example" ] ;
+       fhir:display [ fhir:v "Dr. Maria Clara Santos" ]
      ]
   ] ) ; # 
   fhir:note ( [
-     fhir:text [ fhir:v "Notes on adminstration of vaccine" ]
+     fhir:text [ fhir:v "Notes on administration of vaccine" ]
   ] ) ; # 
   fhir:isSubpotent [ fhir:v true] ; # 
   fhir:fundingSource [
@@ -105,9 +136,29 @@
          fhir:v "http://terminology.hl7.org/CodeSystem/immunization-funding-source"^^xsd:anyURI ;
          fhir:l <http://terminology.hl7.org/CodeSystem/immunization-funding-source>
        ] ;
-       fhir:code [ fhir:v "private" ]
-     ] )
-  ] . # 
+       fhir:code [ fhir:v "private" ] ;
+       fhir:display [ fhir:v "Private" ]
+     ] ) ;
+     fhir:text [ fhir:v "Private" ]
+  ] ; # 
+  fhir:protocolApplied ( [
+     fhir:targetDisease ( [
+       fhir:coding ( [
+         a sct:772828001 ;
+         fhir:system [
+           fhir:v "http://snomed.info/sct"^^xsd:anyURI ;
+           fhir:l <http://snomed.info/sct>
+         ] ;
+         fhir:code [ fhir:v "772828001" ] ;
+         fhir:display [ fhir:v "Influenza caused by Influenza A virus subtype H5N1" ]
+       ] ) ;
+       fhir:text [ fhir:v "Influenza H5N1" ]
+     ] ) ;
+     fhir:doseNumber [
+       a fhir:PositiveInt ;
+       fhir:v "1"^^xsd:positiveInteger
+     ]
+  ] ) . # 
 
 # -------------------------------------------------------------------------------------
 

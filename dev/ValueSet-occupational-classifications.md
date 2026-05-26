@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/occupational-classifications | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:OccupationClassifications |
+| Draft as of 2026-05-26 | *Computable Name*:OccupationClassifications |
 
  
 The Occupation codes valueset includes Occupational Classification values from the Philippine Standard Occupational Classification (PSOC) published by the Philippine Statistic Authority (PSA). 
@@ -23,8 +23,6 @@ The Occupation codes valueset includes Occupational Classification values from t
  
 
 ### Expansion
-
-No Expansion for this valueset (Unknown Code System)
 
 -------
 
@@ -53,7 +51,7 @@ No Expansion for this valueset (Unknown Code System)
   "title" : "Occupation Classifications",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -71,7 +69,23 @@ No Expansion for this valueset (Unknown Code System)
   }],
   "compose" : {
     "include" : [{
-      "system" : "https://psa.gov.ph/classification/psoc/unit"
+      "system" : "https://psa.gov.ph/classification/psoc/unit",
+      "concept" : [{
+        "code" : "111102",
+        "display" : "Hospital Administrator"
+      },
+      {
+        "code" : "111103",
+        "display" : "Medical Department Head"
+      },
+      {
+        "code" : "121101",
+        "display" : "General Manager"
+      },
+      {
+        "code" : "211101",
+        "display" : "Medical Doctor"
+      }]
     }]
   }
 }

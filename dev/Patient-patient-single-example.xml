@@ -14,6 +14,7 @@
         <coding>
           <system value="urn:iso:std:iso:3166"/>
           <code value="PH"/>
+          <display value="Philippines"/>
         </coding>
       </valueCodeableConcept>
     </extension>
@@ -90,23 +91,23 @@
     <given value="Dela Fuente"/>
   </name>
   <gender value="male"/>
-  <birthDate value="1985-06-15"/>
+  <birthDate value="1980-01-01"/>
   <address>
-    <extension url="http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay">
+    <extension url="https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay">
       <valueCoding>
         <system value="https://psa.gov.ph/classification/psgc"/>
         <code value="1380100001"/>
         <display value="Barangay 1"/>
       </valueCoding>
     </extension>
-    <extension url="http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality">
+    <extension url="https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality">
       <valueCoding>
         <system value="https://psa.gov.ph/classification/psgc"/>
         <code value="1380200000"/>
         <display value="City of Las Piñas"/>
       </valueCoding>
     </extension>
-    <extension url="http://doh.gov.ph/fhir/ph-core/StructureDefinition/province">
+    <extension url="https://fhir.doh.gov.ph/phcore/StructureDefinition/province">
       <valueCoding>
         <system value="https://psa.gov.ph/classification/psgc"/>
         <code value="0402100000"/>

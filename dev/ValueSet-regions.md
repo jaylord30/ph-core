@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/regions | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:Regions |
+| Draft as of 2026-05-26 | *Computable Name*:Regions |
 
  
 The Region codes valueset includes all region values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA). 
@@ -51,7 +51,7 @@ The Region codes valueset includes all region values from the Philippine Standar
   "title" : "Regions",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -71,6 +71,10 @@ The Region codes valueset includes all region values from the Philippine Standar
     "include" : [{
       "system" : "https://psa.gov.ph/classification/psgc",
       "concept" : [{
+        "code" : "1300000000",
+        "display" : "National Capital Region"
+      },
+      {
         "code" : "0102800000",
         "display" : "Ilocos Norte"
       },
@@ -81,6 +85,10 @@ The Region codes valueset includes all region values from the Philippine Standar
       {
         "code" : "0103300000",
         "display" : "La Union"
+      },
+      {
+        "code" : "0100000000",
+        "display" : "Ilocos Region"
       }]
     }]
   }

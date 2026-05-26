@@ -11,7 +11,7 @@
   fhir:id [ fhir:v "ph-core-practitioner"] ; # 
   fhir:text [
      fhir:status [ fhir:v "extensions" ] ;
-     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: StructureDefinition ph-core-practitioner</b></p><a name=\"ph-core-practitioner\"> </a><a name=\"hcph-core-practitioner\"> </a><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;\"><tr style=\"border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top\"><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"The logical name of the element\">Name</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Information about the use of the element\">Flags</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Minimum and Maximum # of times the element can appear in the instance\">Card.</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px; width: 100px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Reference to the type of the element\">Type</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Additional information about the element\">Description &amp; Constraints</a><span style=\"float: right\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/></a></span></th></tr><tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_resource.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Resource\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner\">Practitioner</a><a name=\"Practitioner\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R4/practitioner.html\">Practitioner</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">A person with a  formal responsibility in the provisioning of healthcare or related services</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_datatype.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Data Type\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.address\">address</a><a name=\"Practitioner.address\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: red\" title=\"This element must be supported\">S</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"StructureDefinition-ph-core-address.html\" title=\"Address\">PHCoreAddress</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Address(es) of the practitioner that are not role specific (typically home address)</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck11.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.qualification\">qualification</a><a name=\"Practitioner.qualification\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck101.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.qualification.code\">code</a><a name=\"Practitioner.qualification.code\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: red\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#CodeableConcept\">CodeableConcept</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Coded representation of the qualification</span><table class=\"obligation grid\"><tr><td style=\"font-size: 11px\"><b>Obligations</b></td><td style=\"font-size: 11px\"><b>Actor</b></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Server.html\">PH Core Server</a></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Consumer.html\">PH Core Consumer</a></td></tr><tr><td style=\"font-size: 11px\"><b>MAY</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-able-to-populate\" title=\"Obligation Codes: be able to populate\">able-to-populate</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Creator.html\">PH Core Creator</a></td></tr></table></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1010.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.qualification.code.coding\">coding</a><a name=\"Practitioner.qualification.code.coding\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: red\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Code defined by a terminology system</span><table class=\"obligation grid\"><tr><td style=\"font-size: 11px\"><b>Obligations</b></td><td style=\"font-size: 11px\"><b>Actor</b></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Server.html\">PH Core Server</a></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Consumer.html\">PH Core Consumer</a></td></tr><tr><td style=\"font-size: 11px\"><b>MAY</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-able-to-populate\" title=\"Obligation Codes: be able to populate\">able-to-populate</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Creator.html\">PH Core Creator</a></td></tr></table></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1000.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.qualification.code.text\">text</a><a name=\"Practitioner.qualification.code.text\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: red\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Plain text representation of the concept</span><table class=\"obligation grid\"><tr><td style=\"font-size: 11px\"><b>Obligations</b></td><td style=\"font-size: 11px\"><b>Actor</b></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Server.html\">PH Core Server</a></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Consumer.html\">PH Core Consumer</a></td></tr><tr><td style=\"font-size: 11px\"><b>MAY</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-able-to-populate\" title=\"Obligation Codes: be able to populate\">able-to-populate</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Creator.html\">PH Core Creator</a></td></tr></table></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck01.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.communication\">communication</a><a name=\"Practitioner.communication\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: red\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#CodeableConcept\">CodeableConcept</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">A language the practitioner can use in patient communication</span><table class=\"obligation grid\"><tr><td style=\"font-size: 11px\"><b>Obligations</b></td><td style=\"font-size: 11px\"><b>Actor</b></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Server.html\">PH Core Server</a></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Consumer.html\">PH Core Consumer</a></td></tr><tr><td style=\"font-size: 11px\"><b>MAY</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-able-to-populate\" title=\"Obligation Codes: be able to populate\">able-to-populate</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Creator.html\">PH Core Creator</a></td></tr></table></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck010.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.communication.coding\">coding</a><a name=\"Practitioner.communication.coding\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: red\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Code defined by a terminology system</span><table class=\"obligation grid\"><tr><td style=\"font-size: 11px\"><b>Obligations</b></td><td style=\"font-size: 11px\"><b>Actor</b></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Server.html\">PH Core Server</a></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Consumer.html\">PH Core Consumer</a></td></tr><tr><td style=\"font-size: 11px\"><b>MAY</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-able-to-populate\" title=\"Obligation Codes: be able to populate\">able-to-populate</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Creator.html\">PH Core Creator</a></td></tr></table></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck000.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.communication.text\">text</a><a name=\"Practitioner.communication.text\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: red\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Plain text representation of the concept</span><table class=\"obligation grid\"><tr><td style=\"font-size: 11px\"><b>Obligations</b></td><td style=\"font-size: 11px\"><b>Actor</b></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Server.html\">PH Core Server</a></td></tr><tr><td style=\"font-size: 11px\"><b>SHALL</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-handle\" title=\"Obligation Codes: correctly handle\">handle</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Consumer.html\">PH Core Consumer</a></td></tr><tr><td style=\"font-size: 11px\"><b>MAY</b>:<a href=\"http://hl7.org/fhir/extensions/5.2.0/CodeSystem-obligation.html#obligation-able-to-populate\" title=\"Obligation Codes: be able to populate\">able-to-populate</a></td><td style=\"font-size: 11px; opacity: 0.5;\"><a href=\"ActorDefinition-Creator.html\">PH Core Creator</a></td></tr></table></td></tr>#xD;\n<tr><td colspan=\"5\" class=\"hierarchy\"><br/><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/> Documentation for this format</a></td></tr></table></div>"^^rdf:XMLLiteral ]
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: StructureDefinition ph-core-practitioner</b></p><a name=\"ph-core-practitioner\"> </a><a name=\"hcph-core-practitioner\"> </a><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"border: 0px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top;\"><tr style=\"border: 1px #F0F0F0 solid; font-size: 11px; font-family: verdana; vertical-align: top\"><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"The logical name of the element\">Name</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Information about the use of the element\">Flags</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Minimum and Maximum # of times the element can appear in the instance\">Card.</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px; width: 100px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Reference to the type of the element\">Type</a></th><th style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; padding-top: 3px; padding-bottom: 3px\" class=\"hierarchy\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Additional information about the element\">Description &amp; Constraints</a><span style=\"float: right\"><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/></a></span></th></tr><tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_resource.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Resource\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner\">Practitioner</a><a name=\"Practitioner\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"http://hl7.org/fhir/R4/practitioner.html\">Practitioner</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">A person with a  formal responsibility in the provisioning of healthcare or related services</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck13.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_extension_simple.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Simple Extension\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.extension\">Slices for extension</a><a name=\"Practitioner.extension\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/extensibility.html#Extension\">Extension</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Extension</span><br/><span style=\"font-weight:bold\">Slice: </span>Unordered, Open by value:url</td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck134.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_slicer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_slice_item.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Slice Item\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.extension:genderIdentity\" title=\"Extension URL = http://hl7.org/fhir/StructureDefinition/individual-genderIdentity\">extension:genderIdentity</a><a name=\"Practitioner.extension.2\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..*</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">(Complex)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Gender Identity - in compliance with SOGIE Bill<br/><span style=\"font-weight:bold\">URL: </span><a href=\"http://hl7.org/fhir/extensions/5.2.0/StructureDefinition-individual-genderIdentity.html\">http://hl7.org/fhir/StructureDefinition/individual-genderIdentity</a><br/></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck134.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_slicer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_slice_item.png\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Slice Item\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.extension:individualPronouns\" title=\"Extension URL = http://hl7.org/fhir/StructureDefinition/individual-pronouns\">extension:individualPronouns</a><a name=\"Practitioner.extension.3\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..*</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">(Complex)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Individual pronouns - in compliance with SOGIE Bill<br/><span style=\"font-weight:bold\">URL: </span><a href=\"http://hl7.org/fhir/extensions/5.2.0/StructureDefinition-individual-pronouns.html\">http://hl7.org/fhir/StructureDefinition/individual-pronouns</a><br/></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck124.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end_slicer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_slice_item.png\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Slice Item\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.extension:sex\" title=\"Extension URL = http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender\">extension:sex</a><a name=\"Practitioner.extension.4\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">0..*</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">(Complex)</td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\">Sex assigned at birth - in compliance with SOGIE Bill<br/><span style=\"font-weight:bold\">URL: </span><a href=\"http://hl7.org/fhir/extensions/5.2.0/StructureDefinition-individual-recordedSexOrGender.html\">http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender</a><br/></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck11.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_datatype.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Data Type\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.name\">name</a><a name=\"Practitioner.name\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"StructureDefinition-ph-core-name.html\" title=\"HumanName\">PHCoreName</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">The name(s) associated with the practitioner</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck110.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.name.family\">family</a><a name=\"Practitioner.name.family\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Family name (often called 'Surname')</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck100.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.name.given\">given</a><a name=\"Practitioner.name.given\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">First and middle names</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.telecom\">telecom</a><a name=\"Practitioner.telecom\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#ContactPoint\">ContactPoint</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">A contact detail for the practitioner (that apply to all roles)</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_datatype.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Data Type\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.address\">address</a><a name=\"Practitioner.address\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a href=\"StructureDefinition-ph-core-address.html\" title=\"Address\">PHCoreAddress</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Address(es) of the practitioner that are not role specific (typically home address)</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.gender\">gender</a><a name=\"Practitioner.gender\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#code\">code</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">male | female | other | unknown</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck10.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.birthDate\">birthDate</a><a name=\"Practitioner.birthDate\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#date\">date</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">The date  on which the practitioner was born</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck11.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.qualification\">qualification</a><a name=\"Practitioner.qualification\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"/></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck101.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.qualification.code\">code</a><a name=\"Practitioner.qualification.code\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">1</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#CodeableConcept\">CodeableConcept</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Coded representation of the qualification</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1010.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.qualification.code.coding\">coding</a><a name=\"Practitioner.qualification.code.coding\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Code defined by a terminology system</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck1000.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vline.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.qualification.code.text\">text</a><a name=\"Practitioner.qualification.code.text\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Plain text representation of the concept</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck01.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.communication\">communication</a><a name=\"Practitioner.communication\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#CodeableConcept\">CodeableConcept</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">A language the practitioner can use in patient communication</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: #F7F7F7\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck010.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: #F7F7F7; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.communication.coding\">coding</a><a name=\"Practitioner.communication.coding\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">*</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#Coding\">Coding</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: #F7F7F7; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Code defined by a terminology system</span></td></tr>#xD;\n<tr style=\"border: 0px #F0F0F0 solid; padding:0px; vertical-align: top; background-color: white\"><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px; white-space: nowrap; background-image: url(tbl_bck000.png)\" class=\"hierarchy\"><img src=\"tbl_spacer.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_blank.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"tbl_vjoin_end.png\" alt=\".\" style=\"background-color: inherit\" class=\"hierarchy\"/><img src=\"icon_element.gif\" alt=\".\" style=\"background-color: white; background-color: inherit\" title=\"Element\" class=\"hierarchy\"/> <a href=\"StructureDefinition-ph-core-practitioner-definitions.html#Practitioner.communication.text\">text</a><a name=\"Practitioner.communication.text\"> </a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"padding-left: 3px; padding-right: 3px; color: white; background-color: #D50000\" title=\"This element has obligations and must be supported\">SO</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">0</span><span style=\"opacity: 0.5\">..</span><span style=\"opacity: 0.5\">1</span></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><a style=\"opacity: 0.5; opacity: 0.5\" href=\"http://hl7.org/fhir/R4/datatypes.html#string\">string</a></td><td style=\"vertical-align: top; text-align : var(--ig-left,left); background-color: white; border: 0px #F0F0F0 solid; padding:0px 4px 0px 4px\" class=\"hierarchy\"><span style=\"opacity: 0.5\">Plain text representation of the concept</span></td></tr>#xD;\n<tr><td colspan=\"5\" class=\"hierarchy\"><br/><a href=\"https://build.fhir.org/ig/FHIR/ig-guidance/readingIgs.html#table-views\" title=\"Legend for this format\"><img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goXBCwdPqAP0wAAAldJREFUOMuNk0tIlFEYhp9z/vE2jHkhxXA0zJCMitrUQlq4lnSltEqCFhFG2MJFhIvIFpkEWaTQqjaWZRkp0g26URZkTpbaaOJkDqk10szoODP//7XIMUe0elcfnPd9zsfLOYplGrpRwZaqTtw3K7PtGem7Q6FoidbGgqHVy/HRb669R+56zx7eRV1L31JGxYbBtjKK93cxeqfyQHbehkZbUkK20goELEuIzEd+dHS+qz/Y8PTSif0FnGkbiwcAjHaU1+QWOptFiyCLp/LnKptpqIuXHx6rbR26kJcBX3yLgBfnd7CxwJmflpP2wUg0HIAoUUpZBmKzELGWcN8nAr6Gpu7tLU/CkwAaoKTWRSQyt89Q8w6J+oVQkKnBoblH7V0PPvUOvDYXfopE/SJmALsxnVm6LbkotrUtNowMeIrVrBcBpaMmdS0j9df7abpSuy7HWehwJdt1lhVwi/J58U5beXGAF6c3UXLycw1wdFklArBn87xdh0ZsZtArghBdAA3+OEDVubG4UEzP6x1FOWneHh2VDAHBAt80IbdXDcesNoCvs3E5AFyNSU5nbrDPZpcUEQQTFZiEVx+51fxMhhyJEAgvlriadIJZZksRuwBYMOPBbO3hePVVqgEJhFeUuFLhIPkRP6BQLIBrmMenujm/3g4zc398awIe90Zb5A1vREALqneMcYgP/xVQWlG+Ncu5vgwwlaUNx+3799rfe96u9K0JSDXcOzOTJg4B6IgmXfsygc7/Bvg9g9E58/cDVmGIBOP/zT8Bz1zqWqpbXIsd0O9hajXfL6u4BaOS6SeWAAAAAElFTkSuQmCC\" alt=\"doco\" style=\"background-color: inherit\"/> Documentation for this format</a></td></tr></table></div>"^^rdf:XMLLiteral ]
   ] ; # 
   fhir:url [
      fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner"^^xsd:anyURI ;
@@ -21,7 +21,7 @@
   fhir:name [ fhir:v "PHCorePractitioner"] ; # 
   fhir:title [ fhir:v "PH Core Practitioner"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-04-10T05:44:36+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-05-26T03:51:01+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "UP Manila National TeleHealth Center"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "UP Manila National TeleHealth Center" ] ;
@@ -411,10 +411,16 @@
      ] [
        fhir:id [ fhir:v "Practitioner.extension" ] ;
        fhir:path [ fhir:v "Practitioner.extension" ] ;
-       fhir:short [ fhir:v "Additional content defined by implementations" ] ;
-       fhir:definition [ fhir:v "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ] ;
-       fhir:comment [ fhir:v "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ] ;
-       fhir:alias ( [ fhir:v "extensions" ] [ fhir:v "user content" ] ) ;
+       fhir:slicing [
+         fhir:discriminator ( [
+           fhir:type [ fhir:v "value" ] ;
+           fhir:path [ fhir:v "url" ]
+         ] ) ;
+         fhir:ordered [ fhir:v false ] ;
+         fhir:rules [ fhir:v "open" ]
+       ] ;
+       fhir:short [ fhir:v "Extension" ] ;
+       fhir:definition [ fhir:v "An Extension" ] ;
        fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
        fhir:max [ fhir:v "*" ] ;
        fhir:base [
@@ -450,11 +456,140 @@
          ]
        ] ) ;
        fhir:isModifier [ fhir:v false ] ;
-       fhir:isSummary [ fhir:v false ] ;
-       fhir:mapping ( [
-         fhir:identity [ fhir:v "rim" ] ;
-         fhir:map [ fhir:v "N/A" ]
-       ] )
+       fhir:isSummary [ fhir:v false ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.extension:genderIdentity" ] ;
+       fhir:path [ fhir:v "Practitioner.extension" ] ;
+       fhir:sliceName [ fhir:v "genderIdentity" ] ;
+       fhir:short [ fhir:v "Gender Identity - in compliance with SOGIE Bill" ] ;
+       fhir:definition [ fhir:v "An individual's personal sense of being a man, woman, boy, girl, nonbinary, or something else." ] ;
+       fhir:comment [ fhir:v "This represents an individual’s identity, ascertained by asking them what that identity is." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "DomainResource.extension" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "*" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "Extension"^^xsd:anyURI ;
+           fhir:l fhir:Extension
+         ] ;
+         fhir:profile ( [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/individual-genderIdentity>
+         ] )
+       ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] [
+         fhir:key [ fhir:v "ext-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "Must have either extensions or value[x], not both" ] ;
+         fhir:expression [ fhir:v "extension.exists() != value.exists()" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Extension"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Extension>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v false ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.extension:individualPronouns" ] ;
+       fhir:path [ fhir:v "Practitioner.extension" ] ;
+       fhir:sliceName [ fhir:v "individualPronouns" ] ;
+       fhir:short [ fhir:v "Individual pronouns - in compliance with SOGIE Bill" ] ;
+       fhir:definition [ fhir:v "The pronouns to use when referring to an individual in verbal or written communication." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "DomainResource.extension" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "*" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "Extension"^^xsd:anyURI ;
+           fhir:l fhir:Extension
+         ] ;
+         fhir:profile ( [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/individual-pronouns"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/individual-pronouns>
+         ] )
+       ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] [
+         fhir:key [ fhir:v "ext-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "Must have either extensions or value[x], not both" ] ;
+         fhir:expression [ fhir:v "extension.exists() != value.exists()" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Extension"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Extension>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v false ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.extension:sex" ] ;
+       fhir:path [ fhir:v "Practitioner.extension" ] ;
+       fhir:sliceName [ fhir:v "sex" ] ;
+       fhir:short [ fhir:v "Sex assigned at birth - in compliance with SOGIE Bill" ] ;
+       fhir:definition [ fhir:v "A sex or gender property for the individual from a document or other record" ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "DomainResource.extension" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "*" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "Extension"^^xsd:anyURI ;
+           fhir:l fhir:Extension
+         ] ;
+         fhir:profile ( [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender>
+         ] )
+       ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] [
+         fhir:key [ fhir:v "ext-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "Must have either extensions or value[x], not both" ] ;
+         fhir:expression [ fhir:v "extension.exists() != value.exists()" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Extension"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Extension>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v false ]
      ] [
        fhir:id [ fhir:v "Practitioner.modifierExtension" ] ;
        fhir:path [ fhir:v "Practitioner.modifierExtension" ] ;
@@ -592,6 +727,112 @@
        ] )
      ] [
        fhir:id [ fhir:v "Practitioner.name" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
        fhir:path [ fhir:v "Practitioner.name" ] ;
        fhir:short [ fhir:v "The name(s) associated with the practitioner" ] ;
        fhir:definition [ fhir:v "The name(s) associated with the practitioner." ] ;
@@ -608,6 +849,207 @@
          fhir:code [
            fhir:v "HumanName"^^xsd:anyURI ;
            fhir:l fhir:HumanName
+         ] ;
+         fhir:profile ( [
+           fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-name"^^xsd:anyURI ;
+           fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-name>
+         ] )
+       ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] ) ;
+       fhir:mustSupport [ fhir:v true ] ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v true ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "XCN Components" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "./name" ]
+       ] [
+         fhir:identity [ fhir:v "servd" ] ;
+         fhir:map [ fhir:v "./PreferredName (GivenNames, FamilyName, TitleCode)" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.id" ] ;
+       fhir:path [ fhir:v "Practitioner.name.id" ] ;
+       fhir:representation ( [ fhir:v "xmlAttr" ] ) ;
+       fhir:short [ fhir:v "Unique id for inter-element referencing" ] ;
+       fhir:definition [ fhir:v "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "Element.id" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "1" ]
+       ] ;
+       fhir:type ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type>
+           ] ;
+           fhir:value [
+             a fhir:Url ;
+             fhir:v "string"^^xsd:anyURI ;
+             fhir:l fhir:string
+           ]
+         ] ) ;
+         fhir:code [
+           fhir:v "http://hl7.org/fhirpath/System.String"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhirpath/System.String>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v false ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "n/a" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.extension" ] ;
+       fhir:path [ fhir:v "Practitioner.name.extension" ] ;
+       fhir:slicing [
+         fhir:discriminator ( [
+           fhir:type [ fhir:v "value" ] ;
+           fhir:path [ fhir:v "url" ]
+         ] ) ;
+         fhir:description [ fhir:v "Extensions are always sliced by (at least) url" ] ;
+         fhir:rules [ fhir:v "open" ]
+       ] ;
+       fhir:short [ fhir:v "Additional content defined by implementations" ] ;
+       fhir:definition [ fhir:v "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." ] ;
+       fhir:comment [ fhir:v "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." ] ;
+       fhir:alias ( [ fhir:v "extensions" ] [ fhir:v "user content" ] ) ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "Element.extension" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "*" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "Extension"^^xsd:anyURI ;
+           fhir:l fhir:Extension
+         ]
+       ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] [
+         fhir:key [ fhir:v "ext-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "Must have either extensions or value[x], not both" ] ;
+         fhir:expression [ fhir:v "extension.exists() != value.exists()" ] ;
+         fhir:xpath [ fhir:v "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Extension"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Extension>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v false ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "n/a" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.use" ] ;
+       fhir:path [ fhir:v "Practitioner.name.use" ] ;
+       fhir:short [ fhir:v "usual | official | temp | nickname | anonymous | old | maiden" ] ;
+       fhir:definition [ fhir:v "Identifies the purpose for this name." ] ;
+       fhir:comment [ fhir:v "Applications can assume that a name is current unless it explicitly says that it is temporary or old." ] ;
+       fhir:requirements [ fhir:v "Allows the appropriate name for a particular context of use to be selected from among a set of names." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "HumanName.use" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "1" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "code"^^xsd:anyURI ;
+           fhir:l fhir:code
+         ]
+       ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v true ] ;
+       fhir:isModifierReason [ fhir:v "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old name etc.for a current/permanent one" ] ;
+       fhir:isSummary [ fhir:v true ] ;
+       fhir:binding [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName>
+           ] ;
+           fhir:value [
+             a fhir:String ;
+             fhir:v "NameUse"
+           ]
+         ] ) ;
+         fhir:strength [ fhir:v "required" ] ;
+         fhir:description [ fhir:v "The use of a human name." ] ;
+         fhir:valueSet [
+           fhir:v "http://hl7.org/fhir/ValueSet/name-use|4.0.1"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/ValueSet/name-use?version=4.0.1>
+         ]
+       ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "XPN.7, but often indicated by which field contains the name" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "unique(./use)" ]
+       ] [
+         fhir:identity [ fhir:v "servd" ] ;
+         fhir:map [ fhir:v "./NamePurpose" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.text" ] ;
+       fhir:path [ fhir:v "Practitioner.name.text" ] ;
+       fhir:short [ fhir:v "Text representation of the full name" ] ;
+       fhir:definition [ fhir:v "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts." ] ;
+       fhir:comment [ fhir:v "Can provide both a text representation and parts. Applications updating a name SHALL ensure that when both text and parts are present,  no content is included in the text that isn't found in a part." ] ;
+       fhir:requirements [ fhir:v "A renderable, unencoded form." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "HumanName.text" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "1" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "string"^^xsd:anyURI ;
+           fhir:l fhir:string
          ]
        ] ) ;
        fhir:constraint ( [
@@ -625,16 +1067,543 @@
        fhir:isSummary [ fhir:v true ] ;
        fhir:mapping ( [
          fhir:identity [ fhir:v "v2" ] ;
-         fhir:map [ fhir:v "XCN Components" ]
+         fhir:map [ fhir:v "implied by XPN.11" ]
        ] [
          fhir:identity [ fhir:v "rim" ] ;
-         fhir:map [ fhir:v "./name" ]
+         fhir:map [ fhir:v "./formatted" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.family" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.name.family" ] ;
+       fhir:short [ fhir:v "Family name (often called 'Surname')" ] ;
+       fhir:definition [ fhir:v "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father." ] ;
+       fhir:comment [ fhir:v "Family Name may be decomposed into specific parts using extensions (de, nl, es related cultures)." ] ;
+       fhir:alias ( [ fhir:v "surname" ] ) ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "HumanName.family" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "1" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "string"^^xsd:anyURI ;
+           fhir:l fhir:string
+         ]
+       ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] ) ;
+       fhir:mustSupport [ fhir:v true ] ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v true ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "XPN.1/FN.1" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "./part[partType = FAM]" ]
        ] [
          fhir:identity [ fhir:v "servd" ] ;
-         fhir:map [ fhir:v "./PreferredName (GivenNames, FamilyName, TitleCode)" ]
+         fhir:map [ fhir:v "./FamilyName" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.given" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.name.given" ] ;
+       fhir:short [ fhir:v "First and middle names" ] ;
+       fhir:definition [ fhir:v "First name (given[0]) and Middle Name (given[1])." ] ;
+       fhir:comment [ fhir:v "If only initials are recorded, they may be used in place of the full name parts. Initials may be separated into multiple given names but often aren't due to paractical limitations.  This element is not called \"first name\" since given names do not always come first." ] ;
+       fhir:alias ( [ fhir:v "first name" ] [ fhir:v "middle name" ] ) ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "HumanName.given" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "*" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "string"^^xsd:anyURI ;
+           fhir:l fhir:string
+         ]
+       ] ) ;
+       fhir:orderMeaning [ fhir:v "Given Names appear in the correct order for presenting the name" ] ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] ) ;
+       fhir:mustSupport [ fhir:v true ] ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v true ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "XPN.2 + XPN.3" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "./part[partType = GIV]" ]
+       ] [
+         fhir:identity [ fhir:v "servd" ] ;
+         fhir:map [ fhir:v "./GivenNames" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.prefix" ] ;
+       fhir:path [ fhir:v "Practitioner.name.prefix" ] ;
+       fhir:short [ fhir:v "Parts that come before the name" ] ;
+       fhir:definition [ fhir:v "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "HumanName.prefix" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "*" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "string"^^xsd:anyURI ;
+           fhir:l fhir:string
+         ]
+       ] ) ;
+       fhir:orderMeaning [ fhir:v "Prefixes appear in the correct order for presenting the name" ] ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v true ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "XPN.5" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "./part[partType = PFX]" ]
+       ] [
+         fhir:identity [ fhir:v "servd" ] ;
+         fhir:map [ fhir:v "./TitleCode" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.suffix" ] ;
+       fhir:path [ fhir:v "Practitioner.name.suffix" ] ;
+       fhir:short [ fhir:v "Parts that come after the name" ] ;
+       fhir:definition [ fhir:v "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "HumanName.suffix" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "*" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "string"^^xsd:anyURI ;
+           fhir:l fhir:string
+         ]
+       ] ) ;
+       fhir:orderMeaning [ fhir:v "Suffixes appear in the correct order for presenting the name" ] ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v true ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "XPN/4" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "./part[partType = SFX]" ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.period" ] ;
+       fhir:path [ fhir:v "Practitioner.name.period" ] ;
+       fhir:short [ fhir:v "Time period when name was/is in use" ] ;
+       fhir:definition [ fhir:v "Indicates the period of time when this name was valid for the named person." ] ;
+       fhir:requirements [ fhir:v "Allows names to be placed in historical context." ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "1" ] ;
+       fhir:base [
+         fhir:path [ fhir:v "HumanName.period" ] ;
+         fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+         fhir:max [ fhir:v "1" ]
+       ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "Period"^^xsd:anyURI ;
+           fhir:l fhir:Period
+         ]
+       ] ) ;
+       fhir:constraint ( [
+         fhir:key [ fhir:v "ele-1" ] ;
+         fhir:severity [ fhir:v "error" ] ;
+         fhir:human [ fhir:v "All FHIR elements must have a @value or children" ] ;
+         fhir:expression [ fhir:v "hasValue() or (children().count() > id.count())" ] ;
+         fhir:xpath [ fhir:v "@value|f:*|h:div" ] ;
+         fhir:source [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/Element"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
+         ]
+       ] ) ;
+       fhir:isModifier [ fhir:v false ] ;
+       fhir:isSummary [ fhir:v true ] ;
+       fhir:mapping ( [
+         fhir:identity [ fhir:v "v2" ] ;
+         fhir:map [ fhir:v "XPN.13 + XPN.14" ]
+       ] [
+         fhir:identity [ fhir:v "rim" ] ;
+         fhir:map [ fhir:v "./usablePeriod[type=\"IVL<TS>\"]" ]
+       ] [
+         fhir:identity [ fhir:v "servd" ] ;
+         fhir:map [ fhir:v "./StartDate and ./EndDate" ]
        ] )
      ] [
        fhir:id [ fhir:v "Practitioner.telecom" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
        fhir:path [ fhir:v "Practitioner.telecom" ] ;
        fhir:short [ fhir:v "A contact detail for the practitioner (that apply to all roles)" ] ;
        fhir:definition [ fhir:v "A contact detail for the practitioner, e.g. a telephone number or an email address." ] ;
@@ -664,6 +1633,7 @@
            fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ) ;
+       fhir:mustSupport [ fhir:v true ] ;
        fhir:isModifier [ fhir:v false ] ;
        fhir:isSummary [ fhir:v true ] ;
        fhir:mapping ( [
@@ -678,6 +1648,112 @@
        ] )
      ] [
        fhir:id [ fhir:v "Practitioner.address" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
        fhir:path [ fhir:v "Practitioner.address" ] ;
        fhir:short [ fhir:v "Address(es) of the practitioner that are not role specific (typically home address)" ] ;
        fhir:definition [ fhir:v "Address(es) of the practitioner that are not role specific (typically home address). \rWork addresses are not typically entered in this property as they are usually role dependent." ] ;
@@ -726,6 +1802,112 @@
        ] )
      ] [
        fhir:id [ fhir:v "Practitioner.gender" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
        fhir:path [ fhir:v "Practitioner.gender" ] ;
        fhir:short [ fhir:v "male | female | other | unknown" ] ;
        fhir:definition [ fhir:v "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes." ] ;
@@ -754,6 +1936,7 @@
            fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ) ;
+       fhir:mustSupport [ fhir:v true ] ;
        fhir:isModifier [ fhir:v false ] ;
        fhir:isSummary [ fhir:v true ] ;
        fhir:binding [
@@ -786,6 +1969,112 @@
        ] )
      ] [
        fhir:id [ fhir:v "Practitioner.birthDate" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] [
+           fhir:url [
+             fhir:v "http://hl7.org/fhir/tools/StructureDefinition/snapshot-source"^^xsd:anyURI ;
+             fhir:l <http://hl7.org/fhir/tools/StructureDefinition/snapshot-source>
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner|0.2.0"^^xsd:anyURI ;
+             fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner?version=0.2.0>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
        fhir:path [ fhir:v "Practitioner.birthDate" ] ;
        fhir:short [ fhir:v "The date  on which the practitioner was born" ] ;
        fhir:definition [ fhir:v "The date of birth for the practitioner." ] ;
@@ -814,6 +2103,7 @@
            fhir:l <http://hl7.org/fhir/StructureDefinition/Element>
          ]
        ] ) ;
+       fhir:mustSupport [ fhir:v true ] ;
        fhir:isModifier [ fhir:v false ] ;
        fhir:isSummary [ fhir:v true ] ;
        fhir:mapping ( [
@@ -1093,8 +2383,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] [
            fhir:url [
@@ -1128,8 +2418,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] [
            fhir:url [
@@ -1163,8 +2453,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] [
            fhir:url [
@@ -1347,8 +2637,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] [
            fhir:url [
@@ -1382,8 +2672,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] [
            fhir:url [
@@ -1417,8 +2707,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] [
            fhir:url [
@@ -1506,8 +2796,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] [
            fhir:url [
@@ -1541,8 +2831,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] [
            fhir:url [
@@ -1576,8 +2866,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] [
            fhir:url [
@@ -1734,8 +3024,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] [
            fhir:url [
@@ -1769,8 +3059,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] [
            fhir:url [
@@ -1804,8 +3094,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] [
            fhir:url [
@@ -2003,8 +3293,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] [
            fhir:url [
@@ -2038,8 +3328,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] [
            fhir:url [
@@ -2073,8 +3363,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] [
            fhir:url [
@@ -2162,8 +3452,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] [
            fhir:url [
@@ -2197,8 +3487,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] [
            fhir:url [
@@ -2232,8 +3522,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] [
            fhir:url [
@@ -2300,21 +3590,69 @@
        fhir:id [ fhir:v "Practitioner" ] ;
        fhir:path [ fhir:v "Practitioner" ]
      ] [
-       fhir:id [ fhir:v "Practitioner.address" ] ;
-       fhir:path [ fhir:v "Practitioner.address" ] ;
+       fhir:id [ fhir:v "Practitioner.extension" ] ;
+       fhir:path [ fhir:v "Practitioner.extension" ] ;
+       fhir:slicing [
+         fhir:discriminator ( [
+           fhir:type [ fhir:v "value" ] ;
+           fhir:path [ fhir:v "url" ]
+         ] ) ;
+         fhir:ordered [ fhir:v false ] ;
+         fhir:rules [ fhir:v "open" ]
+       ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.extension:genderIdentity" ] ;
+       fhir:path [ fhir:v "Practitioner.extension" ] ;
+       fhir:sliceName [ fhir:v "genderIdentity" ] ;
+       fhir:short [ fhir:v "Gender Identity - in compliance with SOGIE Bill" ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
        fhir:type ( [
          fhir:code [
-           fhir:v "Address"^^xsd:anyURI ;
-           fhir:l fhir:Address
+           fhir:v "Extension"^^xsd:anyURI ;
+           fhir:l fhir:Extension
          ] ;
          fhir:profile ( [
-           fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-address"^^xsd:anyURI ;
-           fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-address>
+           fhir:v "http://hl7.org/fhir/StructureDefinition/individual-genderIdentity"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/individual-genderIdentity>
          ] )
-       ] ) ;
-       fhir:mustSupport [ fhir:v true ]
+       ] )
      ] [
-       fhir:id [ fhir:v "Practitioner.qualification.code" ] ;
+       fhir:id [ fhir:v "Practitioner.extension:individualPronouns" ] ;
+       fhir:path [ fhir:v "Practitioner.extension" ] ;
+       fhir:sliceName [ fhir:v "individualPronouns" ] ;
+       fhir:short [ fhir:v "Individual pronouns - in compliance with SOGIE Bill" ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "Extension"^^xsd:anyURI ;
+           fhir:l fhir:Extension
+         ] ;
+         fhir:profile ( [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/individual-pronouns"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/individual-pronouns>
+         ] )
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.extension:sex" ] ;
+       fhir:path [ fhir:v "Practitioner.extension" ] ;
+       fhir:sliceName [ fhir:v "sex" ] ;
+       fhir:short [ fhir:v "Sex assigned at birth - in compliance with SOGIE Bill" ] ;
+       fhir:min [ fhir:v "0"^^xsd:nonNegativeInteger ] ;
+       fhir:max [ fhir:v "*" ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "Extension"^^xsd:anyURI ;
+           fhir:l fhir:Extension
+         ] ;
+         fhir:profile ( [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/individual-recordedSexOrGender>
+         ] )
+       ] )
+     ] [
+       fhir:id [ fhir:v "Practitioner.name" ] ;
        fhir:extension ( [
          fhir:extension ( [
            fhir:url [
@@ -2332,8 +3670,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] ) ;
          fhir:url [
@@ -2357,8 +3695,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] ) ;
          fhir:url [
@@ -2382,8 +3720,588 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.name" ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "HumanName"^^xsd:anyURI ;
+           fhir:l fhir:HumanName
+         ] ;
+         fhir:profile ( [
+           fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-name"^^xsd:anyURI ;
+           fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-name>
+         ] )
+       ] ) ;
+       fhir:mustSupport [ fhir:v true ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.family" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.name.family" ] ;
+       fhir:mustSupport [ fhir:v true ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.name.given" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.name.given" ] ;
+       fhir:mustSupport [ fhir:v true ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.telecom" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.telecom" ] ;
+       fhir:mustSupport [ fhir:v true ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.address" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.address" ] ;
+       fhir:type ( [
+         fhir:code [
+           fhir:v "Address"^^xsd:anyURI ;
+           fhir:l fhir:Address
+         ] ;
+         fhir:profile ( [
+           fhir:v "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-address"^^xsd:anyURI ;
+           fhir:l <http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-address>
+         ] )
+       ] ) ;
+       fhir:mustSupport [ fhir:v true ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.gender" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.gender" ] ;
+       fhir:mustSupport [ fhir:v true ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.birthDate" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] ) ;
+       fhir:path [ fhir:v "Practitioner.birthDate" ] ;
+       fhir:mustSupport [ fhir:v true ]
+     ] [
+       fhir:id [ fhir:v "Practitioner.qualification.code" ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "SHALL:handle"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
+           ]
+         ] ) ;
+         fhir:url [
+           fhir:v "http://hl7.org/fhir/StructureDefinition/obligation"^^xsd:anyURI ;
+           fhir:l <http://hl7.org/fhir/StructureDefinition/obligation>
+         ]
+       ] [
+         fhir:extension ( [
+           fhir:url [
+             fhir:v "code"^^xsd:anyURI ;
+             fhir:l fhir:code
+           ] ;
+           fhir:value [
+             a fhir:Code ;
+             fhir:v "MAY:able-to-populate"
+           ]
+         ] [
+           fhir:url [
+             fhir:v "actor"^^xsd:anyURI ;
+             fhir:l fhir:actor
+           ] ;
+           fhir:value [
+             a fhir:Canonical ;
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] ) ;
          fhir:url [
@@ -2412,8 +4330,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] ) ;
          fhir:url [
@@ -2437,8 +4355,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] ) ;
          fhir:url [
@@ -2462,8 +4380,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] ) ;
          fhir:url [
@@ -2501,8 +4419,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] ) ;
          fhir:url [
@@ -2526,8 +4444,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] ) ;
          fhir:url [
@@ -2551,8 +4469,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] ) ;
          fhir:url [
@@ -2581,8 +4499,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] ) ;
          fhir:url [
@@ -2606,8 +4524,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] ) ;
          fhir:url [
@@ -2631,8 +4549,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] ) ;
          fhir:url [
@@ -2661,8 +4579,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] ) ;
          fhir:url [
@@ -2686,8 +4604,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] ) ;
          fhir:url [
@@ -2711,8 +4629,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] ) ;
          fhir:url [
@@ -2750,8 +4668,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Server>
            ]
          ] ) ;
          fhir:url [
@@ -2775,8 +4693,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer>
            ]
          ] ) ;
          fhir:url [
@@ -2800,8 +4718,8 @@
            ] ;
            fhir:value [
              a fhir:Canonical ;
-             fhir:v "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"^^xsd:anyURI ;
-             fhir:l <http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator>
+             fhir:v "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"^^xsd:anyURI ;
+             fhir:l <https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator>
            ]
          ] ) ;
          fhir:url [

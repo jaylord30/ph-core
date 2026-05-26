@@ -12,7 +12,7 @@
   <name value="PHCoreImplementationGuide"/>
   <title value="Draft PH Core Implementation Guide"/>
   <status value="draft"/>
-  <date value="2026-04-10T05:44:36+00:00"/>
+  <date value="2026-05-26T03:51:01+00:00"/>
   <publisher value="UP Manila National TeleHealth Center"/>
   <contact>
     <name value="UP Manila National TeleHealth Center"/>
@@ -527,6 +527,17 @@
     </extension>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/administered-product"/>
+      </reference>
+      <name value="Administered Product"/>
+      <description value="The vaccine product that was administered."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="AllergyIntolerance"/>
       </extension>
       <reference>
@@ -534,7 +545,7 @@
       </reference>
       <name value="allergy-single-example"/>
       <description value="Juan Dela Cruz has a high criticality, active allergy to Benethamine penicillin."/>
-      <exampleBoolean value="true"/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-allergyintolerance"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -556,6 +567,17 @@
       </reference>
       <name value="Barangays"/>
       <description value="The Barangay codes valueset includes all barangay values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/batch-number"/>
+      </reference>
+      <name value="Batch Number"/>
+      <description value="The batch number of the vaccine administered."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -590,6 +612,17 @@
       <name value="City/Municipality"/>
       <description value="City/municipality from the standard geographic code."/>
       <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Claim"/>
+      </extension>
+      <reference>
+        <reference value="Claim/claim-single-example"/>
+      </reference>
+      <name value="claim-single-example"/>
+      <description value="A PhilHealth outpatient consultation claim for Juan Dela Cruz submitted by Dr. Maria Clara Santos for management of Type 2 Diabetes Mellitus."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-claim"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -678,6 +711,28 @@
       <name value="encounter-single-example"/>
       <description value="An ambulatory visit for Juan Dela Cruz that has been completed."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="HealthcareService"/>
+      </extension>
+      <reference>
+        <reference value="HealthcareService/healthcareservice-single-example"/>
+      </reference>
+      <name value="Example PH Core HealthcareService"/>
+      <description value="Philippine General Hospital Outpatient Department providing General Medicine consultations as a PH Core HealthcareService."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-healthcareservice"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/location-single-example"/>
+      </reference>
+      <name value="Example PH Core Location"/>
+      <description value="Philippine General Hospital - A government tertiary hospital located in Manila, Philippines."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-location"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -775,7 +830,7 @@
         <reference value="Immunization/immunization-single-example"/>
       </reference>
       <name value="immunization-single-example"/>
-      <description value="Flu shot for H5N1-1203."/>
+      <description value="Juan Dela Cruz received a completed intramuscular influenza (H5N1-1203) vaccine at Philippine General Hospital on January 10, 2013."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-immunization"/>
     </resource>
     <resource>
@@ -791,24 +846,24 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="ValueSet"/>
-      </extension>
-      <reference>
-        <reference value="ValueSet/indigenous-groups-vs"/>
-      </reference>
-      <name value="Indigenous Groups"/>
-      <description value="A value set representing the recognized Indigenous groups to which a person may belong."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="CodeSystem"/>
       </extension>
       <reference>
         <reference value="CodeSystem/indigenous-groups-cs"/>
       </reference>
-      <name value="Indigenous Groups"/>
+      <name value="Indigenous Groups CodeSystem"/>
       <description value="A list of codes representing the recognized indigenous groups in the Philippines to which a person may belong."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/indigenous-groups-vs"/>
+      </reference>
+      <name value="Indigenous Groups ValueSet"/>
+      <description value="A value set representing the recognized Indigenous groups to which a person may belong."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -915,10 +970,142 @@
         <valueString value="Observation"/>
       </extension>
       <reference>
-        <reference value="Observation/observation-single-example"/>
+        <reference value="Observation/observation-based-on-service-example"/>
       </reference>
-      <name value="observation-single-example"/>
+      <name value="observation-based-on-service-example"/>
+      <description value="Hemoglobin A1c lab result based on a service request for diabetes monitoring."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-bp-example"/>
+      </reference>
+      <name value="observation-bp-example"/>
       <description value="Blood pressure observation for Juan Dela Cruz taken on 17 September 2012. Systolic: 107 mmHg (Normal), Diastolic: 60 mmHg (Below low normal)."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-derived-bmi-example"/>
+      </reference>
+      <name value="observation-derived-bmi-example"/>
+      <description value="BMI calculated from height and weight observations for Juan Dela Cruz."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-environmental-temp-example"/>
+      </reference>
+      <name value="observation-environmental-temp-example"/>
+      <description value="Environmental temperature observation for a hospital ward (Location as subject)."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-glucose-example"/>
+      </reference>
+      <name value="observation-glucose-example"/>
+      <description value="Fasting blood glucose observation for Juan Dela Cruz."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-height-example"/>
+      </reference>
+      <name value="observation-height-example"/>
+      <description value="Body height observation for Juan Dela Cruz."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-lab-panel-example"/>
+      </reference>
+      <name value="observation-lab-panel-example"/>
+      <description value="Basic Metabolic Panel with references to individual electrolyte observations."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-part-of-procedure-example"/>
+      </reference>
+      <name value="observation-part-of-procedure-example"/>
+      <description value="Intraoperative blood pressure observation during appendectomy procedure."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-performer-role-example"/>
+      </reference>
+      <name value="observation-performer-role-example"/>
+      <description value="Heart rate observation performed by a practitioner in a specific role."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-potassium-example"/>
+      </reference>
+      <name value="observation-potassium-example"/>
+      <description value="Serum potassium observation for Juan Dela Cruz."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-sodium-example"/>
+      </reference>
+      <name value="observation-sodium-example"/>
+      <description value="Serum sodium observation for Juan Dela Cruz."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-vitals-encounter-example"/>
+      </reference>
+      <name value="observation-vitals-encounter-example"/>
+      <description value="Body temperature observation for Juan Dela Cruz taken during an ambulatory encounter."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Observation"/>
+      </extension>
+      <reference>
+        <reference value="Observation/observation-weight-example"/>
+      </reference>
+      <name value="observation-weight-example"/>
+      <description value="Body weight observation for Juan Dela Cruz."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-observation"/>
     </resource>
     <resource>
@@ -992,6 +1179,28 @@
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
+        <reference value="StructureDefinition/ph-core-allergyintolerance"/>
+      </reference>
+      <name value="PH Core AllergyIntolerance"/>
+      <description value="This profile sets minimum expectations for an AllergyIntolerance resource to record, search, and fetch basic allergy intolerance information for a patient. It is based on the [FHIR R4 AllergyIntolerance](https://www.hl7.org/fhir/R4/allergyintolerance.html) resource and identifies the *additional* mandatory core elements, extensions, vocabularies and value sets that **SHALL** be present in the AllergyIntolerance when conforming to this profile. It provides the floor for standards development for specific uses cases in a Philippine context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-claim"/>
+      </reference>
+      <name value="PH Core Claim"/>
+      <description value="Captures information about a request for reimbursement or payment for health care products and services within the Philippine health system, including specific benefit packages such as Animal Bites and TB DOTS programs."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
         <reference value="StructureDefinition/ph-core-condition"/>
       </reference>
       <name value="PH Core Condition"/>
@@ -1022,6 +1231,28 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/ph-core-disability-type-cs"/>
+      </reference>
+      <name value="PH Core Disability Type Code System"/>
+      <description value="Code system for types of disability as defined by the Philippine government for PWD registration."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/ph-core-disability-type-vs"/>
+      </reference>
+      <name value="PH Core Disability Type Value Set"/>
+      <description value="Value set for types of disability as defined by the Philippine government for PWD registration."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -1029,6 +1260,17 @@
       </reference>
       <name value="PH Core Encounter"/>
       <description value="This profile sets minimum expectations for an Encounter resource to record, search, and fetch basic encounter information for a patient. It is based on the [FHIR R4 Encounter](https://www.hl7.org/fhir/R4/encounter.html) resource and identifies the *additional* mandatory core elements, extensions, vocabularies and value sets that **SHALL** be present in the Encounter when conforming to this profile. It provides the floor for standards development for specific uses cases in a Philippine context."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-healthcareservice"/>
+      </reference>
+      <name value="PH Core HealthcareService"/>
+      <description value="This profile sets minimum expectations for a HealthcareService resource to record, search, and fetch information about healthcare services offered by an organization or at a location in the Philippine context. It is based on the [FHIR R4 HealthcareService](https://www.hl7.org/fhir/R4/healthcareservice.html) resource and identifies the *additional* mandatory core elements, extensions, vocabularies and value sets that **SHALL** be present in the HealthcareService when conforming to this profile. It provides the floor for standards development for specific use cases in a Philippine context."/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -1198,6 +1440,17 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/ph-core-pwd-disability"/>
+      </reference>
+      <name value="PH Core PWD Disability Registration"/>
+      <description value="Extension for Person With Disability (PWD) registration information. Captures PWD ID number, type of disability, and ID expiration date as issued by the PDAO (Persons with Disability Affairs Office)."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:resource"/>
       </extension>
       <reference>
@@ -1286,12 +1539,23 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Coverage"/>
+      </extension>
+      <reference>
+        <reference value="Coverage/philhealth-coverage-example"/>
+      </reference>
+      <name value="philhealth-coverage-example"/>
+      <description value="PhilHealth coverage for Juan Dela Cruz with member ID 63-584789845-5."/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="StructureDefinition:complex-type"/>
       </extension>
       <reference>
         <reference value="StructureDefinition/ph-core-philsys-id"/>
       </reference>
-      <name value="PhilSys Identification Number (PhilSys ID)"/>
+      <name value="PhilSys Identification Number (PhilSys ID) Identifier"/>
       <description value="The National ID Number PSA issued to all Filipino citizens and resident aliens in the Philippines, as part of the Philippine Identification System (PhilSys) program."/>
       <exampleBoolean value="false"/>
     </resource>
@@ -1302,7 +1566,7 @@
       <reference>
         <reference value="NamingSystem/PhilSysIDNS"/>
       </reference>
-      <name value="PhilSys Identification Number (PhilSys ID)"/>
+      <name value="PhilSys Identification Number (PhilSys ID) NamingSystem"/>
       <description value="The National ID Number issued to all Filipino citizens and resident aliens in the Philippines, as part of the Philippine Identification System (PhilSys) program."/>
       <exampleBoolean value="false"/>
     </resource>
@@ -1313,7 +1577,7 @@
       <reference>
         <reference value="StructureDefinition/ph-core-philhealth-id"/>
       </reference>
-      <name value="PIN - PhilHealth Identification Number"/>
+      <name value="PIN - PhilHealth Identification Number Identifier"/>
       <description value="The permanent and unique number issued by PhilHealth to individual members and to each and every dependent."/>
       <exampleBoolean value="false"/>
     </resource>
@@ -1324,7 +1588,7 @@
       <reference>
         <reference value="NamingSystem/PhilHealthIDNS"/>
       </reference>
-      <name value="PIN - PhilHealth Identification Number"/>
+      <name value="PIN - PhilHealth Identification Number NamingSystem"/>
       <description value="The permanent and unique number issued by PhilHealth to individual members and to each and every dependent."/>
       <exampleBoolean value="false"/>
     </resource>
@@ -1336,8 +1600,19 @@
         <reference value="Practitioner/practitioner-single-example"/>
       </reference>
       <name value="practitioner-single-example"/>
-      <description value="Dr. Maria Clara Santos, a female practitioner born on 1985-05-15, resides at 1234 Mabini Street, Manila, NCR, 1000, Philippines. She can be contacted via mobile at +63-912-345-6789 or by email at maria.santos@example.ph."/>
+      <description value="Dr. Maria Clara Santos, MD, a licensed physician born on 1985-05-15, residing in Manila, Philippines. She can be contacted via mobile at +63-912-345-6789 or by email at maria.santos@example.ph. She speaks Filipino and English."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="PractitionerRole"/>
+      </extension>
+      <reference>
+        <reference value="PractitionerRole/practitionerrole-single-example"/>
+      </reference>
+      <name value="practitionerrole-single-example"/>
+      <description value="Dr. Maria Clara Santos is a General Practitioner working with the Department of Health. One of her assignments is at the Philippine General Hospital."/>
+      <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitionerrole"/>
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
@@ -1424,7 +1699,7 @@
         <reference value="RelatedPerson/relatedperson-single-example"/>
       </reference>
       <name value="relatedperson-single-example"/>
-      <description value="Maria Cruz Santos is a female born on 1 January 1955."/>
+      <description value="Maria Cruz Santos is a female born on 1 January 1955, mother of the patient."/>
       <exampleCanonical value="http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-relatedperson"/>
     </resource>
     <resource>

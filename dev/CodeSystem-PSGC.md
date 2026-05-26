@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:https://psa.gov.ph/classification/psgc | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:PSGC |
+| Draft as of 2026-05-26 | *Computable Name*:PSGC |
 
  
 Mock of the Philippine Standard Geographic Code. 
@@ -35,7 +35,7 @@ Mock of the Philippine Standard Geographic Code.
   "title" : "Mock PSGC",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -53,8 +53,20 @@ Mock of the Philippine Standard Geographic Code.
   }],
   "caseSensitive" : true,
   "content" : "complete",
-  "count" : 22,
+  "count" : 29,
   "concept" : [{
+    "code" : "1300000000",
+    "display" : "National Capital Region"
+  },
+  {
+    "code" : "1380600000",
+    "display" : "City of Manila"
+  },
+  {
+    "code" : "1339000003",
+    "display" : "Ermita"
+  },
+  {
     "code" : "1380100001",
     "display" : "Barangay 1"
   },
@@ -141,6 +153,22 @@ Mock of the Philippine Standard Geographic Code.
   {
     "code" : "1705100000",
     "display" : "Occidental Mindoro"
+  },
+  {
+    "code" : "0100000000",
+    "display" : "Ilocos Region"
+  },
+  {
+    "code" : "0133000000",
+    "display" : "La Union"
+  },
+  {
+    "code" : "0133070000",
+    "display" : "Bauang"
+  },
+  {
+    "code" : "0133070250",
+    "display" : "Paringao"
   }]
 }
 

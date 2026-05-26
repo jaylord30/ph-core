@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/ValueSet/educational-attainments | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:EducationalAttainments |
+| Draft as of 2026-05-26 | *Computable Name*:EducationalAttainments |
 
  
 All categories of educational programs, courses, and attainment levels in the Philippines, based on the Philippine Standard Classification of Education (PSCED) published by the Philippine Statistics Authority (PSA) 
@@ -23,8 +23,6 @@ All categories of educational programs, courses, and attainment levels in the Ph
  
 
 ### Expansion
-
-No Expansion for this valueset (Unknown Code System)
 
 -------
 
@@ -53,7 +51,7 @@ No Expansion for this valueset (Unknown Code System)
   "title" : "Educational Attainments",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -71,7 +69,23 @@ No Expansion for this valueset (Unknown Code System)
   }],
   "compose" : {
     "include" : [{
-      "system" : "https://psa.gov.ph/classification/psced/level"
+      "system" : "https://psa.gov.ph/classification/psced/level",
+      "concept" : [{
+        "code" : "C201301",
+        "display" : "Elementary Graduate"
+      },
+      {
+        "code" : "C201302",
+        "display" : "High School Graduate"
+      },
+      {
+        "code" : "C201303",
+        "display" : "College Graduate"
+      },
+      {
+        "code" : "C201304",
+        "display" : "Postgraduate"
+      }]
     }]
   }
 }

@@ -9,13 +9,14 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-immunization | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:PHCoreImmunization |
+| Draft as of 2026-05-26 | *Computable Name*:PHCoreImmunization |
 
  
 Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party. 
 
 **Usages:**
 
+* Refer to this Profile: [PH Core Observation](StructureDefinition-ph-core-observation.md)
 * Examples for this Profile: [Immunization/example-immunization](Immunization-example-immunization.md) and [Immunization/immunization-single-example](Immunization-immunization-single-example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/ph-core-immunization)
@@ -41,7 +42,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
   "name" : "PHCoreImmunization",
   "title" : "PH Core Immunization",
   "status" : "draft",
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
@@ -94,7 +95,19 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
       "path" : "Immunization"
     },
     {
-      "id" : "Immunization.statusReason",
+      "id" : "Immunization.extension",
+      "path" : "Immunization.extension",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "value",
+          "path" : "url"
+        }],
+        "ordered" : false,
+        "rules" : "open"
+      }
+    },
+    {
+      "id" : "Immunization.extension:batchNumber",
       "extension" : [{
         "extension" : [{
           "url" : "code",
@@ -102,7 +115,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -113,7 +126,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -124,7 +137,135 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.extension",
+      "sliceName" : "batchNumber",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/batch-number"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.extension:administeredProduct",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.extension",
+      "sliceName" : "administeredProduct",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "Extension",
+        "profile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/administered-product"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.status",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.status",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.statusReason",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -140,7 +281,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -151,7 +292,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -162,7 +303,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -182,7 +323,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -193,7 +334,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -204,7 +345,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -220,7 +361,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -231,7 +372,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -242,7 +383,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -258,7 +399,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -269,7 +410,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -280,7 +421,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -300,7 +441,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -311,7 +452,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -322,7 +463,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -331,19 +472,166 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
     },
     {
       "id" : "Immunization.patient",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
       "path" : "Immunization.patient",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-patient"]
-      }]
+      }],
+      "mustSupport" : true
     },
     {
       "id" : "Immunization.encounter",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
       "path" : "Immunization.encounter",
       "type" : [{
         "code" : "Reference",
         "targetProfile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-encounter"]
-      }]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.occurrence[x]",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.occurrence[x]",
+      "type" : [{
+        "code" : "dateTime"
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.primarySource",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.primarySource",
+      "mustSupport" : true
     },
     {
       "id" : "Immunization.reportOrigin",
@@ -354,7 +642,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -365,7 +653,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -376,7 +664,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -392,7 +680,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -403,7 +691,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -414,7 +702,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -434,7 +722,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -445,7 +733,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -456,11 +744,91 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
       "path" : "Immunization.reportOrigin.text",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.location",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.location",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-location"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.lotNumber",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.lotNumber",
       "mustSupport" : true
     },
     {
@@ -472,7 +840,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -483,7 +851,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -494,7 +862,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -510,7 +878,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -521,7 +889,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -532,7 +900,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -552,7 +920,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -563,7 +931,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -574,7 +942,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -590,7 +958,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -601,7 +969,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -612,7 +980,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -628,7 +996,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -639,7 +1007,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -650,7 +1018,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -670,7 +1038,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -681,7 +1049,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -692,11 +1060,49 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
       "path" : "Immunization.route.text",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.performer",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.performer",
       "mustSupport" : true
     },
     {
@@ -708,7 +1114,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -719,7 +1125,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -730,7 +1136,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -746,7 +1152,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -757,7 +1163,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -768,7 +1174,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -788,7 +1194,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -799,7 +1205,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -810,11 +1216,135 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
       "path" : "Immunization.performer.function.text",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.performer.actor",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.performer.actor",
+      "type" : [{
+        "code" : "Reference",
+        "targetProfile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitioner",
+        "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-practitionerrole",
+        "http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-organization"]
+      }],
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.performer.actor.display",
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+        "valueBoolean" : true
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.performer.actor.display",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.note",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.note",
       "mustSupport" : true
     },
     {
@@ -826,7 +1356,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -837,7 +1367,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -848,7 +1378,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -864,7 +1394,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -875,7 +1405,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -886,7 +1416,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -906,7 +1436,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -917,7 +1447,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -928,7 +1458,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -944,7 +1474,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -955,7 +1485,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -966,7 +1496,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -982,7 +1512,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -993,7 +1523,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1004,7 +1534,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1024,7 +1554,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1035,7 +1565,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1046,7 +1576,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1062,7 +1592,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1073,7 +1603,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1084,7 +1614,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1100,7 +1630,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1111,7 +1641,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1122,7 +1652,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1142,7 +1672,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1153,7 +1683,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1164,7 +1694,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1180,7 +1710,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1191,7 +1721,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1202,7 +1732,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1218,7 +1748,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1229,7 +1759,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1240,7 +1770,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1260,7 +1790,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1271,7 +1801,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1282,11 +1812,49 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
       "path" : "Immunization.fundingSource.text",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.protocolApplied",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.protocolApplied",
       "mustSupport" : true
     },
     {
@@ -1298,7 +1866,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1309,7 +1877,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1320,7 +1888,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1336,7 +1904,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1347,7 +1915,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1358,7 +1926,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
@@ -1378,7 +1946,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Server"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1389,7 +1957,7 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Consumer"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       },
@@ -1400,11 +1968,67 @@ Other representations of profile: [CSV](StructureDefinition-ph-core-immunization
         },
         {
           "url" : "actor",
-          "valueCanonical" : "http://doh.gov.ph/fhir/ph-core/ActorDefinition/Creator"
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
         }],
         "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
       }],
       "path" : "Immunization.protocolApplied.targetDisease.text",
+      "mustSupport" : true
+    },
+    {
+      "id" : "Immunization.protocolApplied.doseNumber[x]",
+      "path" : "Immunization.protocolApplied.doseNumber[x]",
+      "slicing" : {
+        "discriminator" : [{
+          "type" : "type",
+          "path" : "$this"
+        }],
+        "ordered" : false,
+        "rules" : "open"
+      }
+    },
+    {
+      "id" : "Immunization.protocolApplied.doseNumber[x]:doseNumberPositiveInt",
+      "extension" : [{
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Server"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "SHALL:handle"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Consumer"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      },
+      {
+        "extension" : [{
+          "url" : "code",
+          "valueCode" : "MAY:able-to-populate"
+        },
+        {
+          "url" : "actor",
+          "valueCanonical" : "https://fhir.doh.gov.ph/phcore/ActorDefinition/Creator"
+        }],
+        "url" : "http://hl7.org/fhir/StructureDefinition/obligation"
+      }],
+      "path" : "Immunization.protocolApplied.doseNumber[x]",
+      "sliceName" : "doseNumberPositiveInt",
+      "min" : 0,
+      "max" : "1",
+      "type" : [{
+        "code" : "positiveInt"
+      }],
       "mustSupport" : true
     }]
   }

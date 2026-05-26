@@ -9,7 +9,7 @@
 | | |
 | :--- | :--- |
 | *Official URL*:http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality | *Version*:0.2.0 |
-| Draft as of 2026-04-10 | *Computable Name*:CityMunicipality |
+| Draft as of 2026-05-26 | *Computable Name*:CityMunicipality |
 
 City/municipality from the standard geographic code.
 
@@ -20,7 +20,7 @@ City/municipality from the standard geographic code.
 **Usages:**
 
 * Use this Extension: [PH Core Address](StructureDefinition-ph-core-address.md)
-* Examples for this Extension: [Bundle/transaction-example](Bundle-transaction-example.md), [Department of Health - Sattelite Office](Organization-organization-single-example.md), [Patient/example-patient](Patient-example-patient.md) and [Patient/patient-single-example](Patient-patient-single-example.md)
+* Examples for this Extension: [Philippine General Hospital](Location-location-single-example.md) and [Department of Health - Sattelite Office](Organization-organization-single-example.md)
 
 You can also check for [usages in the FHIR IG Statistics](https://packages2.fhir.org/xig/fhir.ph.core|current/StructureDefinition/city-municipality)
 
@@ -50,7 +50,7 @@ Other representations of profile: [CSV](StructureDefinition-city-municipality.cs
   "title" : "City/Municipality",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-04-10T05:44:36+00:00",
+  "date" : "2026-05-26T03:51:01+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",

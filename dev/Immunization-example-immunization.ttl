@@ -38,8 +38,8 @@
      fhir:text [ fhir:v "influenza, H5N1-1203" ]
   ] ; # 
   fhir:patient [
-     fhir:l <urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b> ;
-     fhir:reference [ fhir:v "urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b" ]
+     fhir:l <http://doh.gov.ph/fhir/ph-core/Patient/example-patient> ;
+     fhir:reference [ fhir:v "Patient/example-patient" ]
   ] ; # 
   fhir:encounter [
      fhir:l <http://doh.gov.ph/fhir/ph-core/Encounter/encounter-single-example> ;
@@ -91,8 +91,8 @@
        ] )
      ] ;
      fhir:actor [
-       fhir:l <urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4> ;
-       fhir:reference [ fhir:v "urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4" ]
+       fhir:l <http://doh.gov.ph/fhir/ph-core/Practitioner/example-practitioner> ;
+       fhir:reference [ fhir:v "Practitioner/example-practitioner" ]
      ]
   ] ) ; # 
   fhir:note ( [

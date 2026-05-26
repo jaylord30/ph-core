@@ -9,7 +9,8 @@
     "systems" : ["https://psa.gov.ph/classification/psgc"],
     "uses" : {
     },
-    "StructureDefinition-barangay.html" : "Barangay"
+    "StructureDefinition-barangay.html" : "Barangay",
+    "StructureDefinition-ph-core-pwd-disability.html" : "PH Core PWD Disability Registration"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/cities",
@@ -33,11 +34,11 @@
     "systems" : ["https://verification.fda.gov.ph"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration",
-    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement",
     "StructureDefinition-ph-core-medication.html" : "PH Core Medication",
+    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
     "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
-    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense"
+    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration",
+    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/educational-attainments",
@@ -56,7 +57,7 @@
     "version" : "0.2.0",
     "status" : "draft",
     "name" : "IndigenousGroupsVS",
-    "title" : "Indigenous Groups",
+    "title" : "Indigenous Groups ValueSet",
     "description" : "A value set representing the recognized Indigenous groups to which a person may belong.",
     "systems" : ["http://doh.gov.ph/fhir/ph-core/CodeSystem/indigenous-groups-cs"],
     "uses" : {
@@ -74,6 +75,18 @@
     "uses" : {
     },
     "StructureDefinition-occupation.html" : "Occupation"
+  },
+  {
+    "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/ph-core-disability-type-vs",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "PHCoreDisabilityTypeVS",
+    "title" : "PH Core Disability Type Value Set",
+    "description" : "Value set for types of disability as defined by the Philippine government for PWD registration.",
+    "systems" : ["http://doh.gov.ph/fhir/ph-core/CodeSystem/ph-core-disability-type-cs"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-pwd-disability.html" : "PH Core PWD Disability Registration"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/provinces",

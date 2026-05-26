@@ -15,6 +15,7 @@
       <sch:assert test="count(f:extension[@url = 'http://doh.gov.ph/fhir/ph-core/StructureDefinition/indigenous-people']) &lt;= 1">extension with URL = 'http://doh.gov.ph/fhir/ph-core/StructureDefinition/indigenous-people': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:extension[@url = 'http://doh.gov.ph/fhir/ph-core/StructureDefinition/race']) &lt;= 1">extension with URL = 'http://doh.gov.ph/fhir/ph-core/StructureDefinition/race': maximum cardinality of 'extension' is 1</sch:assert>
       <sch:assert test="count(f:extension[@url = 'http://doh.gov.ph/fhir/ph-core/StructureDefinition/educational-attainment']) &lt;= 1">extension with URL = 'http://doh.gov.ph/fhir/ph-core/StructureDefinition/educational-attainment': maximum cardinality of 'extension' is 1</sch:assert>
+      <sch:assert test="count(f:extension[@url = 'http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-pwd-disability']) &lt;= 1">extension with URL = 'http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-pwd-disability': maximum cardinality of 'extension' is 1</sch:assert>
     </sch:rule>
   </sch:pattern>
   <sch:pattern>

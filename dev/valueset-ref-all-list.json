@@ -9,7 +9,8 @@
     "systems" : ["https://psa.gov.ph/classification/psgc"],
     "uses" : {
     },
-    "StructureDefinition-barangay.html" : "Barangay"
+    "StructureDefinition-barangay.html" : "Barangay",
+    "StructureDefinition-ph-core-pwd-disability.html" : "PH Core PWD Disability Registration"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/cities",
@@ -33,11 +34,11 @@
     "systems" : ["https://verification.fda.gov.ph"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration",
-    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement",
     "StructureDefinition-ph-core-medication.html" : "PH Core Medication",
+    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
     "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
-    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense"
+    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration",
+    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/educational-attainments",
@@ -56,7 +57,7 @@
     "version" : "0.2.0",
     "status" : "draft",
     "name" : "IndigenousGroupsVS",
-    "title" : "Indigenous Groups",
+    "title" : "Indigenous Groups ValueSet",
     "description" : "A value set representing the recognized Indigenous groups to which a person may belong.",
     "systems" : ["http://doh.gov.ph/fhir/ph-core/CodeSystem/indigenous-groups-cs"],
     "uses" : {
@@ -74,6 +75,18 @@
     "uses" : {
     },
     "StructureDefinition-occupation.html" : "Occupation"
+  },
+  {
+    "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/ph-core-disability-type-vs",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "PHCoreDisabilityTypeVS",
+    "title" : "PH Core Disability Type Value Set",
+    "description" : "Value set for types of disability as defined by the Philippine government for PWD registration.",
+    "systems" : ["http://doh.gov.ph/fhir/ph-core/CodeSystem/ph-core-disability-type-cs"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-pwd-disability.html" : "PH Core PWD Disability Registration"
   },
   {
     "url" : "http://doh.gov.ph/fhir/ph-core/ValueSet/provinces",
@@ -111,6 +124,7 @@
     "sources" : ["2.16.840.1.113883.4.642.3.69"],
     "uses" : {
     },
+    "StructureDefinition-ph-core-location.html" : "PH Core Location",
     "StructureDefinition-ph-core-address.html" : "PH Core Address"
   },
   {
@@ -125,6 +139,7 @@
     "sources" : ["2.16.840.1.113883.4.642.3.67"],
     "uses" : {
     },
+    "StructureDefinition-ph-core-location.html" : "PH Core Location",
     "StructureDefinition-ph-core-address.html" : "PH Core Address"
   },
   {
@@ -153,9 +168,93 @@
     "sources" : ["2.16.840.1.113883.4.642.3.1"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-relatedperson.html" : "PH Core RelatedPerson",
     "StructureDefinition-ph-core-patient.html" : "PH Core Patient",
-    "StructureDefinition-ph-core-practitioner.html" : "PH Core Practitioner"
+    "StructureDefinition-ph-core-practitioner.html" : "PH Core Practitioner",
+    "StructureDefinition-ph-core-relatedperson.html" : "PH Core RelatedPerson"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/allergy-intolerance-category",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "AllergyIntoleranceCategory",
+    "title" : "AllergyIntoleranceCategory",
+    "description" : "Category of an identified substance associated with allergies or intolerances.",
+    "systems" : ["http://hl7.org/fhir/allergy-intolerance-category"],
+    "oids" : ["2.16.840.1.113883.4.642.3.133"],
+    "sources" : ["2.16.840.1.113883.4.642.3.133"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "AllergyIntoleranceCriticality",
+    "title" : "AllergyIntoleranceCriticality",
+    "description" : "Estimate of the potential clinical harm, or seriousness, of a reaction to an identified substance.",
+    "systems" : ["http://hl7.org/fhir/allergy-intolerance-criticality"],
+    "oids" : ["2.16.840.1.113883.4.642.3.129"],
+    "sources" : ["2.16.840.1.113883.4.642.3.129"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/allergy-intolerance-type",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "AllergyIntoleranceType",
+    "title" : "AllergyIntoleranceType",
+    "description" : "Identification of the underlying physiological mechanism for a Reaction Risk.",
+    "systems" : ["http://hl7.org/fhir/allergy-intolerance-type"],
+    "oids" : ["2.16.840.1.113883.4.642.3.131"],
+    "sources" : ["2.16.840.1.113883.4.642.3.131"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "AllergyIntoleranceClinicalStatusCodes",
+    "title" : "AllergyIntolerance Clinical Status Codes",
+    "description" : "Preferred value set for AllergyIntolerance Clinical Status.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1372"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1372"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/allergyintolerance-code",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "AllergyIntoleranceSubstance/Product,ConditionAndNegationCodes",
+    "title" : "AllergyIntolerance Substance/Product, Condition and Negation Codes",
+    "description" : "This value set includes concept codes for specific substances/pharmaceutical products, allergy or intolerance conditions, and negation/exclusion codes to specify the absence of specific types of allergies or intolerances.",
+    "systems" : ["http://snomed.info/sct"],
+    "oids" : ["2.16.840.1.113883.4.642.3.137"],
+    "sources" : ["2.16.840.1.113883.4.642.3.137"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/allergyintolerance-verification",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "AllergyIntoleranceVerificationStatusCodes",
+    "title" : "AllergyIntolerance Verification Status Codes",
+    "description" : "Preferred value set for AllergyIntolerance Verification Status.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1370"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1370"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/approach-site-codes",
@@ -184,9 +283,9 @@
     "uses" : {
     },
     "StructureDefinition-ph-core-procedure.html" : "PH Core Procedure",
-    "StructureDefinition-ph-core-observation.html" : "PH Core Observation",
+    "StructureDefinition-ph-core-condition.html" : "PH Core Condition",
     "StructureDefinition-ph-core-serviceRequest.html" : "PH Core ServiceRequest",
-    "StructureDefinition-ph-core-condition.html" : "PH Core Condition"
+    "StructureDefinition-ph-core-observation.html" : "PH Core Observation"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/c80-practice-codes",
@@ -200,7 +299,120 @@
     "sources" : ["2.16.840.1.113883.3.88.12.80.72"],
     "uses" : {
     },
+    "StructureDefinition-ph-core-healthcareservice.html" : "PH Core HealthcareService",
     "StructureDefinition-ph-core-practitionerrole.html" : "PH Core PractitionerRole"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/claim-careteamrole",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ClaimCareTeamRoleCodes",
+    "title" : "Claim Care Team Role Codes",
+    "description" : "This value set includes sample Claim Care Team Role codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/claimcareteamrole"],
+    "oids" : ["2.16.840.1.113883.4.642.3.586"],
+    "sources" : ["2.16.840.1.113883.4.642.3.586"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/claim-exception",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExceptionCodes",
+    "title" : "Exception Codes",
+    "description" : "This value set includes sample Exception codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/claim-exception"],
+    "oids" : ["2.16.840.1.113883.4.642.3.580"],
+    "sources" : ["2.16.840.1.113883.4.642.3.580"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/claim-informationcategory",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ClaimInformationCategoryCodes",
+    "title" : "Claim Information Category Codes",
+    "description" : "This value set includes sample Information Category codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/claiminformationcategory"],
+    "oids" : ["2.16.840.1.113883.4.642.3.582"],
+    "sources" : ["2.16.840.1.113883.4.642.3.582"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/claim-modifiers",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ModifierTypeCodes",
+    "title" : "Modifier type Codes",
+    "description" : "This value set includes sample Modifier type codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/modifiers"],
+    "oids" : ["2.16.840.1.113883.4.642.3.536"],
+    "sources" : ["2.16.840.1.113883.4.642.3.536"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/claim-subtype",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleClaimSubTypeCodes",
+    "title" : "Example Claim SubType Codes",
+    "description" : "This value set includes sample Claim SubType codes which are used to distinguish the claim types for example within type institutional there may be subtypes for emergency services, bed stay and transportation.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-claimsubtype"],
+    "oids" : ["2.16.840.1.113883.4.642.3.566"],
+    "sources" : ["2.16.840.1.113883.4.642.3.566"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/claim-type",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ClaimTypeCodes",
+    "title" : "Claim Type Codes",
+    "description" : "This value set includes Claim Type codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/claim-type"],
+    "oids" : ["2.16.840.1.113883.4.642.3.558"],
+    "sources" : ["2.16.840.1.113883.4.642.3.558"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/claim-use",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "Use",
+    "title" : "Use",
+    "description" : "The purpose of the Claim: predetermination, preauthorization, claim.",
+    "systems" : ["http://hl7.org/fhir/claim-use"],
+    "oids" : ["2.16.840.1.113883.4.642.3.544"],
+    "sources" : ["2.16.840.1.113883.4.642.3.544"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/clinical-findings",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "SNOMEDCTClinicalFindings",
+    "title" : "SNOMED CT Clinical Findings",
+    "description" : "This value set includes all the \"Clinical finding\" [SNOMED CT](http://snomed.info/sct) codes - concepts where concept is-a 404684003 (Clinical finding (finding)).",
+    "systems" : ["http://snomed.info/sct"],
+    "oids" : ["2.16.840.1.113883.4.642.3.232"],
+    "sources" : ["2.16.840.1.113883.4.642.3.232"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-category",
@@ -242,10 +454,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.161"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement",
     "StructureDefinition-ph-core-procedure.html" : "PH Core Procedure",
+    "StructureDefinition-ph-core-condition.html" : "PH Core Condition",
     "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
-    "StructureDefinition-ph-core-condition.html" : "PH Core Condition"
+    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/condition-severity",
@@ -372,6 +584,7 @@
     "uses" : {
     },
     "StructureDefinition-ph-core-location.html" : "PH Core Location",
+    "StructureDefinition-ph-core-healthcareservice.html" : "PH Core HealthcareService",
     "StructureDefinition-ph-core-practitionerrole.html" : "PH Core PractitionerRole"
   },
   {
@@ -573,6 +786,160 @@
     "StructureDefinition-ph-core-procedure.html" : "PH Core Procedure"
   },
   {
+    "url" : "http://hl7.org/fhir/ValueSet/ex-benefitcategory",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "BenefitCategoryCodes",
+    "title" : "Benefit Category Codes",
+    "description" : "This value set includes examples of Benefit Category codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-benefitcategory"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1174"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1174"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/ex-diagnosis-on-admission",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleDiagnosisOnAdmissionCodes",
+    "title" : "Example Diagnosis on Admission Codes",
+    "description" : "This value set includes example Diagnosis on Admission codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-diagnosis-on-admission"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1169"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1169"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/ex-diagnosisrelatedgroup",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleDiagnosisRelatedGroupCodes",
+    "title" : "Example Diagnosis Related Group Codes",
+    "description" : "This value set includes example Diagnosis Related Group codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-diagnosisrelatedgroup"],
+    "oids" : ["2.16.840.1.113883.4.642.3.588"],
+    "sources" : ["2.16.840.1.113883.4.642.3.588"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/ex-diagnosistype",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleDiagnosisTypeCodes",
+    "title" : "Example Diagnosis Type Codes",
+    "description" : "This value set includes example Diagnosis Type codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-diagnosistype"],
+    "oids" : ["2.16.840.1.113883.4.642.3.590"],
+    "sources" : ["2.16.840.1.113883.4.642.3.590"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/ex-procedure-type",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleProcedureTypeCodes",
+    "title" : "Example Procedure Type Codes",
+    "description" : "This value set includes example Procedure Type codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-procedure-type"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1387"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1387"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/ex-program-code",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleProgramReasonCodes",
+    "title" : "Example Program Reason Codes",
+    "description" : "This value set includes sample Program Reason Span codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-programcode"],
+    "oids" : ["2.16.840.1.113883.4.642.3.576"],
+    "sources" : ["2.16.840.1.113883.4.642.3.576"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/ex-revenue-center",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleRevenueCenterCodes",
+    "title" : "Example Revenue Center Codes",
+    "description" : "This value set includes sample Revenue Center codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-revenue-center"],
+    "oids" : ["2.16.840.1.113883.4.642.3.594"],
+    "sources" : ["2.16.840.1.113883.4.642.3.594"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/fm-status",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "FinancialResourceStatusCodes",
+    "title" : "Financial Resource Status Codes",
+    "description" : "This value set includes Status codes.",
+    "systems" : ["http://hl7.org/fhir/fm-status"],
+    "oids" : ["2.16.840.1.113883.4.642.3.592"],
+    "sources" : ["2.16.840.1.113883.4.642.3.592"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/fundsreserve",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "Funds Reservation Codes",
+    "title" : "FundsReserve",
+    "description" : "This value set includes sample funds reservation type codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/fundsreserve"],
+    "oids" : ["2.16.840.1.113883.4.642.3.33"],
+    "sources" : ["2.16.840.1.113883.4.642.3.33"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/icd-10",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ICD-10Codes",
+    "title" : "ICD-10 Codes",
+    "description" : "This value set includes sample ICD-10 codes.",
+    "systems" : ["http://hl7.org/fhir/sid/icd-10"],
+    "oids" : ["2.16.840.1.113883.4.642.3.531"],
+    "sources" : ["2.16.840.1.113883.4.642.3.531"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/icd-10-procedures",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ICD-10ProcedureCodes",
+    "title" : "ICD-10 Procedure Codes",
+    "description" : "This value set includes sample ICD-10 Procedure codes.",
+    "systems" : ["http://hl7.org/fhir/sid/ex-icd-10-procedures"],
+    "oids" : ["2.16.840.1.113883.4.642.3.574"],
+    "sources" : ["2.16.840.1.113883.4.642.3.574"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
     "url" : "http://hl7.org/fhir/ValueSet/identifier-type",
     "version" : "4.0.1",
     "status" : "active",
@@ -584,10 +951,11 @@
     "sources" : ["2.16.840.1.113883.4.642.3.45"],
     "uses" : {
     },
+    "StructureDefinition-ph-core-philhealth-id.html" : "PIN - PhilHealth Identification Number Identifier",
+    "StructureDefinition-ph-core-philsys-id.html" : "PhilSys Identification Number (PhilSys ID) Identifier",
     "StructureDefinition-ph-core-philhealth-pen.html" : "PhilHealth Employer Number",
-    "StructureDefinition-ph-core-philsys-id.html" : "PhilSys Identification Number (PhilSys ID)",
-    "StructureDefinition-ph-core-philhealth-id.html" : "PIN - PhilHealth Identification Number",
     "StructureDefinition-ph-core-philhealth-pan.html" : "PhilHealth Accreditation Number",
+    "StructureDefinition-ph-core-relatedperson.html" : "PH Core RelatedPerson",
     "StructureDefinition-ph-core-doh-nhfr-code.html" : "DOH NHFR Code"
   },
   {
@@ -602,10 +970,11 @@
     "sources" : ["2.16.840.1.113883.4.642.3.57"],
     "uses" : {
     },
+    "StructureDefinition-ph-core-philhealth-id.html" : "PIN - PhilHealth Identification Number Identifier",
+    "StructureDefinition-ph-core-philsys-id.html" : "PhilSys Identification Number (PhilSys ID) Identifier",
     "StructureDefinition-ph-core-philhealth-pen.html" : "PhilHealth Employer Number",
-    "StructureDefinition-ph-core-philsys-id.html" : "PhilSys Identification Number (PhilSys ID)",
-    "StructureDefinition-ph-core-philhealth-id.html" : "PIN - PhilHealth Identification Number",
     "StructureDefinition-ph-core-philhealth-pan.html" : "PhilHealth Accreditation Number",
+    "StructureDefinition-ph-core-relatedperson.html" : "PH Core RelatedPerson",
     "StructureDefinition-ph-core-doh-nhfr-code.html" : "DOH NHFR Code"
   },
   {
@@ -775,25 +1144,28 @@
     "sources" : ["2.16.840.1.113883.4.642.3.20"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-immunization.html" : "PH Core Immunization",
-    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration",
-    "StructureDefinition-ph-core-task.html" : "PH Core Task",
-    "StructureDefinition-ph-core-observation.html" : "PH Core Observation",
-    "StructureDefinition-ph-core-patient.html" : "PH Core Patient",
-    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
-    "StructureDefinition-ph-core-condition.html" : "PH Core Condition",
-    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement",
-    "StructureDefinition-ph-core-medication.html" : "PH Core Medication",
     "StructureDefinition-ph-core-location.html" : "PH Core Location",
-    "StructureDefinition-ph-core-relatedperson.html" : "PH Core RelatedPerson",
-    "StructureDefinition-ph-core-provenance.html" : "PH Core Provenance",
-    "StructureDefinition-ph-core-procedure.html" : "PH Core Procedure",
-    "StructureDefinition-ph-core-encounter.html" : "PH Core Encounter",
-    "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
-    "StructureDefinition-ph-core-serviceRequest.html" : "PH Core ServiceRequest",
-    "StructureDefinition-ph-core-organization.html" : "PH Core Organization",
+    "StructureDefinition-ph-core-medication.html" : "PH Core Medication",
+    "StructureDefinition-ph-core-healthcareservice.html" : "PH Core HealthcareService",
+    "StructureDefinition-ph-core-condition.html" : "PH Core Condition",
     "StructureDefinition-ph-core-practitioner.html" : "PH Core Practitioner",
-    "StructureDefinition-ph-core-practitionerrole.html" : "PH Core PractitionerRole"
+    "StructureDefinition-ph-core-relatedperson.html" : "PH Core RelatedPerson",
+    "StructureDefinition-ph-core-practitionerrole.html" : "PH Core PractitionerRole",
+    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement",
+    "StructureDefinition-ph-core-patient.html" : "PH Core Patient",
+    "StructureDefinition-ph-core-procedure.html" : "PH Core Procedure",
+    "StructureDefinition-ph-core-provenance.html" : "PH Core Provenance",
+    "StructureDefinition-ph-core-immunization.html" : "PH Core Immunization",
+    "StructureDefinition-ph-core-task.html" : "PH Core Task",
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance",
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim",
+    "StructureDefinition-ph-core-encounter.html" : "PH Core Encounter",
+    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
+    "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
+    "StructureDefinition-ph-core-organization.html" : "PH Core Organization",
+    "StructureDefinition-ph-core-serviceRequest.html" : "PH Core ServiceRequest",
+    "StructureDefinition-ph-core-observation.html" : "PH Core Observation",
+    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/link-type",
@@ -949,10 +1321,10 @@
     "sources" : ["2.16.840.1.113883.4.642.3.375"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration",
-    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement",
+    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
     "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
-    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense"
+    "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration",
+    "StructureDefinition-ph-core-medicationstatement.html" : "PH Core Medication Statement"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/medication-form-codes",
@@ -1137,6 +1509,20 @@
     "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request"
   },
   {
+    "url" : "http://hl7.org/fhir/ValueSet/missing-tooth-reason",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "MissingToothReasonCodes",
+    "title" : "Missing Tooth Reason Codes",
+    "description" : "This value set includes sample Missing Tooth Reason codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/missingtoothreason"],
+    "oids" : ["2.16.840.1.113883.4.642.3.534"],
+    "sources" : ["2.16.840.1.113883.4.642.3.534"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
     "url" : "http://hl7.org/fhir/ValueSet/name-use",
     "version" : "4.0.1",
     "status" : "active",
@@ -1148,6 +1534,7 @@
     "sources" : ["2.16.840.1.113883.4.642.3.65"],
     "uses" : {
     },
+    "StructureDefinition-ph-core-practitioner.html" : "PH Core Practitioner",
     "StructureDefinition-ph-core-name.html" : "PH Core Name"
   },
   {
@@ -1249,6 +1636,20 @@
     "StructureDefinition-ph-core-serviceRequest.html" : "PH Core ServiceRequest"
   },
   {
+    "url" : "http://hl7.org/fhir/ValueSet/payeetype",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "Claim Payee Type Codes",
+    "title" : "PayeeType",
+    "description" : "This value set includes sample Payee Type codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/payeetype"],
+    "oids" : ["2.16.840.1.113883.4.642.3.31"],
+    "sources" : ["2.16.840.1.113883.4.642.3.31"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
     "url" : "http://hl7.org/fhir/ValueSet/performer-role",
     "version" : "4.0.1",
     "status" : "draft",
@@ -1260,8 +1661,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.433"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-task.html" : "PH Core Task",
     "StructureDefinition-ph-core-procedure.html" : "PH Core Procedure",
+    "StructureDefinition-ph-core-task.html" : "PH Core Task",
     "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request"
   },
   {
@@ -1366,6 +1767,34 @@
     "StructureDefinition-ph-core-serviceRequest.html" : "PH Core ServiceRequest"
   },
   {
+    "url" : "http://hl7.org/fhir/ValueSet/process-priority",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ProcessPriorityCodes",
+    "title" : "Process Priority Codes",
+    "description" : "This value set includes the financial processing priority codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/processpriority"],
+    "oids" : ["2.16.840.1.113883.4.642.3.552"],
+    "sources" : ["2.16.840.1.113883.4.642.3.552"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/program",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "Program",
+    "title" : "Program",
+    "description" : "This value set defines an example set of codes that could be can be used to classify groupings of service-types/specialties.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/program"],
+    "oids" : ["2.16.840.1.113883.4.642.3.1383"],
+    "sources" : ["2.16.840.1.113883.4.642.3.1383"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-healthcareservice.html" : "PH Core HealthcareService"
+  },
+  {
     "url" : "http://hl7.org/fhir/ValueSet/provenance-activity-type",
     "version" : "4.0.1",
     "status" : "draft",
@@ -1409,6 +1838,34 @@
     "uses" : {
     },
     "StructureDefinition-ph-core-provenance.html" : "PH Core Provenance"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/provider-qualification",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleProviderQualificationCodes",
+    "title" : "Example Provider Qualification Codes",
+    "description" : "This value set includes sample Provider Qualification codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-providerqualification"],
+    "oids" : ["2.16.840.1.113883.4.642.3.570"],
+    "sources" : ["2.16.840.1.113883.4.642.3.570"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/reaction-event-severity",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "AllergyIntoleranceSeverity",
+    "title" : "AllergyIntoleranceSeverity",
+    "description" : "Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations.",
+    "systems" : ["http://hl7.org/fhir/reaction-event-severity"],
+    "oids" : ["2.16.840.1.113883.4.642.3.135"],
+    "sources" : ["2.16.840.1.113883.4.642.3.135"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/reason-medication-given-codes",
@@ -1482,6 +1939,20 @@
     "StructureDefinition-ph-core-observation.html" : "PH Core Observation"
   },
   {
+    "url" : "http://hl7.org/fhir/ValueSet/related-claim-relationship",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleRelatedClaimRelationshipCodes",
+    "title" : "Example Related Claim Relationship Codes",
+    "description" : "This value set includes sample Related Claim Relationship codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-relatedclaimrelationship"],
+    "oids" : ["2.16.840.1.113883.4.642.3.568"],
+    "sources" : ["2.16.840.1.113883.4.642.3.568"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
     "url" : "http://hl7.org/fhir/ValueSet/relatedperson-relationshiptype",
     "version" : "4.0.1",
     "status" : "draft",
@@ -1494,8 +1965,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.449"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-relatedperson.html" : "PH Core RelatedPerson",
-    "StructureDefinition-ph-core-patient.html" : "PH Core Patient"
+    "StructureDefinition-ph-core-patient.html" : "PH Core Patient",
+    "StructureDefinition-ph-core-relatedperson.html" : "PH Core RelatedPerson"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/request-intent",
@@ -1553,7 +2024,8 @@
     "sources" : ["2.16.840.1.113883.4.642.3.27"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-provenance.html" : "PH Core Provenance"
+    "StructureDefinition-ph-core-provenance.html" : "PH Core Provenance",
+    "StructureDefinition-ph-core-immunization.html" : "PH Core Immunization"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/route-codes",
@@ -1567,6 +2039,7 @@
     "sources" : ["2.16.840.1.113883.4.642.3.98"],
     "uses" : {
     },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance",
     "StructureDefinition-ph-core-medicationadministration.html" : "PH Core Medication Administration"
   },
   {
@@ -1590,6 +2063,62 @@
     "StructureDefinition-ph-core-provenance.html" : "PH Core Provenance"
   },
   {
+    "url" : "http://hl7.org/fhir/ValueSet/service-category",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ServiceCategory",
+    "title" : "Service category",
+    "description" : "This value set defines an example set of codes that can be used to classify groupings of service-types/specialties.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/service-category"],
+    "oids" : ["2.16.840.1.113883.4.642.3.516"],
+    "sources" : ["2.16.840.1.113883.4.642.3.516"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-healthcareservice.html" : "PH Core HealthcareService"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/service-place",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ExampleServicePlaceCodes",
+    "title" : "Example Service Place Codes",
+    "description" : "This value set includes a smattering of Service Place codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-serviceplace"],
+    "oids" : ["2.16.840.1.113883.4.642.3.564"],
+    "sources" : ["2.16.840.1.113883.4.642.3.564"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/service-provision-conditions",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ServiceProvisionConditions",
+    "title" : "ServiceProvisionConditions",
+    "description" : "The code(s) that detail the conditions under which the healthcare service is available/offered.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/service-provision-conditions"],
+    "oids" : ["2.16.840.1.113883.4.642.3.514"],
+    "sources" : ["2.16.840.1.113883.4.642.3.514"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-healthcareservice.html" : "PH Core HealthcareService"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/service-referral-method",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ReferralMethod",
+    "title" : "ReferralMethod",
+    "description" : "The methods of referral can be used when referring to a specific HealthCareService resource.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/service-referral-method"],
+    "oids" : ["2.16.840.1.113883.4.642.3.510"],
+    "sources" : ["2.16.840.1.113883.4.642.3.510"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-healthcareservice.html" : "PH Core HealthcareService"
+  },
+  {
     "url" : "http://hl7.org/fhir/ValueSet/service-type",
     "version" : "4.0.1",
     "status" : "draft",
@@ -1601,7 +2130,22 @@
     "sources" : ["2.16.840.1.113883.4.642.3.518"],
     "uses" : {
     },
+    "StructureDefinition-ph-core-healthcareservice.html" : "PH Core HealthcareService",
     "StructureDefinition-ph-core-encounter.html" : "PH Core Encounter"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/service-uscls",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "USCLSCodes",
+    "title" : "USCLS Codes",
+    "description" : "This value set includes a smattering of USCLS codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-USCLS"],
+    "oids" : ["2.16.840.1.113883.4.642.3.542"],
+    "sources" : ["2.16.840.1.113883.4.642.3.542"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/servicerequest-category",
@@ -1630,6 +2174,34 @@
     "uses" : {
     },
     "StructureDefinition-ph-core-serviceRequest.html" : "PH Core ServiceRequest"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/substance-code",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "SubstanceCode",
+    "title" : "Substance Code",
+    "description" : "This value set contains concept codes for specific substances. It includes codes from [SNOMED](http://snomed.info/sct) where concept is-a 105590001 (Substance (substance)) and where concept is-a 373873005 (Pharmaceutical / biologic product (product))",
+    "systems" : ["http://snomed.info/sct"],
+    "oids" : ["2.16.840.1.113883.4.642.3.473"],
+    "sources" : ["2.16.840.1.113883.4.642.3.473"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-allergyintolerance.html" : "PH Core AllergyIntolerance"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/surface",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "SurfaceCodes",
+    "title" : "Surface Codes",
+    "description" : "This value set includes a smattering of FDI tooth surface codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/FDI-surface"],
+    "oids" : ["2.16.840.1.113883.4.642.3.546"],
+    "sources" : ["2.16.840.1.113883.4.642.3.546"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/task-code",
@@ -1673,6 +2245,20 @@
     "uses" : {
     },
     "StructureDefinition-ph-core-task.html" : "PH Core Task"
+  },
+  {
+    "url" : "http://hl7.org/fhir/ValueSet/tooth",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "OralSiteCodes",
+    "title" : "Oral Site Codes",
+    "description" : "This value set includes a smattering of FDI oral site codes.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/ex-tooth"],
+    "oids" : ["2.16.840.1.113883.4.642.3.540"],
+    "sources" : ["2.16.840.1.113883.4.642.3.540"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
   },
   {
     "url" : "http://hl7.org/fhir/ValueSet/vaccine-code",
@@ -1743,6 +2329,20 @@
     "StructureDefinition-ph-core-encounter.html" : "PH Core Encounter"
   },
   {
+    "url" : "http://terminology.hl7.org/ValueSet/v3-ActIncidentCode",
+    "version" : "3.0.0",
+    "status" : "active",
+    "name" : "ActIncidentCode",
+    "title" : "ActIncidentCode",
+    "description" : "Set of codes indicating the type of incident or accident.",
+    "systems" : ["http://terminology.hl7.org/CodeSystem/v3-ActCode"],
+    "oids" : ["2.16.840.1.113883.1.11.16508"],
+    "sources" : ["2.16.840.1.113883.1.11.16508"],
+    "uses" : {
+    },
+    "StructureDefinition-ph-core-claim.html" : "PH Core Claim"
+  },
+  {
     "url" : "http://terminology.hl7.org/ValueSet/v3-ActPharmacySupplyType",
     "version" : "3.0.0",
     "status" : "active",
@@ -1782,8 +2382,8 @@
     "sources" : ["2.16.840.1.113883.1.11.16621"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
-    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense"
+    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
+    "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request"
   },
   {
     "url" : "http://terminology.hl7.org/ValueSet/v3-PurposeOfUse",
@@ -1840,7 +2440,7 @@
     "sources" : ["2.16.840.1.113883.1.11.19377"],
     "uses" : {
     },
-    "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request",
-    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense"
+    "StructureDefinition-ph-core-medicationdispense.html" : "PH Core Medication Dispense",
+    "StructureDefinition-ph-core-medicationrequest.html" : "PH Core Medication Request"
   }]
 }

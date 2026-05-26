@@ -20,7 +20,7 @@ The Department of Health - Central Office (NHFR: 1234567890, PAN: PAN-2024-56789
     "profile" : ["http://doh.gov.ph/fhir/ph-core/StructureDefinition/ph-core-organization"]
   },
   "identifier" : [{
-    "system" : "http://doh.gov.ph/fhir/Identifier/doh-nhfr-code",
+    "system" : "https://fhir.doh.gov.ph/phcore/Identifier/doh-nhfr-code",
     "value" : "1234567890"
   },
   {

@@ -1,10 +1,10 @@
-# PIN - PhilHealth Identification Number - Draft PH Core Implementation Guide v0.2.0
+# PIN - PhilHealth Identification Number NamingSystem - Draft PH Core Implementation Guide v0.2.0
 
 * [**Table of Contents**](toc.md)
 * [**Artifacts Summary**](artifacts.md)
-* **PIN - PhilHealth Identification Number**
+* **PIN - PhilHealth Identification Number NamingSystem**
 
-## NamingSystem: PIN - PhilHealth Identification Number 
+## NamingSystem: PIN - PhilHealth Identification Number NamingSystem 
 
 | | |
 | :--- | :--- |

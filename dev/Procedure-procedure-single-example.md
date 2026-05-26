@@ -39,7 +39,7 @@
   },
   "identifier" : [{
     "use" : "usual",
-    "system" : "http://doh.gov.ph/fhir/ph-core/NamingSystem/procedure-id",
+    "system" : "https://fhir.doh.gov.ph/phcore/NamingSystem/procedure-id",
     "value" : "PROC-2024-000123"
   },
   {

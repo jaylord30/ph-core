@@ -4,7 +4,7 @@
   <id value="transaction-example"/>
   <type value="transaction"/>
   <entry>
-    <fullUrl value="urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"/>
+    <fullUrl value="https://fhir.doh.gov.ph/phcore/Patient/example-patient"/>
     <resource>
       <Patient>
         <id value="example-patient"/>
@@ -20,6 +20,7 @@
               <coding>
                 <system value="urn:iso:std:iso:3166"/>
                 <code value="PH"/>
+                <display value="Philippines"/>
               </coding>
             </valueCodeableConcept>
           </extension>
@@ -59,23 +60,23 @@
           <given value="Dela Fuente"/>
         </name>
         <gender value="male"/>
-        <birthDate value="1985-06-15"/>
+        <birthDate value="1980-01-01"/>
         <address>
-          <extension url="http://doh.gov.ph/fhir/ph-core/StructureDefinition/barangay">
+          <extension url="https://fhir.doh.gov.ph/phcore/StructureDefinition/barangay">
             <valueCoding>
               <system value="https://psa.gov.ph/classification/psgc"/>
               <code value="1380100001"/>
               <display value="Barangay 1"/>
             </valueCoding>
           </extension>
-          <extension url="http://doh.gov.ph/fhir/ph-core/StructureDefinition/city-municipality">
+          <extension url="https://fhir.doh.gov.ph/phcore/StructureDefinition/city-municipality">
             <valueCoding>
               <system value="https://psa.gov.ph/classification/psgc"/>
               <code value="1380200000"/>
               <display value="City of Las Piñas"/>
             </valueCoding>
           </extension>
-          <extension url="http://doh.gov.ph/fhir/ph-core/StructureDefinition/province">
+          <extension url="https://fhir.doh.gov.ph/phcore/StructureDefinition/province">
             <valueCoding>
               <system value="https://psa.gov.ph/classification/psgc"/>
               <code value="0402100000"/>
@@ -97,7 +98,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae"/>
+    <fullUrl value="https://fhir.doh.gov.ph/phcore/Encounter/example-encounter"/>
     <resource>
       <Encounter>
         <id value="example-encounter"/>
@@ -114,7 +115,7 @@
           <display value="ambulatory"/>
         </class>
         <subject>
-          <reference value="urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"/>
+          <reference value="Patient/example-patient"/>
         </subject>
       </Encounter>
     </resource>
@@ -124,7 +125,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:1a391d1e-a068-479a-88e3-e3d52c3a6f64"/>
+    <fullUrl value="https://fhir.doh.gov.ph/phcore/Condition/example-condition"/>
     <resource>
       <Condition>
         <id value="example-condition"/>
@@ -146,10 +147,10 @@
           </coding>
         </code>
         <subject>
-          <reference value="urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"/>
+          <reference value="Patient/example-patient"/>
         </subject>
         <encounter>
-          <reference value="urn:uuid:60b7132e-7cfd-44bc-83c2-de140dc8aaae"/>
+          <reference value="Encounter/example-encounter"/>
         </encounter>
       </Condition>
     </resource>
@@ -159,7 +160,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:024dcb47-cc23-407a-839b-b4634e95abae"/>
+    <fullUrl value="https://fhir.doh.gov.ph/phcore/Medication/example-medication"/>
     <resource>
       <Medication>
         <id value="example-medication"/>
@@ -177,7 +178,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:013f46df-f245-4a2f-beaf-9eb2c47fb1a3"/>
+    <fullUrl value="https://fhir.doh.gov.ph/phcore/Observation/blood-pressure"/>
     <resource>
       <Observation>
         <id value="blood-pressure"/>
@@ -216,11 +217,11 @@
           <text value="Blood pressure systolic &amp; diastolic"/>
         </code>
         <subject>
-          <reference value="urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"/>
+          <reference value="Patient/example-patient"/>
         </subject>
         <effectiveDateTime value="2012-09-17"/>
         <performer>
-          <reference value="urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4"/>
+          <reference value="Practitioner/example-practitioner"/>
         </performer>
         <interpretation>
           <coding>
@@ -291,7 +292,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:b43c67e7-d9c4-48bb-a1b4-55769eeb9066"/>
+    <fullUrl value="https://fhir.doh.gov.ph/phcore/AllergyIntolerance/example-allergy"/>
     <resource>
       <AllergyIntolerance>
         <id value="example-allergy"/>
@@ -314,7 +315,7 @@
           </coding>
         </code>
         <patient>
-          <reference value="urn:uuid:64eb2d39-8da6-4c1d-b4c7-a6d3e916cd5b"/>
+          <reference value="Patient/example-patient"/>
         </patient>
       </AllergyIntolerance>
     </resource>
@@ -324,7 +325,7 @@
     </request>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:a036fd4c-c950-497b-8905-0d2c5ec6f1d4"/>
+    <fullUrl value="https://fhir.doh.gov.ph/phcore/Practitioner/example-practitioner"/>
     <resource>
       <Practitioner>
         <id value="example-practitioner"/>
