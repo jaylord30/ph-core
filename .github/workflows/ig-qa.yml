@@ -66,6 +66,50 @@ jobs:
             | "FILE: \(.file // .source // .location // "UNKNOWN") | MESSAGE: \(.message)"
           ' "$QA_FILE" || true
 
+      - name: IG QA Root Cause Analysis
+        run: |
+          set -euo pipefail
+
+          QA_FILE="output/qa.json"
+
+          echo "======================================"
+          echo "FHIR IG ROOT CAUSE BREAKDOWN"
+          echo "======================================"
+
+          jq -r '
+            def issues: (.issues // .issue // .details.issues // []);
+
+            issues
+            | map(select(.severity=="error"))
+
+            | {
+                terminology: map(select(
+                  (.message | test("ValueSet|CodeSystem|expand|terminology|TX|code system|Unable to expand"; "i"))
+                )),
+
+                snapshot: map(select(
+                  (.message | test("snapshot|Snapshot generation|element id|constraint"; "i"))
+                )),
+
+                profile: map(select(
+                  (.message | test("StructureDefinition|profile|cardinality|constraint violation"; "i"))
+                )),
+
+                ig_config: map(select(
+                  (.message | test("ImplementationGuide|canonical|package|dependency|resource not found"; "i"))
+                ))
+              }
+
+            | {
+                terminology: (.terminology | length),
+                snapshot: (.snapshot | length),
+                profile: (.profile | length),
+                ig_config: (.ig_config | length)
+              }
+
+      | "🔴 Terminology Issues: \(.terminology)\n🟠 Snapshot Issues: \(.snapshot)\n🟡 Profile Issues: \(.profile)\n🔵 IG Config Issues: \(.ig_config)\n"
+    ' "$QA_FILE"
+
       - name: QA Gate (FAIL IF ERRORS EXIST)
         run: |
           set -euo pipefail
