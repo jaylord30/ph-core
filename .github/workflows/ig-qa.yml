@@ -107,8 +107,9 @@ jobs:
                 ig_config: (.ig_config | length)
               }
 
-      | "🔴 Terminology Issues: \(.terminology)\n🟠 Snapshot Issues: \(.snapshot)\n🟡 Profile Issues: \(.profile)\n🔵 IG Config Issues: \(.ig_config)\n"
-    ' "$QA_FILE"
+            | "🔴 Terminology Issues: \(.terminology)\n🟠 Snapshot Issues: \(.snapshot)\n🟡 Profile Issues: \(.profile)\n🔵 IG Config Issues: \(.ig_config)\n"
+          ' "$QA_FILE"
+
 
       - name: QA Gate (FAIL IF ERRORS EXIST)
         run: |
