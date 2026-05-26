@@ -25,43 +25,48 @@ jobs:
             exit 1
           fi
 
-      - name: Parse QA Results (Summary + Debug)
+      - name: IG QA File-Level Breakdown
         run: |
           set -euo pipefail
 
           QA_FILE="output/qa.json"
 
-          echo "===================="
-          echo "IG QA SUMMARY"
-          echo "===================="
+          echo "======================================"
+          echo "FHIR IG QA - FILE LEVEL ERROR REPORT"
+          echo "======================================"
 
-          ERRORS=$(jq -r '(.errs // .errors // 0)' "$QA_FILE")
-          WARNINGS=$(jq -r '(.warnings // 0)' "$QA_FILE")
-          HINTS=$(jq -r '(.hints // 0)' "$QA_FILE")
-
-          echo "QA Errors: $ERRORS"
-          echo "QA Warnings: $WARNINGS"
-          echo "QA Hints: $HINTS"
-          echo ""
-
-          echo "===================="
-          echo "SAMPLE ISSUES (first 10)"
-          echo "===================="
-
-          jq -c '(.issues // .issue // .details.issues // []) | .[0:10]' "$QA_FILE" || true
-
-          echo ""
-
-          echo "===================="
-          echo "FULL ERROR BREAKDOWN"
-          echo "===================="
-
-          jq -c '
+          # Extract all error issues with file context
+          jq -r '
             (.issues // .issue // .details.issues // [])
             | map(select(.severity? == "error"))
+            | group_by(.file // .source // .location // "UNKNOWN")
+            | .[]
+            | {
+                file: (.[0].file // .[0].source // .[0].location // "UNKNOWN"),
+                count: length,
+                messages: map(.message)
+              }
+            | "❌ FILE: \(.file)\n   ERROR COUNT: \(.count)\n   SAMPLE ERRORS:\n   - " + (.messages[0:5] | join("\n   - ")) + "\n"
           ' "$QA_FILE" || true
 
-      - name: QA Gate (STRICT ERROR CHECK)
+      - name: Full Error List (Debug)
+        run: |
+          set -euo pipefail
+
+          QA_FILE="output/qa.json"
+
+          echo "======================================"
+          echo "FULL ERROR BREAKDOWN (RAW)"
+          echo "======================================"
+
+          jq -r '
+            (.issues // .issue // .details.issues // [])
+            | map(select(.severity? == "error"))
+            | .[]
+            | "FILE: \(.file // .source // .location // "UNKNOWN") | MESSAGE: \(.message)"
+          ' "$QA_FILE" || true
+
+      - name: QA Gate (FAIL IF ERRORS EXIST)
         run: |
           set -euo pipefail
 
@@ -73,11 +78,11 @@ jobs:
             | length
           ' "$QA_FILE")
 
-          echo "Detected ERROR_COUNT: $ERROR_COUNT"
+          echo "Total IG Errors: $ERROR_COUNT"
 
           if [ "$ERROR_COUNT" -gt 0 ]; then
-            echo "::error::IG QA failed with $ERROR_COUNT errors"
+            echo "::error::FHIR IG QA FAILED - $ERROR_COUNT errors found"
             exit 1
           fi
 
-          echo "✅ IG QA PASSED (0 errors)"
+          echo "✅ IG QA PASSED - No errors found"
