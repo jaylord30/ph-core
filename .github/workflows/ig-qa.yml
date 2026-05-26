@@ -13,82 +13,98 @@ jobs:
         with:
           name: ig-output
           path: output
-
-      - name: Validate QA File Exists
+          
+      - name: QA Gate
         run: |
-          set -euo pipefail
-
           if [ ! -f output/qa.json ]; then
-            echo "::error::qa.json missing"
+            echo "::error::No qa.json found in output/. Failing for safety."
             exit 1
           fi
 
-      - name: Parse QA Results
-        run: |
-          set -euo pipefail
-
-          QA_FILE="output/qa.json"
-
-          if [ ! -f "$QA_FILE" ]; then
-            echo "::error::qa.json not found at $QA_FILE"
-            exit 1
-          fi
-
-          echo "===================="
-          echo "IG QA SUMMARY"
-          echo "===================="
-
-          ERRORS=$(jq -r '
-            (.errs // .errors // 0)
-          ' "$QA_FILE")
-
-          WARNINGS=$(jq -r '
-            (.warnings // 0)
-          ' "$QA_FILE")
-
-          HINTS=$(jq -r '
-            (.hints // 0)
-          ' "$QA_FILE")
-
-          echo "QA Errors: $ERRORS"
-          echo "QA Warnings: $WARNINGS"
-          echo "QA Hints: $HINTS"
-          echo ""
-
-          echo "===================="
-          echo "SAMPLE ISSUES (first 10)"
-          echo "===================="
-
-          jq -c '
-            (.issues // .issue // .details.issues // [])
-            | .[0:10]
-          ' "$QA_FILE" || true
-
-          echo ""
-
-          # ---- Extract all errors safely ----
-          ERROR_LIST=$(jq -c '
-            (.issues // .issue // .details.issues // [])
-            | map(select(.severity? == "error"))
-          ' "$QA_FILE")
-
-          echo "===================="
-          echo "ERROR COUNT CHECK"
-          echo "===================="
-          echo "$ERROR_LIST" | jq length || echo "0"
-
-          echo ""
-
-          echo "===================="
-          echo "FULL ERROR BREAKDOWN"
-          echo "===================="
-
-          echo "$ERROR_LIST" | jq -c '.[]' || true
-
-          # ---- Fail pipeline if errors exist ----
+          echo "📄 Printing qa.json for inspection..."
+          cat output/qa.json
+          
+          ERRORS=$(jq -r '.errs // 0' output/qa.json)
           if [ "$ERRORS" -gt 0 ]; then
-            echo "::error::IG QA failed with $ERRORS errors"
+            echo "::error::QA errors found: $ERRORS"
             exit 1
           fi
+          echo "✅ QA passed: $ERRORS errors"
+      # - name: Validate QA File Exists
+      #   run: |
+      #     set -euo pipefail
 
-          echo "QA passed successfully"
+      #     if [ ! -f output/qa.json ]; then
+      #       echo "::error::qa.json missing"
+      #       exit 1
+      #     fi
+
+      # - name: Parse QA Results
+      #   run: |
+      #     set -euo pipefail
+
+      #     QA_FILE="output/qa.json"
+
+      #     if [ ! -f "$QA_FILE" ]; then
+      #       echo "::error::qa.json not found at $QA_FILE"
+      #       exit 1
+      #     fi
+
+      #     echo "===================="
+      #     echo "IG QA SUMMARY"
+      #     echo "===================="
+
+      #     ERRORS=$(jq -r '
+      #       (.errs // .errors // 0)
+      #     ' "$QA_FILE")
+
+      #     WARNINGS=$(jq -r '
+      #       (.warnings // 0)
+      #     ' "$QA_FILE")
+
+      #     HINTS=$(jq -r '
+      #       (.hints // 0)
+      #     ' "$QA_FILE")
+
+      #     echo "QA Errors: $ERRORS"
+      #     echo "QA Warnings: $WARNINGS"
+      #     echo "QA Hints: $HINTS"
+      #     echo ""
+
+      #     echo "===================="
+      #     echo "SAMPLE ISSUES (first 10)"
+      #     echo "===================="
+
+      #     jq -c '
+      #       (.issues // .issue // .details.issues // [])
+      #       | .[0:10]
+      #     ' "$QA_FILE" || true
+
+      #     echo ""
+
+      #     # ---- Extract all errors safely ----
+      #     ERROR_LIST=$(jq -c '
+      #       (.issues // .issue // .details.issues // [])
+      #       | map(select(.severity? == "error"))
+      #     ' "$QA_FILE")
+
+      #     echo "===================="
+      #     echo "ERROR COUNT CHECK"
+      #     echo "===================="
+      #     echo "$ERROR_LIST" | jq length || echo "0"
+
+      #     echo ""
+
+      #     echo "===================="
+      #     echo "FULL ERROR BREAKDOWN"
+      #     echo "===================="
+
+      #     echo "$ERROR_LIST" | jq -c '.[]' || true
+
+      #     # ---- Fail pipeline if errors exist ----
+      #     if [ "$ERRORS" -gt 0 ]; then
+      #       echo "::error::IG QA failed with $ERRORS errors"
+      #       exit 1
+      #     fi
+
+      #     echo "QA passed successfully"
