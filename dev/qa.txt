@@ -3,7 +3,7 @@ PHCoreImplementationGuide : Validation Results
 
 err = 72, warn = 2496, info = 1305
 IG Publisher Version: 2.2.7 Out of date - current version is 2.2.8
-Generated Tue May 26 03:56:14 UTC 2026. FHIR version 4.0.1 for fhir.ph.core#0.2.0 (canonical = http://doh.gov.ph/fhir/ph-core)
+Generated Tue May 26 04:06:59 UTC 2026. FHIR version 4.0.1 for fhir.ph.core#0.2.0 (canonical = http://doh.gov.ph/fhir/ph-core)
  Build Errors : 0 / 0 / 0
  /home/runner/work/ph-core/ph-core/fsh-generated/resources/ActorDefinition-Consumer : 0 / 1 / 1
  /home/runner/work/ph-core/ph-core/fsh-generated/resources/ActorDefinition-Creator : 0 / 1 / 1

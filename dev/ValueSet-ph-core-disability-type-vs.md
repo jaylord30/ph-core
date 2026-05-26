@@ -51,7 +51,7 @@ Value set for types of disability as defined by the Philippine government for PW
   "title" : "PH Core Disability Type Value Set",
   "status" : "draft",
   "experimental" : true,
-  "date" : "2026-05-26T03:51:01+00:00",
+  "date" : "2026-05-26T04:00:40+00:00",
   "publisher" : "UP Manila National TeleHealth Center",
   "contact" : [{
     "name" : "UP Manila National TeleHealth Center",
