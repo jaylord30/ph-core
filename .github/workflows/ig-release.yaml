@@ -13,14 +13,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+
   release:
     runs-on: ubuntu-latest
 
     steps:
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
       - name: Get version
         id: v
         run: |
@@ -59,6 +61,11 @@ jobs:
           sushi .
           java -jar input-cache/publisher.jar ig.ini
 
+      - name: Generate SHA256 checksum
+        run: |
+          cd output
+          find . -type f -exec sha256sum {} \; > SHA256SUMS.txt
+
       - name: Clone gh-pages
         run: |
           git clone --depth 1 --branch gh-pages \
@@ -85,7 +92,9 @@ jobs:
           mkdir -p ".gh-pages/current"
 
           cat > ".gh-pages/current/index.html" <<EOF
-          <html><meta http-equiv="refresh" content="0; url=../$VERSION/"></html>
+          <html>
+            <meta http-equiv="refresh" content="0; url=../$VERSION/">
+          </html>
           EOF
 
       - name: Update rollback registry
@@ -96,8 +105,13 @@ jobs:
             echo "[]" > $FILE
           fi
 
-          jq ". += [{version: \"${{ steps.v.outputs.version }}\", date: \"$(date -Iseconds)\"}]" $FILE > tmp.json
+          VERSION=${{ steps.v.outputs.version }}
+
+          jq ". += [{version: \"$VERSION\", date: \"$(date -Iseconds)\", active: true}]" $FILE > tmp.json
           mv tmp.json $FILE
+
+          jq "map(.active = (.version == \"$VERSION\"))" $FILE > tmp2.json
+          mv tmp2.json $FILE
 
       - name: Commit gh-pages
         run: |
@@ -113,7 +127,8 @@ jobs:
         with:
           tag_name: ${{ github.ref_name }}
           name: "FHIR IG ${{ steps.v.outputs.version }}"
-          files: output/**
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Mirror to GitLab
         run: |
@@ -130,3 +145,25 @@ jobs:
 
           git branch -M gh-pages
           git push gitlab gh-pages --force
+
+      - name: Verify GitLab Deployment
+        run: |
+          VERSION=${{ steps.v.outputs.version }}
+          URL="https://${{ secrets.GITLAB_PAGES_URL }}/$VERSION/"
+
+          echo "Checking: $URL"
+
+          for i in {1..10}; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" $URL)
+
+            if [ "$STATUS" = "200" ]; then
+              echo "✅ GitLab deployment OK"
+              exit 0
+            fi
+
+            echo "Waiting for GitLab Pages... ($i)"
+            sleep 5
+          done
+
+          echo "::error::GitLab deployment failed"
+          exit 1
