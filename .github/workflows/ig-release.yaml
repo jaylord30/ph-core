@@ -1,99 +1,99 @@
-# name: Release PROD IG
+name: Release PROD IG
 
-# on:
-#   push:
-#     tags:
-#       - "v*"
+on:
+  push:
+    tags:
+      - "v*"
 
-# permissions:
-#   contents: write
+permissions:
+  contents: write
 
-# concurrency:
-#   group: ig-release
-#   cancel-in-progress: false
+concurrency:
+  group: ig-release
+  cancel-in-progress: false
 
-# jobs:
-#   release:
-#     runs-on: ubuntu-latest
+jobs:
+  release:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-#       - name: Get version
-#         id: v
-#         run: |
-#           VERSION="${GITHUB_REF_NAME#v}"
-#           echo "version=$VERSION" >> $GITHUB_OUTPUT
+      - name: Get version
+        id: v
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-#       - name: Download artifact
-#         uses: actions/download-artifact@v4
-#         with:
-#           name: ig-output
-#           path: output
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ig-output
+          path: output
 
-#       - name: Clone gh-pages
-#         run: |
-#           git clone --depth 1 --branch gh-pages \
-#             "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
-#             .gh-pages || {
-#               mkdir .gh-pages
-#               cd .gh-pages
-#               git init
-#               git checkout -b gh-pages
-#               git remote add origin \
-#               "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-#             }
+      - name: Clone gh-pages
+        run: |
+          git clone --depth 1 --branch gh-pages \
+            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+            .gh-pages || {
+              mkdir .gh-pages
+              cd .gh-pages
+              git init
+              git checkout -b gh-pages
+              git remote add origin \
+              "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+            }
 
-#       - name: Prevent overwrite
-#         run: |
-#           if [ -d ".gh-pages/${{ steps.v.outputs.version }}" ]; then
-#             echo "::error::Version already exists"
-#             exit 1
-#           fi
+      - name: Prevent overwrite
+        run: |
+          if [ -d ".gh-pages/${{ steps.v.outputs.version }}" ]; then
+            echo "::error::Version already exists"
+            exit 1
+          fi
 
-#       - name: Publish version
-#         run: |
-#           mkdir -p ".gh-pages/${{ steps.v.outputs.version }}"
-#           rsync -a output/ ".gh-pages/${{ steps.v.outputs.version }}/"
+      - name: Publish version
+        run: |
+          mkdir -p ".gh-pages/${{ steps.v.outputs.version }}"
+          rsync -a output/ ".gh-pages/${{ steps.v.outputs.version }}/"
 
-#       - name: Update /current
-#         run: |
-#           VERSION=${{ steps.v.outputs.version }}
+      - name: Update /current
+        run: |
+          VERSION=${{ steps.v.outputs.version }}
 
-#           mkdir -p ".gh-pages/current"
+          mkdir -p ".gh-pages/current"
 
-#           cat > ".gh-pages/current/index.html" <<EOF
-#           <html><meta http-equiv="refresh" content="0; url=../$VERSION/"></html>
-#           EOF
+          cat > ".gh-pages/current/index.html" <<EOF
+          <html><meta http-equiv="refresh" content="0; url=../$VERSION/"></html>
+          EOF
 
-#       - name: Update rollback registry
-#         run: |
-#           FILE=".gh-pages/rollback.json"
+      - name: Update rollback registry
+        run: |
+          FILE=".gh-pages/rollback.json"
 
-#           if [ ! -f "$FILE" ]; then
-#             echo "[]" > $FILE
-#           fi
+          if [ ! -f "$FILE" ]; then
+            echo "[]" > $FILE
+          fi
 
-#           jq ". += [{version: \"${{ steps.v.outputs.version }}\", date: \"$(date -Iseconds)\"}]" $FILE > tmp.json
-#           mv tmp.json $FILE
+          jq ". += [{version: \"${{ steps.v.outputs.version }}\", date: \"$(date -Iseconds)\"}]" $FILE > tmp.json
+          mv tmp.json $FILE
 
-#       - name: Commit gh-pages
-#         run: |
-#           cd .gh-pages
-#           git config user.name "github-actions"
-#           git config user.email "actions@github.com"
-#           git add -A
-#           git commit -m "Release ${{ steps.v.outputs.version }}" || exit 0
-#           git push
+      - name: Commit gh-pages
+        run: |
+          cd .gh-pages
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Release ${{ steps.v.outputs.version }}" || exit 0
+          git push
 
-#       - name: Create GitHub Release
-#         uses: softprops/action-gh-release@v1
-#         with:
-#           tag_name: v${{ steps.v.outputs.version }}
-#           name: "FHIR IG ${{ steps.v.outputs.version }}"
-#           files: output/**
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.v.outputs.version }}
+          name: "FHIR IG ${{ steps.v.outputs.version }}"
+          files: output/**
 
-#       - name: Mirror to GitLab
-#         run: |
-#           git remote add gitlab https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@gitlab.com/your-group/your-repo.git
-#           git push gitlab gh-pages --force
+      - name: Mirror to GitLab
+        run: |
+          git remote add gitlab https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@${{ secrets.GITLAB_REPO }}
+          git push gitlab gh-pages --force
