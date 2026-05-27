@@ -15,18 +15,21 @@ jobs:
 
       - name: Prepare dev site
         run: |
-          rm -rf .publish
-          mkdir -p .publish/dev
-          rsync -a output/ .publish/dev/
+          VERSION="dev-$(date +%Y%m%d-%H%M%S)"
+
+          mkdir -p .publish/$VERSION
+          rsync -a output/ .publish/$VERSION/
+
+          ln -sfn $VERSION .publish/dev
 
       - name: Create index
         run: |
           cat > .publish/index.html <<EOF
-          <h1>FHIR IG Dev Build</h1>
-          <p><a href="./dev/">Latest Dev</a></p>
+          <h1>FHIR IG Dev</h1>
+          <p>Latest: <a href="./dev/">Open Dev</a></p>
           EOF
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

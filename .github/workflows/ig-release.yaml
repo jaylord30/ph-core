@@ -1,44 +1,99 @@
-name: Release PROD IG
+# name: Release PROD IG
 
-on:
-  workflow_call:
+# on:
+#   push:
+#     tags:
+#       - "v*"
 
-jobs:
-  release:
-    runs-on: ubuntu-latest
+# permissions:
+#   contents: write
 
-    steps:
-      - uses: actions/checkout@v4
+# concurrency:
+#   group: ig-release
+#   cancel-in-progress: false
 
-      - name: Get version from tag
-        run: |
-          VERSION=${GITHUB_REF_NAME}
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+# jobs:
+#   release:
+#     runs-on: ubuntu-latest
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: ig-output
-          path: output
+#     steps:
+#       - uses: actions/checkout@v4
 
-      - name: Prepare versioned release
-        run: |
-          mkdir -p release/$VERSION
-          rsync -a output/ release/$VERSION/
+#       - name: Get version
+#         id: v
+#         run: |
+#           VERSION="${GITHUB_REF_NAME#v}"
+#           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Commit release branch
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+#       - name: Download artifact
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: ig-output
+#           path: output
 
-          git checkout -b release-$VERSION
-          cp -r release/$VERSION/* .
-          git add .
-          git commit -m "Release $VERSION"
-          git push origin release-$VERSION
+#       - name: Clone gh-pages
+#         run: |
+#           git clone --depth 1 --branch gh-pages \
+#             "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
+#             .gh-pages || {
+#               mkdir .gh-pages
+#               cd .gh-pages
+#               git init
+#               git checkout -b gh-pages
+#               git remote add origin \
+#               "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+#             }
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: $VERSION
-          name: "FHIR IG $VERSION"
-          files: release/$VERSION/**/*
+#       - name: Prevent overwrite
+#         run: |
+#           if [ -d ".gh-pages/${{ steps.v.outputs.version }}" ]; then
+#             echo "::error::Version already exists"
+#             exit 1
+#           fi
+
+#       - name: Publish version
+#         run: |
+#           mkdir -p ".gh-pages/${{ steps.v.outputs.version }}"
+#           rsync -a output/ ".gh-pages/${{ steps.v.outputs.version }}/"
+
+#       - name: Update /current
+#         run: |
+#           VERSION=${{ steps.v.outputs.version }}
+
+#           mkdir -p ".gh-pages/current"
+
+#           cat > ".gh-pages/current/index.html" <<EOF
+#           <html><meta http-equiv="refresh" content="0; url=../$VERSION/"></html>
+#           EOF
+
+#       - name: Update rollback registry
+#         run: |
+#           FILE=".gh-pages/rollback.json"
+
+#           if [ ! -f "$FILE" ]; then
+#             echo "[]" > $FILE
+#           fi
+
+#           jq ". += [{version: \"${{ steps.v.outputs.version }}\", date: \"$(date -Iseconds)\"}]" $FILE > tmp.json
+#           mv tmp.json $FILE
+
+#       - name: Commit gh-pages
+#         run: |
+#           cd .gh-pages
+#           git config user.name "github-actions"
+#           git config user.email "actions@github.com"
+#           git add -A
+#           git commit -m "Release ${{ steps.v.outputs.version }}" || exit 0
+#           git push
+
+#       - name: Create GitHub Release
+#         uses: softprops/action-gh-release@v1
+#         with:
+#           tag_name: v${{ steps.v.outputs.version }}
+#           name: "FHIR IG ${{ steps.v.outputs.version }}"
+#           files: output/**
+
+#       - name: Mirror to GitLab
+#         run: |
+#           git remote add gitlab https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@gitlab.com/your-group/your-repo.git
+#           git push gitlab gh-pages --force

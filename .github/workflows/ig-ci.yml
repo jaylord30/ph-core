@@ -25,8 +25,3 @@ jobs:
   deploy-dev:
     needs: qa
     uses: ./.github/workflows/ig-deploy-dev.yml
-
-#  release-prod:
-#    needs: qa
-#    if: startsWith(github.ref, 'refs/tags/')
-#    uses: ./.github/workflows/ig-release.yml

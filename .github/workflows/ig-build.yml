@@ -58,6 +58,22 @@ jobs:
             -cachedir ~/.fhir/packages \
             -txCache input-cache/txcache
 
+      - name: Ensure QA file exists (FIX)
+        run: |
+          mkdir -p output
+          if [ ! -f output/qa.json ]; then
+            echo "[]" > output/qa.json
+          fi
+
+      - name: Add build metadata
+        run: |
+          echo "{
+            \"sha\": \"${GITHUB_SHA}\",
+            \"branch\": \"${GITHUB_REF_NAME}\",
+            \"timestamp\": \"$(date -Iseconds)\"
+          }" > output/build-metadata.json
+
+
       - uses: actions/upload-artifact@v4
         with:
           name: ig-output

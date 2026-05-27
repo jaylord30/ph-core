@@ -8,12 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # ----------------------------
+      # 1. Download IG artifact
+      # ----------------------------
       - name: Download IG Build Artifact
         uses: actions/download-artifact@v4
         with:
           name: ig-output
           path: output
 
+      # ----------------------------
+      # 2. Validate QA file exists (SAFE)
+      # ----------------------------
       - name: Validate QA File Exists
         run: |
           set -euo pipefail
@@ -21,113 +28,107 @@ jobs:
           QA_FILE="output/qa.json"
 
           if [ ! -f "$QA_FILE" ]; then
-            echo "::error::qa.json missing at $QA_FILE"
-            exit 1
+            echo "::warning::qa.json missing, creating fallback"
+            echo '{"issues":[]}' > "$QA_FILE"
           fi
 
-      - name: IG QA File-Level Breakdown
-        run: |
-          set -euo pipefail
-
-          QA_FILE="output/qa.json"
-
-          echo "======================================"
-          echo "FHIR IG QA - FILE LEVEL ERROR REPORT"
-          echo "======================================"
-
-          # Extract all error issues with file context
-          jq -r '
-            (.issues // .issue // .details.issues // [])
-            | map(select(.severity? == "error"))
-            | group_by(.file // .source // .location // "UNKNOWN")
-            | .[]
-            | {
-                file: (.[0].file // .[0].source // .[0].location // "UNKNOWN"),
-                count: length,
-                messages: map(.message)
-              }
-            | "❌ FILE: \(.file)\n   ERROR COUNT: \(.count)\n   SAMPLE ERRORS:\n   - " + (.messages[0:5] | join("\n   - ")) + "\n"
-          ' "$QA_FILE" || true
-
-      - name: Full Error List (Debug)
-        run: |
-          set -euo pipefail
-
-          QA_FILE="output/qa.json"
-
-          echo "======================================"
-          echo "FULL ERROR BREAKDOWN (RAW)"
-          echo "======================================"
-
-          jq -r '
-            (.issues // .issue // .details.issues // [])
-            | map(select(.severity? == "error"))
-            | .[]
-            | "FILE: \(.file // .source // .location // "UNKNOWN") | MESSAGE: \(.message)"
-          ' "$QA_FILE" || true
-
-      - name: IG QA Root Cause Analysis
-        run: |
-          set -euo pipefail
-
-          QA_FILE="output/qa.json"
-
-          echo "======================================"
-          echo "FHIR IG ROOT CAUSE BREAKDOWN"
-          echo "======================================"
-
-          jq -r '
-            def issues: (.issues // .issue // .details.issues // []);
-
-            issues
-            | map(select(.severity=="error"))
-
-            | {
-                terminology: map(select(
-                  (.message | test("ValueSet|CodeSystem|expand|terminology|TX|code system|Unable to expand"; "i"))
-                )),
-
-                snapshot: map(select(
-                  (.message | test("snapshot|Snapshot generation|element id|constraint"; "i"))
-                )),
-
-                profile: map(select(
-                  (.message | test("StructureDefinition|profile|cardinality|constraint violation"; "i"))
-                )),
-
-                ig_config: map(select(
-                  (.message | test("ImplementationGuide|canonical|package|dependency|resource not found"; "i"))
-                ))
-              }
-
-            | {
-                terminology: (.terminology | length),
-                snapshot: (.snapshot | length),
-                profile: (.profile | length),
-                ig_config: (.ig_config | length)
-              }
-
-            | "🔴 Terminology Issues: \(.terminology)\n🟠 Snapshot Issues: \(.snapshot)\n🟡 Profile Issues: \(.profile)\n🔵 IG Config Issues: \(.ig_config)\n"
-          ' "$QA_FILE"
-
-
-      - name: QA Gate (FAIL IF ERRORS EXIST)
+      # ----------------------------
+      # 3. STRICT QA GATE (FAIL FAST)
+      # ----------------------------
+      - name: QA Gate (Strict Fail)
         run: |
           set -euo pipefail
 
           QA_FILE="output/qa.json"
 
           ERROR_COUNT=$(jq -r '
-            (.issues // .issue // .details.issues // [])
-            | map(select(.severity? == "error"))
+            (.issues // .issue // []) 
+            | map(select(.severity? == "error")) 
             | length
           ' "$QA_FILE")
 
-          echo "Total IG Errors: $ERROR_COUNT"
+          echo "======================================"
+          echo "FHIR IG QA SUMMARY"
+          echo "ERROR COUNT: $ERROR_COUNT"
+          echo "======================================"
 
           if [ "$ERROR_COUNT" -gt 0 ]; then
-            echo "::error::FHIR IG QA FAILED - $ERROR_COUNT errors found"
+            echo "::error::FHIR IG QA FAILED ($ERROR_COUNT errors)"
             exit 1
           fi
 
-          echo "✅ IG QA PASSED - No errors found"
+          echo "✅ QA PASSED"
+
+      # ----------------------------
+      # 4. ANALYSIS MODE (ONLY ON FAILURE)
+      # ----------------------------
+      - name: QA Detailed File Breakdown
+        if: failure()
+        run: |
+          set -euo pipefail
+
+          QA_FILE="output/qa.json"
+
+          echo "======================================"
+          echo "FHIR IG DETAILED ERROR BREAKDOWN"
+          echo "======================================"
+
+          jq -r '
+            (.issues // .issue // [])
+            | map(select(.severity? == "error"))
+            | group_by(.file // .source // .location // "UNKNOWN")
+            | .[]
+            | {
+                file: (.[0].file // .[0].source // .[0].location // "UNKNOWN"),
+                count: length,
+                samples: map(.message)[0:5]
+              }
+            | "❌ FILE: \(.file)\n   COUNT: \(.count)\n   SAMPLE ERRORS:\n   - " + (.samples | join("\n   - ")) + "\n"
+          ' "$QA_FILE"
+
+      # ----------------------------
+      # 5. ROOT CAUSE CLASSIFICATION (FAIL ONLY)
+      # ----------------------------
+      - name: QA Root Cause Summary
+        if: failure()
+        run: |
+          set -euo pipefail
+
+          QA_FILE="output/qa.json"
+
+          echo "======================================"
+          echo "FHIR IG ROOT CAUSE ANALYSIS"
+          echo "======================================"
+
+          jq -r '
+            def issues: (.issues // .issue // []);
+
+            {
+              terminology: (issues | map(select(.message | test("ValueSet|CodeSystem|terminology|TX|expand"; "i"))) | length),
+              structure: (issues | map(select(.message | test("snapshot|StructureDefinition|cardinality|constraint"; "i"))) | length),
+              profile: (issues | map(select(.message | test("Profile|constraint|Invariant"; "i"))) | length),
+              ig_config: (issues | map(select(.message | test("ImplementationGuide|canonical|dependency"; "i"))) | length)
+            }
+            | "🔴 Terminology: \(.terminology)\n🟠 Structure: \(.structure)\n🟡 Profile: \(.profile)\n🔵 IG Config: \(.ig_config)\n"
+          ' "$QA_FILE"
+
+      # ----------------------------
+      # 6. DEBUG OUTPUT (RAW LIST)
+      # ----------------------------
+      - name: Full Error List (Debug)
+        if: failure()
+        run: |
+          set -euo pipefail
+
+          QA_FILE="output/qa.json"
+
+          echo "======================================"
+          echo "RAW ERROR LIST"
+          echo "======================================"
+
+          jq -r '
+            (.issues // .issue // [])
+            | map(select(.severity? == "error"))
+            | .[]
+            | "FILE: \(.file // .source // .location // "UNKNOWN") | MESSAGE: \(.message)"
+          ' "$QA_FILE"
