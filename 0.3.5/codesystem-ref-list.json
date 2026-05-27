@@ -1,0 +1,143 @@
+{
+  "codeSystems" : [{
+    "url" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/indigenous-groups-cs",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "IndigenousGroupsCS",
+    "title" : "Indigenous Groups CodeSystem",
+    "description" : "A list of codes representing the recognized indigenous groups in the Philippines to which a person may belong.",
+    "uses" : {
+    },
+    "ValueSet-indigenous-groups-vs.html" : "Indigenous Groups ValueSet"
+  },
+  {
+    "url" : "http://doh.gov.ph/fhir/ph-core/CodeSystem/ph-core-disability-type-cs",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "PHCoreDisabilityTypeCS",
+    "title" : "PH Core Disability Type Code System",
+    "description" : "Code system for types of disability as defined by the Philippine government for PWD registration.",
+    "uses" : {
+    },
+    "ValueSet-ph-core-disability-type-vs.html" : "PH Core Disability Type Value Set"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/provenance-participant-type",
+    "version" : "4.0.1",
+    "status" : "draft",
+    "name" : "ProvenanceParticipantType",
+    "title" : "Provenance participant type",
+    "description" : "The type of participation a provenance participant.",
+    "oids" : ["2.16.840.1.113883.4.642.4.1131"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-provenance-agent-type.html" : "Provenance participant type"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v2-0131",
+    "version" : "2.9",
+    "status" : "active",
+    "name" : "v2.0131",
+    "title" : "v2 Contact Role",
+    "description" : "FHIR Value set/code system definition for HL7 v2 table 0131 ( Contact Role)",
+    "oids" : ["2.16.840.1.113883.18.58"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-relatedperson-relationshiptype.html" : "Patient relationship type"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+    "version" : "2018-08-12",
+    "status" : "active",
+    "name" : "v3.MaritalStatus",
+    "title" : "v3 Code System MaritalStatus",
+    "description" : " * * * No description supplied * * *  Open Issue:\r\nThe specific meanings of these codes can vary somewhat by jurisdiction and implementation so caution should be used when determining equivalency.",
+    "oids" : ["2.16.840.1.113883.5.2"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-marital-status.html" : "MaritalStatus"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+    "version" : "2018-08-12",
+    "status" : "active",
+    "name" : "v3.NullFlavor",
+    "title" : "v3 Code System NullFlavor",
+    "description" : " A collection of codes specifying why a valid value is not present.",
+    "oids" : ["2.16.840.1.113883.5.1008"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-marital-status.html" : "MaritalStatus"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-Race",
+    "version" : "2018-08-12",
+    "status" : "active",
+    "name" : "v3.Race",
+    "title" : "v3 Code System Race",
+    "description" : " In the United States, federal standards for classifying data on race determine the categories used by federal agencies and exert a strong influence on categorization by state and local agencies and private sector organizations.  The federal standards do not conceptually define race, and they recognize the absence of an anthropological or scientific basis for racial classification.  Instead, the federal standards acknowledge that race is a social-political construct in which an individual's own identification with one more race categories is preferred to observer identification. The standards use a variety of features to define five minimum race categories. Among these features are descent from \"the original peoples\" of a specified region or nation.  The minimum race categories are American Indian or Alaska Native, Asian, Black or African American, Native Hawaiian or Other Pacific Islander, and White.  The federal standards stipulate that race data need not be limited to the five minimum categories, but any expansion must be collapsible to those categories.",
+    "oids" : ["2.16.840.1.113883.5.104"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/v3/Race/vs.html" : "v3 Code System Race"
+  },
+  {
+    "url" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+    "version" : "2018-08-12",
+    "status" : "active",
+    "name" : "v3.RoleCode",
+    "title" : "v3 Code System RoleCode",
+    "description" : " A set of codes further specifying the kind of Role; specific classification codes for further qualifying RoleClass codes.",
+    "oids" : ["2.16.840.1.113883.5.111"],
+    "uses" : {
+    },
+    "http://hl7.org/fhir/R4/valueset-relatedperson-relationshiptype.html" : "Patient relationship type"
+  },
+  {
+    "url" : "https://psa.gov.ph/classification/psced/level",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "PSCED",
+    "title" : "Mock PSCED",
+    "description" : "Mock of the Philippine Standard Classification of Education.",
+    "uses" : {
+    },
+    "ValueSet-educational-attainments.html" : "Educational Attainments"
+  },
+  {
+    "url" : "https://psa.gov.ph/classification/psgc",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "PSGC",
+    "title" : "Mock PSGC",
+    "description" : "Mock of the Philippine Standard Geographic Code.",
+    "uses" : {
+    },
+    "ValueSet-barangays.html" : "Barangays",
+    "ValueSet-provinces.html" : "Provinces",
+    "ValueSet-cities.html" : "Cities",
+    "ValueSet-regions.html" : "Regions"
+  },
+  {
+    "url" : "https://psa.gov.ph/classification/psoc/unit",
+    "version" : "0.2.0",
+    "status" : "draft",
+    "name" : "PSOC",
+    "title" : "Mock PSOC",
+    "description" : "Mock of the Philippine Standard Occupational Classification.",
+    "uses" : {
+    },
+    "ValueSet-occupational-classifications.html" : "Occupation Classifications"
+  },
+  {
+    "url" : "https://verification.fda.gov.ph",
+    "version" : "0.2.0",
+    "status" : "active",
+    "name" : "PHFDACPRCS",
+    "title" : "PH FDA Certificate of Product Registration (CPR) CodeSystem",
+    "description" : "Registered drug products from the Philippine Food and Drug Administration (FDA)",
+    "uses" : {
+    },
+    "ValueSet-drugs-vs.html" : "Drugs"
+  }]
+}
