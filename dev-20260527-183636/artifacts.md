@@ -1,0 +1,175 @@
+# Artifacts Summary - Draft PH Core Implementation Guide v0.2.0
+
+* [**Table of Contents**](toc.md)
+* **Artifacts Summary**
+
+## Artifacts Summary
+
+This page provides a list of the FHIR artifacts defined as part of this implementation guide.
+
+### Requirements: Actor Definitions 
+
+The following artifacts define the types of individuals and/or systems that will interact as part of the use cases covered by this implementation guide.
+
+| | |
+| :--- | :--- |
+| [PH Core Consumer](ActorDefinition-Consumer.md) | A PH Core Consumer is a system that receives and uses PH Core resources. |
+| [PH Core Creator](ActorDefinition-Creator.md) | A PH Core Creator is a system which produces/assembles/creates PH Core resources. |
+| [PH Core Server](ActorDefinition-Server.md) | A PH Core Server is a FHIR server that stores and provides access to PH Core resources. |
+
+### Structures: Resource Profiles 
+
+These define constraints on FHIR resources for systems conforming to this implementation guide.
+
+| | |
+| :--- | :--- |
+| [PH Core AllergyIntolerance](StructureDefinition-ph-core-allergyintolerance.md) | This profile sets minimum expectations for an AllergyIntolerance resource to record, search, and fetch basic allergy intolerance information for a patient. It is based on the [FHIR R4 AllergyIntolerance](https://www.hl7.org/fhir/R4/allergyintolerance.html) resource and identifies the **additional** mandatory core elements, extensions, vocabularies and value sets that **SHALL** be present in the AllergyIntolerance when conforming to this profile. It provides the floor for standards development for specific uses cases in a Philippine context. |
+| [PH Core Claim](StructureDefinition-ph-core-claim.md) | Captures information about a request for reimbursement or payment for health care products and services within the Philippine health system, including specific benefit packages such as Animal Bites and TB DOTS programs. |
+| [PH Core Condition](StructureDefinition-ph-core-condition.md) | Captures Condition. |
+| [PH Core Encounter](StructureDefinition-ph-core-encounter.md) | This profile sets minimum expectations for an Encounter resource to record, search, and fetch basic encounter information for a patient. It is based on the [FHIR R4 Encounter](https://www.hl7.org/fhir/R4/encounter.html) resource and identifies the **additional** mandatory core elements, extensions, vocabularies and value sets that **SHALL** be present in the Encounter when conforming to this profile. It provides the floor for standards development for specific uses cases in a Philippine context. |
+| [PH Core HealthcareService](StructureDefinition-ph-core-healthcareservice.md) | This profile sets minimum expectations for a HealthcareService resource to record, search, and fetch information about healthcare services offered by an organization or at a location in the Philippine context. It is based on the [FHIR R4 HealthcareService](https://www.hl7.org/fhir/R4/healthcareservice.html) resource and identifies the **additional** mandatory core elements, extensions, vocabularies and value sets that **SHALL** be present in the HealthcareService when conforming to this profile. It provides the floor for standards development for specific use cases in a Philippine context. |
+| [PH Core Immunization](StructureDefinition-ph-core-immunization.md) | Describes the event of a patient being administered a vaccine or a record of an immunization as reported by a patient, a clinician or another party. |
+| [PH Core Location](StructureDefinition-ph-core-location.md) | This profile localizes the FHIR R4 Location resource to the Philippine context. |
+| [PH Core Medication](StructureDefinition-ph-core-medication.md) | This resource is primarily used for the identification and definition of a medication, including ingredients, for the purposes of prescribing, dispensing, and administering a medication as well as for making statements about medication use. |
+| [PH Core Medication Administration](StructureDefinition-ph-core-medicationadministration.md) | Captures key FHIR Medication Administration data for the Philippine context. |
+| [PH Core Medication Dispense](StructureDefinition-ph-core-medicationdispense.md) | Captures key FHIR Medication Dispense data for the Philippine context. |
+| [PH Core Medication Request](StructureDefinition-ph-core-medicationrequest.md) | Captures key FHIR Medication Request data for the Philippine context. |
+| [PH Core Medication Statement](StructureDefinition-ph-core-medicationstatement.md) | Captures key FHIR Medication Statement data for the Philippine context. |
+| [PH Core Observation](StructureDefinition-ph-core-observation.md) | Measurements and simple assertions made about a patient, device or other subject. |
+| [PH Core Organization](StructureDefinition-ph-core-organization.md) | This profile localizes the FHIR R4 Organization resource to the Philippine context. |
+| [PH Core Patient](StructureDefinition-ph-core-patient.md) | Captures key demographic and administrative information about individuals receiving care or other health-related services. |
+| [PH Core Practitioner](StructureDefinition-ph-core-practitioner.md) | The PH Core Practitioner Profile inherits from the [FHIR R4 Practitioner resource](https://hl7.org/fhir/R4/practitioner.html); refer to it for scope and usage definitions. This profile sets minimum expectations for the Practitioner resource to record, search, and fetch basic demographics and administrative information about an individual practitioner in a Philippine context. It specifies which core elements, extensions, vocabularies, and value sets SHALL be present and constrains how the elements are used. It provides the floor for standards development for Philippine use cases. |
+| [PH Core PractitionerRole](StructureDefinition-ph-core-practitionerrole.md) | The PH Core Practitioner Role Profile inherits from the [FHIR R4 PractitionerRole resource](https://hl7.org/fhir/R4/practitionerrole.html); refer to it for scope and usage definitions. This profile sets minimum expectations for the PractitionerRole resource to record, search, and fetch basic demographics and administrative information about an individual practitioner role in a Philippine context. It specifies which core elements, extensions, vocabularies, and value sets SHALL be present and constrains how the elements are used. It provides the floor for standards development for Philippine use cases. |
+| [PH Core Procedure](StructureDefinition-ph-core-procedure.md) | An action that is or was performed on or for a patient, practitioner, device, organization, or location. |
+| [PH Core Provenance](StructureDefinition-ph-core-provenance.md) | This profile localizes the FHIR R4 Provenance resource to the Philippine context, capturing key information about who, what, when, and where for a set of resources. It is used to track the authorship and history of healthcare data in Philippine health information systems. |
+| [PH Core RelatedPerson](StructureDefinition-ph-core-relatedperson.md) | This profile localizes the FHIR R4 RelatedPerson resource to the Philippine context. |
+| [PH Core ServiceRequest](StructureDefinition-ph-core-serviceRequest.md) | The PH Core ServiceRequest Profile is a Philippine-specific FHIR profile that represents a record of a request for services such as diagnostic investigations, treatments, or operations to be performed within the Philippine health system. It constrains the base FHIR ServiceRequest resource by defining minimum expectations on core elements, extensions, vocabularies, and value sets relevant to local clinical and administrative workflows. It serves as a nationally consistent baseline for recording, searching, and fetching service request information to support interoperable health information exchange across Philippine health facilities and programs. |
+| [PH Core Task](StructureDefinition-ph-core-task.md) | This profile localizes the FHIR R4 Task resource to the Philippine context. |
+
+### Structures: Data Type Profiles 
+
+These define constraints on FHIR data types for systems conforming to this implementation guide.
+
+| | |
+| :--- | :--- |
+| [DOH NHFR Code](StructureDefinition-ph-core-doh-nhfr-code.md) | Health Facility Code (HFC) from the National Health Facility Registry |
+| [PH Core Address](StructureDefinition-ph-core-address.md) | An address for the individual. |
+| [PH Core Name](StructureDefinition-ph-core-name.md) | A name of a person in the philippine context. |
+| [PIN - PhilHealth Identification Number Identifier](StructureDefinition-ph-core-philhealth-id.md) | The permanent and unique number issued by PhilHealth to individual members and to each and every dependent. |
+| [PhilHealth Accreditation Number](StructureDefinition-ph-core-philhealth-pan.md) | The unique number issued by PhilHealth to accredited institutions. |
+| [PhilHealth Employer Number](StructureDefinition-ph-core-philhealth-pen.md) | The unique number issued by PhilHealth to employers. |
+| [PhilSys Identification Number (PhilSys ID) Identifier](StructureDefinition-ph-core-philsys-id.md) | The National ID Number PSA issued to all Filipino citizens and resident aliens in the Philippines, as part of the Philippine Identification System (PhilSys) program. |
+
+### Structures: Extension Definitions 
+
+These define constraints on FHIR data types for systems conforming to this implementation guide.
+
+| | |
+| :--- | :--- |
+| [Administered Product](StructureDefinition-administered-product.md) | The vaccine product that was administered. |
+| [Barangay](StructureDefinition-barangay.md) | Barangay from the standard geographic code. |
+| [Batch Number](StructureDefinition-batch-number.md) | The batch number of the vaccine administered. |
+| [City/Municipality](StructureDefinition-city-municipality.md) | City/municipality from the standard geographic code. |
+| [Educational Attainment](StructureDefinition-educational-attainment.md) | Highest educational attainment of the patient. |
+| [Indigenous Group](StructureDefinition-indigenous-group.md) | Indigenous / ethnic group that the patient belongs to. |
+| [Indigenous People](StructureDefinition-indigenous-people.md) | If the patient is a member of an indigenous group. |
+| [Occupation](StructureDefinition-occupation.md) | Patient's occupation. |
+| [PH Core PWD Disability Registration](StructureDefinition-ph-core-pwd-disability.md) | Extension for Person With Disability (PWD) registration information. Captures PWD ID number, type of disability, and ID expiration date as issued by the PDAO (Persons with Disability Affairs Office). |
+| [Province](StructureDefinition-province.md) | Province from the standard geographic code. |
+| [Race](StructureDefinition-race.md) | race of a patient. |
+| [Region](StructureDefinition-region.md) | Region from the standard geographic code. |
+
+### Terminology: Value Sets 
+
+These define sets of codes used by systems conforming to this implementation guide.
+
+| | |
+| :--- | :--- |
+| [Barangays](ValueSet-barangays.md) | The Barangay codes valueset includes all barangay values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA). |
+| [Cities](ValueSet-cities.md) | All city values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA). |
+| [Drugs](ValueSet-drugs-vs.md) | This value set includes all drug or medicament substance codes and all pharmaceutical/biologic products from FDA. |
+| [Educational Attainments](ValueSet-educational-attainments.md) | All categories of educational programs, courses, and attainment levels in the Philippines, based on the Philippine Standard Classification of Education (PSCED) published by the Philippine Statistics Authority (PSA) |
+| [Indigenous Groups ValueSet](ValueSet-indigenous-groups-vs.md) | A value set representing the recognized Indigenous groups to which a person may belong. |
+| [Occupation Classifications](ValueSet-occupational-classifications.md) | The Occupation codes valueset includes Occupational Classification values from the Philippine Standard Occupational Classification (PSOC) published by the Philippine Statistic Authority (PSA). |
+| [PH Core Disability Type Value Set](ValueSet-ph-core-disability-type-vs.md) | Value set for types of disability as defined by the Philippine government for PWD registration. |
+| [Provinces](ValueSet-provinces.md) | All province values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA). |
+| [Regions](ValueSet-regions.md) | The Region codes valueset includes all region values from the Philippine Standard Geographic Codes (PSGC) published by the Philippine Statistic Authority (PSA). |
+
+### Terminology: Code Systems 
+
+These define new code systems used by systems conforming to this implementation guide.
+
+| | |
+| :--- | :--- |
+| [Indigenous Groups CodeSystem](CodeSystem-indigenous-groups-cs.md) | A list of codes representing the recognized indigenous groups in the Philippines to which a person may belong. |
+| [Mock PSCED](CodeSystem-PSCED.md) | Mock of the Philippine Standard Classification of Education. |
+| [Mock PSGC](CodeSystem-PSGC.md) | Mock of the Philippine Standard Geographic Code. |
+| [Mock PSOC](CodeSystem-PSOC.md) | Mock of the Philippine Standard Occupational Classification. |
+| [PH Core Disability Type Code System](CodeSystem-ph-core-disability-type-cs.md) | Code system for types of disability as defined by the Philippine government for PWD registration. |
+| [PH FDA Certificate of Product Registration (CPR) CodeSystem](CodeSystem-PHFDACPRCS.md) | Registered drug products from the Philippine Food and Drug Administration (FDA) |
+
+### Terminology: Naming Systems 
+
+These define identifier and/or code system identities used by systems conforming to this implementation guide.
+
+| | |
+| :--- | :--- |
+| [DOH National Health Facility Registry Code](NamingSystem-DOHNHFRCodeNS.md) | Health Facility Code (HFC) from the National Health Facility Registry. |
+| [DOH Procedure Identifier](NamingSystem-DOHProcedureIDNS.md) | Identifier system for procedures assigned by the Department of Health (DOH) health facilities. |
+| [PAN - PhilHealth Accreditation Number](NamingSystem-PhilHealthPANNS.md) | The unique number issued by PhilHealth to accredited institutions. |
+| [PEN - PhilHealth Employer Number](NamingSystem-PhilHealthPENNS.md) | The unique number issued by PhilHealth to employers. |
+| [PIN - PhilHealth Identification Number NamingSystem](NamingSystem-PhilHealthIDNS.md) | The permanent and unique number issued by PhilHealth to individual members and to each and every dependent. |
+| [PhilHealth Procedure Identifier](NamingSystem-PhilHealthProcedureIDNS.md) | Identifier system for procedures assigned by PhilHealth for claims and reimbursement purposes. |
+| [PhilSys Identification Number (PhilSys ID) NamingSystem](NamingSystem-PhilSysIDNS.md) | The National ID Number issued to all Filipino citizens and resident aliens in the Philippines, as part of the Philippine Identification System (PhilSys) program. |
+
+### Example: Example Instances 
+
+These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like.
+
+| | |
+| :--- | :--- |
+| [Example PH Core HealthcareService](HealthcareService-healthcareservice-single-example.md) | Philippine General Hospital Outpatient Department providing General Medicine consultations as a PH Core HealthcareService. |
+| [Example PH Core Location](Location-location-single-example.md) | Philippine General Hospital - A government tertiary hospital located in Manila, Philippines. |
+| [Example PH Core Organization](Organization-organization-single-example.md) | An example instance of a PH Core Organization conforming to the Philippine localization profile. Demonstrates all identifier types (NHFR, PAN, PEN) and Must Support fields. |
+| [allergy-single-example](AllergyIntolerance-allergy-single-example.md) | Juan Dela Cruz has a high criticality, active allergy to Benethamine penicillin. |
+| [blood-pressure](Observation-blood-pressure.md) | Blood pressure observation for Juan Dela Cruz taken on 17 September 2012. Systolic: 107 mmHg (Normal), Diastolic: 60 mmHg (Below low normal). |
+| [claim-single-example](Claim-claim-single-example.md) | A PhilHealth outpatient consultation claim for Juan Dela Cruz submitted by Dr. Maria Clara Santos for management of Type 2 Diabetes Mellitus. |
+| [condition-single-example](Condition-condition-single-example.md) | Juan Dela Cruz has an active diagnosis of Type 2 Diabetes Mellitus. |
+| [encounter-single-example](Encounter-encounter-single-example.md) | An ambulatory visit for Juan Dela Cruz that has been completed. |
+| [example-allergy](AllergyIntolerance-example-allergy.md) | Juan Dela Cruz has a high criticality, active allergy to Benethamine penicillin. |
+| [example-condition](Condition-example-condition.md) | Juan Dela Cruz has an active diagnosis of Type 2 Diabetes Mellitus. |
+| [example-encounter](Encounter-example-encounter.md) | An ambulatory encounter for Juan Dela Cruz that has been completed. |
+| [example-immunization](Immunization-example-immunization.md) | Flu shot for H5N1-1203. |
+| [example-medication](Medication-example-medication.md) | A medication resource with no specific details provided. |
+| [example-patient](Patient-example-patient.md) | Juan Dela Cruz is a male patient born on 1 January 1980, residing in Manila, NCR, Philippines. |
+| [example-practitioner](Practitioner-example-practitioner.md) | Dr. Maria Clara Santos, a female practitioner born on 1985-05-15, resides at 1234 Mabini Street, Manila, NCR, 1000, Philippines. She can be contacted via mobile at +63-912-345-6789 or by email at maria.santos@example.ph. |
+| [immunization-single-example](Immunization-immunization-single-example.md) | Juan Dela Cruz received a completed intramuscular influenza (H5N1-1203) vaccine at Philippine General Hospital on January 10, 2013. |
+| [medication-single-example](Medication-medication-single-example.md) | Twinact (Telmisartan + Amlodipine) from PH FDA CPR. |
+| [medicationadministration-single-example](MedicationAdministration-medicationadministration-single-example.md) | Juan Dela Cruz takes Twinact (Telmisartan + Amlodipine) tablet as prescribed. |
+| [medicationdispense-single-example](MedicationDispense-medicationdispense-single-example.md) | Pharmacy dispenses Twinact (Telmisartan + Amlodipine) to Juan Dela Cruz based on Dr. Santos prescription. |
+| [medicationrequest-single-example](MedicationRequest-medicationrequest-single-example.md) | Dr. Maria Clara Santos prescribes Twinact (Telmisartan + Amlodipine) for Juan Dela Cruz to treat hypertension. |
+| [medicationstatement-single-example](MedicationStatement-medicationstatement-single-example.md) | Patient Juan Dela Cruz reports taking Twinact (Telmisartan + Amlodipine) for hypertension. |
+| [observation-based-on-service-example](Observation-observation-based-on-service-example.md) | Hemoglobin A1c lab result based on a service request for diabetes monitoring. |
+| [observation-bp-example](Observation-observation-bp-example.md) | Blood pressure observation for Juan Dela Cruz taken on 17 September 2012. Systolic: 107 mmHg (Normal), Diastolic: 60 mmHg (Below low normal). |
+| [observation-derived-bmi-example](Observation-observation-derived-bmi-example.md) | BMI calculated from height and weight observations for Juan Dela Cruz. |
+| [observation-environmental-temp-example](Observation-observation-environmental-temp-example.md) | Environmental temperature observation for a hospital ward (Location as subject). |
+| [observation-glucose-example](Observation-observation-glucose-example.md) | Fasting blood glucose observation for Juan Dela Cruz. |
+| [observation-height-example](Observation-observation-height-example.md) | Body height observation for Juan Dela Cruz. |
+| [observation-lab-panel-example](Observation-observation-lab-panel-example.md) | Basic Metabolic Panel with references to individual electrolyte observations. |
+| [observation-part-of-procedure-example](Observation-observation-part-of-procedure-example.md) | Intraoperative blood pressure observation during appendectomy procedure. |
+| [observation-performer-role-example](Observation-observation-performer-role-example.md) | Heart rate observation performed by a practitioner in a specific role. |
+| [observation-potassium-example](Observation-observation-potassium-example.md) | Serum potassium observation for Juan Dela Cruz. |
+| [observation-sodium-example](Observation-observation-sodium-example.md) | Serum sodium observation for Juan Dela Cruz. |
+| [observation-vitals-encounter-example](Observation-observation-vitals-encounter-example.md) | Body temperature observation for Juan Dela Cruz taken during an ambulatory encounter. |
+| [observation-weight-example](Observation-observation-weight-example.md) | Body weight observation for Juan Dela Cruz. |
+| [patient-single-example](Patient-patient-single-example.md) | Juan Dela Cruz is a male patient born on 1 January 1980, residing in Manila, NCR, Philippines. |
+| [philhealth-coverage-example](Coverage-philhealth-coverage-example.md) | PhilHealth coverage for Juan Dela Cruz with member ID 63-584789845-5. |
+| [practitioner-single-example](Practitioner-practitioner-single-example.md) | Dr. Maria Clara Santos, MD, a licensed physician born on 1985-05-15, residing in Manila, Philippines. She can be contacted via mobile at +63-912-345-6789 or by email at maria.santos@example.ph. She speaks Filipino and English. |
+| [practitionerrole-single-example](PractitionerRole-practitionerrole-single-example.md) | Dr. Maria Clara Santos is a General Practitioner working with the Department of Health. One of her assignments is at the Philippine General Hospital. |
+| [procedure-single-example](Procedure-procedure-single-example.md) | A comprehensive example of an appendectomy procedure performed on Juan Dela Cruz, demonstrating extensive use of Procedure resource elements including identifiers, status history, multiple performers, body site, complications, and follow-up care. |
+| [provenance-single-example](Provenance-provenance-single-example.md) | Provenance record documenting that Dr. Maria Clara Santos created the blood pressure observation for Juan Dela Cruz on September 17, 2012, on behalf of the Department of Health - Central Office. |
+| [relatedperson-single-example](RelatedPerson-relatedperson-single-example.md) | Maria Cruz Santos is a female born on 1 January 1955, mother of the patient. |
+| [servicerequest-single-example](ServiceRequest-servicerequest-single-example.md) | A laboratory service request for fasting blood glucose test ordered by Dr. Maria Clara Santos for patient Juan Dela Cruz during an ambulatory encounter. |
+| [task-single-example](Task-task-single-example.md) | A laboratory task for Juan Dela Cruz requested by Dr. Maria Clara Santos. The task is to collect a blood sample for a routine CBC test. |
+| [transaction-example](Bundle-transaction-example.md) | Juan Dela Cruz has his blood pressure checked by Dr. Maria Clara Santos. |
+
