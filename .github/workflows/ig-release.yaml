@@ -18,18 +18,46 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0
+-
       - name: Get version
         id: v
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Download artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/setup-node@v4
         with:
-          name: ig-output
-          path: output
+          node-version: "20"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+
+      - name: Install dependencies
+        run: |
+          npm install -g fsh-sushi
+          gem install jekyll bundler
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
+      - name: Download IG Publisher
+        run: |
+          mkdir -p input-cache
+          curl -fsSL \
+            https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar \
+            -o input-cache/publisher.jar
+
+      - name: Build IG
+        run: |
+          sushi .
+          java -jar input-cache/publisher.jar ig.ini
 
       - name: Clone gh-pages
         run: |
@@ -44,17 +72,11 @@ jobs:
               "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
             }
 
-      - name: Prevent overwrite
-        run: |
-          if [ -d ".gh-pages/${{ steps.v.outputs.version }}" ]; then
-            echo "::error::Version already exists"
-            exit 1
-          fi
-
       - name: Publish version
         run: |
-          mkdir -p ".gh-pages/${{ steps.v.outputs.version }}"
-          rsync -a output/ ".gh-pages/${{ steps.v.outputs.version }}/"
+          VERSION=${{ steps.v.outputs.version }}
+          mkdir -p ".gh-pages/$VERSION"
+          rsync -a output/ ".gh-pages/$VERSION/"
 
       - name: Update /current
         run: |
@@ -89,15 +111,13 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ steps.v.outputs.version }}
+          tag_name: ${{ github.ref_name }}
           name: "FHIR IG ${{ steps.v.outputs.version }}"
           files: output/**
 
       - name: Mirror to GitLab
         run: |
           cd .gh-pages
-
-          echo "Pushing to GitLab..."
 
           git init
           git config user.name "github-actions"
@@ -109,5 +129,4 @@ jobs:
           git commit -m "Mirror release ${{ github.ref_name }}" || echo "No changes"
 
           git branch -M gh-pages
-
           git push gitlab gh-pages --force
