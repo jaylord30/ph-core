@@ -22,6 +22,10 @@ jobs:
     needs: build
     uses: ./.github/workflows/ig-qa.yml
 
+  release:
+    needs: qa
+    uses: ./.github/workflows/ig-release.yml
+
   deploy-dev:
     needs: qa
     uses: ./.github/workflows/ig-deploy-dev.yml

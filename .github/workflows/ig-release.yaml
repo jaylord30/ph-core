@@ -61,23 +61,29 @@ jobs:
           sushi .
           java -jar input-cache/publisher.jar ig.ini
 
+      - name: Verify FHIR Package
+        run: |
+          if [ ! -f output/package.tgz ]; then
+            echo "❌ package.tgz missing - invalid IG build"
+            exit 1
+          fi
+
       - name: Generate SHA256 checksum
         run: |
           cd output
           find . -type f -exec sha256sum {} \; > SHA256SUMS.txt
 
-      - name: Clone gh-pages
+      - name: Upload IG Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: ig-package
+          path: output/package.tgz
+
+
+      - name: Prepare gh-pages branch
         run: |
-          git clone --depth 1 --branch gh-pages \
-            "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" \
-            .gh-pages || {
-              mkdir .gh-pages
-              cd .gh-pages
-              git init
-              git checkout -b gh-pages
-              git remote add origin \
-              "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
-            }
+          git fetch origin gh-pages || true
+          git checkout gh-pages || git checkout --orphan gh-pages
 
       - name: Publish version
         run: |
@@ -99,71 +105,35 @@ jobs:
 
       - name: Update rollback registry
         run: |
-          FILE=".gh-pages/rollback.json"
+          VERSION=${{ steps.v.outputs.version }}
+          FILE="rollback.json"
 
           if [ ! -f "$FILE" ]; then
             echo "[]" > $FILE
           fi
 
-          VERSION=${{ steps.v.outputs.version }}
+          TMP=$(mktemp)
 
-          jq ". += [{version: \"$VERSION\", date: \"$(date -Iseconds)\", active: true}]" $FILE > tmp.json
-          mv tmp.json $FILE
+          jq ". += [{version: \"$VERSION\", date: \"$(date -Iseconds)\", active: true}]
+              | map(.active = (.version == \"$VERSION\"))" $FILE > $TMP
 
-          jq "map(.active = (.version == \"$VERSION\"))" $FILE > tmp2.json
-          mv tmp2.json $FILE
+          mv $TMP $FILE
 
       - name: Commit gh-pages
         run: |
-          cd .gh-pages
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+
           git add -A
           git commit -m "Release ${{ steps.v.outputs.version }}" || exit 0
-          git push
+          git push origin gh-pages
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: "FHIR IG ${{ steps.v.outputs.version }}"
+          name: "PH Core IG ${{ steps.v.outputs.version }}"
+          files: output/package.tgz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Mirror to GitLab
-        run: |
-          cd .gh-pages
-
-          git init
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-
-          git remote add gitlab https://${{ secrets.GITLAB_USERNAME }}:${{ secrets.GITLAB_TOKEN }}@${{ secrets.GITLAB_REPO }}
-
-          git add -A
-          git commit -m "Mirror release ${{ github.ref_name }}" || echo "No changes"
-
-          git branch -M gh-pages
-          git push gitlab gh-pages --force
-
-      - name: Verify GitLab Deployment
-        run: |
-          VERSION=${{ steps.v.outputs.version }}
-          URL="https://${{ secrets.GITLAB_PAGES_URL }}/$VERSION/"
-
-          echo "Checking: $URL"
-
-          for i in {1..10}; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" $URL)
-
-            if [ "$STATUS" = "200" ]; then
-              echo "✅ GitLab deployment OK"
-              exit 0
-            fi
-
-            echo "Waiting for GitLab Pages... ($i)"
-            sleep 5
-          done
-
-          echo "::error::GitLab deployment failed"
-          exit 1
