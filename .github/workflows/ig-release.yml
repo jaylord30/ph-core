@@ -1,9 +1,7 @@
 name: Release PROD IG
 
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_call:
 
 permissions:
   contents: write
