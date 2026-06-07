@@ -6,5 +6,7 @@ Thumbs.db
 /temp
 /template
 /.asciidoctorconfig.adoc
+publisher.jar
+node_modules/
 .vscode/settings.json
 .gitignore

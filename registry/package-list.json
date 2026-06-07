@@ -1,0 +1,12 @@
+{
+  "package-id": "fhir.ph.core",
+  "canonical": "http://doh.gov.ph/fhir/ph-core",
+  "list": [
+    {
+      "version": "0.2.0",
+      "status": "ci-build",
+      "current": true,
+      "path": "fhir.ph.core-0.2.0.tgz"
+    }
+  ]
+}

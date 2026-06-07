@@ -65,13 +65,48 @@ jobs:
             echo "[]" > output/qa.json
           fi
 
+      - name: Create registry folder
+        run: mkdir -p registry
+
+      - name: Build versioned package
+        run: |
+          VERSION=$(grep '^version:' sushi-config.yaml | awk '{print $2}')
+
+          echo "Version: $VERSION"
+
+          cp output/package.tgz registry/fhir.ph.core-${VERSION}.tgz
+
+      - name: Generate package-list.json
+        run: |
+          VERSION=$(grep '^version:' sushi-config.yaml | awk '{print $2}')
+
+          cat <<EOF > registry/package-list.json
+          {
+            "package-id": "fhir.ph.core",
+            "canonical": "http://doh.gov.ph/fhir/ph-core",
+            "list": [
+              {
+                "version": "${VERSION}",
+                "status": "ci-build",
+                "current": true,
+                "path": "fhir.ph.core-${VERSION}.tgz"
+              }
+            ]
+          }
+          EOF
+
       - name: Add build metadata
         run: |
           echo "{
             \"sha\": \"${GITHUB_SHA}\",
             \"branch\": \"${GITHUB_REF_NAME}\",
             \"timestamp\": \"$(date -Iseconds)\"
-          }" > output/build-metadata.json
+          }" > registry/build-metadata.json
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: registry
 
 
       - uses: actions/upload-artifact@v4
