@@ -15,18 +15,41 @@ jobs:
 
       - name: Prepare dev site
         run: |
-          VERSION="dev-$(date +%Y%m%d-%H%M%S)"
+          rm -rf .publish
+          mkdir -p .publish/dev
 
-          mkdir -p .publish/$VERSION
-          rsync -a output/ .publish/$VERSION/
+          rsync -a output/ .publish/dev/
 
-          ln -sfn $VERSION .publish/dev
+          # store metadata (important upgrade)
+          echo "{
+            \"build\": \"dev\",
+            \"timestamp\": \"$(date -Iseconds)\",
+            \"sha\": \"${GITHUB_SHA}\"
+          }" > .publish/dev/build-metadata.json
 
       - name: Create index
         run: |
           cat > .publish/index.html <<EOF
-          <h1>FHIR IG Dev</h1>
-          <p>Latest: <a href="./dev/">Open Dev</a></p>
+          <!doctype html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>FHIR IG Dev</title>
+          </head>
+          <body>
+            <h1>FHIR IG Development Build</h1>
+
+            <p>
+              Latest development build:
+              <a href="./dev/">Open Dev IG</a>
+            </p>
+
+            <p>
+              Build SHA: ${GITHUB_SHA}
+            </p>
+
+          </body>
+          </html>
           EOF
 
       - name: Deploy
@@ -36,3 +59,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: .publish
           keep_files: true
+          commit_message: "dev: publish build ${GITHUB_SHA}"

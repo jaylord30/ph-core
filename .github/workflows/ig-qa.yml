@@ -9,48 +9,54 @@ jobs:
 
     steps:
 
-      # ----------------------------
-      # 1. Download IG artifact
-      # ----------------------------
       - name: Download IG Build Artifact
         uses: actions/download-artifact@v4
         with:
           name: ig-output
           path: output
 
-      # ----------------------------
-      # 2. Validate QA file exists (SAFE)
-      # ----------------------------
-      - name: Validate QA File Exists
+      - name: Validate IG Output Exists
         run: |
           set -euo pipefail
 
-          QA_FILE="output/qa.json"
-
-          if [ ! -f "$QA_FILE" ]; then
-            echo "::warning::qa.json missing, creating fallback"
-            echo '{"issues":[]}' > "$QA_FILE"
+          if [ ! -d "output" ]; then
+            echo "::error::Missing output directory"
+            exit 1
           fi
 
-      # ----------------------------
-      # 3. STRICT QA GATE (FAIL FAST)
-      # ----------------------------
-      - name: QA Gate (Strict Fail)
+          if [ ! -f "output/package.tgz" ]; then
+            echo "::error::Missing IG package.tgz"
+            exit 1
+          fi
+
+          echo "✅ IG output validated"
+
+      - name: Locate QA file
         run: |
           set -euo pipefail
 
-          QA_FILE="output/qa.json"
+          if [ -f "output/qa.json" ]; then
+            echo "QA_FILE=output/qa.json" >> $GITHUB_ENV
+          elif [ -f "output/qa.html" ]; then
+            echo "::warning::qa.json not found, falling back to qa.html"
+            echo "QA_FILE=output/qa.html" >> $GITHUB_ENV
+          else
+            echo "::error::No QA file found"
+            exit 1
+          fi
+
+      - name: QA Gate (Strict Fail)
+        if: env.QA_FILE == 'output/qa.json'
+        run: |
+          set -euo pipefail
 
           ERROR_COUNT=$(jq -r '
-            (.issues // .issue // []) 
-            | map(select(.severity? == "error")) 
+            (.issues // .issue // [])
+            | map(select(.severity? == "error"))
             | length
           ' "$QA_FILE")
 
-          echo "======================================"
-          echo "FHIR IG QA SUMMARY"
-          echo "ERROR COUNT: $ERROR_COUNT"
-          echo "======================================"
+          echo "FHIR IG QA ERROR COUNT: $ERROR_COUNT"
 
           if [ "$ERROR_COUNT" -gt 0 ]; then
             echo "::error::FHIR IG QA FAILED ($ERROR_COUNT errors)"
@@ -59,73 +65,41 @@ jobs:
 
           echo "✅ QA PASSED"
 
-      # ----------------------------
-      # 4. ANALYSIS MODE (ONLY ON FAILURE)
-      # ----------------------------
-      - name: QA Detailed File Breakdown
-        if: failure()
+      - name: QA HTML fallback check
+        if: env.QA_FILE == 'output/qa.html'
         run: |
-          set -euo pipefail
+          echo "::warning::Using qa.html — consider enabling structured QA JSON export"
+          grep -i "error" output/qa.html || echo "No visible errors found in HTML"
 
-          QA_FILE="output/qa.json"
-
-          echo "======================================"
-          echo "FHIR IG DETAILED ERROR BREAKDOWN"
-          echo "======================================"
-
+      - name: QA Detailed Breakdown
+        if: failure() && env.QA_FILE == 'output/qa.json'
+        run: |
           jq -r '
             (.issues // .issue // [])
             | map(select(.severity? == "error"))
             | group_by(.file // .source // .location // "UNKNOWN")
             | .[]
-            | {
-                file: (.[0].file // .[0].source // .[0].location // "UNKNOWN"),
-                count: length,
-                samples: map(.message)[0:5]
-              }
-            | "❌ FILE: \(.file)\n   COUNT: \(.count)\n   SAMPLE ERRORS:\n   - " + (.samples | join("\n   - ")) + "\n"
+            | "❌ FILE: \(.[0].file // .[0].source // .[0].location)\n   COUNT: \(length)\n   SAMPLE:\n   - " + (map(.message)[0:5] | join("\n   - ")) + "\n"
           ' "$QA_FILE"
 
-      # ----------------------------
-      # 5. ROOT CAUSE CLASSIFICATION (FAIL ONLY)
-      # ----------------------------
       - name: QA Root Cause Summary
-        if: failure()
+        if: failure() && env.QA_FILE == 'output/qa.json'
         run: |
-          set -euo pipefail
-
-          QA_FILE="output/qa.json"
-
-          echo "======================================"
-          echo "FHIR IG ROOT CAUSE ANALYSIS"
-          echo "======================================"
-
           jq -r '
             def issues: (.issues // .issue // []);
 
             {
-              terminology: (issues | map(select(.message | test("ValueSet|CodeSystem|terminology|TX|expand"; "i"))) | length),
-              structure: (issues | map(select(.message | test("snapshot|StructureDefinition|cardinality|constraint"; "i"))) | length),
-              profile: (issues | map(select(.message | test("Profile|constraint|Invariant"; "i"))) | length),
-              ig_config: (issues | map(select(.message | test("ImplementationGuide|canonical|dependency"; "i"))) | length)
+              terminology: (issues | map(select(.message | test("ValueSet|CodeSystem|terminology|TX"; "i"))) | length),
+              structure: (issues | map(select(.message | test("snapshot|cardinality|constraint"; "i"))) | length),
+              profile: (issues | map(select(.message | test("Profile|Invariant"; "i"))) | length),
+              config: (issues | map(select(.message | test("ImplementationGuide|canonical|dependency"; "i"))) | length)
             }
-            | "🔴 Terminology: \(.terminology)\n🟠 Structure: \(.structure)\n🟡 Profile: \(.profile)\n🔵 IG Config: \(.ig_config)\n"
+            | "Terminology: \(.terminology)\nStructure: \(.structure)\nProfile: \(.profile)\nConfig: \(.config)\n"
           ' "$QA_FILE"
 
-      # ----------------------------
-      # 6. DEBUG OUTPUT (RAW LIST)
-      # ----------------------------
-      - name: Full Error List (Debug)
-        if: failure()
+      - name: Full Error List
+        if: failure() && env.QA_FILE == 'output/qa.json'
         run: |
-          set -euo pipefail
-
-          QA_FILE="output/qa.json"
-
-          echo "======================================"
-          echo "RAW ERROR LIST"
-          echo "======================================"
-
           jq -r '
             (.issues // .issue // [])
             | map(select(.severity? == "error"))

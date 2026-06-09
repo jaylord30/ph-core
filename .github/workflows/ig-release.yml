@@ -1,7 +1,9 @@
-name: Release PROD IG
+name: Release IG
 
 on:
-  workflow_call:
+  push:
+    tags:
+      - "v*"
 
 permissions:
   contents: write
@@ -11,32 +13,36 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-
   release:
     runs-on: ubuntu-latest
 
     steps:
-
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          lfs: true
 
       - name: Get version
         id: v
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - uses: actions/setup-java@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
 
-      - uses: ruby/setup-ruby@v1
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
 
@@ -45,7 +51,7 @@ jobs:
           npm install -g fsh-sushi
           gem install jekyll bundler
           sudo apt-get update
-          sudo apt-get install -y graphviz
+          sudo apt-get install -y graphviz jq rsync python3
 
       - name: Download IG Publisher
         run: |
@@ -54,17 +60,34 @@ jobs:
             https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar \
             -o input-cache/publisher.jar
 
+      - name: Patch IG version
+        env:
+          RELEASE_VERSION: ${{ steps.v.outputs.version }}
+        run: |
+          python3 - <<'PY'
+          import re, pathlib, os
+          version = os.environ["RELEASE_VERSION"]
+
+          p = pathlib.Path("sushi-config.yaml")
+          txt = p.read_text(encoding="utf-8")
+
+          txt = re.sub(r'(?m)^(version:\s*).+$', r'\g<1>' + version, txt)
+          txt = re.sub(r'(?m)^(releaseLabel:\s*).+$', r'\g<1>release', txt)
+
+          p.write_text(txt, encoding="utf-8")
+          print("Patched sushi-config.yaml")
+          PY
+
       - name: Build IG
         run: |
+          set -euo pipefail
           sushi .
           java -jar input-cache/publisher.jar ig.ini
 
-      - name: Verify FHIR Package
+      - name: Verify IG Output
         run: |
-          if [ ! -f output/package.tgz ]; then
-            echo "❌ package.tgz missing - invalid IG build"
-            exit 1
-          fi
+          test -f output/package.tgz || (echo "❌ package.tgz missing" && exit 1)
+          test -f output/qa.html || echo "⚠️ qa.html missing (warning only)"
 
       - name: Generate SHA256 checksum
         run: |
@@ -77,11 +100,22 @@ jobs:
           name: ig-package
           path: output/package.tgz
 
-
-      - name: Prepare gh-pages branch
+      - name: Prepare gh-pages branch safely
         run: |
+          rm -rf .gh-pages
           git fetch origin gh-pages || true
-          git checkout gh-pages || git checkout --orphan gh-pages
+
+          git checkout gh-pages || \
+          git checkout -b gh-pages origin/gh-pages || \
+          git checkout --orphan gh-pages
+
+      - name: Prevent overwrite
+        run: |
+          VERSION=${{ steps.v.outputs.version }}
+          if [ -d ".gh-pages/$VERSION" ]; then
+            echo "❌ Version already exists: $VERSION"
+            exit 1
+          fi
 
       - name: Publish version
         run: |
@@ -97,33 +131,110 @@ jobs:
 
           cat > ".gh-pages/current/index.html" <<EOF
           <html>
-            <meta http-equiv="refresh" content="0; url=../$VERSION/">
+            <head>
+              <meta http-equiv="refresh" content="0; url=../$VERSION/">
+              <title>Redirecting...</title>
+            </head>
+            <body>
+              Redirecting to <a href="../$VERSION/">$VERSION</a>
+            </body>
           </html>
           EOF
 
       - name: Update rollback registry
         run: |
           VERSION=${{ steps.v.outputs.version }}
-          FILE="rollback.json"
+          FILE=".gh-pages/rollback.json"
+
+          mkdir -p .gh-pages
 
           if [ ! -f "$FILE" ]; then
-            echo "[]" > $FILE
+            echo "[]" > "$FILE"
           fi
 
           TMP=$(mktemp)
 
-          jq ". += [{version: \"$VERSION\", date: \"$(date -Iseconds)\", active: true}]
-              | map(.active = (.version == \"$VERSION\"))" $FILE > $TMP
+          jq --arg v "$VERSION" --arg d "$(date -Iseconds)" '
+            map(.active = false)
+            + [{"version": $v, "date": $d, "active": true}]
+          ' "$FILE" > "$TMP"
 
-          mv $TMP $FILE
+          mv "$TMP" "$FILE"
 
-      - name: Commit gh-pages
+      - name: Update package-list.json
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          VERSION=${{ steps.v.outputs.version }}
+          FILE=".gh-pages/package-list.json"
+
+          mkdir -p .gh-pages
+
+          if [ ! -f "$FILE" ]; then
+            echo '{
+              "package-id": "ph.core.fhir",
+              "title": "PH Core Implementation Guide",
+              "canonical": "https://your-domain.org",
+              "list": []
+            }' > "$FILE"
+          fi
+
+          python3 - <<'PY'
+          import json, pathlib, os, datetime
+
+          version = os.environ["VERSION"]
+          path = pathlib.Path(".gh-pages/package-list.json")
+
+          pl = json.loads(path.read_text())
+
+          for e in pl["list"]:
+              e["current"] = False
+
+          pl["list"].insert(0, {
+              "version": version,
+              "date": datetime.date.today().isoformat(),
+              "path": f"https://your-domain.org/{version}",
+              "status": "release",
+              "fhirversion": "4.0.1",
+              "current": True
+          })
+
+          path.write_text(json.dumps(pl, indent=2))
+          PY
+        env:
+          VERSION: ${{ steps.v.outputs.version }}
+
+      - name: Generate history page
+        run: |
+          python3 - <<'PY'
+          import pathlib, json
+
+          root = pathlib.Path(".gh-pages")
+          versions = []
+
+          for p in root.iterdir():
+              if p.is_dir():
+                  versions.append(p.name)
+
+          versions = sorted(versions, reverse=True)
+
+          html = ["<h1>IG History</h1><ul>"]
+          for v in versions:
+              html.append(f'<li><a href="./{v}/">{v}</a></li>')
+          html.append("</ul>")
+
+          (root / "history.html").write_text("\n".join(html))
+          print("history.html updated")
+          PY
+
+      - name: Commit and push gh-pages
+        run: |
+          cd .gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add -A
-          git commit -m "Release ${{ steps.v.outputs.version }}" || exit 0
+
+          git commit -m "release: ${{ steps.v.outputs.version }}" || exit 0
+
           git push origin gh-pages
 
       - name: Create GitHub Release
@@ -134,4 +245,3 @@ jobs:
           files: output/package.tgz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-

@@ -14,6 +14,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true
+          fetch-depth: 0
 
       - uses: actions/setup-java@v4
         with:
@@ -29,16 +30,12 @@ jobs:
           ruby-version: "3.2"
           bundler-cache: true
 
-      - name: Install Jekyll
-        run: gem install jekyll bundler
-
-      - run: npm install -g fsh-sushi
-
-      - name: Install Graphviz (for PlantUML)
+      - name: Install dependencies
         run: |
+          gem install jekyll bundler
+          npm install -g fsh-sushi
           sudo apt-get update
-          sudo apt-get install -y graphviz
-          dot -v
+          sudo apt-get install -y graphviz jq
 
       - name: Download IG Publisher
         run: |
@@ -47,40 +44,39 @@ jobs:
             https://github.com/HL7/fhir-ig-publisher/releases/download/2.2.7/publisher.jar \
             -o input-cache/publisher.jar
 
-      - run: sushi . --log-level info
-
-      - name: Build IG
+      - name: Run SUSHI
         run: |
-        
+          set -euo pipefail
+          sushi . --log-level info
+
+      - name: Run IG Publisher
+        run: |
+          set -euo pipefail
           java -jar input-cache/publisher.jar \
             -ig . \
-            -tx https://tx.fhirlab.net/fhir \
+            -tx https://tx.fhir.org/fhir \
             -cachedir ~/.fhir/packages \
             -txCache input-cache/txcache
 
-      - name: Ensure QA file exists (FIX)
+      - name: Extract version
+        id: version
         run: |
-          mkdir -p output
-          if [ ! -f output/qa.json ]; then
-            echo "[]" > output/qa.json
-          fi
+          VERSION=$(node -p "require('fs').readFileSync('sushi-config.yaml','utf8')
+            .match(/version:\s*([0-9A-Za-z\.\-]+)/)[1]")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Create registry folder
-        run: mkdir -p registry
-
-      - name: Build versioned package
+      - name: Validate output
         run: |
-          VERSION=$(grep '^version:' sushi-config.yaml | awk '{print $2}')
+          test -f output/package.tgz || (echo "Missing package.tgz" && exit 1)
 
-          echo "Version: $VERSION"
+      - name: Build registry
+        run: |
+          mkdir -p registry
 
           cp output/package.tgz registry/fhir.ph.core-${VERSION}.tgz
 
-      - name: Generate package-list.json
-        run: |
-          VERSION=$(grep '^version:' sushi-config.yaml | awk '{print $2}')
-
-          cat <<EOF > registry/package-list.json
+          cat > registry/package-list.json <<EOF
           {
             "package-id": "fhir.ph.core",
             "canonical": "http://doh.gov.ph/fhir/ph-core",
@@ -89,27 +85,32 @@ jobs:
                 "version": "${VERSION}",
                 "status": "ci-build",
                 "current": true,
+                "date": "$(date -Iseconds)",
                 "path": "fhir.ph.core-${VERSION}.tgz"
               }
             ]
           }
           EOF
 
-      - name: Add build metadata
+      - name: Build metadata
         run: |
-          echo "{
-            \"sha\": \"${GITHUB_SHA}\",
-            \"branch\": \"${GITHUB_REF_NAME}\",
-            \"timestamp\": \"$(date -Iseconds)\"
-          }" > registry/build-metadata.json
+          cat > registry/build-metadata.json <<EOF
+          {
+            "sha": "${GITHUB_SHA}",
+            "branch": "${GITHUB_REF_NAME}",
+            "version": "${VERSION}",
+            "timestamp": "$(date -Iseconds)"
+          }
+          EOF
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: registry
-
-
-      - uses: actions/upload-artifact@v4
+      - name: Upload IG Output
+        uses: actions/upload-artifact@v4
         with:
           name: ig-output
           path: output
+
+      - name: Upload Registry (for deploy)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ig-registry
+          path: registry
