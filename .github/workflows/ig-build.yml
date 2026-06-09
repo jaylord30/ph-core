@@ -41,8 +41,8 @@ jobs:
         run: |
           mkdir -p input-cache
           curl -fsSL \
-            https://github.com/HL7/fhir-ig-publisher/releases/download/latest/publisher.jar \
-            -o input-cache/publisher.jar
+           https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar \
+           -o input-cache/publisher.jar
 
       - name: Run SUSHI
         run: |
